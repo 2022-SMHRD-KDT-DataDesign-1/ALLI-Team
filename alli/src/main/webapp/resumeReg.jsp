@@ -9,7 +9,7 @@
             <div>
                 <p>구직을 위한, <img src="./img/logo_w.png"></p>
             </div>
-       </div>
+       </div>	       
        <div class="resumeReg">
             <div class="member_inform">
                 <div>개인<br>회원</div>
@@ -25,7 +25,12 @@
                         <h3>인적사항</h3>
                         <p><span class="star">&#42;</span> 필수 입력 정보입니다.</p>
                         <div>
-                            <input type="file">
+                            <section class="col-sm-2 imgUp">
+						    	<div class="imagePreview"></div>
+								<label class="btn btn-primary">
+									사진등록<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+								</label>
+						 	 </section><!-- col-2 -->
                             <div>
                                 <div class="input readonly">
                                     <label>이름 <span class="star">&#42;</span></label>
@@ -99,25 +104,25 @@
                             <section>
                                 <div class="choose">
                                     <ul>
-                                        <li>
+                                        <li class="c_btn">
                                         	<div>프로그래밍 언어</div>
                                         	<div></div>
                                         </li>
-                                        <li>
+                                        <li class="c_btn">
                                         	<div>프레임워크</div>
                                         	<div></div>
                                         </li>
-                                        <li>
+                                        <li class="c_btn">
                                         	<div>OS</div>
                                         	<div></div>
                                         </li>
-                                        <li>
+                                        <li class="c_btn">
                                         	<div>자격증</div>
                                         	<div></div>
                                         </li>
                                     </ul>
                                     <ul>
-                                        <li><!-- 프로그래밍언어 시작 -->
+                                        <li class="c_content"><!-- 프로그래밍언어 시작 -->
                                             <ul>
 												<li>
 													<p>Java</p>
@@ -409,7 +414,7 @@
 												</li>
                                             </ul>
                                         </li>
-                                        <li><!-- 프레임워크 시작 -->
+                                        <li class="c_content"><!-- 프레임워크 시작 -->
                                             <ul>
 												<li>
 													<p>프레임워크</p>
@@ -701,7 +706,7 @@
 												</li>
                                             </ul>
                                         </li>
-                                        <li><!-- OS 시작 -->
+                                        <li class="c_content"><!-- OS 시작 -->
                                             <ul>
 												<li>
 													<p>OS</p>
@@ -993,7 +998,7 @@
 												</li>
                                             </ul>
                                         </li>
-                                        <li><!-- 자격증 시작 -->
+                                        <li class="c_content"><!-- 자격증 시작 -->
                                             <ul>
 												<li>
 													<p>자격증</p>
@@ -1322,18 +1327,24 @@
                     <div class="resume_box rbox5">
                         <h3>기타자격증</h3>
                         <div>
-                            <div class="input">
-                                <label>자격증명</label>
-                                <input type="text" placeholder="">
-                            </div>
-                            <span class="material-symbols-outlined delete">
-                                Close
-                            </span>
+                        	<ul>
+                        		<li>
+		                            <div class="input">
+		                                <label>자격증명</label>
+		                                <input type="text" placeholder="">
+		                            </div>
+		                            <span class="material-symbols-outlined delete">
+		                                Close
+		                            </span>
+	                           	</li>
+                            </ul>
                             <div class="add">
-                                <span class="material-symbols-outlined">
-                                    add_circle
-                                </span>
-                                추가
+                            	<div>
+	                                <span class="material-symbols-outlined">
+	                                    add_circle
+	                                </span>
+	                                추가
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1348,10 +1359,12 @@
                                 Close
                             </span>
                             <div class="add">
-                                <span class="material-symbols-outlined">
-                                    add_circle
-                                </span>
-                                추가
+                            	<div>
+	                                <span class="material-symbols-outlined">
+	                                    add_circle
+	                                </span>
+	                                추가
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1366,12 +1379,13 @@
                                 Close
                             </span>
                             <div class="add">
-                                <span class="material-symbols-outlined">
-                                    add_circle
-                                </span>
-                                추가
-                            </div>
-                        </div>
+                            	<div>
+	                                <span class="material-symbols-outlined">
+	                                    add_circle
+	                                </span>
+	                                추가
+                                </div>
+                            </div>                        </div>
                     </div>
                     <div class="resume_box rbox8">
                         <h3>자기소개서</h3>
@@ -1416,5 +1430,63 @@
        </div>
     </div>
 	<%@ include file="./include/footer.jsp" %>
+	<script>
+	// 개발기술스택 tab 처리
+	    //함수 호출 반복문
+	     for(let i = 0; i < $('.c_btn').length; i++){
+	         tabOpen(i); 
+	     }
+	
+	     //함수에 보관
+	     function tabOpen(e){
+	         $('.c_btn').eq(e).click(function(){
+	        	 $(this).removeClass('choose_off').addClass('choose_on');
+	             $('.c_btn').not(this).removeClass('choose_on').addClass('choose_off');
+	             $('.c_content').eq(e).show();
+	             $('.c_content').not( $('.c_content').eq(e)).hide();
+	         });
+	     }
+	
+	     
+	     
+	 // 이력서사진
+		 $(document).on("click", "i.del" , function() {
+		// 	to remove card
+		  $(this).parent().remove();
+		// to clear image
+		  // $(this).parent().find('.imagePreview').css("background-image","url('')");
+		});
+		$(function() {
+		    $(document).on("change",".uploadFile", function()
+		    {
+		    		var uploadFile = $(this);
+		        var files = !!this.files ? this.files : [];
+		        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+		 
+		        if (/^image/.test( files[0].type)){ // only image file
+		            var reader = new FileReader(); // instance of the FileReader
+		            reader.readAsDataURL(files[0]); // read the local file
+		 
+		            reader.onloadend = function(){ // set image data as background of div
+		                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+		uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
+		            }
+		        }
+		      
+		    });
+		});
+		 
+	 
+
+	 //삭제추가..
+	 $('.delete').click(function(){
+            $(this).parent('li').hide();
+     });
+	 
+	 var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
+	 $('.add > div').click(function(){
+            $(this).parent().siblings('ul').append(input);
+     });
+	</script>
 </body>
 </html>

@@ -105,48 +105,11 @@ footer > p{color:#fff;}
   }
 
 .rbox2 > div{overflow:hidden;}
-.imgUp{float:left;width:12%;height:142px;}
+.rbox2 > div > input{float:left;width:12%;height:142px;}
 .rbox2 > div > div{float:left;width:87%;display:flex;justify-content: space-between;margin-left:1%;}
 .rbox2 > div > div > div.input{width: 24%;}
 .rbox2 > div > div:nth-of-type(2){margin-top:10px;}
 .rbox2 > div > div:nth-of-type(2) > div.input:nth-child(3){width: 49.2%;}
-	/*증명사진*/
-	.imagePreview {
-    width: 100%;
-    height: 120px;
-    background-position: center center;
-	background:url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg);
-	background-color:#fff;
-	background-size: cover;
-	background-repeat:no-repeat;
-	display: inline-block;
-	box-shadow:0px -3px 6px 2px rgba(0,0,0,0.2);
-	}
-	.btn-primary
-	{
-	  display:block;
-	  border-radius:0px;
-	  box-shadow:0px 4px 6px 2px rgba(0,0,0,0.2);
-	  margin-top:-5px;
-	  padding: 5px;
-      text-align: center;
-      color:#bdbdbd;
-	}
-	.del
-	{
-	  position:absolute;
-	  top:0px;
-	  right:15px;
-	  width:30px;
-	  height:30px;
-	  text-align:center;
-	  line-height:30px;
-	  background-color:rgba(255,255,255,0.6);
-	  cursor:pointer;
-	}
-	.uploadFile{
-		padding:0 !important;
-	}
 
 .rbox3 > div{display:flex;justify-content: space-between;}
 .rbox3 > div > div{width:13%;}
@@ -156,39 +119,23 @@ footer > p{color:#fff;}
 
 .choose{display:flex;justify-content:space-between}
 .choose > ul:nth-child(1){width:20%;}
-.choose > ul:nth-child(1) >li{padding:10px;overflow: hidden;position: relative;cursor:pointer}
-.choose > ul:nth-child(1) >li:nth-child(1) > div:nth-child(1){width: 89%;background: #333;color: #fff;height: 40px;float: left;padding:13px;box-sizing:border-box;border-radius:5px;}
-.choose > ul:nth-child(1) >li:nth-child(1) > div:nth-child(2){float: none;width: 0;height: 0;border-bottom: 28px solid #333;border-left: 20px solid transparent;border-right: 20px solid transparent;transform: rotate(90deg);position: absolute;right: 0;top: 15.5px;}
-.choose_on > div:nth-child(1){width: 89% !important;background: #333 !important;color: #fff !important;height: 40px !important;float: left !important;padding:13px !important;box-sizing:border-box !important;border-radius:5px !important;}
-.choose_on > div:nth-child(2){float: none !important;width: 0 !important;height: 0 !important;border-bottom: 28px solid #333 !important;border-left: 20px solid transparent !important;border-right: 20px solid transparent !important;transform: rotate(90deg) !important;position: absolute !important;right: 0 !important;top: 15.5px !important;}
-.choose_off > div:nth-child(1){background:#fff !important;color: #333 !important;float:none !important;box-sizing:border-box !important;height: auto !important;padding: 0 !important;}
-.choose_off > div:nth-child(2){border:none !important;}
 .choose > ul:nth-child(2){width:80%;background:#f6f7f9;padding:17px;box-sizing:border-box;height:200px;overflow: hidden scroll;}
-.choose > ul:nth-child(2) > li:nth-child(n+2){display:none;}
 .choose > ul:nth-child(2) > li > ul{overflow:hidden;}
 .choose > ul:nth-child(2) > li > ul > li{width:32%;float:left;padding-top:8px;}
-.choose > ul:nth-child(2) > li > ul > li:nth-child(-n+4){padding-top:0;}
 .choose > ul:nth-child(2) > li > ul > li:nth-child(3n-1),.choose > ul:nth-child(2) > li > ul > li:nth-child(3n+1){margin-right:2%;}
 .choose > ul:nth-child(2) > li > ul > li >p{font-size: 14px;color: #424242;float:left;font-weight:600;margin-right:7px;}
 .choose > ul:nth-child(2) > li > ul > li >div{float:left;}
-.choose input{width: auto;padding: 0;vertical-align: baseline;margin:0;position:relative;width:16px;height: 16px;cursor:pointer;}
+.choose input{width: auto;padding: 0;vertical-align: baseline;margin:0;position:relative;width:16px;height: 16px;}
 .choose input:nth-child(1)::before{content: '상';font-size: 10px;position: absolute;left: 3.5px;top: 1px;color:#898b89;font-weight:600;}
 .choose input:nth-child(2)::before{content: '중';font-size: 10px;position: absolute;left: 3.5px;top: 1px;color:#898b89;font-weight:600;}
 .choose input:nth-child(3)::before{content: '하';font-size: 10px;position: absolute;left: 3.5px;top: 1px;color:#898b89;font-weight:600;}
 
-.choose_content{display:flex;justify-content:space-between;margin-top:14px;}
-.choose_content > p{width:20%;font-weight:600;}
-.choose_content > div{width:80%;background:#f6f7f9;padding:17px;box-sizing:border-box;height:60px;overflow: hidden scroll;}
-.choose_content > div > p{color:#6c00ff;font-weight:600;float: left;margin-right: 34px;}
-.choose_content > div > p > span{color: black;font-size: 22px;vertical-align: text-bottom;}
 
 .rbox5 > div{overflow:hidden;}
-.rbox5 > div > ul > li:nth-child(n+2){margin-top:10px;}
-.rbox5 > div > ul > li > .input{width:97%;display:inline-block;}
-.delete{vertical-align: middle;cursor:pointer;}
-.add{text-align:center;border-top:1px solid #ddd;margin-top:10px;padding-top:5px;font-size:18px;font-weight:600;color:#3f0f80}
-.add > div{width:89px;margin:0 auto;cursor:pointer;padding: 10px 0;}
-.add > div > span{vertical-align: middle;margin-top: -4px;}
+.rbox5 > div > .input{width:97%;display:inline-block;}
+.delete{vertical-align: middle;}
+.add{text-align:center;border-top:1px solid #ddd;margin-top:10px;padding-top:15px;font-size:18px;font-weight:600;color:#3f0f80}
+.add > span{vertical-align: middle;margin-top: -4px;}
 
 .rbox6 > div{overflow:hidden;}
 .rbox6 > div > .input{width:97%;display:inline-block;}
@@ -226,8 +173,8 @@ footer > p{color:#fff;}
 .dash_link >a:nth-child(1){width: 50%;margin: 0 auto;}
 .dashWhole_top{width:1000px;margin:120px auto;}
 .dashWhole_01{overflow:hidden;margin-top:120px;}
-.dashWhole_01 > p{float:left;font-weight: 600;font-size: 22px;width:50%;text-align:right;}
-.dashWhole_01 > box{float:right;}
+.dashWhole_01 > p{margin-left:20px; float:left;font-weight: 600;font-size: 22px;width:50%;text-align:right;}
+.dashWhole_01 > box{margin-top:20px; }
 .dashWhole_02{width: 1000px; margin: 0 auto;}
 .dashcoding{border-bottom: 1px solid #e1E2E3; overflow: hidden;}
 .dashcoding > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
@@ -261,4 +208,27 @@ footer > p{color:#fff;}
 .dashCareer > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block;}
 .dashCareer > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
 .dashCareer > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
+
+/*sub_dashCompare*/
+.dashCompare{display: none !important;}
+.dashcodingCom{border-bottom: 1px solid #e1E2E3; overflow: hidden;}
+.dashcodingCom > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
+.dashcodingCom > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px; display: block;}
+.dashcodingCom > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2; float: left;}
+.dashcodingCom > P:nth-child(5){font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
+.dashcodingCom > P:nth-child(7){font-size: 14px; font-weight: 500; display: block; line-height: 1.2; margin-bottom: 15px;}
+.dashIdeCom{border-bottom: 1px solid #e1E2E3; overflow: hidden;}
+.dashIdeCom > box{margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
+.dashIdeCom > P:nth-child(1){margin: 15px 0; margin-right: 100px; font-weight: 800; font-size: 18px;display: block;}
+.dashIdeCom > P:nth-child(4){margin-left: 49px;font-size: 14px; font-weight: 500; display: block; line-height: 1.2; float: left;}
+.dashIdeCom > P:nth-child(5){font-size: 14px; font-weight: 500; display: block; line-height: 1.2; float: right;}
+.dashFieldCom > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block; }
+.dashFieldCom > box:nth-child(2){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
+.dashFieldCom > box:nth-child(3){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
+.dashFieldCom > box:nth-child(6){margin: 35px 50px;width: 400px;display: block;height: 400px;background-color: blue; float: right;}
+.dashFieldCom > box:nth-child(7){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
+.dashFieldCom > p:nth-child(4){margin: 15px; margin-left: 50px; line-height: 1.2; float: left;}
+.dashFieldCom >p:nth-child(5){margin-top:15px; margin-left: 254px; line-height: 1.2;float: left;}
+.dashFieldCom > p:nth-child(8){margin: 15px; margin-left: 50px; line-height: 1.2; float: left;}
+.dashFieldCom >p:nth-child(9){margin-left: 255px; margin-top:15px;line-height: 1.2;float: left;}
 

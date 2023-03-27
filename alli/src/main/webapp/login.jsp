@@ -23,7 +23,7 @@
 	        <ul>
 	            <li id="login_people">
 	                <p><span>개인회원</span> 로그인입니다</p>
-	                <form>
+	                <form action="">
 	                    <ul class="login_box">
 	                        <li>
 	                            <input type="text" placeholder="아이디">
