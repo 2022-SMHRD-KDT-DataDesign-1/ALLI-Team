@@ -1277,7 +1277,11 @@
                                 </div>
                                 <div class="choose_content">
                                     <p>선택한 항목</p>
-                                    <div></div>
+                                    <div>
+                                    	<%
+                                    		
+                                    	%>
+                                    </div>
                                 </div>
                             </section>
                         </div>
