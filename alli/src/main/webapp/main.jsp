@@ -89,7 +89,7 @@
             <div class="itYoutube">
                 <ul>
                     <li data-aos="fade-up" data-aos-delay="300">
-                        <a href="#">
+                        <a href="https://youtu.be/1BOvKMaSU-8">
                             <img src ="./img/banner04_youtube01.png">
                             <p>[스마트인재개발원] 수료부터 취업까지 이렇게 빨라도 되나요?</p>
                             <p>오늘은 얼마전 IoT융합 SW전문가 과정을 수료한
@@ -108,40 +108,33 @@
                         </a>
                     </li>
                     <li data-aos="fade-up" data-aos-delay="500">
-                        <a href="#">
+                        <a href="https://youtu.be/Rj0qw9nkT84">
                             <img src ="./img/banner04_youtube01.png">
-                            <p>[스마트인재개발원] 수료부터 취업까지 이렇게 빨라도 되나요?</p>
-                            <p>오늘은 얼마전 IoT융합 SW전문가 과정을 수료한
-                                김다애, 선영표 수료생을 인터뷰 해 보았습니다💛
-                                .
-                                입담 터지는 그녀들의 리얼 생생 후기..!
-                                너무 솔직해서 당황했습니닿ㅎ💦💦
-                                
-                                놓칠 내용 하나도 없는 인터뷰! 
-                                지금 바로 확인하러 꼬고~
+                            <p>시니어개발자가 말하는 실무에서 가장 중요한 능력, 이베이코리아 현직자에게 물었습니다</p>
+                            <p>인싸담당자에 나오는 다양한 선배들의 방법과 이야기를 듣고
+							   자신에게 꼭 맞는, 취업의 길을 찾으시길 바랍니다.
+							   나를 만들어가는 과정, 어쩌면 고단하고 외로울 수 있는 그 길에
+							   저희 인싸담당자가 함께 하겠습니다.
                             </p>
                             <p>
                                 <img src="./img/banner04_youtube01_02.jpg">
-                                <span>스마트인재개발원 인쌤TV</span>
+                                <span>AND(ft.인싸담당자)</span>
                             </p>
                         </a>
                     </li>
                     <li data-aos="fade-up" data-aos-delay="900">
-                        <a href="#">
+                        <a href="https://youtu.be/3H4umWD5bwI">
                             <img src ="./img/banner04_youtube01.png">
-                            <p>[스마트인재개발원] 수료부터 취업까지 이렇게 빨라도 되나요?</p>
-                            <p>오늘은 얼마전 IoT융합 SW전문가 과정을 수료한
-                                김다애, 선영표 수료생을 인터뷰 해 보았습니다💛
-                                .
-                                입담 터지는 그녀들의 리얼 생생 후기..!
-                                너무 솔직해서 당황했습니닿ㅎ💦💦
-                                
-                                놓칠 내용 하나도 없는 인터뷰! 
-                                지금 바로 확인하러 꼬고~
+                            <p>배달의민족 CEO에게 뽑고 싶은 개발자를 물어보았다</p>
+                            <p>오늘 영상의 주인공은 배달의민족을 운영하는 우아한형제들 김범준 대표입니다. 
+
+							   2001년 신입 개발자로 커리어를 시작한 그는, 2015년에 우아한형제들의 CTO로 합류하게 됩니다. 그리고 2020년에는 창업자 김봉진 의장의 뒤를 이어 CEO의 자리에 오르게 되죠. 
+
+							   경력 20년차 개발자이기도 한 김범준 대표가 생각하는 좋은 개발자란 어떤 사람인지, 그리고 기술전문가가 이끄는 회사는 어떤 곳인지 궁금하신 분이라면 이 영상을 시청해주세요 :)
                             </p>
                             <p>
                                 <img src="./img/banner04_youtube01_01.jpg">
-                                <span>스마트인재개발원 인쌤TV</span>
+                                <span>EO 이오</span>
                             </p>
                         </a>
                     </li>
@@ -149,43 +142,43 @@
             </div>
             <ul class="itNews"  data-aos="fade-up" data-aos-delay="700">
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/030/0003086838?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>LS, 전기차 배터리 소재 '황산니켈' 공장 준공</p>
+                        <p>전자신문</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/092/0002286730?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>펄어비스 검은사막, 조선 배경 '아침의 나라' 개발자 영상 공개</p>
+                        <p>ZDNET Korea</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/092/0002286729?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>창립 76주년 LG, 구광모 회장 메시지 없이 '조용히'</p>
+                        <p>ZDNET Korea</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/020/0003487714?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>HK이노엔 ‘컨디션 스틱 1주년’… 개선형 신제품 출시</p>
+                        <p>동아일보</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/030/0003086833?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>LG 초거대 AI가 만든 이미지 '올해의 광고상' 수상</p>
+                        <p>전자신문</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
             </ul>
