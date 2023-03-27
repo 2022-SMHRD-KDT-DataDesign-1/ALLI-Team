@@ -89,7 +89,7 @@
             <div class="itYoutube">
                 <ul>
                     <li data-aos="fade-up" data-aos-delay="300">
-                        <a href="#">
+                        <a href="https://youtu.be/1BOvKMaSU-8">
                             <img src ="./img/banner04_youtube01.png">
                             <p>[스마트인재개발원] 수료부터 취업까지 이렇게 빨라도 되나요?</p>
                             <p>오늘은 얼마전 IoT융합 SW전문가 과정을 수료한
@@ -108,36 +108,26 @@
                         </a>
                     </li>
                     <li data-aos="fade-up" data-aos-delay="500">
-                        <a href="#">
+                        <a href="https://youtu.be/Rj0qw9nkT84">
                             <img src ="./img/banner04_youtube01.png">
-                            <p>[스마트인재개발원] 수료부터 취업까지 이렇게 빨라도 되나요?</p>
-                            <p>오늘은 얼마전 IoT융합 SW전문가 과정을 수료한
-                                김다애, 선영표 수료생을 인터뷰 해 보았습니다💛
-                                .
-                                입담 터지는 그녀들의 리얼 생생 후기..!
-                                너무 솔직해서 당황했습니닿ㅎ💦💦
-                                
-                                놓칠 내용 하나도 없는 인터뷰! 
-                                지금 바로 확인하러 꼬고~
+                            <p>시니어개발자가 말하는 실무에서 가장 중요한 능력, 이베이코리아 현직자에게 물었습니다</p>
+                            <p>인싸담당자에 나오는 다양한 선배들의 방법과 이야기를 듣고
+							   자신에게 꼭 맞는, 취업의 길을 찾으시길 바랍니다.
+							   나를 만들어가는 과정, 어쩌면 고단하고 외로울 수 있는 그 길에
+							   저희 인싸담당자가 함께 하겠습니다.
                             </p>
                             <p>
                                 <img src="./img/banner04_youtube01_02.jpg">
-                                <span>스마트인재개발원 인쌤TV</span>
+                                <span>AND(ft.인싸담당자)</span>
                             </p>
                         </a>
                     </li>
                     <li data-aos="fade-up" data-aos-delay="900">
-                        <a href="#">
+                        <a href="https://youtu.be/4TIFy5AXZ64">
                             <img src ="./img/banner04_youtube01.png">
-                            <p>[스마트인재개발원] 수료부터 취업까지 이렇게 빨라도 되나요?</p>
-                            <p>오늘은 얼마전 IoT융합 SW전문가 과정을 수료한
-                                김다애, 선영표 수료생을 인터뷰 해 보았습니다💛
-                                .
-                                입담 터지는 그녀들의 리얼 생생 후기..!
-                                너무 솔직해서 당황했습니닿ㅎ💦💦
-                                
-                                놓칠 내용 하나도 없는 인터뷰! 
-                                지금 바로 확인하러 꼬고~
+                            <p>[스마트인재개발원] 재학생들이 스마트인재개발원을 선택한 이유!</p>
+                            <p>
+                            	재학생들은 왜 스마트인재개발원을 선택했을까?
                             </p>
                             <p>
                                 <img src="./img/banner04_youtube01_01.jpg">
