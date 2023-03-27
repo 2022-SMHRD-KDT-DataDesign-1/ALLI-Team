@@ -23,13 +23,13 @@
         </ul>
         <ul id="nav">
             <li>
-                <a href="#">회원가입</a>
+                <a href="join.jsp">회원가입</a>
             </li>
             <li>
                 &#124;
             </li>
             <li>
-                <a href="#">로그인</a>
+                <a href="login.jsp">로그인</a>
             </li>
         </ul>
         <button id="h_btn">Site Information<img src="./img/h_btn.png" alt="사이트 안내영상"></button>
