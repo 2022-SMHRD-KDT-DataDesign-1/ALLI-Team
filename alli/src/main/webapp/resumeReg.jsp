@@ -99,10 +99,22 @@
                             <section>
                                 <div class="choose">
                                     <ul>
-                                        <li>프로그래밍 언어</li>
-                                        <li>프레임워크</li>
-                                        <li>OS</li>
-                                        <li>자격증</li>
+                                        <li>
+                                        	<div>프로그래밍 언어</div>
+                                        	<div></div>
+                                        </li>
+                                        <li>
+                                        	<div>프레임워크</div>
+                                        	<div></div>
+                                        </li>
+                                        <li>
+                                        	<div>OS</div>
+                                        	<div></div>
+                                        </li>
+                                        <li>
+                                        	<div>자격증</div>
+                                        	<div></div>
+                                        </li>
                                     </ul>
                                     <ul>
                                         <li><!-- 프로그래밍언어 시작 -->
@@ -692,7 +704,7 @@
                                         <li><!-- OS 시작 -->
                                             <ul>
 												<li>
-													<p>프레임워크</p>
+													<p>OS</p>
 													<div>
 														<input type="radio">
 														<input type="radio">
@@ -984,7 +996,7 @@
                                         <li><!-- 자격증 시작 -->
                                             <ul>
 												<li>
-													<p>프레임워크</p>
+													<p>자격증</p>
 													<div>
 														<input type="radio">
 														<input type="radio">
@@ -1277,7 +1289,32 @@
                                 </div>
                                 <div class="choose_content">
                                     <p>선택한 항목</p>
-                                    <div></div>
+                                    <div>
+                                    	<p>
+                                    		JAVA [상]
+                                    		<span class="material-symbols-outlined delete_choose">
+                                				Close
+                                			</span>
+                                    	</p>
+                                    	<p>
+                                    		C [상]
+                                    		<span class="material-symbols-outlined delete_choose">
+                                				Close
+                                			</span>
+                                    	</p>
+                                    	<p>
+                                    		SPRING [상]
+                                    		<span class="material-symbols-outlined delete_choose">
+                                				Close
+                                			</span>
+                                    	</p>
+                                    	<p>
+                                    		TypeScript [상]
+                                    		<span class="material-symbols-outlined delete_choose">
+                                				Close
+                                			</span>
+                                    	</p>
+                                    </div>
                                 </div>
                             </section>
                         </div>
@@ -1379,6 +1416,5 @@
        </div>
     </div>
 	<%@ include file="./include/footer.jsp" %>
-
 </body>
 </html>

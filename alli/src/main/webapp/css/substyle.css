@@ -119,9 +119,18 @@ footer > p{color:#fff;}
 
 .choose{display:flex;justify-content:space-between}
 .choose > ul:nth-child(1){width:20%;}
+.choose > ul:nth-child(1) >li{padding:10px;overflow: hidden;position: relative;}
+.choose > ul:nth-child(1) >li:nth-child(1) > div:nth-child(1){width: 87%;background: #333;color: #fff;height: 40px;float: left;padding:13px;box-sizing:border-box;}
+.choose > ul:nth-child(1) >li:nth-child(1) > div:nth-child(2){float: none;width: 0;height: 0;border-left: px solid transparent;border-bottom: 28px solid #333;border-left: 20px solid transparent;border-right: 20px solid transparent;transform: rotate(90deg);position: absolute;right: 0;top: 15.5px;}
+.choose_on > div:nth-child(1){width: 87%;background: #333;color: #fff;height: 40px;float: left;padding:13px;box-sizing:border-box;}
+.choose_on > div:nth-child(2){float: none;width: 0;height: 0;border-left: px solid transparent;border-bottom: 28px solid #333;border-left: 20px solid transparent;border-right: 20px solid transparent;transform: rotate(90deg);position: absolute;right: 0;top: 15.5px;}
+.choose_off > div:nth-child(1){float:none;background:#fff;color: #333;height:0;float:none;padding:0;box-sizing:border-box;}
+.choose_off > div:nth-child(2){border:none;}
 .choose > ul:nth-child(2){width:80%;background:#f6f7f9;padding:17px;box-sizing:border-box;height:200px;overflow: hidden scroll;}
+.choose > ul:nth-child(2) > li:nth-child(n+2){display:none;}
 .choose > ul:nth-child(2) > li > ul{overflow:hidden;}
 .choose > ul:nth-child(2) > li > ul > li{width:32%;float:left;padding-top:8px;}
+.choose > ul:nth-child(2) > li > ul > li:nth-child(-n+4){padding-top:0;}
 .choose > ul:nth-child(2) > li > ul > li:nth-child(3n-1),.choose > ul:nth-child(2) > li > ul > li:nth-child(3n+1){margin-right:2%;}
 .choose > ul:nth-child(2) > li > ul > li >p{font-size: 14px;color: #424242;float:left;font-weight:600;margin-right:7px;}
 .choose > ul:nth-child(2) > li > ul > li >div{float:left;}
@@ -130,6 +139,11 @@ footer > p{color:#fff;}
 .choose input:nth-child(2)::before{content: '중';font-size: 10px;position: absolute;left: 3.5px;top: 1px;color:#898b89;font-weight:600;}
 .choose input:nth-child(3)::before{content: '하';font-size: 10px;position: absolute;left: 3.5px;top: 1px;color:#898b89;font-weight:600;}
 
+.choose_content{display:flex;justify-content:space-between;margin-top:14px;}
+.choose_content > p{width:20%;font-weight:600;}
+.choose_content > div{width:80%;background:#f6f7f9;padding:17px;box-sizing:border-box;height:60px;overflow: hidden scroll;}
+.choose_content > div > p{color:#6c00ff;font-weight:600;float: left;margin-right: 34px;}
+.choose_content > div > p > span{color: black;font-size: 22px;vertical-align: text-bottom;}
 
 .rbox5 > div{overflow:hidden;}
 .rbox5 > div > .input{width:97%;display:inline-block;}

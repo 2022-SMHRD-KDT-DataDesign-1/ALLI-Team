@@ -109,7 +109,7 @@
                     </li>
                     <li data-aos="fade-up" data-aos-delay="500">
                         <a href="https://youtu.be/Rj0qw9nkT84">
-                            <img src ="./img/banner04_youtube01.png">
+                            <img src ="./img/banner04_youtube02.png">
                             <p>시니어개발자가 말하는 실무에서 가장 중요한 능력, 이베이코리아 현직자에게 물었습니다</p>
                             <p>인싸담당자에 나오는 다양한 선배들의 방법과 이야기를 듣고
 							   자신에게 꼭 맞는, 취업의 길을 찾으시길 바랍니다.
@@ -124,7 +124,7 @@
                     </li>
                     <li data-aos="fade-up" data-aos-delay="900">
                         <a href="https://youtu.be/3H4umWD5bwI">
-                            <img src ="./img/banner04_youtube01.png">
+                            <img src ="./img/banner04_youtube03.png">
                             <p>배달의민족 CEO에게 뽑고 싶은 개발자를 물어보았다</p>
                             <p>오늘 영상의 주인공은 배달의민족을 운영하는 우아한형제들 김범준 대표입니다. 
 
@@ -133,7 +133,7 @@
 							   경력 20년차 개발자이기도 한 김범준 대표가 생각하는 좋은 개발자란 어떤 사람인지, 그리고 기술전문가가 이끄는 회사는 어떤 곳인지 궁금하신 분이라면 이 영상을 시청해주세요 :)
                             </p>
                             <p>
-                                <img src="./img/banner04_youtube01_01.jpg">
+                                <img src="./img/banner04_youtube01_03.jpg">
                                 <span>EO 이오</span>
                             </p>
                         </a>
