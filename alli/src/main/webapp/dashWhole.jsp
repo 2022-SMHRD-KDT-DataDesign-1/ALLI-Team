@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./include/metatag.jsp"%>
 <link href="dashKO.css" rel="stylesheet" type="text/css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
 </head>
 <body>
 	<%@ include file="./include/header.jsp"%>
@@ -39,7 +41,9 @@
         <div class="dashWhole_02">
             <div class="dashcoding">
                 <p>01. 프로그래밍 언어</p>
-                <box></box>
+                	<div>
+						<canvas id="myChart"></canvas>
+					</div>
                 <p>
                     6.PHP<br>7.R<br>8.TypeScript<br>9.Swift<br>10.Objective-C
                 </p>
@@ -57,7 +61,9 @@
             </div>
             <div class="dashIde">
                 <p>02. IDE/프레임워크</p>
-                <box></box>
+                	<div>
+						<canvas id="myChart2"></canvas>
+					</div>
                 <p>
                     6.Android Studio<br> 7.IntelliJ<br> 8.NetBeans<br>
                     9.RStudio<br> 10.Sublime Text<br>
@@ -86,7 +92,9 @@
             </div>
             <div class="dashOs">
                 <p>03. OS</p>
-                <box></box>
+                <div>
+					<canvas id="myChart3" width='100px' height='100px'></canvas>
+				</div>
                 <p>Windows: Windows는 여전히 가장 인기있는 운영 체제 중 하나입니다. 이는 대부분의 개인용
                     컴퓨터가 Windows를 사용하고, 대부분의 기업도 Windows를 선택하고 있기 때문입니다. Windows의 최신
                     버전인 Windows 11은 2021년 10월에 출시되었으며, 새로운 기능과 디자인 업그레이드가 포함되어 있습니다.
@@ -99,7 +107,7 @@
             </div>
             <div class="dashLicense">
                <p>04. 자격증</p>
-               <box></box>
+               	   <canvas id="myChart4"></canvas>
                <p>
                    일반적으로 선호하는 자격증 목록<br>
                    <br> 정보처리기사<br> SQLD<br> SQLP<br> CCNA (시스코
@@ -110,8 +118,8 @@
             </div>
             <div class="dashField">
                 <P>05. 지원분야</P>
-                <box></box>
-                <box></box>
+                <canvas id="myChart5_1"></canvas>
+                <canvas id="myChart5_2"></canvas>
                 <p>
                     2018년: Web: 55.5% App: 44.5%<br> 2019년: Web: 55.2% App: 44.8%
                     <br> 2020년: Web: 53.9% App: 46.1%<br> 2021년: Web: 52.6%
@@ -125,7 +133,7 @@
             </div>
             <div class="dashAcademic">
                <p>06. 학력</p>
-               <box></box>
+               <canvas id="myChart6"></canvas>
                <p>일반적으로 대학교 졸업 이상의 학력을 보유한 인재를 선호합니다. 국내 대학교 졸업생 비율 중에서는 공학계열
                    학과가 상대적으로 높은 비중을 차지하며, 특히 IT 분야 전공자들이 많은 관심을 받고 있습니다. 또한, 대학원 학위를
                    보유한 인재들도 IT 기업에서 높은 평가를 받는 경향이 있습니다. 하지만 학력만으로 판단하지 않고 개인의 역량과 경험,
@@ -133,7 +141,7 @@
             </div>
             <div class="dashCareer">
                 <p>07. 경력</p>
-                <box></box>
+                <canvas id="myChart7"></canvas>
                 <p>대체로 경력 채용 비율이 높아지는 추세입니다. 이는 새로운 직원을 채용할 때, 경력이 있는 지원자를 선호하고
                     인재 경쟁력이 높은 사람들을 선발하기 위해서입니다. 또한, 기업들이 경력자에게는 높은 연봉과 급여를 지급하기 때문에,
                     기업 입장에서는 경력 채용이 비즈니스적으로 이점이 있기 때문입니다. 하지만, 최근에는 신입사원을 적극 채용하려는 기업도
@@ -153,7 +161,7 @@
         <div class="dashWhole_02">
             <div class="dashcoding">
                 <p>01. 프로그래밍 언어</p>
-                <box></box>
+                	<box></box>
                 <p>
                     수도권<br>6.PHP<br>7.R<br>8.TypeScript<br>9.Swift<br>10.Objective-C
                 </p>
@@ -298,6 +306,277 @@
             $('.dashWhole').hide();
             $('.dashCompare').show();
         });
+        
+        
     </script>
-</body>
+    
+   // 해당 부분은 JS파일을 따로 만들어서 사용해도 된다.
+		<script>
+			// 차트를 그럴 영역을 dom요소로 가져온다.
+			var chartArea = document.getElementById('myChart').getContext('2d');
+			// 차트를 생성한다. 
+			var myChart = new Chart(chartArea, {
+				// ①차트의 종류(String)
+				type : 'bar',
+				// ②차트의 데이터(Object)
+				data : {
+					// ③x축에 들어갈 이름들(Array)
+					labels : [ 'Java', 'Python', 'JavaScript', 'C#', 'C++' ],
+					// ④실제 차트에 표시할 데이터들(Array), dataset객체들을 담고 있다.
+					datasets : [ {
+						// ⑤dataset의 이름(String)
+						label : '# of Votes',
+						// ⑥dataset값(Array)
+						data : [ 30, 25, 20, 10, 10, 50],
+						// ⑦dataset의 배경색(rgba값을 String으로 표현)
+						backgroundColor : 'rgba(255, 99, 132, 0.2)',
+						// ⑧dataset의 선 색(rgba값을 String으로 표현)
+						borderColor : 'rgba(255, 99, 132, 1)',
+						// ⑨dataset의 선 두께(Number)
+						borderWidth : 1
+					} ]
+				},
+				// ⑩차트의 설정(Object)
+				options : {
+					// ⑪축에 관한 설정(Object)
+					scales : {
+						// ⑫y축에 대한 설정(Object)
+						y : {
+							// ⑬시작을 0부터 하게끔 설정(최소값이 0보다 크더라도)(boolean)
+							beginAtZero : true
+						}
+					}
+				}
+			});
+		</script>
+		
+		<script>
+			// 차트를 그럴 영역을 dom요소로 가져온다.
+			var chartArea = document.getElementById('myChart2').getContext('2d');
+			// 차트를 생성한다. 
+			var myChart2 = new Chart(chartArea, {
+				// ①차트의 종류(String)
+				type : 'line',
+				// ②차트의 데이터(Object)
+				data : {
+					// ③x축에 들어갈 이름들(Array)
+					labels : [ 'VScode','Jupyter Notebook', 'Eclipse',  'Atom', 'CodeSandbox' ],
+					// ④실제 차트에 표시할 데이터들(Array), dataset객체들을 담고 있다.
+					datasets : [ {
+						// ⑤dataset의 이름(String)
+						label : '# of Votes',
+						// ⑥dataset값(Array)
+						data : [ 40, 25, 15, 15, 10, 50],
+						// ⑦dataset의 배경색(rgba값을 String으로 표현)
+						backgroundColor : 'rgba(255, 99, 132, 0.2)',
+						// ⑧dataset의 선 색(rgba값을 String으로 표현)
+						borderColor : 'rgba(255, 99, 132, 1)',
+						// ⑨dataset의 선 두께(Number)
+						borderWidth : 1
+					} ]
+				},
+				// ⑩차트의 설정(Object)
+				options : {
+					// ⑪축에 관한 설정(Object)
+					scales : {
+						// ⑫y축에 대한 설정(Object)
+						y : {
+							// ⑬시작을 0부터 하게끔 설정(최소값이 0보다 크더라도)(boolean)
+							beginAtZero : true
+						}
+					}
+				}
+			});
+		</script>
+		
+		<script>
+			// 차트를 그럴 영역을 dom요소로 가져온다.
+			var chartArea = document.getElementById('myChart3').getContext('2d');
+			// 차트를 생성한다. 
+			var myChart3 = new Chart(chartArea, {
+				// ①차트의 종류(String)
+				type : 'doughnut',
+				// ②차트의 데이터(Object)
+				data : {
+					// ③x축에 들어갈 이름들(Array)
+					labels : [ 'Windows','macOS','Linux' ],
+					// ④실제 차트에 표시할 데이터들(Array), dataset객체들을 담고 있다.
+					datasets : [ {
+						// ⑤dataset의 이름(String)
+						label : '# of Votes',
+						// ⑥dataset값(Array)
+						data : [65,20,15],
+						// ⑦dataset의 배경색(rgba값을 String으로 표현)
+						backgroundColor : ['#ffd950', '#02bc77', '#28c3d7',],
+						// ⑧dataset의 선 색(rgba값을 String으로 표현)
+						borderColor : 'rgba(255, 99, 132, 1)',
+						// ⑨dataset의 선 두께(Number)
+						borderWidth : 1
+					} ]
+				}
+				// ⑩차트의 설정(Object)
+				
+			});
+		</script>
+		
+		<script>
+			// 차트를 그럴 영역을 dom요소로 가져온다.
+			var chartArea = document.getElementById('myChart4').getContext('2d');
+			// 차트를 생성한다. 
+			var myChart4 = new Chart(chartArea, {
+				// ①차트의 종류(String)
+				type : 'radar',
+				// ②차트의 데이터(Object)
+				data : {
+					// ③x축에 들어갈 이름들(Array)
+					labels : [ '정보처리기사','SQLD', 'SQLP', 'CISSP', 'CISM' ],
+					// ④실제 차트에 표시할 데이터들(Array), dataset객체들을 담고 있다.
+					datasets : [ {
+						// ⑤dataset의 이름(String)
+						label : '# of Votes',
+						// ⑥dataset값(Array)
+						data : [ 80, 50, 30, 35, 35,0],
+						// ⑦dataset의 배경색(rgba값을 String으로 표현)
+						backgroundColor : 'rgba(255, 99, 132, 0.2)',
+						// ⑧dataset의 선 색(rgba값을 String으로 표현)
+						borderColor : 'rgba(255, 99, 132, 1)',
+						// ⑨dataset의 선 두께(Number)
+						borderWidth : 1
+					} ]
+				},
+				// ⑩차트의 설정(Object)
+				
+			});
+		</script>
+		
+		<script>
+			// 차트를 그럴 영역을 dom요소로 가져온다.
+			var chartArea = document.getElementById('myChart5_1').getContext('2d');
+			// 차트를 생성한다. 
+			var myChart5_1 = new Chart(chartArea, {
+				// ①차트의 종류(String)
+				type : 'bar',
+				// ②차트의 데이터(Object)
+				data: {
+			        datasets: [{
+			            type: 'bar',
+			            label: 'Web',
+			            data: [55.5, 55.2, 53.9, 52.6,51.2]
+			        }, {
+			            type: 'bar',
+			            label: 'App',
+			            data: [44.5, 44.8, 46.1, 47.4, 48.8],
+			        }],
+			        labels: ['2018', '2019', '2020', '2021','2022']
+			    },
+			    options: {
+			        scales: {
+			          y: {
+			            beginAtZero: true
+			          }
+			        }
+			      }
+			});
+		</script>
+
+		<script>
+			// 차트를 그럴 영역을 dom요소로 가져온다.
+			var chartArea = document.getElementById('myChart5_2').getContext(
+					'2d');
+			// 차트를 생성한다. 
+			var myChart5_2 = new Chart(chartArea, {
+				// ①차트의 종류(String)
+				type : 'bar',
+				// ②차트의 데이터(Object)
+				data : {
+					datasets : [ {
+						type : 'bar',
+						label : 'Front-end',
+						data : [ 15, 20, 23, 31 ]
+					}, {
+						type : 'bar',
+						label : 'Back-end',
+						data : [ 85, 80, 77, 69 ],
+					} ],
+					labels : ['2018', '2019', '2020', '2021']
+				},
+				options : {
+					scales : {
+						y : {
+							beginAtZero : true
+						}
+					}
+				}
+			});
+		</script>
+
+		<script>
+			// 차트를 그럴 영역을 dom요소로 가져온다.
+			var chartArea = document.getElementById('myChart6').getContext('2d');
+			// 차트를 생성한다. 
+			var myChart6 = new Chart(chartArea, {
+				// ①차트의 종류(String)
+				type : 'pie',
+				// ②차트의 데이터(Object)
+				data : {
+					// ③x축에 들어갈 이름들(Array)
+					labels : [ '대졸','석사','박사' ],
+					// ④실제 차트에 표시할 데이터들(Array), dataset객체들을 담고 있다.
+					datasets : [ {
+						// ⑤dataset의 이름(String)
+						label : '# of Votes',
+						// ⑥dataset값(Array)
+						data : [75,15,10],
+						// ⑦dataset의 배경색(rgba값을 String으로 표현)
+						backgroundColor : ['#ffd950', '#02bc77', '#28c3d7',],
+						// ⑧dataset의 선 색(rgba값을 String으로 표현)
+						borderColor : 'rgba(255, 99, 132, 1)',
+						// ⑨dataset의 선 두께(Number)
+						borderWidth : 1
+					} ]
+				}
+				// ⑩차트의 설정(Object)
+				
+			});
+		</script>
+		
+		<script>
+			// 차트를 그럴 영역을 dom요소로 가져온다.
+			var chartArea = document.getElementById('myChart7').getContext('2d');
+			// 차트를 생성한다. 
+			var myChart7 = new Chart(chartArea, {
+				// ①차트의 종류(String)
+				type : 'bar',
+				// ②차트의 데이터(Object)
+				data : {
+					// ③x축에 들어갈 이름들(Array)
+					labels : [  '경력', '신입', '경력 무관' ],
+					// ④실제 차트에 표시할 데이터들(Array), dataset객체들을 담고 있다.
+					datasets : [ {
+						// ⑤dataset의 이름(String)
+						label : '# of Votes',
+						// ⑥dataset값(Array)
+						data : [8, 11, 20],
+						// ⑦dataset의 배경색(rgba값을 String으로 표현)
+						backgroundColor : 'rgba(255, 99, 132, 0.2)',
+						// ⑧dataset의 선 색(rgba값을 String으로 표현)
+						borderColor : 'rgba(255, 99, 132, 1)',
+						// ⑨dataset의 선 두께(Number)
+						borderWidth : 1
+					} ]
+				},
+				// ⑩차트의 설정(Object)
+				options : {
+					// ⑪축에 관한 설정(Object)
+					scales : {
+						// ⑫y축에 대한 설정(Object)
+						y : {
+							// ⑬시작을 0부터 하게끔 설정(최소값이 0보다 크더라도)(boolean)
+							beginAtZero : true
+						}
+					}
+				}
+			});
+		</script>
+	</body>
 </html>
