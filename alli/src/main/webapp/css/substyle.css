@@ -33,7 +33,7 @@ footer > p{color:#fff;}
 .sub_login01 > img{width: 70px;margin: 0 auto;display: block;}
 .sub_login01 > p{text-align: center;    font-weight: 800;margin-top: 22px;font-size: 17px;}
 .sub_login02{border: 1px solid #e1E2E3;margin-top: 27px;}
-.sub_login02 > ul:nth-child(1){overflow: hidden;}
+.sub_login02 > ul:nth-child(1){overflow: hidden;background:#fff;}
 .sub_login02 > ul:nth-child(1) >li{cursor: pointer;float:left; width: 40%;text-align: center;padding: 10px 0;border-bottom: 1px solid #3f0f80;}
 .sub_login02 > ul:nth-child(1) >li:nth-child(1){background: #3f0f80;color: #fff;width:60%;}
 .on{background: #3f0f80 !important;color: #fff !important;width:60% !important;}
@@ -116,6 +116,20 @@ footer > p{color:#fff;}
 .rbox3 > div > div:nth-child(n+2):nth-child(-n+3){width:28%;}
 .rbox3 > div > div:last-child{display:flex;align-items: center;}
 .rbox3 > div > div:last-child > input{display:inline;width:auto;vertical-align: middle;}
+
+.choose{display:flex;justify-content:space-between}
+.choose > ul:nth-child(1){width:20%;}
+.choose > ul:nth-child(2){width:80%;background:#f6f7f9;padding:17px;box-sizing:border-box;height:200px;overflow: hidden scroll;}
+.choose > ul:nth-child(2) > li > ul{overflow:hidden;}
+.choose > ul:nth-child(2) > li > ul > li{width:32%;float:left;padding-top:8px;}
+.choose > ul:nth-child(2) > li > ul > li:nth-child(3n-1),.choose > ul:nth-child(2) > li > ul > li:nth-child(3n+1){margin-right:2%;}
+.choose > ul:nth-child(2) > li > ul > li >p{font-size: 14px;color: #424242;float:left;font-weight:600;margin-right:7px;}
+.choose > ul:nth-child(2) > li > ul > li >div{float:left;}
+.choose input{width: auto;padding: 0;vertical-align: baseline;margin:0;position:relative;width:16px;height: 16px;}
+.choose input:nth-child(1)::before{content: '상';font-size: 10px;position: absolute;left: 3.5px;top: 1px;color:#898b89;font-weight:600;}
+.choose input:nth-child(2)::before{content: '중';font-size: 10px;position: absolute;left: 3.5px;top: 1px;color:#898b89;font-weight:600;}
+.choose input:nth-child(3)::before{content: '하';font-size: 10px;position: absolute;left: 3.5px;top: 1px;color:#898b89;font-weight:600;}
+
 
 .rbox5 > div{overflow:hidden;}
 .rbox5 > div > .input{width:97%;display:inline-block;}
