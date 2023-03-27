@@ -123,15 +123,18 @@
                         </a>
                     </li>
                     <li data-aos="fade-up" data-aos-delay="900">
-                        <a href="https://youtu.be/4TIFy5AXZ64">
+                        <a href="https://youtu.be/3H4umWD5bwI">
                             <img src ="./img/banner04_youtube01.png">
-                            <p>[스마트인재개발원] 재학생들이 스마트인재개발원을 선택한 이유!</p>
-                            <p>
-                            	재학생들은 왜 스마트인재개발원을 선택했을까?
+                            <p>배달의민족 CEO에게 뽑고 싶은 개발자를 물어보았다</p>
+                            <p>오늘 영상의 주인공은 배달의민족을 운영하는 우아한형제들 김범준 대표입니다. 
+
+							   2001년 신입 개발자로 커리어를 시작한 그는, 2015년에 우아한형제들의 CTO로 합류하게 됩니다. 그리고 2020년에는 창업자 김봉진 의장의 뒤를 이어 CEO의 자리에 오르게 되죠. 
+
+							   경력 20년차 개발자이기도 한 김범준 대표가 생각하는 좋은 개발자란 어떤 사람인지, 그리고 기술전문가가 이끄는 회사는 어떤 곳인지 궁금하신 분이라면 이 영상을 시청해주세요 :)
                             </p>
                             <p>
                                 <img src="./img/banner04_youtube01_01.jpg">
-                                <span>스마트인재개발원 인쌤TV</span>
+                                <span>EO 이오</span>
                             </p>
                         </a>
                     </li>
@@ -139,43 +142,43 @@
             </div>
             <ul class="itNews"  data-aos="fade-up" data-aos-delay="700">
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/030/0003086838?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>LS, 전기차 배터리 소재 '황산니켈' 공장 준공</p>
+                        <p>전자신문</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/092/0002286730?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>펄어비스 검은사막, 조선 배경 '아침의 나라' 개발자 영상 공개</p>
+                        <p>ZDNET Korea</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/092/0002286729?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>창립 76주년 LG, 구광모 회장 메시지 없이 '조용히'</p>
+                        <p>ZDNET Korea</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/020/0003487714?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>HK이노엔 ‘컨디션 스틱 1주년’… 개선형 신제품 출시</p>
+                        <p>동아일보</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="https://n.news.naver.com/mnews/article/030/0003086833?sid=105">
                         <img src ="./img/banner04_01.png">
-                        <p>어도비 '센세이', 믿고 쓰는 생성형 AI 서비스로 혁신[어도비 서밋 2023]</p>
-                        <p>매일경제</p>
-                        <p>2023.03.22</p>
+                        <p>LG 초거대 AI가 만든 이미지 '올해의 광고상' 수상</p>
+                        <p>전자신문</p>
+                        <p>2023.03.27</p>
                     </a>
                 </li>
             </ul>
