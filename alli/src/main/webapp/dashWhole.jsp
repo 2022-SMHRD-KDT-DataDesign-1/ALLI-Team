@@ -309,7 +309,6 @@
         
     </script>
     
-   // 해당 부분은 JS파일을 따로 만들어서 사용해도 된다.
 		<script>
 			// 차트를 그럴 영역을 dom요소로 가져온다.
 			var chartArea = document.getElementById('myChart').getContext('2d');
