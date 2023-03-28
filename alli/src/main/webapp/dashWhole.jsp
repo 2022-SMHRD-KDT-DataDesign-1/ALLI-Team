@@ -33,8 +33,8 @@
 		            <p>
 		                전국의 IT 프로그래밍 언어, 프레임워크, OS<br>워드클라우드로 보는 혁신적인 경험!
 		            </p>
-		            <box style="margin: 0 auto;width: 400px;display: block;height: 400px;background-color: blue;"></box>
-		
+		            <!-- <box style="margin: 0 auto;width: 400px;display: block;height: 400px;background-color: blue;"></box> -->
+					<img src="./img/dashWhole_wordcloud.png">
 		        </div>
 		        <div class="dashWhole_02">
 		            <div class="dashbox">
@@ -159,7 +159,10 @@
 		                    	때문에 실제와는 다를 수 있습니다.)<br><br>
 		                    	Front-End, Back-End, 서버-DB 분야에서 가장 많이 채용하고 있습니다. Front-End와 Back-End 사이의 간격은
 		                    	대체로 줄어드는 추세로, Front-End 분야의 중요도를 점차 깨닫기 시작하고 채용 수가 많아지면서 Back-End와의
-		                    	균형이 맞춰질 것으로 보입니다.
+		                    	균형이 맞춰질 것으로 보입니다.<br><br>
+		                    	게임 개발, SW 유지보수, 빅데이터/AI 분야는 상대적으로 채용 건이 적은 것으로 보이나 이 역시
+		                    	총합 4000여 건으로 무시할 수 없는 분야이므로 아예 관심을 두지 않기보단 기회를 보고 있는 것이 취업에 유리할
+		                    	것입니다.
 			                </p>
 			                <p>
 			                
