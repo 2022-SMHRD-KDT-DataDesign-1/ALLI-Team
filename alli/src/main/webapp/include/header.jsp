@@ -1,6 +1,12 @@
+<%@page import="com.smhrd.model.cmpVO"%>
+<%@page import="com.smhrd.model.userVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <header>
+	<%
+		userVO login_vo = (userVO)session.getAttribute("login_vo");
+		cmpVO cmpLogin_vo = (cmpVO)session.getAttribute("cmpLogin_vo");
+	%>
     <div id="h_container">
         <div id="logo">
             <a href="#">
@@ -21,17 +27,55 @@
                 <a href="#"><span>NEW</span>TREND</a>
             </li>
         </ul>
-        <ul id="nav">
-            <li>
-                <a href="join.jsp">회원가입</a>
-            </li>
-            <li>
-                &#124;
-            </li>
-            <li>
-                <a href="login.jsp">로그인</a>
-            </li>
-        </ul>
+        <%if(login_vo == null && cmpLogin_vo == null) {%>
+	        <ul id="nav">
+	            <li>
+	                <a href="join.jsp">회원가입</a>
+	            </li>
+	            <li>
+	                &#124;
+	            </li>
+	            <li>
+	                <a href="login.jsp">로그인</a>
+	            </li>
+	        </ul>
+        <%}else if(login_vo != null){%>
+        	<ul id="nav">
+	            <li>
+	               <%=login_vo.getUser_name() %>
+	            </li>
+	            <li>
+	                &#124;
+	            </li>
+	            <li>
+	                <a href="LogoutService.do">개인정보수정</a>
+	            </li>
+	            <li>
+	                &#124;
+	            </li>
+	            <li>
+	                <a href="LogoutService.do">로그아웃</a>
+	            </li>
+	        </ul>
+        <%}else if(cmpLogin_vo != null){ %>
+        	<ul id="nav">
+	            <li>
+	               <%=cmpLogin_vo.getCmp_name() %>
+	            </li>
+	            <li>
+	                &#124;
+	            </li>
+	            <li>
+	                <a href="LogoutService.do">개인정보수정</a>
+	            </li>
+	            <li>
+	                &#124;
+	            </li>
+	            <li>
+	                <a href="LogoutService.do">로그아웃</a>
+	            </li>
+	        </ul>
+        <%} %>
         <a id="h_btn" href='javascript:showPopUp()'>Site Information<img src="./img/h_btn.png" alt="사이트 안내영상"></a>
     </div>
 </header>
