@@ -47,14 +47,12 @@
 						</div>
 						<div class="box_text">
 			                <p>
-			                    □ Python : 데이터 분석, 인공지능, 웹 프로그래밍 등 다양한 분야에서 사용되며, 간결하고 읽기 쉬운
-			                    코드 작성이 가능하여 인기가 높습니다.<br>
-			                    □ Java : 기업용 시스템, 안드로이드 애플리케이션 등 다양한 분야에서 사용되며, 오랜
-			                    역사와 안정성으로 인기가 있습니다.<br>
-			                    □ JavaScript : 웹 프론트엔드 개발에서 가장 많이 사용되며, Node.js를 이용한 서버 사이드
-			                    개발에도 사용됩니다.<br>
-			                    □ C# : 윈도우 애플리케이션, 게임 개발, 웹 개발 등 다양한 분야에서 사용되며, .NET 프레임워크를
-			                    이용한 개발이 가능합니다.
+			                	2023년 3월 국내 프로그래밍 언어 인기 순위입니다.<br><br>
+			                    최근 4차 산업혁명의 영향으로 빅데이터, AI에 대한 관심도가 높아짐에 따라 이에 적합한 언어인 Python의 인기가 
+			                    나날이 높아지고 있습니다. 하지만 그럼에도 불구하고 여전히 국내 인기 프로그래밍 언어 1위는 Java가 차지하였습니다.
+			                    국가에서 지정한 프레임워크에서 가장 많이 사용되는 언어인 것이 그 이유로 꼽힙니다. Back-End에서 주로
+			                    사용하는 Java와 Python을 제외하고 Front-End에서 가장 많이 사용하는 언어로는 역시 JavaScript가
+			                    3위를 차지하였습니다. 이어서 4위, 5위는 디자인과 게임 개발쪽에서 자주 사용하는 C#, C++이 차지하였습니다.
 			                </p>
 		                </div>
 		            </div>
@@ -69,24 +67,9 @@
 						</div>
 						<div class="box_text">
 			                <p>
-			                 □ Visual Studio Code: 마이크로소프트에서 개발한 무료 오픈소스 IDE로, 다양한 언어와 플랫폼을 지원하며,
-		                    인텔리센스, 디버깅, Git 통합 등의 기능을 제공합니다.<br>
-		                     □ JetBrains IDE: IntelliJ IDEA, PyCharm, WebStorm, 등 다양한
-		                    언어와 플랫폼을 지원하는 유료 IDE입니다. 코드 분석, 코드 생성, 리팩토링, 통합 디버깅 등의 기능이 있으며,
-		                    IntelliJ IDEA Ultimate는 머신러닝과 데이터 과학을 위한 PyTorch, TensorFlow,
-		                    Keras 등을 지원합니다.<br>
-		                    □ Eclipse: 무료 오픈소스 IDE로, Java를 비롯한 다양한 언어와 플랫폼을 지원합니다.
-		                    플러그인 시스템을 통해 다양한 기능을 추가할 수 있으며, 빌드, 디버깅, 테스팅 등의 기능을 제공합니다.<br>
-		                    □ Atom: GitHub에서 개발한 무료 오픈소스 IDE로, JavaScript, HTML, CSS,
-		                    Python, Ruby 등 다양한 언어를 지원합니다. 플러그인을 통해 다양한 기능을 추가할 수 있으며, Git 통합,
-		                    코드 에디팅 등의 기능을 제공합니다.<br>
-		                    □ Sublime Text: 유료 에디터로, 빠른 속도와 사용자 정의 기능을 제공합니다. Python
-		                    스크립트를 사용하여 다양한 기능을 추가할 수 있으며, Git 통합, 다중 선택 등의 기능을 제공합니다.<br>
-		                    □ Jupyter Notebook: 데이터 과학 분야에서 많이 사용되는 무료 오픈소스 IDE입니다.
-		                    코드와 문서를 통합하여 사용자 친화적인 인터페이스를 제공합니다. Python, R, Julia 등 다양한 언어를
-		                    지원합니다.<br>
-		                    □ CodeSandbox: 웹 기반 온라인 IDE로, 다양한 웹 기술을 지원합니다. 프로젝트 공유 기능이
-		                    있으며, 팀으로 작업할 때 유용합니다.
+			                 	2023년 3월 국내 프로그래밍 IDE 인기 순위입니다.<br><br>
+			                 	1위는 IntelliJ IDEA가 차지했습니다. IntelliJ IDEA는 JetBrains에서 개발한 자바 개발을 위한 통합
+			                 	개발환경입니다.
 			                </p>
 		                </div>
 		            </div>
@@ -132,12 +115,11 @@
 		            <div class="dashbox" id="area">
 		            	<h2>05. 지원분야</h2>
 	                	<div class="box_chart">
-							<canvas id="myChart5_1"></canvas>
-		                	<canvas id="myChart5_2"></canvas>
-							<p>
+							<canvas id="myChart5"></canvas>
+							<!-- <p>
 			                    6. 0<br> 7. 0<br> 8. 0<br>
 		                    	9. 0<br> 10. 0<br>
-			                </p>
+			                </p> -->
 						</div>
 						<div class="box_text">
 			                <p>
@@ -352,78 +334,36 @@
 		
 		<script>
 			// 차트를 그럴 영역을 dom요소로 가져온다.
-			var chartArea = document.getElementById('myChart5_1').getContext('2d');
+			var chartArea = document.getElementById('myChart5').getContext('2d');
 			// 차트를 생성한다. 
-			var myChart5_1 = new Chart(chartArea, {
-				// ①차트의 종류(String)
-				type : 'bar',
-				// ②차트의 데이터(Object)
-				data: {
-			        datasets: [{
-			            type: 'bar',
-			            label: 'Web',
-			            data: [55.5, 55.2, 53.9, 52.6,51.2],
-				        backgroundColor : '#7149C6',
-						// ⑧dataset의 선 색(rgba값을 String으로 표현)
-						borderColor : '#B2A4FF',
-						// ⑨dataset의 선 두께(Number)
-						borderWidth : 1
-			        }, {
-			            type: 'bar',
-			            label: 'App',
-			            data: [44.5, 44.8, 46.1, 47.4, 48.8],
-			            backgroundColor : '#a290c9',
-						// ⑧dataset의 선 색(rgba값을 String으로 표현)
-						borderColor : '#B2A4FF',
-						// ⑨dataset의 선 두께(Number)
-						borderWidth : 1
-			        }],
-			        labels: ['2018', '2019', '2020', '2021','2022']
-			    },
-			    options: {
-			        scales: {
-			          y: {
-			            beginAtZero: true
-			          }
-			        }
-			      }
-			});
-		</script>
-
-		<script>
-			// 차트를 그럴 영역을 dom요소로 가져온다.
-			var chartArea = document.getElementById('myChart5_2').getContext(
-					'2d');
-			// 차트를 생성한다. 
-			var myChart5_2 = new Chart(chartArea, {
+			var myChart5 = new Chart(chartArea, {
 				// ①차트의 종류(String)
 				type : 'bar',
 				// ②차트의 데이터(Object)
 				data : {
+					// ③x축에 들어갈 이름들(Array)
+					labels : [ 'Front', 'Back', '서버-DB', '게임', 'SW유지보수' ,'빅데이터,AI'],
+					// ④실제 차트에 표시할 데이터들(Array), dataset객체들을 담고 있다.
 					datasets : [ {
-						type : 'bar',
-						label : 'Front-end',
-						data : [ 15, 20, 23, 31 ],
-						backgroundColor : '#f97171',
+						// ⑤dataset의 이름(String)
+						label : '채용 건수',
+						// ⑥dataset값(Array)
+						data : [ 3854, 6099, 5260, 987, 1761, 1624],
+						// ⑦dataset의 배경색(rgba값을 String으로 표현)
+						backgroundColor : '#B2A4FF',
 						// ⑧dataset의 선 색(rgba값을 String으로 표현)
 						borderColor : '#B2A4FF',
 						// ⑨dataset의 선 두께(Number)
 						borderWidth : 1
-					}, {
-						type : 'bar',
-						label : 'Back-end',
-						data : [ 85, 80, 77, 69 ],
-						backgroundColor : '#FFB4B4',
-						// ⑧dataset의 선 색(rgba값을 String으로 표현)
-						borderColor : '#B2A4FF',
-						// ⑨dataset의 선 두께(Number)
-						borderWidth : 1
-					} ],
-					labels : ['2018', '2019', '2020', '2021']
+					} ]
 				},
+				// ⑩차트의 설정(Object)
 				options : {
+					// ⑪축에 관한 설정(Object)
 					scales : {
+						// ⑫y축에 대한 설정(Object)
 						y : {
+							// ⑬시작을 0부터 하게끔 설정(최소값이 0보다 크더라도)(boolean)
 							beginAtZero : true
 						}
 					}
