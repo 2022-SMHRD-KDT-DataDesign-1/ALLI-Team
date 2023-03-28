@@ -7,6 +7,8 @@
 
 	<!-- 타입 알리야스 설정 -->
 	<typeAliases>
+		<typeAlias type="com.smhrd.model.userVO" alias="userVO" />
+		<typeAlias type="com.smhrd.model.cmpVO" alias="cmpVO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -22,6 +24,8 @@
 	</environments>
 	<!-- sql문들 정의해주는 mapper.xml을 계속해서 만들건데 어디에 있는지 경로를 지정해주는 태그 -->
 	<mappers>
+		<mapper resource="com/smhrd/db/UserMemberMapper.xml" />
+		<mapper resource="com/smhrd/db/CmpMemberMapper.xml" />
 	</mappers>
 
 </configuration>

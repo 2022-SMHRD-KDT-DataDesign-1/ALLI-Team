@@ -5,34 +5,34 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.db.SqlSessionManager;
 
-public class userDAO {
+public class cmpDAO {
 
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 
-	// 유저(구직자)회원가입
-	public int insertUser(userVO vo) {
+	// 유저(기업)회원가입
+	public int insertCmp(cmpVO vo) {
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
-		int cnt = sqlSession.insert("com.smhrd.db.UserMemberMapper.userInsert", vo);
+		int cnt = sqlSession.insert("com.smhrd.db.CmpMemberMapper.cmpInsert", vo);
 
 		sqlSession.close();
 
 		return cnt;
 	}
 
-	// 유저(구직자)로그인
-	public userVO userLogin(userVO vo) {
+	// 유저(기업)로그인
+	public cmpVO cmpLogin(cmpVO vo) {
 
-		userVO userLogin = null;
+		cmpVO cmpLogin = null;
 
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
-		userLogin = sqlSession.selectOne("com.smhrd.db.UserMemberMapper.userSelect", vo);
+		cmpLogin = sqlSession.selectOne("com.smhrd.db.CmpMemberMapper.cmpSelect", vo);
 
 		sqlSession.close();
 
-		return userLogin;
+		return cmpLogin;
 	}
 
 }
