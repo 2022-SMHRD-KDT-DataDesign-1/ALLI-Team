@@ -1,8 +1,8 @@
-.member_inform{width: 1060px;height: 45px;margin: 0 auto;}
-.member_inform > p {float: left;margin-top: 19px;margin-left: 7px;font-size: 17px;font-weight: 600;}
-.member_inform > div {background: #0f2b9d; color: #fff; font-size: 10px; border-radius: 20px; text-align: center; padding: 7px;display: inline-block;float: left; margin: 9px;}
+.resume_box.rbox1 > p{width:100%; font-size:16px; margin: 8px -18px;}
+.resume_box.rbox1{width:100%; height:40px; background-color: #ffffff;}
+.info1{width: 444px !important;}
+.imagePreviewPri {width: 100%; height: 140px; background-position: center center; background: url(http://cliquecities.com/assets/no-image-e3699ae….jpg);background-color: #fff;background-size: cover;background-repeat: no-repeat;display: inline-block;box-shadow: 0px -3px 6px 2px rgba(0,0,0,0.2);}
+.rbox3divPri{display: block !important;}
+.rbox10 > div > table{width:100%; height:120px; border: 1px solid;}
+.rbox10 > div > table > tr:nth-child(1){width:100%; height:100%;background-color:blue;}
 
-
-/* 이력서 출력 페이지 코드 작성 - 고유빈 */
-.print{width:1060px; height:3000px; margin: 0 auto; background-color: blue;}
-.member_info{width: 1000px; height: 60px; margin: 0 auto; background-color: white;}     
