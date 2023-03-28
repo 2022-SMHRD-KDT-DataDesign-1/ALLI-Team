@@ -262,3 +262,27 @@ footer > p{color:#fff;}
 .dashCareer > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
 .dashCareer > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
 
+/*sub_dashCompare*/
+.dashCompare{display: none !important;}
+.dashcodingCom{border-bottom: 1px solid #e1E2E3; overflow: hidden;}
+.dashcodingCom > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
+.dashcodingCom > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px; display: block;}
+.dashcodingCom > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2; float: left;}
+.dashcodingCom > P:nth-child(5){font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
+.dashcodingCom > P:nth-child(7){font-size: 14px; font-weight: 500; display: block; line-height: 1.2; margin-bottom: 15px;}
+.dashIdeCom{border-bottom: 1px solid #e1E2E3; overflow: hidden;}
+.dashIdeCom > box{margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
+.dashIdeCom > P:nth-child(1){margin: 15px 0; margin-right: 100px; font-weight: 800; font-size: 18px;display: block;}
+.dashIdeCom > P:nth-child(4){margin-left: 49px;font-size: 14px; font-weight: 500; display: block; line-height: 1.2; float: left;}
+.dashIdeCom > P:nth-child(5){font-size: 14px; font-weight: 500; display: block; line-height: 1.2; float: right;}
+.dashFieldCom > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block; }
+.dashFieldCom > box:nth-child(2){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
+.dashFieldCom > box:nth-child(3){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
+.dashFieldCom > box:nth-child(6){margin: 35px 50px;width: 400px;display: block;height: 400px;background-color: blue; float: right;}
+.dashFieldCom > box:nth-child(7){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
+.dashFieldCom > p:nth-child(4){margin: 15px; margin-left: 50px; line-height: 1.2; float: left;}
+.dashFieldCom >p:nth-child(5){margin-top:15px; margin-left: 254px; line-height: 1.2;float: left;}
+.dashFieldCom > p:nth-child(8){margin: 15px; margin-left: 50px; line-height: 1.2; float: left;}
+.dashFieldCom >p:nth-child(9){margin-left: 255px; margin-top:15px;line-height: 1.2;float: left;}
+
+
