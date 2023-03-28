@@ -213,76 +213,31 @@ footer > p{color:#fff;}
 .dash_ad > li:nth-child(1){font-size: 40px;font-weight: 900;}
 .dash_ad > li:nth-child(1) > img{margin-left:3px;}
 .dash_ad > li:nth-child(2){font-size:32px;font-weight: 500;margin-top:15px;}
-.dash_ad > li:nth-child(3){font-size:14px;color:#6c00ff;margin-top:40px;font-weight:600;margin-bottom:20px;}
+.dash_ad > li:nth-child(3){font-size:14px;color:#6c00ff;margin-top:50px;font-weight:600;margin-bottom:10px;}
 .dash_ad > li:nth-child(4){font-size:14px;color:#545454;margin-top:50px;}
 
-.dash_link{border: 1px solid #e1E2E3;margin: 27px auto;width:50%;}
+.dash_link{border: 1px solid #e1E2E3;margin: 0 auto;width:25%;}
 .dash_link > ul:nth-child(1){overflow: hidden;}
-.dash_link > ul:nth-child(1) >li{cursor: pointer;float:left; width: 50%;text-align: center;padding: 10px 0;border-bottom: 1px solid #3f0f80;}
-.dash_link > ul:nth-child(1) >li:nth-child(1){background: #6c00ff;color: #fff;}
-.on_dashWhole{background: #6c00ff !important;color: #fff !important;}
-.off_dashWhole{background: #fff !important;color: #333 !important;}
+.dash_link > ul:nth-child(1) >li{float:left; width:100%;text-align: center;padding: 10px 0;background: #6c00ff;color: #fff;}
 .fw800{font-weight:800;}
 .dash_link >a:nth-child(1){width: 50%;margin: 0 auto;}
 .dashWhole_top{width:1000px;margin:120px auto;}
-.dashWhole_01{overflow:hidden;margin-top:120px;}
+
+.dash_content{padding-bottom:100px;}
+.dashWhole_01{overflow: hidden;margin: 120px auto;width: 1000px;}
 .dashWhole_01 > p{float:left;font-weight: 600;font-size: 22px;width:50%;text-align:right;}
 .dashWhole_01 > box{float:right;}
 .dashWhole_02{width: 1000px; margin: 0 auto;}
-.dashcoding{border-bottom: 1px solid #e1E2E3; overflow: hidden;}
-.dashcoding > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
-.dashcoding > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px; display: block;}
-.dashcoding > img{ display: block; margin: 10px;}
-.dashcoding > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
-.dashcoding > P:nth-child(5){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
-.dashIde{border-bottom: 1px solid #e1E2E3;}
-.dashIde > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
-.dashIde > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block;}
-.dashIde > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
-.dashIde > P:nth-child(5){margin: 15px 0;  font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
-.dashOs{border-bottom: 1px solid #e1E2E3;}
-.dashOs > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
-.dashOs > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block;}
-.dashOs > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
-.dashLicense{border-bottom: 1px solid #e1E2E3;}
-.dashLicense > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
-.dashLicense > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block;}
-.dashLicense > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
-.dashField{border-bottom: 1px solid #e1E2E3; overflow: hidden;}
-.dashField > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block; }
-.dashField > box:nth-child(2){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
-.dashField > box:nth-child(3){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
-.dashField > p:nth-child(4){margin: 15px; margin-left: 50px; line-height: 1.2; float: left;}
-.dashField >p:nth-child(5){margin-top:15px; margin-left: 254px; line-height: 1.2;float: left;}
-.dashAcademic{border-bottom: 1px solid #e1E2E3; line-height: 1.2;}
-.dashAcademic > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block;}
-.dashAcademic > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
-.dashAcademic > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
-.dashCareer > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block;}
-.dashCareer > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
-.dashCareer > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
+.dashbox{border-bottom: 1px solid #e1E2E3; overflow: hidden;padding-bottom: 60px;margin-bottom: 100px;}
+.dashbox > h2{margin: 15px 0; font-weight: 800; font-size: 18px; display: block;letter-spacing: 1px;}
+.box_chart{font-size:14px; font-weight:500;position:relative;}
+.box_chart > p{position:absolute;right:0;top:0;background:#fff;border: 1px solid #ddd;padding: 20px;box-sizing: border-box;line-height:1.5;font-size: 16px;margin-top:25px;}
+.box_text{line-height:1.2;font-size:16px; margin-top:20px;}
 
-/*sub_dashCompare*/
-.dashCompare{display: none !important;}
-.dashcodingCom{border-bottom: 1px solid #e1E2E3; overflow: hidden;}
-.dashcodingCom > box{margin: 0 auto; width: 400px;display: block;height: 400px;background-color: blue;}
-.dashcodingCom > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px; display: block;}
-.dashcodingCom > P:nth-child(3){margin: 15px 0; font-size: 14px; font-weight: 500; display: block; line-height: 1.2; float: left;}
-.dashcodingCom > P:nth-child(5){font-size: 14px; font-weight: 500; display: block; line-height: 1.2;}
-.dashcodingCom > P:nth-child(7){font-size: 14px; font-weight: 500; display: block; line-height: 1.2; margin-bottom: 15px;}
-.dashIdeCom{border-bottom: 1px solid #e1E2E3; overflow: hidden;}
-.dashIdeCom > box{margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
-.dashIdeCom > P:nth-child(1){margin: 15px 0; margin-right: 100px; font-weight: 800; font-size: 18px;display: block;}
-.dashIdeCom > P:nth-child(4){margin-left: 49px;font-size: 14px; font-weight: 500; display: block; line-height: 1.2; float: left;}
-.dashIdeCom > P:nth-child(5){font-size: 14px; font-weight: 500; display: block; line-height: 1.2; float: right;}
-.dashFieldCom > P:nth-child(1){margin: 15px 0; font-weight: 800; font-size: 18px;display: block; }
-.dashFieldCom > box:nth-child(2){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
-.dashFieldCom > box:nth-child(3){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
-.dashFieldCom > box:nth-child(6){margin: 35px 50px;width: 400px;display: block;height: 400px;background-color: blue; float: right;}
-.dashFieldCom > box:nth-child(7){margin: 0 50px; width: 400px;display: block;height: 400px;background-color: blue; float: left;}
-.dashFieldCom > p:nth-child(4){margin: 15px; margin-left: 50px; line-height: 1.2; float: left;}
-.dashFieldCom >p:nth-child(5){margin-top:15px; margin-left: 254px; line-height: 1.2;float: left;}
-.dashFieldCom > p:nth-child(8){margin: 15px; margin-left: 50px; line-height: 1.2; float: left;}
-.dashFieldCom >p:nth-child(9){margin-left: 255px; margin-top:15px;line-height: 1.2;float: left;}
+#os .box_chart, #card .box_chart, #edu .box_chart{width:600px;float:left;}
+#os .box_text, #card .box_text, #edu .box_text{float:right;width:350px;}
+#area .box_chart{width:500px;float:left;}
+#area .box_text{float:right;width:400px;}
+
 
 
