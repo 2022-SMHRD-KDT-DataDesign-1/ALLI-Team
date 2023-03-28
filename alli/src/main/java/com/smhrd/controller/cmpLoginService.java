@@ -36,8 +36,12 @@ public class cmpLoginService implements Command {
 
 		} else {
 
+			HttpSession session = request.getSession();
 			System.out.println("실패");
 			moveURL = "login.jsp";
+			session.setAttribute("cmploginFailed", moveURL);
+			
+			System.out.println("서비스값" + session.getAttribute("cmploginFailed"));
 		}
 
 		return moveURL;

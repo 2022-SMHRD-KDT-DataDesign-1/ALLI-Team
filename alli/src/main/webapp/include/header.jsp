@@ -48,7 +48,7 @@
 	                &#124;
 	            </li>
 	            <li>
-	                <a href="LogoutService.do">개인정보수정</a>
+	                <a href="#">개인정보수정</a>
 	            </li>
 	            <li>
 	                &#124;
@@ -66,7 +66,7 @@
 	                &#124;
 	            </li>
 	            <li>
-	                <a href="LogoutService.do">개인정보수정</a>
+	                <a href="#">개인정보수정</a>
 	            </li>
 	            <li>
 	                &#124;
