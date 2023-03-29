@@ -5,7 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.smhrd.db.DeveloprMapper">
 
 	<select id="selectDevelopList" resultType="developVO">
-		select * from FRAMEWORK_T
+		SELECT LANGUAGES, FRAMEWORKS, OSS, LICENSES
+		FROM LANGUAGE_T A, FRAMEWORK_T B, OS_T C, LICENSE_T D
+		WHERE A.IDX = B.IDX
+		AND B.IDX = C.IDX
+		AND C.IDX = D.IDX	
 	</select>
 
 </mapper>

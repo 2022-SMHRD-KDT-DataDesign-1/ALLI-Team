@@ -44,39 +44,23 @@ public class Frontcontroller extends HttpServlet {
 
 		if (result.equals("userJoinService.do")) {
 			service = new userJoinService();
-			String moveURL = service.excute(request, response);
-			response.sendRedirect(moveURL);
 
 		}else if(result.equals("cmpJoinService.do")) {
 			service = new cmpJoinService();
-			String moveURL = service.excute(request, response);
-			response.sendRedirect(moveURL);
 			
 		}else if(result.equals("userLoginService.do")) {
 			service = new userLoginService();
 
-			String moveURL = service.excute(request, response);
-			response.sendRedirect(moveURL);
-			
 		}else if(result.equals("cmpLoginService.do")) {
 			service = new cmpLoginService();
-			String moveURL = service.excute(request, response);
-			response.sendRedirect(moveURL);
 			
 		}else if(result.equals("LogoutService.do")) {
-
 			service = new LogoutService();
-			String moveURL = service.excute(request, response);
-			response.sendRedirect(moveURL);
 			
-		}else if(result.equals("DevelopService.do")) {
-			service = new DevelopService();
-			String moveURL = service.excute(request, response);
-			request.getAttribute("developList");
-			request.setAttribute(result, contextPath);
-			request.getRequestDispatcher("boardEmp.jsp");
 		}
 		
+		String moveURL = service.excute(request, response);
+		response.sendRedirect(moveURL);
 
 	}
 
