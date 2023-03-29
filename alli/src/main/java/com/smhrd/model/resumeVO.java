@@ -25,6 +25,7 @@ public class resumeVO {
 	private String url;
 	private String hope_area2;
 	private String on_off;
+	private String user_tel2;
 
 	
 	public resumeVO(int resume_num, String user_id, String user_name, String user_tel, String user_email,
@@ -148,6 +149,10 @@ public class resumeVO {
 
 	public String getOn_off() {
 		return on_off;
+	}
+
+	public String getUser_tel2() {
+		return user_tel2;
 	}
 	
 	
