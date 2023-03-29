@@ -22,20 +22,20 @@
 	                <div class="chooseJob">
 	                    <ul>
 	                        <li class="c_btn" id="pro_lan">
-	                        	<div>프로그래밍 언어</div>
+	                        	<div id="prolanDiv">프로그래밍 언어</div>
 	                        	<div></div>
 	                        </li>
 	                        <li class="c_btn" id="frameWork">
-	                        	<div>프레임워크</div>
+	                        	<div id="frameWorkDiv">프레임워크</div>
 	                        	<div></div>
 	                        </li>
 	                        <li class="c_btn" id="OS">
-	                        	<div>OS</div>
+	                        	<div id="OSDiv">OS</div>
 	                        	<div></div>
 	                        </li>
 	                    </ul>
 	                    <ul>
-	                        <li class="c_content"><!-- 프로그래밍언어 시작 -->
+	                        <li class="c_content" id="prolan_li"><!-- 프로그래밍언어 시작 -->
 	                            <ul>
 	                            	<li class="chooseBtn">
 	                            		<input type="button" value="JAVA" id="Java">
@@ -141,17 +141,17 @@
 		                            </ul>
 	                        	</div>
 	                        </li>
-	                        <li class="c_content"><!-- 프레임워크 시작 -->
+	                        <li class="c_content" id="frameWork_li"><!-- 프레임워크 시작 -->
 	                            <ul>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="SPRING">
+	                            		<input type="button" value="SPRING" id="Spring">
 	                            	</li>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="Eclipse">
+	                            		<input type="button" value="Eclipse" id="Eclipse">
 	                            	</li>
 	                            </ul>
 	                            <div class="chooseCon">
-		                            <ul>
+		                            <ul id="Spring_ul">
 		                            	<li>
 		                            		<div>1</div>
 		                            		<div>(주)페픽</div>
@@ -198,7 +198,7 @@
 		                            		</div>
 		                            	</li>
 		                            </ul>
-		                            <ul>
+		                            <ul id="Eclipse_ul">
 		                            	<li>
 		                            		<div>1</div>
 		                            		<div>(주)파이썬</div>
@@ -247,17 +247,17 @@
 		                            </ul>
 	                        	</div>
 	                        </li>
-	                        <li class="c_content"><!-- OS 시작 -->
+	                        <li class="c_content" id="OS_li"><!-- OS 시작 -->
 	                            <ul>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="Window">
+	                            		<input type="button" value="Window" id="Window">
 	                            	</li>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="Mac">
+	                            		<input type="button" value="Mac" id="Mac">
 	                            	</li>
 	                            </ul>
 	                            <div class="chooseCon">
-		                            <ul>
+		                            <ul id="Window_ul">
 		                            	<li>
 		                            		<div>1</div>
 		                            		<div>(주)페픽</div>
@@ -304,7 +304,7 @@
 		                            		</div>
 		                            	</li>
 		                            </ul>
-		                            <ul>
+		                            <ul id="Mac_ul">
 		                            	<li>
 		                            		<div>1</div>
 		                            		<div>(주)파이썬</div>
@@ -488,55 +488,145 @@
 	<%@ include file="./include/footer.jsp" %>
 	
 	<script>
-		let isJava = null ;
+		let pro_lan = document.getElementById('pro_lan')
+		let frameWork = document.getElementById('frameWork')
+		let OS = document.getElementById('OS')
+		
+		let prolan_li = document.getElementById('prolan_li')
+		let frameWork_li = document.getElementById('frameWork_li')
+		let OS_li = document.getElementById('OS_li')
+		
+		let prolanDiv = document.getElementById('prolanDiv')
+		let frameWorkDiv = document.getElementById('frameWorkDiv')
+		let OSDiv = document.getElementById('OSDiv')
+		
 		let Java_ul = document.getElementById('Java_ul')
 		let Python_ul = document.getElementById('Python_ul')
+		
+		let Spring_ul = document.getElementById('Spring_ul')
+		let Eclipse_ul = document.getElementById('Eclipse_ul')
+		
+		let Window_ul = document.getElementById('Window_ul')
+		let Mac_ul = document.getElementById('Mac_ul')
+		
 		let JavaBtn = document.getElementById('Java')
 		let PythonBtn = document.getElementById('Python')
-		document.getElementById('Java').onclick=()=>{
-			isJava = true ;
-			console.log('JavaCk',isJava)
-			console.log(Java_ul)
+		
+		let SpringBtn = document.getElementById('Spring')
+		let EclipseBtn = document.getElementById('Eclipse')
+		
+		let WindowBtn = document.getElementById('Window')
+		let MacBtn = document.getElementById('Mac')
+		
+		/* 프로그래밍 언어 영역 */
+		
+		/* 측면 탭 */
+		document.getElementById('pro_lan').onclick=()=>{
+			console.log('pro_lan_Ck')
+			prolan_li.style.display ='block'
+			frameWork_li.style.display='none'
+			OS_li.style.display = 'none'
 			
-			if(isJava){
-				Java_ul.style.display = 'block'
-				Python_ul.style.display = 'none'
-			}else {
-				Java_ul.style.display = 'none'
-				Python_ul.style.display = 'block'
-			}
+			pro_lan.classList.add('choose_on')
+			pro_lan.classList.remove('choose_off')
+				
+			frameWork.classList.add('choose_off')
+			frameWork.classList.remove('choose_on')
+				
+			OS.classList.add('choose_off')
+			OS.classList.remove('choose_on')
+			
+		}
+		
+		/* 상단 탭 */		
+		document.getElementById('Java').onclick=()=>{
+			console.log('JavaCk')
+			/* console.log(Java_ul) */
+			Java_ul.style.display = 'block'
+			Python_ul.style.display = 'none'
+			PythonBtn.style.border = '1px solid #d3d3d3'
+			JavaBtn.style.border = '2px solid #6c00ff'
 		}
 		
 		document.getElementById('Python').onclick=()=>{
-			isJava = false ;
-			console.log('PythonCk',isJava)
-			console.log(Python_ul)
-			
-			if(isJava){
-				Java_ul.style.display = 'block'
-				Python_ul.style.display = 'none'
-				JavaBtn.style.border='1px solid #d3d3d3'
-				PythonBtn.style.border='2px solid #6c00ff'
-			}else {
-				Java_ul.style.display = 'none'
-				Python_ul.style.display = 'block'
-				JavaBtn.style.border='2px solid #6c00ff'
-				PythonBtn.style.border='1px solid #d3d3d3'
-			}
+			console.log('PythonCk')
+			/* console.log(Python_ul) */
+			Java_ul.style.display = 'none'
+			Python_ul.style.display = 'block'
+			PythonBtn.style.border = '2px solid #6c00ff'
+			JavaBtn.style.border = '1px solid #d3d3d3'
 		}
 		
+		/* 프레임워크 영역 */
 		
-		
-		document.getElementById('pro_lan').onclick=()=>{
-			console.log('pro_lan_Ck')
-		}
-		
+		/* 측면 탭 */
 		document.getElementById('frameWork').onclick=()=>{
 			console.log('frameWork_Ck')
+			prolan_li.style.display ='none'
+			frameWork_li.style.display='block'
+			OS_li.style.display = 'none'
+			
+			pro_lan.classList.add('choose_off')
+			pro_lan.classList.remove('choose_on')
+			
+			frameWork.classList.add('choose_on')
+			frameWork.classList.remove('choose_off')
+			
+			OS.classList.add('choose_off')
+			OS.classList.remove('choose_on')
 		}
 		
+		/* 상단 탭 */
+		document.getElementById('Spring').onclick=()=>{
+			console.log('SpringCk')
+			Spring_ul.style.display = 'block'
+			Eclipse_ul.style.display = 'none'
+			EclipseBtn.style.border = '1px solid #d3d3d3'
+			SpringBtn.style.border = '2px solid #6c00ff'
+		}
+		
+		document.getElementById('Eclipse').onclick=()=>{
+			console.log('EclipseCk')
+			Spring_ul.style.display = 'none'
+			Eclipse_ul.style.display = 'block'
+			SpringBtn.style.border = '1px solid #d3d3d3'
+			EclipseBtn.style.border = '2px solid #6c00ff'
+		}
+		
+		/* OS 영역 */
+		
+		/* 측면 탭 */
 		document.getElementById('OS').onclick=()=>{
 			console.log('OS_Ck')
+			prolan_li.style.display ='none'
+			frameWork_li.style.display='none'
+			OS_li.style.display = 'block'
+			
+			pro_lan.classList.add('choose_off')
+			pro_lan.classList.remove('choose_on')
+					
+			frameWork.classList.add('choose_off')
+			frameWork.classList.remove('choose_on')
+					
+			OS.classList.add('choose_on')
+			OS.classList.remove('choose_off')
+		}
+		
+		/* 상단 탭 */
+		document.getElementById('Window').onclick=()=>{
+			console.log('WindowCk')
+			Window_ul.style.display = 'block'
+			Mac_ul.style.display = 'none'
+			MacBtn.style.border = '1px solid #d3d3d3'
+			WindowBtn.style.border = '2px solid #6c00ff'
+		}
+		
+		document.getElementById('Mac').onclick=()=>{
+			console.log('MacCk')
+			Window_ul.style.display = 'none'
+			Mac_ul.style.display = 'block'
+			WindowBtn.style.border = '1px solid #d3d3d3'
+			MacBtn.style.border = '2px solid #6c00ff'
 		}
 	</script>
 	
