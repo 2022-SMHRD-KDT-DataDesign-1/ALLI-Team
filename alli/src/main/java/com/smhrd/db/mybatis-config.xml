@@ -10,6 +10,7 @@
 		<typeAlias type="com.smhrd.model.userVO" alias="userVO" />
 		<typeAlias type="com.smhrd.model.cmpVO" alias="cmpVO" />
 		<typeAlias type="com.smhrd.model.developVO" alias="developVO" />
+		<typeAlias type="com.smhrd.model.resumeVO" alias="resumeVO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -28,6 +29,7 @@
 		<mapper resource="com/smhrd/db/UserMemberMapper.xml" />
 		<mapper resource="com/smhrd/db/CmpMemberMapper.xml" />
 		<mapper resource="com/smhrd/db/DevelopMapper.xml" />
+		<mapper resource="com/smhrd/db/resumeMapper.xml" />
 	</mappers>
 
 </configuration>
