@@ -17,199 +17,172 @@
                 <p>주부은님, 반갑습니다.</p>
             </div>
             <div class="sub_box">
-                <h2 class="sub_title">이력서 출력</h2>
                 <form>
-                    <div class="resume_box rbox1">
+                    <div class="print_box" id="pbox1">
                         <p>
-                        	저는 체계적이고 세심한 통찰력을 가지고 있다는 말을 많이 듣습니다.
+                        	취미는 백엔드개발인 3년차 웹퍼블리셔입니다.
                         </p>
                     </div>
-                    <div class="resume_boxPri rbox2Pri">
-                        <div>
-                            <section class="col-sm-2 imgUp">
-						   		<div class="imagePreviewPri"></div>
-						  	</section><!-- col-2 -->
-							<div class="info01">
-								<div class="item namePri">주부은</div>
-								<div class="item sex">여</div>
-								<div class="item year">2023.03.02</div>
-							</div>
-							<div class="info01">
-								<div class="item">
-									<div class="label">휴대폰</div>
-									<div class="value">&#124;</div>
-									<div class="value">010-6792-5045</div>
-								</div>
-								<div class="item">
-									<div class="label">Email</div>
-									<div class="value">&#124;</div>
-									<div class="value">
-										<a href="mailto:jubueun@naver.com">jubueun@naver.com</a>
-									</div>
-								</div>
-							</div>
+                    <div class="print_box" id="pbox2">
+                        <div class="w_box">
+                        	<div>
+                        		<img src="./img/R_01.jpg">
+                        	</div>
+                        	<div>
+                        		<p>주부은 <span>여 1992년 (32세)</span></p>
+                        		<ul>
+                        			<li>
+                        				<span>연락처</span>
+                        				<span>｜</span>
+                        				<span>010-6792-5045</span>
+                        			</li>
+                        			<li>
+                        				<span>추가연락처</span>
+                        				<span>｜</span>
+                        				<span>-</span>
+                        			</li>
+                        			<li>
+                        				<span>Email</span>
+                        				<span>｜</span>
+                        				<span>jubueun@naver.com</span>
+                        			</li>
+                        			<li>
+                        				<span>주소</span>
+                        				<span>｜</span>
+                        				<span>광주 북구 일곡동</span>
+                        			</li>
+                        			<li>
+                        				<span>최종학력</span>
+                        				<span>｜</span>
+                        				<span>대입검정고시</span>
+                        			</li>
+                        			<li>
+                        				<span>희망근무지</span>
+                        				<span>｜</span>
+                        				<span>광주, 서울</span>
+                        			</li>
+                        			<li>
+                        				<span>희망연봉</span>
+                        				<span>｜</span>
+                        				<span>1억</span>
+                        			</li>
+                        		</ul>
+                        	</div>
                         </div>
                     </div>
-                    <div class="resume_box rbox3">
-                        <h3>최종학력</h3>
-                        <div>
-	                        <div class="rbox3divPri">
-	                        	<p>최종학력</p>
-	                            <p><span>- </span>서울대학교</p>
-	                            <p><span>- </span>화학과</p>
-	                            <p><span>- </span>졸업</p>
-	                            <span><span>- </span>대입검정고시: </span>
-	                            <span>해당없음</span>
-	                        </div>
-	                        <div class="rbox3divPri">
-	                        	<p>수상</p>
-	                            <p><span>- </span>경연대회 대상</p>
-	                            <p><span>- </span>경연대회 금상</p>
-	                            <p><span>- </span>경연대회 동상</p>
-	                            <p> <span>- </span>경연대회 은상</p>
-	                        </div>
-	                        <div class="rbox3divPri">
-	                        	<p>기타자격증</p>
-	                            <p><span>- </span>TOEIC</p>
-	                            <p><span>- </span>OPIC</p>
-	                            <p><span>- </span>TOEIC Speaking</p>
-	                            <p><span>- </span>운전면허 1종</p>
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="resume_box rbox4">
+                    <div class="print_box" id="pbox3">
                         <h3>개발기술스택</h3>
-                        <div>
-                            <section>
-                                <div class="choose_content">
-                                    <p>프로그래밍 언어</p>
-                                    <div>
-                                    	<p>JAVA [상]</p>
-                                    	<p>C [상]</p>
-                                    	<p>SPRING [상]	</p>
-                                    	<p>TypeScript [상]	</p>
-                                    </div>
-                                </div>
-                                <div class="choose_content">
-                                    <p>프레임워크</p>
-                                    <div>
-                                    	<p>VsCode</p>
-                                    	<p>Visual Studio</p>
-                                    	<p>anaconda</p>
-                                    	<p>IntelliJ</p>
-                                    </div>
-                                </div>
-                                <div class="choose_content">
-                                    <p>OS</p>
-                                    <div>
-                                    	<p>Window</p>
-                                    	<p>Mac</p>
-                                    	<p>Linux	</p>
-                                    	<p>Unix</p>
-                                    </div>
-                                </div>
-                                <div class="choose_content">
-                                    <p>자격증</p>
-                                    <div>
-                                    	<p>정보처리기능사</p>
-                                    	<p>정보처리산업기사</p>
-                                    	<p>정보처리기사</p>
-                                    	<p>정보처리기능장</p>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
+                        <div class="w_box">
+                        	<ul>
+                        		<li>
+                        			<span>프로그래밍 언어</span>
+                       				<span>｜</span>
+                       				<div>
+                       					<span>Java[상]</span>
+                       					<span>Python[상]</span>
+                       					<span>JSP[상]</span>
+                       					<span>HTML,CSS[상]</span>
+                       					<span>servlet[상]</span>
+                       				</div>
+                        		</li>
+                        		<li>
+                        			<span>프레임워크</span>
+                       				<span>｜</span>
+                       				<div>
+                       					<span>Spring[상]</span>
+                       					<span>Eclipse[상]</span>
+                       					<span>Visual Studio Code[상]</span>
+                       					<span>Intellij[상]</span>
+                       				</div>
+                        		</li>
+                        		<li>
+                        			<span>OS</span>
+                       				<span>｜</span>
+                       				<div>
+                       					<span>Windows[상]</span>
+
+                       				</div>
+                        		</li>
+                        		<li>
+                        			<span>자격증</span>
+                       				<span>｜</span>
+                       				<div>
+                       					<span>정보처리기사</span>
+										<span>SQLD</span>
+                       				</div>
+                        		</li>
+                        	</ul>
+	                    </div>    
                     </div>
-                    <div class="resume_box rbox6">
-                        <h3>경력</h3>
-                        <div>
-                        	<p>
-                        		<span>- </span>
-                               	스마트인재개발원
-                               	데이터디자인
-                               	2022.12.28
-                               	2023.06.23
-                               	팀원
-                             	Front-End
-                            </p>
-                        	<p>
-                        		<span>- </span>
-                               	스마트인재개발원
-                               	인공지능
-                               	2022.12.28
-                               	2023.06.23
-                               	팀장
-                             	Back-End
-                            </p>
-                        </div>
-                    </div>
-                    <div class="resume_box rbox8">
-                        <h3>자기소개서</h3>
-                        <div>
-                        	<p>
-                               	화학공학과에 진학하였지만, 4차 산업 혁명과 연관된 진로를 가지고 싶어 주도적으로 2가지 역량을 길렀습니다.
-                               	첫째로 ‘머신러닝과 딥러닝’, ‘빅데이터와 인공지능을 활용한 시스템 강건 설계’를 수강하며 화학공학과이지만 데이터 분석 역량을 쌓기 위해 노력했습니다. 이 과정에서 파이썬을 통한 프로그래밍 능력을 조금이나마 갖게 되었고, 많은 노력을 통해 두 과목에서 모두 A+ 학점을 받을 수 있었습니다.
-                               	두 번째로 OOOO에서 현장실습을 하며 공장 에너지관리시스템에 대해 지식을 쌓았습니다. LG CNS와 함께 인천산업단지 스마트 공장화 프로젝트를 진행하는 OOOO에서 클라우드를 활용한 모니터링 시스템 구축 프로젝트에 함께 참여하며 클라우드 시스템과 스마트팩토리 구축 시스템에 관심을 가지게 되었습니다.
-                               	입사 이후 4차 산업혁명과 가장 밀접한 LG CNS에서 적합한 인재가 되기 위해 주도적으로 노력해가며, IT시스템을 활용한 효율적인 작업 도구를 제공할 수 있는 역량을 갖추고 싶습니다.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="resume_box rbox9">
+                    <div class="print_box" id="pbox4">
                         <h3>포트폴리오</h3>
-                        <table class="tableBox">
-                        	<tr>
-                            	<th>이력서</th>
-                        		<td colspan="3">
-                            		<a href="http://www.google.com" target="_blank">http://www.google.com</a>
-                       			</td>
-                      		</tr>
-                      		<tr></tr>
-                        </table>
-                     </div>
-                        
-                        
-                        
-                        <!-- <div>
-                            <input type="file">
-                            <div>
-                                <label>URL:</label>
-                                <a href="https://www.naver.com" target="_blank">https://www.naver.com</a>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="resume_box rbox10">
-                        <h3>희망근무조건</h3>
-						<table class="table table-hopework">
-							<tbody>
-								<tr>
-									<th scope="row">희망연봉</th>
-									<td>서울전지역</td>
-								</tr>
-								<tr>
-									<th scope="row">희망연봉</th>
-									<td>면접 후 결정</td>
-								</tr>
-								<tr>
-									<th scope="row">지원분야</th>
-									<td>
-										<div class="content is-label">
-											<div class="item">
-												<div class="label">직무</div>
-												<div class="value">
-													<ul class="list-hopework">
-														<li>
-															<div class="item">웹프로그래머</div>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-                    <input type="submit" id="resumeReg_btn" value="이력서 출력">
+                        <div class="w_box">
+                        	<ul>
+                        		<li>
+                        			<span>URL</span>
+                       				<span>｜</span>
+                       				<span>
+                       					<a href="http://www.google.com" class="URL" target="_blank">http://www.google.com</a>
+                       				</span>
+                        		</li>
+                        		<li>
+                        			<span>파일</span>
+                       				<span>｜</span>
+                       				<span>
+                       					<a href="#" class="download" download>다운로드</a>
+                       				</span>
+                        		</li>
+                        	</ul>
+	                    </div>    
+                    </div>
+                    <div class="print_box" id="pbox5">
+                        <h3>기타자격증</h3>
+                        <div class="w_box">
+                        	<p>- 자동차운전면허</p>
+                        	<p>- 웹디자인기능사</p>
+                        	<p>- (국가공인)GTQ1급</p>
+                        	<p>- 컴퓨터그래픽스운용기능사</p>
+	                    </div>    
+                    </div>
+                    <div class="print_box" id="pbox5">
+                        <h3>경력</h3>
+                        <div class="w_box">
+                        	<p>- 2020. 07 ~ 2022. 09 (2년 3개월) / (주)이젠 경영기획팀 주임 / 웹퍼블리셔</p>
+	                    </div>    
+                    </div>
+                    <div class="print_box" id="pbox5">
+                        <h3>수상</h3>
+                        <div class="w_box">
+                        	<p>-</p>
+	                    </div>    
+                    </div>
+                    <div class="print_box" id="pbox6">
+                        <h3>자기소개서</h3>
+                        <div class="w_box">
+                        	<p>
+                               지원동기 및 입사 후 포부<br>
+								작업하는 모든 페이지, 사이트가 제 자식 같습니다. 계속해서 발전하는 직원, 발전하는 회사가 되도록 만들겠습니다.
+								
+								그냥 틀에 박힌 이미지나 플랫폼이 아닌 이를 응용하고 각색하며, 나아가 나만의 사이트로 다양한 이미지 만들기를 가능하게 하는 것이 웹이 가진 매력이라고 생각하여 이 일을 시작하게 되었습니다. 개인의 역량을 강화시키는 부분도 물론 중요하지만, 이를 통해 회사의 발전이 이뤄지는 것이 본질적인 목표라고 생각합니다. 다양한 경험을 쌓으며 역량을 강화시켜 실무에서 보다 트렌디하고 앞서는 기술로 함께 성장하고 싶습니다. 홈페이지를 만드는데 어떠한 일이건 맡겨주시면 시간이 걸리더라도 어떻게든 해내고자 합니다. 현재 재직 중인 회사에서 처음으로 `웹접근성 인증마크 취득`을 작업할 때 내가 이것을 못해내면 어떡하지가 아니라 무슨 수를 써서라도 내 분야는 내가 해결한다는 마인드로 작업했고, 성공했습니다. 처음 취득 할때는 2달 가까이 소요되었고, 5차례의 피드백을 받았으나, 2-3회 부터는 약 2주이내, 1차례의 피드백 이후 취득했습니다.
+								모두가 휴대폰과 웹을 통해 회사를 검색하고 접근하는 시대입니다. 그만큼 홈페이지를 만들고 관리하는 일은 그 회사의 이미지와 역량까지 판단되어 매출로도 연결되는 부분이기에 더욱 강한 책임감과 성실함을 가지고 임하고자 합니다. 감사합니다.
+                            </p>
+	                    </div>    
+                    </div>
+
+                    <ul class="print_btns">
+                    	<li>
+                    		<a href="#">목록</a>
+                    	</li>
+                    	<li>
+                    		<a href="#">PDF변환</a>
+                    	</li>
+                    	<li>
+                    		<a href="#">수정</a>
+                    	</li>
+                    	<li>
+                    		<a href="#">삭제</a>
+                    	</li>
+                    </ul>
                 </form>
             </div>
        </div>
