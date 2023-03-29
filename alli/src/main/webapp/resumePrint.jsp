@@ -2,15 +2,19 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.smhrd.model.resumeDAO"%>
 <%@page import="com.smhrd.model.resumeVO"%>
+<%@page import=" java.time.LocalDate"%>
 <%@ include file="./include/metatag.jsp" %>  
 <link href="./css/dashKO.css" rel="stylesheet">
 </head>
 <body>
 	
 	<%
-		String user_id = "print";
+		String user_id = "smhr65";
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(user_id);
+		LocalDate now = LocalDate.now();
+		int year = now.getYear();
+		int age = year - Integer.parseInt(print_vo.getDate_birth());
 	%>
 
 	<%@ include file="./include/header.jsp" %>
@@ -20,7 +24,7 @@
                 <p>구직을 위한, <img src="./img/logo_w.png"></p>
             </div>
        </div>	       
-       <div class="resumeReg">
+       <div class="resumeReg" id="resumePDF">
             <div class="member_inform">
                 <div>개인<br>회원</div>
                 <p><%=print_vo.getUser_name()%>님, 반갑습니다.</p>
@@ -38,7 +42,7 @@
                         		<img src="./img/R_01.jpg">
                         	</div>
                         	<div>
-                        		<p><%=print_vo.getUser_name()%> <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>년 (32세)</span></p>
+                        		<p><%=print_vo.getUser_name()%> <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>년 (만 <%=age%>세)</span></p>
                         		<ul>
                         			<li>
                         				<span>연락처</span>
@@ -48,7 +52,14 @@
                         			<li>
                         				<span>추가연락처</span>
                         				<span>｜</span>
-                        				<span>-</span>
+                        				<span>
+		                        			<%if(print_vo.getUser_tel2() == null){%>
+	                        						<span>-</span>
+		                        			<%}else{%>
+		                        					<%=print_vo.getUser_tel2() %>
+		                        			<%}%>
+                        				</span>
+	                        			
                         			</li>
                         			<li>
                         				<span>Email</span>
@@ -68,12 +79,24 @@
                         			<li>
                         				<span>희망근무지</span>
                         				<span>｜</span>
-                        				<span><%=print_vo.getHope_area()%>, <%=print_vo.getHope_area2()%></span>
+                        				<span><%=print_vo.getHope_area()%>
+                        						  <%if(print_vo.getHope_area2() == null){%>
+	                        							<span> </span>
+		                        				  <%}else{%>
+		                        				  		, <%=print_vo.getHope_area2()%>
+		                        			      <%}%>
+                        				</span>
                         			</li>
                         			<li>
                         				<span>희망연봉</span>
                         				<span>｜</span>
-                        				<span><%=print_vo.getHope_salary()%> 만원</span>
+                        				<span>
+                        					<%if(print_vo.getHope_salary() == null){%>
+	                        						<span>-</span>
+		                        			<%}else{%>
+		                        				    <%=print_vo.getHope_salary()%> 만원
+		                        			<%}%>
+                        				</span>
                         			</li>
                         		</ul>
                         	</div>
@@ -123,27 +146,61 @@
                         	</ul>
 	                    </div>    
                     </div>
-                    <div class="print_box" id="pbox4">
-                        <h3>포트폴리오</h3>
-                        <div class="w_box">
-                        	<ul>
-                        		<li>
-                        			<span>URL</span>
-                       				<span>｜</span>
-                       				<span>
-                       					<a href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
-                       				</span>
-                        		</li>
-                        		<li>
-                        			<span>파일</span>
-                       				<span>｜</span>
-                       				<span>
-                       					<a href="#" class="download" download>다운로드</a>
-                       				</span>
-                        		</li>
-                        	</ul>
-	                    </div>    
-                    </div>
+                    <%if(print_vo.getFile_name()!= null && print_vo.getUrl() != null){%>
+	                    <div class="print_box" id="pbox4">
+	                        <h3>포트폴리오</h3>
+	                        <div class="w_box">
+	                        	<ul>
+	                        		<li>
+	                        			<span>URL</span>
+	                       				<span>｜</span>
+	                       				<span>
+	                       					<a href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
+	                       				</span>
+	                        		</li>
+	                        		<li>
+	                        			<span>파일</span>
+	                       				<span>｜</span>
+	                       				<span>
+	                       					<a href="#" class="download" download><%=print_vo.getFile_name() %> 다운로드</a>
+	                       				</span>
+	                        		</li>
+	                        	</ul>
+		                    </div>
+		                </div>    
+		            <%}else if(print_vo.getFile_name()!= null || print_vo.getUrl() != null){%>
+		            		<%if(print_vo.getFile_name() != null){ %>
+			                    <div class="print_box" id="pbox4">
+			                        <h3>포트폴리오</h3>
+			                        <div class="w_box">
+			                        	<ul>
+			                        		<li>
+			                        			<span>파일</span>
+			                       				<span>｜</span>
+			                       				<span>
+			                       					<a href="#" class="download" download><%=print_vo.getFile_name() %> 다운로드</a>
+			                       				</span>
+			                        		</li>
+			                        	</ul>
+				                    </div>
+				                </div>    
+		            		<%}else{%>
+			                    <div class="print_box" id="pbox4">
+			                        <h3>포트폴리오</h3>
+			                        <div class="w_box">
+			                        	<ul>
+			                        		<li>
+	                        					<span>URL</span>
+	                       						<span>｜</span>
+	                       						<span>
+	                       							<a href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
+	                       						</span>
+	                        				</li>
+			                        	</ul>
+				                    </div>   
+				                </div> 
+		            		<%}%>
+		            <%}%>
                     <div class="print_box" id="pbox5">
                         <h3>기타자격증</h3>
                         <div class="w_box">
@@ -153,18 +210,22 @@
                         	<p>- 컴퓨터그래픽스운용기능사</p>
 	                    </div>    
                     </div>
-                    <div class="print_box" id="pbox5">
-                        <h3>경력</h3>
-                        <div class="w_box">
-                        	<p>- <%=print_vo.getCareer()%></p>
-	                    </div>    
-                    </div>
-                    <div class="print_box" id="pbox5">
-                        <h3>수상</h3>
-                        <div class="w_box">
-                        	<p>- <%=print_vo.getAward()%></p>
-	                    </div>    
-                    </div>
+                    <%if(print_vo.getCareer() != null){%>
+	                    <div class="print_box" id="pbox5">
+	                        <h3>경력</h3>
+	                        <div class="w_box">
+	                        	<p>- <%=print_vo.getCareer()%></p>
+		                    </div>    
+	                    </div>
+		            <%}%>
+                    <%if(print_vo.getAward() != null){%>
+	                    <div class="print_box" id="pbox5">
+	                        <h3>수상</h3>
+	                        <div class="w_box">
+	                        	<p>- <%=print_vo.getAward()%></p>
+		                    </div>    
+	                    </div>
+		            <%}%>
                     <div class="print_box" id="pbox6">
                         <h3>자기소개서</h3>
                         <div class="w_box">
@@ -176,10 +237,10 @@
 
                     <ul class="print_btns">
                     	<li>
-                    		<a href="#">목록</a>
+                    		<a href="boardJob.jsp">목록</a>
                     	</li>
                     	<li>
-                    		<a href="#">PDF변환</a>
+                    		<a href="#" >PDF변환</a>
                     	</li>
                     	<li>
                     		<a href="#">수정</a>
@@ -256,7 +317,8 @@
 		var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
 		$('.add > div').click(function() {
 			$(this).parent().siblings('ul').append(input);
-		});
+		});		
+		
 	</script>
 </body>
 </html>
