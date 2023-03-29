@@ -28,8 +28,8 @@ public class resumeVO {
 
 	
 	public resumeVO(int resume_num, String user_id, String user_name, String user_tel, String user_email,
-			String date_birth, String hope_area, String resume_title, String addess, String self_introduction,
-			String gender, String school_division, String school_name, String craduation_status, String hope_salary,
+			String date_birth, String hope_area, String resume_title, String address, String self_introduction,
+			String gender, String school_division, String school_name, String graduation_status, String hope_salary,
 			String picture, String file_name, String major, String career, String award, String url, String hope_area2,
 			String on_off) {
 		super();
@@ -41,12 +41,12 @@ public class resumeVO {
 		this.date_birth = date_birth;
 		this.hope_area = hope_area;
 		this.resume_title = resume_title;
-		this.address = addess;
+		this.address = address;
 		this.self_introduction = self_introduction;
 		this.gender = gender;
 		this.school_division = school_division;
 		this.school_name = school_name;
-		this.graduation_status = craduation_status;
+		this.graduation_status = graduation_status;
 		this.hope_salary = hope_salary;
 		this.picture = picture;
 		this.file_name = file_name;
@@ -90,7 +90,7 @@ public class resumeVO {
 		return resume_title;
 	}
 
-	public String getAddess() {
+	public String getAddress() {
 		return address;
 	}
 
@@ -110,7 +110,7 @@ public class resumeVO {
 		return school_name;
 	}
 
-	public String getCraduation_status() {
+	public String getGraduation_status() {
 		return graduation_status;
 	}
 
