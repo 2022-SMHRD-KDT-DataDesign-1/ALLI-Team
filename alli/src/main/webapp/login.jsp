@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.model.userVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -34,6 +35,19 @@
 								<li><input type="submit" value="로그인"></li>
 							</ul>
 						</form>
+ 						<%
+ 							String loginFailed = null; 
+							loginFailed = (String)session.getAttribute("loginFailed");
+							System.out.println("가지고온 값" + loginFailed);
+						%>
+						<% if (loginFailed != null && loginFailed.equals("login.jsp")) { %>
+						    <script>
+						    	alert("아이디 혹은 비밀번호를 다시 확인 해주세요.");
+						    </script>
+						    <%
+						    	loginFailed = null;
+						    %>
+						<% } %>
 						<ul class="login_bottom">
 							<li><a href="#">회원가입</a></li>
 							<li>&#124;</li>
@@ -52,6 +66,19 @@
 								<li><input type="submit" value="로그인"></li>
 							</ul>
 						</form>
+						<%
+							String cmploginFailed = null; 
+							cmploginFailed = (String)session.getAttribute("cmploginFailed");
+							System.out.println("가지고온 값" + cmploginFailed);
+						%>
+						<% if (cmploginFailed != null && cmploginFailed.equals("login.jsp")) { %>
+						    <script>
+						    	alert("아이디 혹은 비밀번호를 다시 확인 해주세요.");
+						    </script>
+						    <%
+						    	cmploginFailed = null;
+						    %>
+						<% } %>
 						<ul class="login_bottom">
 							<li><a href="join.jsp">회원가입</a></li>
 							<li>&#124;</li>
@@ -64,7 +91,6 @@
 	</div>
 	<%@ include file="./include/footer.jsp"%>
 	<script>
-	
         $('.sub_login02 > ul:nth-child(1)>li').click(function(){
             $(this).removeClass('off').addClass('on');
             $('.sub_login02 > ul:nth-child(1) >li').not(this).removeClass('on').addClass('off');
