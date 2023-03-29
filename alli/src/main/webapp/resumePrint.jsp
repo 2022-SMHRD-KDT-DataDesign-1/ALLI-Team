@@ -27,19 +27,27 @@
                     <div class="resume_box rbox2">
                         <div>
                             <section class="col-sm-2 imgUp">
-						    	<div class="imagePreviewPri"></div>
-						 	 </section><!-- col-2 -->
-                            <div class="info1">
-                                <span>주부은</span>
-                                <span>2023.03.02</span>
-                                <span>여자</span>
-                                <span>jubueun@naver.com</span>                                	
-                            </div>
-                            <div class="info1">
-                                <span>010-6792-5045</span>                                	
-								<span>010-5467-1234</span>	
-								<span>광주 북구 일곡동</span>	
-                            </div>
+						   		<div class="imagePreviewPri"></div>
+						  	</section><!-- col-2 -->
+							<div class="info01">
+								<div class="item name">주부은</div>
+								<div class="item sex">여</div>
+								<div class="item year">2023.03.02</div>
+							</div>
+							<div class="info01">
+								<div class="item">
+									<div class="label">휴대폰</div>
+									<div class="value">&#124;</div>
+									<div class="value">010-6792-5045</div>
+								</div>
+								<div class="item">
+									<div class="label">Email</div>
+									<div class="value">&#124;</div>
+									<div class="value">
+										<a href="mailto:jubueun@naver.com">jubueun@naver.com</a>
+									</div>
+								</div>
+							</div>
                         </div>
                     </div>
                     <div class="resume_box rbox3">
@@ -47,37 +55,28 @@
                         <div>
 	                        <div class="rbox3divPri">
 	                        	<p>최종학력</p>
-	                            <p>서울대학교</p>
-	                            <p>화학과</p>
-	                            <p>졸업</p>
-	                            <span>대입검정고시: </span>
-	                            <span>해당없음</span>
-	                        </div>
-	                        <div class="rbox3divPri">
-	                        	<p>경력</p>
-	                            <p>서울대학교</p>
-	                            <p>화학과</p>
-	                            <p>졸업</p>
-	                            <span>대입검정고시: </span>
+	                            <p><span>- </span>서울대학교</p>
+	                            <p><span>- </span>화학과</p>
+	                            <p><span>- </span>졸업</p>
+	                            <span><span>- </span>대입검정고시: </span>
 	                            <span>해당없음</span>
 	                        </div>
 	                        <div class="rbox3divPri">
 	                        	<p>수상</p>
-	                            <p>서울대학교</p>
-	                            <p>화학과</p>
-	                            <p>졸업</p>
-	                            <span>대입검정고시: </span>
-	                            <span>해당없음</span>
+	                            <p><span>- </span>경연대회 대상</p>
+	                            <p><span>- </span>경연대회 금상</p>
+	                            <p><span>- </span>경연대회 동상</p>
+	                            <p> <span>- </span>경연대회 은상</p>
+	                            <p><span>- </span>경연대회 그냥상</p>
 	                        </div>
 	                        <div class="rbox3divPri">
 	                        	<p>기타자격증</p>
-	                            <p>서울대학교</p>
-	                            <p>화학과</p>
-	                            <p>졸업</p>
-	                            <span>대입검정고시: </span>
-	                            <span>해당없음</span>
+	                            <p><span>- </span>TOEIC</p>
+	                            <p><span>- </span>OPIC</p>
+	                            <p><span>- </span>TOEIC Speaking</p>
+	                            <p><span>- </span>운전면허 1종</p>
+	                            <p><span>- </span>운전면허 2종</p>
 	                        </div>
-	                        
                         </div>
                     </div>
                     <div class="resume_box rbox4">
@@ -123,28 +122,11 @@
                             </section>
                         </div>
                     </div>
-                    <div class="resume_box rbox5">
-                        <h3>기타자격증</h3>
-                        <div>
-                        	<ul>
-                        		<li>
-		                            <div>
-		                                <p>
-		                                	운전면허
-		                                	SQLD
-		                                	ADSP
-		                                	AWS
-		                                	Oracle	
-		                                </p>
-		                            </div>
-	                           	</li>
-                            </ul>
-                        </div>
-                    </div>
                     <div class="resume_box rbox6">
                         <h3>경력</h3>
                         <div>
                         	<p>
+                        		<span>- </span>
                                	스마트인재개발원
                                	데이터디자인
                                	2022.12.28
@@ -152,26 +134,16 @@
                                	팀원
                              	Front-End
                             </p>
-                                
-                        </div>
-                    </div>
-                    <div class="resume_box rbox6">
-                        <h3>수상</h3>
-                        <div>
                         	<p>
-                               	Front-End경연대회 대상,
-                               	Front-End경연대회 금상,
-                               	Front-End경연대회 은상,
-                               	Front-End경연대회 동상,
-                               	Front-End박람회 대상,
-                               	Front-End박람회 금상,
-                               	Front-End박람회 은상,
-                               	Front-End박람회 동상,
-                               	Front-End 대통령상,
-                               	Front-End 국무총리상,
-                               	Front-End 장관상
+                        		<span>- </span>
+                               	스마트인재개발원
+                               	인공지능
+                               	2022.12.28
+                               	2023.06.23
+                               	팀장
+                             	Back-End
                             </p>
-                         </div>
+                        </div>
                     </div>
                     <div class="resume_box rbox8">
                         <h3>자기소개서</h3>
@@ -186,35 +158,59 @@
                     </div>
                     <div class="resume_box rbox9">
                         <h3>포트폴리오</h3>
-                        <div>
+                        <table class="tableBox">
+                        	<tr>
+                            	<th>이력서</th>
+                        		<td colspan="3">
+                            		<a href="http://www.google.com" target="_blank">http://www.google.com</a>
+                       			</td>
+                      		</tr>
+                      		<tr></tr>
+                        </table>
+                     </div>
+                        
+                        
+                        
+                        <!-- <div>
                             <input type="file">
                             <div>
                                 <label>URL:</label>
-                                <span>www.google.com</span>
+                                <a href="https://www.naver.com" target="_blank">https://www.naver.com</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="resume_box rbox10">
                         <h3>희망근무조건</h3>
-                        <div>
-                        	<table>
-                        		<tr>
-                        			<td>희망연봉</td>
-                        			<td>희망지역1</td>
-                        			<td>희망지역2</td>
-                        		</tr>
-                        		<tr>
-                        			<td>
-                        				<span>9999</span>
-                        				<span>만원이상</span>
-                        			</td>
-                        			<td>서울</td>
-                        			<td>판교</td>
-                        		</tr>
-                        	</table>
-
-                        </div>
-                    </div>
+						<table class="table table-hopework">
+							<tbody>
+								<tr>
+									<th scope="row">희망연봉</th>
+									<td>서울전지역</td>
+								</tr>
+								<tr>
+									<th scope="row">희망연봉</th>
+									<td>면접 후 결정</td>
+								</tr>
+								<tr>
+									<th scope="row">지원분야</th>
+									<td>
+										<div class="content is-label">
+											<div class="item">
+												<div class="label">직무</div>
+												<div class="value">
+													<ul class="list-hopework">
+														<li>
+															<div class="item">웹프로그래머</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
                     <input type="submit" id="resumeReg_btn" value="이력서 출력">
                 </form>
             </div>
@@ -222,62 +218,69 @@
     </div>
 	<%@ include file="./include/footer.jsp" %>
 	<script>
-	// 개발기술스택 tab 처리
-	    //함수 호출 반복문
-	     for(let i = 0; i < $('.c_btn').length; i++){
-	         tabOpen(i); 
-	     }
-	
-	     //함수에 보관
-	     function tabOpen(e){
-	         $('.c_btn').eq(e).click(function(){
-	        	 $(this).removeClass('choose_off').addClass('choose_on');
-	             $('.c_btn').not(this).removeClass('choose_on').addClass('choose_off');
-	             $('.c_content').eq(e).show();
-	             $('.c_content').not( $('.c_content').eq(e)).hide();
-	         });
-	     }
-	
-	     
-	     
-	 // 이력서사진
-		 $(document).on("click", "i.del" , function() {
-		// 	to remove card
-		  $(this).parent().remove();
-		// to clear image
-		  // $(this).parent().find('.imagePreview').css("background-image","url('')");
+		// 개발기술스택 tab 처리
+		//함수 호출 반복문
+		for (let i = 0; i < $('.c_btn').length; i++) {
+			tabOpen(i);
+		}
+
+		//함수에 보관
+		function tabOpen(e) {
+			$('.c_btn').eq(e)
+					.click(
+							function() {
+								$(this).removeClass('choose_off').addClass(
+										'choose_on');
+								$('.c_btn').not(this).removeClass('choose_on')
+										.addClass('choose_off');
+								$('.c_content').eq(e).show();
+								$('.c_content').not($('.c_content').eq(e))
+										.hide();
+							});
+		}
+
+		// 이력서사진
+		$(document).on("click", "i.del", function() {
+			// 	to remove card
+			$(this).parent().remove();
+			// to clear image
+			// $(this).parent().find('.imagePreview').css("background-image","url('')");
 		});
 		$(function() {
-		    $(document).on("change",".uploadFile", function()
-		    {
-		    		var uploadFile = $(this);
-		        var files = !!this.files ? this.files : [];
-		        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-		 
-		        if (/^image/.test( files[0].type)){ // only image file
-		            var reader = new FileReader(); // instance of the FileReader
-		            reader.readAsDataURL(files[0]); // read the local file
-		 
-		            reader.onloadend = function(){ // set image data as background of div
-		                //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-		uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url("+this.result+")");
-		            }
-		        }
-		      
-		    });
-		});
-		 
-	 
+			$(document).on(
+					"change",
+					".uploadFile",
+					function() {
+						var uploadFile = $(this);
+						var files = !!this.files ? this.files : [];
+						if (!files.length || !window.FileReader)
+							return; // no file selected, or no FileReader support
 
-	 //삭제추가..
-	 $('.delete').click(function(){
-            $(this).parent('li').hide();
-     });
-	 
-	 var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
-	 $('.add > div').click(function(){
-            $(this).parent().siblings('ul').append(input);
-     });
+						if (/^image/.test(files[0].type)) { // only image file
+							var reader = new FileReader(); // instance of the FileReader
+							reader.readAsDataURL(files[0]); // read the local file
+
+							reader.onloadend = function() { // set image data as background of div
+								//alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+								uploadFile.closest(".imgUp").find(
+										'.imagePreview').css(
+										"background-image",
+										"url(" + this.result + ")");
+							}
+						}
+
+					});
+		});
+
+		//삭제추가..
+		$('.delete').click(function() {
+			$(this).parent('li').hide();
+		});
+
+		var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
+		$('.add > div').click(function() {
+			$(this).parent().siblings('ul').append(input);
+		});
 	</script>
 </body>
 </html>
