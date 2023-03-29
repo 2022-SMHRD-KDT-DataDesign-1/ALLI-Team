@@ -1,6 +1,4 @@
 @charset "UTF-8";
-
-
 /*header*/
 header{width:100%;height:50px;background-color: #fff;border-bottom:1px solid #e5e5e5;}
 #h_container{width:1060px;margin:0 auto; display: flex;align-items: center;justify-content:space-between;height:100%;font-size:15px;}
@@ -13,11 +11,13 @@ header{width:100%;height:50px;background-color: #fff;border-bottom:1px solid #e5
 #gnb > li{font-weight:600;}
 #gnb > li:nth-child(3){position: relative}
 #gnb > li:nth-child(3) span{position: absolute;left:0;top:-10px;font-size:10px;zoom:0.8;color:#6c00ff;font-weight:800;}
-#nav{margin-left:130px;display: flex;align-items: center;justify-content:space-between;width:110px;}
-#nav > li{color:#535353;font-weight:600;}
+#nav{margin-left:90px;display: flex;align-items: center;justify-content:space-between;width:auto;}
+#nav > li{color:#535353;font-weight:600;padding:0 3px;}
+.nav_AfterLogin{position:relative;margin-top:12px;}
+.name{position: absolute;left: 0;top: -13px;font-size: 11px;font-weight: 400;}
+.name span{color:#6c00ff;font-weight:600;}
 #h_btn{color:#535353;border-radius: 20px;font-size:12px;padding:4px 8px;border:1px solid #a0a0a0;background-color: #fff;font-weight:600;}
 #h_btn > img{vertical-align: middle;margin-left:3px;}
-
 /*footer*/
 footer{width:100%;height:85px;background-color:#333;display: flex;align-items: center;justify-content:center;font-size: 14px;}
 footer > p{color:#fff;}

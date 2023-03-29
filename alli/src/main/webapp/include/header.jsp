@@ -40,15 +40,12 @@
 	            </li>
 	        </ul>
         <%}else if(login_vo != null){%>
-        	<ul id="nav">
-	            <li>
-	               <%=login_vo.getUser_name() %>
+        	<ul id="nav" class="nav_AfterLogin">
+	            <li class="name">
+	               <span><%=login_vo.getUser_name() %></span>님 환영합니다.
 	            </li>
 	            <li>
-	                &#124;
-	            </li>
-	            <li>
-	                <a href="#">개인정보수정</a>
+	                <a href="LogoutService.do">내정보수정</a>
 	            </li>
 	            <li>
 	                &#124;
