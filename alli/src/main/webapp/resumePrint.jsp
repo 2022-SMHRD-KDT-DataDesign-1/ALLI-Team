@@ -24,13 +24,13 @@
                         	저는 체계적이고 세심한 통찰력을 가지고 있다는 말을 많이 듣습니다.
                         </p>
                     </div>
-                    <div class="resume_box rbox2">
+                    <div class="resume_boxPri rbox2Pri">
                         <div>
                             <section class="col-sm-2 imgUp">
 						   		<div class="imagePreviewPri"></div>
 						  	</section><!-- col-2 -->
 							<div class="info01">
-								<div class="item name">주부은</div>
+								<div class="item namePri">주부은</div>
 								<div class="item sex">여</div>
 								<div class="item year">2023.03.02</div>
 							</div>
@@ -67,7 +67,6 @@
 	                            <p><span>- </span>경연대회 금상</p>
 	                            <p><span>- </span>경연대회 동상</p>
 	                            <p> <span>- </span>경연대회 은상</p>
-	                            <p><span>- </span>경연대회 그냥상</p>
 	                        </div>
 	                        <div class="rbox3divPri">
 	                        	<p>기타자격증</p>
@@ -75,7 +74,6 @@
 	                            <p><span>- </span>OPIC</p>
 	                            <p><span>- </span>TOEIC Speaking</p>
 	                            <p><span>- </span>운전면허 1종</p>
-	                            <p><span>- </span>운전면허 2종</p>
 	                        </div>
                         </div>
                     </div>
