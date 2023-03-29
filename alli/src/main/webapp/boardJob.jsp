@@ -488,7 +488,7 @@
 	<script>
 	// 맞춤기업 추천 서비스
 	    //함수 호출 반복문
-	     for(let i = 0; i < $('.c_btn').length; i++){
+	     /* for(let i = 0; i < $('.c_btn').length; i++){
 	         tabOpen(i); 
 	     }
 	
@@ -508,13 +508,13 @@
 	             function tabOpen2(e){
 	    	    	 $('.chooseBtn').children('input').click(function(){
 	    	    		 console.log('df');
-	    		    	 //$(this).removeClass('choose_tabOff').addClass('choose_tabOn');
-	    	             //$('.chooseBtn').not(this).removeClass('choose_tabOn').addClass('choose_tabOff'); 
+	    		    	 $(this).removeClass('choose_tabOff').addClass('choose_tabOn');
+	    	             $('.chooseBtn').not(this).removeClass('choose_tabOn').addClass('choose_tabOff');
 	             	});
 	    	     }
 	             
 	         });
-	     };
+	     }; */
 	     
 	     
 	</script>
