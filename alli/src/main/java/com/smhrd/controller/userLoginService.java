@@ -28,19 +28,18 @@ public class userLoginService implements Command {
 		login_vo = dao.userLogin(vo);
 
 		if (login_vo != null) {
-
-			System.out.println("성공");
 			HttpSession session = request.getSession();
 			session.setAttribute("login_vo", login_vo);
 			moveURL = "main.jsp";
-
 		} else {
-
+			HttpSession session = request.getSession();
 			System.out.println("실패");
 			moveURL = "login.jsp";
-		}
+			session.setAttribute("loginFailed", moveURL);
+			
+			System.out.println("서비스값" + session.getAttribute("loginFailed"));
 
+		}
 		return moveURL;
 	}
-
 }

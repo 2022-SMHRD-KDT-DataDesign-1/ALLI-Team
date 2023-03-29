@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.smhrd.command.Command;
+import com.smhrd.controller.LogoutService;
 import com.smhrd.controller.cmpJoinService;
 import com.smhrd.controller.cmpLoginService;
 import com.smhrd.controller.userJoinService;
@@ -52,10 +53,14 @@ public class Frontcontroller extends HttpServlet {
 			
 			service = new userLoginService();
 			
+			
 		}else if(result.equals("cmpLoginService.do")) {
 			
 			service = new cmpLoginService();
 			
+		}else if(result.equals("LogoutService.do")) {
+			
+			service = new LogoutService();
 		}
 		String moveURL = service.excute(request, response);
 		response.sendRedirect(moveURL);
