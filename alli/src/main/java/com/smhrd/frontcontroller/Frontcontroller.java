@@ -53,13 +53,11 @@ public class Frontcontroller extends HttpServlet {
 			
 			service = new userLoginService();
 			
-			
 		}else if(result.equals("cmpLoginService.do")) {
 			
 			service = new cmpLoginService();
 			
 		}else if(result.equals("LogoutService.do")) {
-			
 			
 			service = new LogoutService();
 		}

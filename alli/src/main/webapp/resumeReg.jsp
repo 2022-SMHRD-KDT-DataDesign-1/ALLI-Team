@@ -17,11 +17,11 @@
             </div>
             <div class="sub_box">
                 <h2 class="sub_title">이력서 등록</h2>
-                <form>
+                <form action="resumeReqService.do" method="post" id="myForm">
                 <!-- 임의 스타일 수정 추후 확인바람 -->
                 <p align="right" style="font-size: 12px;margin-bottom: 3px"><span class="star">&#42;</span> 필수 입력 정보입니다.</p>
                     <div class="resume_box rbox1">
-                        <input type="text" placeholder="기업에게 알리는 나의 강점,목표,관심분야 등 이력서의 제목을 적어주세요">
+                        <input class="mandatory" type="text" placeholder="기업에게 알리는 나의 강점,목표,관심분야 등 이력서의 제목을 적어주세요">
                     </div>
                     <div class="resume_box rbox2">
                         <h3>인적사항</h3>
@@ -36,25 +36,25 @@
                             <div>
                                 <div class="input readonly">
                                     <label>이름 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder=<%=login_vo.getUser_name() %> name="user_name" readonly>
+                                    <input class="mandatory" type="text" placeholder=<%=login_vo.getUser_name() %> value=<%=login_vo.getUser_name() %> name="user_name" readonly>
                                 </div>
                                 <div class="input readonly">
                                     <label>생년월일 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder=<%=login_vo.getDate_birth() %> name="date_birth" readonly>
+                                    <input class="mandatory" type="text" placeholder=<%=login_vo.getDate_birth() %> value=<%=login_vo.getDate_birth() %> name="date_birth" readonly>
                                 </div>
                                 <div class="input">
                                     <label>성별 <span class="star">&#42;</span></label>
-                                    <input type="text" name="gender">
+                                    <input class="mandatory" type="text" name="gender">
                                 </div>
                                 <div class="input readonly">
                                     <label>이메일<span class="star">&#42;</span></label>
-                                    <input type="email" placeholder=<%=login_vo.getUser_email() %> name="user_email" readonly>
+                                    <input class="mandatory" type="email" placeholder=<%=login_vo.getUser_email() %> value=<%=login_vo.getUser_email() %> name="user_email" readonly>
                                 </div>
                             </div>
                             <div>
                                 <div class="input readonly">
                                     <label>연락처 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder=<%=login_vo.getUser_tel() %> name="user_tel" readonly>
+                                    <input class="mandatory" type="text" placeholder=<%=login_vo.getUser_tel() %> value=<%=login_vo.getUser_tel() %> name="user_tel" readonly>
                                 </div>
                                 <div class="input">
                                     <label>추가연락처</label>
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="input">
                                     <label>주소 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder="Ex:ooo시oo구ooo로" name="address">
+                                    <input class="mandatory" type="text" placeholder="Ex:ooo시oo구ooo로" name="address">
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                         <div>
                             <div class="input">
                                 <div class="label">학교구분<span class="star">&#42;</span></div>
-                                <select name="school_division">
+                                <select name="school_division" class="mandatory">
                                     <option value="고등학교">고등학교</option>
                                     <option value="대학(2,3년)">대학(2,3년)</option>
                                     <option value="대학(4년)">대학(4년)</option>
@@ -80,7 +80,7 @@
                                     <option value="대입검정고시">대입검정고시</option>
                                 </select>
                             </div>
-                            <div class="input">
+                            <div class="input" class="mandatory">
                                 <label>학교명 <span class="star">&#42;</span></label>
                                 <input type="text" placeholder="" name="school_name">
                             </div>
@@ -91,7 +91,7 @@
                             <div class="input">
                                 <div class="label">졸업상태<span class="star">&#42;</span></div>
                                 <!-- 글자 세로로 출력댐 수정필요 -->
-                                <select name="graduation_status">
+                                <select name="graduation_status" class="mandatory">
                                     <option value="졸업">졸업</option>
                                     <option value="졸업예정">졸업예정</option>
                                     <option value="재학중">재학중</option>
@@ -257,7 +257,7 @@
                         <div>
                             <div class="input">
                                 <div class="label">성장과정, 성격의 장단점, 경력사항, 지원동기 및 입사 후 포부 등을 입력해주세요.</div>
-                                <textarea placeholder=""></textarea>
+                                <textarea placeholder="" class="mandatory"></textarea>
                             </div>
                         </div>
                     </div>
@@ -281,7 +281,7 @@
                             </div>
                             <div class="input">
                                 <label>희망지역<span class="star">&#42;</span></label>
-                                <input type="text" placeholder="">
+                                <input type="text" placeholder="" class="mandatory">
                             </div>
                             <div class="input">
                                 <label>희망지역2</label>
@@ -343,17 +343,20 @@
 		 
 	 
 
-	 //삭제추가..
-	 $('.delete').click(function(){
-            $(this).parent('li').hide();
-     });
-	 
-	 var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
-	 $('.add > div').click(function(){
-            $(this).parent().siblings('ul').append(input);
-     });
-	 
-	 // 대입검정고시
+		//삭제추가..
+		$('.add > div')
+				.click(
+						function() {
+							var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
+							$(this).parent().siblings('ul').append(input);
+							input.find('.delete').click(function() {
+								$(this).parent('li').remove();
+							});
+						});
+
+		// 삭제추가 수상
+
+		// 대입검정고시
 
 		var schoolDivision = document
 				.querySelector('select[name="school_division"]');
@@ -373,6 +376,21 @@
 				major.readOnly = false;
 				graduationStatus.value = '';
 				graduationStatus.disabled = false;
+			}
+		});
+
+		const form = document.querySelector('#myForm');
+		form.addEventListener('submit', function(event) {
+			const requiredInputs = document.querySelectorAll('.mandatory');
+			let hasError = false;
+			requiredInputs.forEach(function(input) {
+				if (!input.value) {
+					hasError = true;
+				}
+			});
+			if (hasError) {
+				event.preventDefault(); // form submit 취소
+				alert('모든 필수 입력 항목을 작성해주세요.');
 			}
 		});
 	</script>
