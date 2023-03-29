@@ -231,9 +231,9 @@ footer > p{color:#fff;}
 .dashWhole_top{width:1000px;margin:120px auto;}
 
 .dash_content{padding-bottom:100px;}
-.dashWhole_01{overflow: hidden;margin: 120px auto;width: 1000px;}
+.dashWhole_01{overflow: hidden;margin:0 auto;width: 1000px;margin-bottom:100px;}
 .dashWhole_01 > p{float:left;font-weight: 600;font-size: 22px;width:50%;text-align:right;}
-.dashWhole_01 > box{float:right;}
+.dashWhole_01 > img{margin:0 auto;display:block;}
 .dashWhole_02{width: 1000px; margin: 0 auto;}
 .dashbox{border-bottom: 1px solid #e1E2E3; overflow: hidden;padding-bottom: 60px;margin-bottom: 100px;}
 .dashbox > h2{margin: 15px 0; font-weight: 800; font-size: 18px; display: block;letter-spacing: 1px;}

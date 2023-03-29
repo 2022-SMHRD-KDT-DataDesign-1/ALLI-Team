@@ -31,10 +31,9 @@
 		    <div class="dashWhole">
 		        <div class="dashWhole_01">
 		            <p>
-		                전국의 IT 프로그래밍 언어, 프레임워크, OS<br>워드클라우드로 보는 혁신적인 경험!
+		               <!--  전국의 IT 프로그래밍 언어, 프레임워크, OS 워드클라우드로 보는 혁신적인 경험!--> 
 		            </p>
-		            <!-- <box style="margin: 0 auto;width: 400px;display: block;height: 400px;background-color: blue;"></box> -->
-					<img src="./img/dashWhole_wordcloud.png">
+					<img src="./img/dashWhole_word.png">
 		        </div>
 		        <div class="dashWhole_02">
 		            <div class="dashbox">
