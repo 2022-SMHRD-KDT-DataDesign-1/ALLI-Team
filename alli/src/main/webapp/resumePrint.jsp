@@ -1,9 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.smhrd.model.resumeDAO"%>
+<%@page import="com.smhrd.model.resumeVO"%>
 <%@ include file="./include/metatag.jsp" %>  
 <link href="./css/dashKO.css" rel="stylesheet">
 </head>
 <body>
+	
+	<%
+		String user_id = "print";
+		resumeDAO dao = new resumeDAO();
+		resumeVO print_vo = dao.resume_Print(user_id);
+	%>
+
 	<%@ include file="./include/header.jsp" %>
 	<div id="wrap" class="resumeReg_wrap">
        <div class="sub_top sub_top_a">
@@ -14,7 +23,7 @@
        <div class="resumeReg">
             <div class="member_inform">
                 <div>개인<br>회원</div>
-                <p>주부은님, 반갑습니다.</p>
+                <p><%=print_vo.getUser_name()%>님, 반갑습니다.</p>
             </div>
             <div class="sub_box">
                 <form>
@@ -29,12 +38,12 @@
                         		<img src="./img/R_01.jpg">
                         	</div>
                         	<div>
-                        		<p>주부은 <span>여 1992년 (32세)</span></p>
+                        		<p><%=print_vo.getUser_name()%> <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>년 (32세)</span></p>
                         		<ul>
                         			<li>
                         				<span>연락처</span>
                         				<span>｜</span>
-                        				<span>010-6792-5045</span>
+                        				<span><%=print_vo.getUser_tel()%></span>
                         			</li>
                         			<li>
                         				<span>추가연락처</span>
@@ -44,27 +53,27 @@
                         			<li>
                         				<span>Email</span>
                         				<span>｜</span>
-                        				<span>jubueun@naver.com</span>
+                        				<span><%=print_vo.getUser_email()%></span>
                         			</li>
                         			<li>
                         				<span>주소</span>
                         				<span>｜</span>
-                        				<span>광주 북구 일곡동</span>
+                        				<span><%=print_vo.getAddress()%></span>
                         			</li>
                         			<li>
                         				<span>최종학력</span>
                         				<span>｜</span>
-                        				<span>대입검정고시</span>
+                        				<span><%=print_vo.getSchool_division()%><%=print_vo.getGraduation_status()%></span>
                         			</li>
                         			<li>
                         				<span>희망근무지</span>
                         				<span>｜</span>
-                        				<span>광주, 서울</span>
+                        				<span><%=print_vo.getHope_area()%>, <%=print_vo.getHope_area2()%></span>
                         			</li>
                         			<li>
                         				<span>희망연봉</span>
                         				<span>｜</span>
-                        				<span>1억</span>
+                        				<span><%=print_vo.getHope_salary()%> 만원</span>
                         			</li>
                         		</ul>
                         	</div>
@@ -122,7 +131,7 @@
                         			<span>URL</span>
                        				<span>｜</span>
                        				<span>
-                       					<a href="http://www.google.com" class="URL" target="_blank">http://www.google.com</a>
+                       					<a href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
                        				</span>
                         		</li>
                         		<li>
@@ -147,24 +156,20 @@
                     <div class="print_box" id="pbox5">
                         <h3>경력</h3>
                         <div class="w_box">
-                        	<p>- 2020. 07 ~ 2022. 09 (2년 3개월) / (주)이젠 경영기획팀 주임 / 웹퍼블리셔</p>
+                        	<p>- <%=print_vo.getCareer()%></p>
 	                    </div>    
                     </div>
                     <div class="print_box" id="pbox5">
                         <h3>수상</h3>
                         <div class="w_box">
-                        	<p>-</p>
+                        	<p>- <%=print_vo.getAward()%></p>
 	                    </div>    
                     </div>
                     <div class="print_box" id="pbox6">
                         <h3>자기소개서</h3>
                         <div class="w_box">
                         	<p>
-                               지원동기 및 입사 후 포부<br>
-								작업하는 모든 페이지, 사이트가 제 자식 같습니다. 계속해서 발전하는 직원, 발전하는 회사가 되도록 만들겠습니다.
-								
-								그냥 틀에 박힌 이미지나 플랫폼이 아닌 이를 응용하고 각색하며, 나아가 나만의 사이트로 다양한 이미지 만들기를 가능하게 하는 것이 웹이 가진 매력이라고 생각하여 이 일을 시작하게 되었습니다. 개인의 역량을 강화시키는 부분도 물론 중요하지만, 이를 통해 회사의 발전이 이뤄지는 것이 본질적인 목표라고 생각합니다. 다양한 경험을 쌓으며 역량을 강화시켜 실무에서 보다 트렌디하고 앞서는 기술로 함께 성장하고 싶습니다. 홈페이지를 만드는데 어떠한 일이건 맡겨주시면 시간이 걸리더라도 어떻게든 해내고자 합니다. 현재 재직 중인 회사에서 처음으로 `웹접근성 인증마크 취득`을 작업할 때 내가 이것을 못해내면 어떡하지가 아니라 무슨 수를 써서라도 내 분야는 내가 해결한다는 마인드로 작업했고, 성공했습니다. 처음 취득 할때는 2달 가까이 소요되었고, 5차례의 피드백을 받았으나, 2-3회 부터는 약 2주이내, 1차례의 피드백 이후 취득했습니다.
-								모두가 휴대폰과 웹을 통해 회사를 검색하고 접근하는 시대입니다. 그만큼 홈페이지를 만들고 관리하는 일은 그 회사의 이미지와 역량까지 판단되어 매출로도 연결되는 부분이기에 더욱 강한 책임감과 성실함을 가지고 임하고자 합니다. 감사합니다.
+                               <%=print_vo.getSelf_introduction()%>
                             </p>
 	                    </div>    
                     </div>

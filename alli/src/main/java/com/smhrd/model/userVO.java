@@ -8,7 +8,7 @@ public class userVO {
 	private String user_tel;
 	private String user_email;
 	private String date_birth;
-	private String hope_area;
+	private String hope_area;	
 
 	// 유저(구직자)회원가입 정보
 	public userVO(String user_id, String user_pw, String user_name, String user_tel, String user_email,
