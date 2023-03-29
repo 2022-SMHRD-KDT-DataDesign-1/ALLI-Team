@@ -488,17 +488,17 @@
 	<%@ include file="./include/footer.jsp" %>
 	
 	<script>
-		let isJava = 1 ;
+		let isJava = null ;
 		let Java_ul = document.getElementById('Java_ul')
 		let Python_ul = document.getElementById('Python_ul')
 		let JavaBtn = document.getElementById('Java')
 		let PythonBtn = document.getElementById('Python')
 		document.getElementById('Java').onclick=()=>{
-			isJava = 1 ;
+			isJava = true ;
 			console.log('JavaCk',isJava)
 			console.log(Java_ul)
 			
-			if(isJava==1){
+			if(isJava){
 				Java_ul.style.display = 'block'
 				Python_ul.style.display = 'none'
 			}else {
@@ -508,11 +508,11 @@
 		}
 		
 		document.getElementById('Python').onclick=()=>{
-			isJava = 0 ;
+			isJava = false ;
 			console.log('PythonCk',isJava)
 			console.log(Python_ul)
 			
-			if(isJava==1){
+			if(isJava){
 				Java_ul.style.display = 'block'
 				Python_ul.style.display = 'none'
 				JavaBtn.style.border='1px solid #d3d3d3'
