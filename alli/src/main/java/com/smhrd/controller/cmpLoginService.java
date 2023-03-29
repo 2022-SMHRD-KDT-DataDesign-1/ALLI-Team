@@ -32,7 +32,7 @@ public class cmpLoginService implements Command {
 			System.out.println("성공");
 			HttpSession session = request.getSession();
 			session.setAttribute("cmpLogin_vo", cmpLogin_vo);
-			moveURL = "main.jsp";
+			moveURL = "index.jsp";
 
 		} else {
 
