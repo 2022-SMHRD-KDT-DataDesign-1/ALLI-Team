@@ -1,3 +1,6 @@
+<%@page import="java.time.LocalDate"%>
+<%@page import="com.smhrd.model.resumeVO"%>
+<%@page import="com.smhrd.model.resumeDAO"%>
 <%@page import="com.smhrd.model.developDAO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.model.developVO"%>
@@ -16,15 +19,29 @@
 	// 개발T 가져오기
 	developDAO dao = new developDAO();
 	List<developVO> list = dao.selectDevelopList();
+	
 	 if(list != null) {
 			System.out.println("개발T 성공");
 			// 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
 				request.setAttribute("list", list);
 				//session.setAttribute("list", list);
+				System.out.println(list);
 	} else {
-
 		System.out.println("개발T 실패");
 	}
+	 
+	// 이력서 미리보기(공개)
+	resumeDAO rdao = new resumeDAO();
+	List<resumeVO> rlist = rdao.selectListToEmp();
+	
+	if(rlist != null){
+		System.out.println("이력서 미리보기 성공");
+		request.setAttribute("rlist", rlist);
+		//System.out.println(rlist.get(0).getUser_name());
+	}else{
+		System.out.println("이력서 미리보기 실패");
+	}
+	
 	%>
 	<div id="wrap" class="boardEmp_wrap">
 		<div class="sub_top sub_top_a">
@@ -320,64 +337,46 @@
 				</div>
 				<div class="boardJob02">
 					<ul>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
+						<%
+							//생년월일 > 나이로
+							LocalDate now = LocalDate.now();
+							int year = now.getYear();
+							int age = 0;
+							for(int i =0; i<rlist.size();i++){
+								age = year - Integer.parseInt(rlist.get(i).getDate_birth());
+							}
+						%>
+						<c:forEach items="${rlist}" var="item">
+							<li>
+								<div class="boardJob_listTop">
+									<div>
+										<span class="material-symbols-outlined person_icon">
+											account_circle </span>
+										<!-- <img src=""> -->
+									</div>
+									<a href="#"> <img src="./img/star0.png">
+									</a>
+									<div>
+										<p>
+											<span>${item.user_name}</span><span>(${item.gender}, <%=age%>세)</span>
+										</p>
+										<p>신입</p>
+									</div>
 								</div>
-								<a href="#"> <img src="./img/star0.png">
-								</a>
-								<div>
+								<div class="boardJob_listBtm">
+									<h3>${item.resume_title}</h3>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										${item.school_name}<br> 스킨스쿠버과 졸업
 									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										희망지역:서울<br> 희망연봉:100억
 									</p>
-									<p>신입</p>
+									<p>
+										<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
+									</p>
 								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
+							</li>
+						</c:forEach>
 						<li>
 							<div class="boardJob_listTop">
 								<div>
@@ -407,210 +406,6 @@
 								</p>
 							</div>
 						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star0.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-
 					</ul>
 				</div>
 				<div class="board_list">
