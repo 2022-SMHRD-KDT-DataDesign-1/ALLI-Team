@@ -488,25 +488,44 @@
 	<%@ include file="./include/footer.jsp" %>
 	
 	<script>
-		let isJava = null ;
+		let isJava = 1 ;
+		let Java_ul = document.getElementById('Java_ul')
+		let Python_ul = document.getElementById('Python_ul')
+		let JavaBtn = document.getElementById('Java')
+		let PythonBtn = document.getElementById('Python')
 		document.getElementById('Java').onclick=()=>{
 			isJava = 1 ;
 			console.log('JavaCk',isJava)
-			let Java_ul = document.getElementById('Java_ul')
 			console.log(Java_ul)
+			
+			if(isJava==1){
+				Java_ul.style.display = 'block'
+				Python_ul.style.display = 'none'
+			}else {
+				Java_ul.style.display = 'none'
+				Python_ul.style.display = 'block'
+			}
 		}
 		
 		document.getElementById('Python').onclick=()=>{
 			isJava = 0 ;
 			console.log('PythonCk',isJava)
-			let Python_ul = document.getElementById('Python_ul')
 			console.log(Python_ul)
+			
+			if(isJava==1){
+				Java_ul.style.display = 'block'
+				Python_ul.style.display = 'none'
+				JavaBtn.style.border='1px solid #d3d3d3'
+				PythonBtn.style.border='2px solid #6c00ff'
+			}else {
+				Java_ul.style.display = 'none'
+				Python_ul.style.display = 'block'
+				JavaBtn.style.border='2px solid #6c00ff'
+				PythonBtn.style.border='1px solid #d3d3d3'
+			}
 		}
 		
-		if(isJava==1){
-			let Java_ul = document.getElementById('Java_ul')
-			Java_ul.style.display='block'
-		}
+		
 		
 		document.getElementById('pro_lan').onclick=()=>{
 			console.log('pro_lan_Ck')
