@@ -48,7 +48,7 @@
 	                &#124;
 	            </li>
 	            <li>
-	                <a href="#">개인정보수정</a>
+	                <a href="LogoutService.do">개인정보수정</a>
 	            </li>
 	            <li>
 	                &#124;
@@ -58,23 +58,7 @@
 	            </li>
 	        </ul>
         <%}else if(cmpLogin_vo != null){ %>
-        	<ul id="nav">
-	            <li>
-	               <%=cmpLogin_vo.getCmp_name() %>
-	            </li>
-	            <li>
-	                &#124;
-	            </li>
-	            <li>
-	                <a href="#">개인정보수정</a>
-	            </li>
-	            <li>
-	                &#124;
-	            </li>
-	            <li>
-	                <a href="LogoutService.do">로그아웃</a>
-	            </li>
-	        </ul>
+        
         <%} %>
         <a id="h_btn" href='javascript:showPopUp()'>Site Information<img src="./img/h_btn.png" alt="사이트 안내영상"></a>
     </div>
