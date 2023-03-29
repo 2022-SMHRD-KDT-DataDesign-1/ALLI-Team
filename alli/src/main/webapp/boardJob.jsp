@@ -484,9 +484,10 @@
        </div>
     </div>
 	<%@ include file="./include/footer.jsp" %>
+	
 	<script>
 	// 맞춤기업 추천 서비스
-	    /* //함수 호출 반복문
+	    //함수 호출 반복문
 	     for(let i = 0; i < $('.c_btn').length; i++){
 	         tabOpen(i); 
 	     }
@@ -513,7 +514,7 @@
 	    	     }
 	             
 	         });
-	     } */
+	     };
 	     
 	     
 	</script>
