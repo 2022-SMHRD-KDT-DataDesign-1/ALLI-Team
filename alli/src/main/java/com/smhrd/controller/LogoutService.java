@@ -15,7 +15,7 @@ public class LogoutService implements Command {
 		
 		session.invalidate();
 		
-		String moveURL = "main.jsp";
+		String moveURL = "index.jsp";
 		
 		return moveURL;
 	}

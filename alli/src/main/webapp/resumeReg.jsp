@@ -13,11 +13,13 @@
        <div class="resumeReg">
             <div class="member_inform">
                 <div>개인<br>회원</div>
-                <p>주부은님, 반갑습니다.</p>
+                <p><%=login_vo.getUser_name()%>님, 반갑습니다.</p>
             </div>
             <div class="sub_box">
                 <h2 class="sub_title">이력서 등록</h2>
                 <form>
+                <!-- 임의 스타일 수정 추후 확인바람 -->
+                <p align="right" style="font-size: 12px;margin-bottom: 3px"><span class="star">&#42;</span> 필수 입력 정보입니다.</p>
                     <div class="resume_box rbox1">
                         <input type="text" placeholder="기업에게 알리는 나의 강점,목표,관심분야 등 이력서의 제목을 적어주세요">
                     </div>
@@ -34,33 +36,33 @@
                             <div>
                                 <div class="input readonly">
                                     <label>이름 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder="주부은" readonly>
+                                    <input type="text" placeholder=<%=login_vo.getUser_name() %> name="user_name" readonly>
                                 </div>
                                 <div class="input readonly">
                                     <label>생년월일 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder="2023.03.02" readonly>
-                                </div>
-                                <div class="input readonly">
-                                    <label>성별 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder="여자" readonly>
+                                    <input type="text" placeholder=<%=login_vo.getDate_birth() %> name="date_birth" readonly>
                                 </div>
                                 <div class="input">
-                                    <label>연락처<span class="star">&#42;</span></label>
-                                    <input type="email" placeholder="jubueun@naver.com" value="jubueun@naver.com">
+                                    <label>성별 <span class="star">&#42;</span></label>
+                                    <input type="text" name="gender">
+                                </div>
+                                <div class="input readonly">
+                                    <label>이메일<span class="star">&#42;</span></label>
+                                    <input type="email" placeholder=<%=login_vo.getUser_email() %> name="user_email" readonly>
                                 </div>
                             </div>
                             <div>
-                                <div class="input">
+                                <div class="input readonly">
                                     <label>연락처 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder="010-6792-5045" value="010-6792-5045">
+                                    <input type="text" placeholder=<%=login_vo.getUser_tel() %> name="user_tel" readonly>
                                 </div>
                                 <div class="input">
                                     <label>추가연락처</label>
-                                    <input type="text" placeholder="">
+                                    <input type="text" placeholder="" name="user_tel2">
                                 </div>
                                 <div class="input">
-                                    <label>성별 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder="광주 북구 일곡동" value="광주 북구 일곡동">
+                                    <label>주소 <span class="star">&#42;</span></label>
+                                    <input type="text" placeholder="Ex:ooo시oo구ooo로" name="address">
                                 </div>
                             </div>
                         </div>
@@ -70,31 +72,31 @@
                         <div>
                             <div class="input">
                                 <div class="label">학교구분<span class="star">&#42;</span></div>
-                                <select>
-                                    <option value="">고등학교</option>
-                                    <option value="">대학(2,3년)</option>
-                                    <option value="">대학(4년)</option>
-                                    <option value="">대학원</option>
+                                <select name="school_division">
+                                    <option value="고등학교">고등학교</option>
+                                    <option value="대학(2,3년)">대학(2,3년)</option>
+                                    <option value="대학(4년)">대학(4년)</option>
+                                    <option value="대학원">대학원</option>
+                                    <option value="대입검정고시">대입검정고시</option>
                                 </select>
                             </div>
                             <div class="input">
                                 <label>학교명 <span class="star">&#42;</span></label>
-                                <input type="text" placeholder="">
+                                <input type="text" placeholder="" name="school_name">
                             </div>
                             <div class="input">
                                 <label>전공</label>
-                                <input type="text" placeholder="">
+                                <input type="text" placeholder="" name="major">
                             </div>
                             <div class="input">
                                 <div class="label">졸업상태<span class="star">&#42;</span></div>
-                                <select>
-                                    <option value="">졸업</option>
-                                    <option value="">졸업예정</option>
-                                    <option value="">재학중</option>
+                                <!-- 글자 세로로 출력댐 수정필요 -->
+                                <select name="graduation_status">
+                                    <option value="졸업">졸업</option>
+                                    <option value="졸업예정">졸업예정</option>
+                                    <option value="재학중">재학중</option>
+                                    <option value="대입검정고시">대입검정고시</option>
                                 </select>
-                            </div>
-                            <div >
-                                <input type="checkbox" id="resume_exception"> 대입검정고시
                             </div>
                         </div>
                     </div>
@@ -132,572 +134,12 @@
 														<input type="radio">
 													</div>
 												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Java</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Java</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
                                             </ul>
                                         </li>
                                         <li class="c_content"><!-- 프레임워크 시작 -->
                                             <ul>
 												<li>
 													<p>프레임워크</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Java</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Java</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
 													<div>
 														<input type="radio">
 														<input type="radio">
@@ -716,572 +158,12 @@
 														<input type="radio">
 													</div>
 												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Java</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Java</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
                                             </ul>
                                         </li>
                                         <li class="c_content"><!-- 자격증 시작 -->
                                             <ul>
 												<li>
 													<p>자격증</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Java</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Java</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>JavaScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Python</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C++</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C#</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>PHP</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Swift</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Kotlin</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>TypeScript</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>Red Hat Enterprise Linux</p>
-													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
-													</div>
-												</li>
-												<li>
-													<p>C</p>
 													<div>
 														<input type="radio">
 														<input type="radio">
@@ -1297,24 +179,6 @@
                                     <div>
                                     	<p>
                                     		JAVA [상]
-                                    		<span class="material-symbols-outlined delete_choose">
-                                				Close
-                                			</span>
-                                    	</p>
-                                    	<p>
-                                    		C [상]
-                                    		<span class="material-symbols-outlined delete_choose">
-                                				Close
-                                			</span>
-                                    	</p>
-                                    	<p>
-                                    		SPRING [상]
-                                    		<span class="material-symbols-outlined delete_choose">
-                                				Close
-                                			</span>
-                                    	</p>
-                                    	<p>
-                                    		TypeScript [상]
                                     		<span class="material-symbols-outlined delete_choose">
                                 				Close
                                 			</span>
@@ -1385,7 +249,8 @@
 	                                </span>
 	                                추가
                                 </div>
-                            </div>                        </div>
+                            </div>                        
+                            </div>
                     </div>
                     <div class="resume_box rbox8">
                         <h3>자기소개서</h3>
@@ -1487,6 +352,29 @@
 	 $('.add > div').click(function(){
             $(this).parent().siblings('ul').append(input);
      });
+	 
+	 // 대입검정고시
+
+		var schoolDivision = document
+				.querySelector('select[name="school_division"]');
+		var schoolName = document.querySelector('input[name="school_name"]');
+		var major = document.querySelector('input[name="major"]');
+		var graduationStatus = document
+				.querySelector('select[name="graduation_status"]');
+
+		schoolDivision.addEventListener('change', function() {
+			if (schoolDivision.value === '대입검정고시') {
+				schoolName.readOnly = true;
+				major.readOnly = true;
+				graduationStatus.value = '대입검정고시';
+				graduationStatus.disabled = true;
+			} else {
+				schoolName.readOnly = false;
+				major.readOnly = false;
+				graduationStatus.value = '';
+				graduationStatus.disabled = false;
+			}
+		});
 	</script>
 </body>
 </html>

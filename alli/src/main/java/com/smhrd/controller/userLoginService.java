@@ -30,7 +30,7 @@ public class userLoginService implements Command {
 		if (login_vo != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("login_vo", login_vo);
-			moveURL = "main.jsp";
+			moveURL = "index.jsp";
 		} else {
 			HttpSession session = request.getSession();
 			System.out.println("실패");
