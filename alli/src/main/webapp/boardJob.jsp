@@ -21,15 +21,15 @@
  				<div class="boardJob01">
 	                <div class="chooseJob">
 	                    <ul>
-	                        <li class="c_btn">
+	                        <li class="c_btn" id="pro_lan">
 	                        	<div>프로그래밍 언어</div>
 	                        	<div></div>
 	                        </li>
-	                        <li class="c_btn">
+	                        <li class="c_btn" id="frameWork">
 	                        	<div>프레임워크</div>
 	                        	<div></div>
 	                        </li>
-	                        <li class="c_btn">
+	                        <li class="c_btn" id="OS">
 	                        	<div>OS</div>
 	                        	<div></div>
 	                        </li>
@@ -38,14 +38,14 @@
 	                        <li class="c_content"><!-- 프로그래밍언어 시작 -->
 	                            <ul>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="JAVA">
+	                            		<input type="button" value="JAVA" id="Java">
 	                            	</li>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="PYTHON">
+	                            		<input type="button" value="PYTHON" id="Python">
 	                            	</li>
 	                            </ul>
 	                            <div class="chooseCon">
-		                            <ul>
+		                            <ul id="Java_ul">
 		                            	<li>
 		                            		<div>1</div>
 		                            		<div>(주)페픽</div>
@@ -92,7 +92,7 @@
 		                            		</div>
 		                            	</li>
 		                            </ul>
-		                            <ul>
+		                            <ul id="Python_ul">
 		                            	<li>
 		                            		<div>1</div>
 		                            		<div>(주)파이썬</div>
@@ -357,10 +357,12 @@
 	                </div>
 				</div>
             </div>
+            
+            <!-- 이력서 시작 -->
             <div class="sub_box">
                 <h2 class="sub_title">구직자를 위한 '특별한'IT전문이력서</h2>
                 <p class="sub_title_text">프로그래밍 언어부터 프레임워크, OS .. 개발관련 자격증까지. 나의 기술스택을 한장으로 깔끔하게 정리합니다. 1차 서류통과의 확률을 높여주는 나만의 IT전문이력서!</p>
- 				<a href="#" id="resumeReg_btn">이력서 등록</a>
+ 				<a href="resumeReg.jsp" id="resumeReg_btn">이력서 등록</a>
  				<div class="boardJob02">
 					<ul>
 						<li>
@@ -486,6 +488,40 @@
 	<%@ include file="./include/footer.jsp" %>
 	
 	<script>
+		let isJava = null ;
+		document.getElementById('Java').onclick=()=>{
+			isJava = 1 ;
+			console.log('JavaCk',isJava)
+			let Java_ul = document.getElementById('Java_ul')
+			console.log(Java_ul)
+		}
+		
+		document.getElementById('Python').onclick=()=>{
+			isJava = 0 ;
+			console.log('PythonCk',isJava)
+			let Python_ul = document.getElementById('Python_ul')
+			console.log(Python_ul)
+		}
+		
+		if(isJava==1){
+			let Java_ul = document.getElementById('Java_ul')
+			Java_ul.style.display='block'
+		}
+		
+		document.getElementById('pro_lan').onclick=()=>{
+			console.log('pro_lan_Ck')
+		}
+		
+		document.getElementById('frameWork').onclick=()=>{
+			console.log('frameWork_Ck')
+		}
+		
+		document.getElementById('OS').onclick=()=>{
+			console.log('OS_Ck')
+		}
+	</script>
+	
+	<script>
 	// 맞춤기업 추천 서비스
 	    //함수 호출 반복문
 	     /* for(let i = 0; i < $('.c_btn').length; i++){
@@ -515,8 +551,6 @@
 	             
 	         });
 	     }; */
-	     
-	     
 	</script>
 </body>
 </html>
