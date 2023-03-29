@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="./include/metatag.jsp" %>  
 </head>
 <body>
@@ -13,7 +13,7 @@
        <div class="resumeReg">
             <div class="member_inform">
                 <div>개인<br>회원</div>
-                <p>주부은님, 반갑습니다.</p>
+                <p><%=login_vo.getUser_name() %>님, 반갑습니다.</p>
             </div>
             <div class="sub_box">
                 <h2 class="sub_title">맞춤기업 추천 서비스</h2>
@@ -373,7 +373,7 @@
 									</span>
 									<!-- <img src=""> -->
 								</div>
-								<a href="#"><img src="./img/boardJob_icon.png"></a>
+								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
 										<span>고유빈</span><span>(남,26세)</span>
@@ -398,52 +398,19 @@
 								</p>
 								<p class="boardJob_date">최종수정일 : 23.04.01</p>
 							</div>
-							<div class="boardJob_add">
-								<a href="#">
+							<div class="boardJob_add" id="option">
+								<a href="#" class="closeBtn">
 									<span class="material-symbols-outlined delete">
 		                                Close
 		                            </span>
 								</a>
 								<ul>
-									<li><a href="#">공개이력서로 설정</a></li>
+									<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
+									<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
 									<li><a href="#">PDF 다운로드</a></li>
 									<li><a href="#">수정</a></li>
 									<li><a href="#">삭제</a></li>
 								</ul>
-							</div>
-						</li>
-						<li class="open">
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle
-									</span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"><img src="./img/boardJob_icon.png"></a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>
-										신입
-									</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br>
-									스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br>
-									희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-								<p class="boardJob_date">최종수정일 : 23.04.01</p>
 							</div>
 						</li>
 						<li>
@@ -454,7 +421,7 @@
 									</span>
 									<!-- <img src=""> -->
 								</div>
-								<a href="#"><img src="./img/boardJob_icon.png"></a>
+								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
 										<span>고유빈</span><span>(남,26세)</span>
@@ -478,6 +445,68 @@
 									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
 								</p>
 								<p class="boardJob_date">최종수정일 : 23.04.01</p>
+							</div>
+							<div class="boardJob_add" id="option">
+								<a href="#" class="closeBtn">
+									<span class="material-symbols-outlined delete">
+		                                Close
+		                            </span>
+								</a>
+								<ul>
+									<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
+									<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
+									<li><a href="#">PDF 다운로드</a></li>
+									<li><a href="#">수정</a></li>
+									<li><a href="#">삭제</a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="boardJob_listTop">
+								<div>
+									<span class="material-symbols-outlined person_icon">
+										account_circle
+									</span>
+									<!-- <img src=""> -->
+								</div>
+								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
+								<div>
+									<p>
+										<span>고유빈</span><span>(남,26세)</span>
+									</p>
+									<p>
+										신입
+									</p>
+								</div>
+							</div>
+							<div class="boardJob_listBtm">
+								<h3>뽑지않으면 후회할겁니다</h3>
+								<p>
+									서울대학교(4년)<br>
+									스킨스쿠버과 졸업
+								</p>
+								<p>
+									희망지역:서울<br>
+									희망연봉:100억
+								</p>
+								<p>
+									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
+								</p>
+								<p class="boardJob_date">최종수정일 : 23.04.01</p>
+							</div>
+							<div class="boardJob_add" id="option">
+								<a href="#" class="closeBtn">
+									<span class="material-symbols-outlined delete">
+		                                Close
+		                            </span>
+								</a>
+								<ul>
+									<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
+									<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
+									<li><a href="#">PDF 다운로드</a></li>
+									<li><a href="#">수정</a></li>
+									<li><a href="#">삭제</a></li>
+								</ul>
 							</div>
 						</li>
 					</ul>
@@ -627,6 +656,73 @@
 			Mac_ul.style.display = 'block'
 			WindowBtn.style.border = '1px solid #d3d3d3'
 			MacBtn.style.border = '2px solid #6c00ff'
+		}
+		
+		/* 이력서 영역 */
+		
+		let optionBtn = document.getElementsByClassName('optionBtn')
+		let boardJob_add = document.getElementsByClassName('boardJob_add')
+		let closeBtn = document.getElementsByClassName('closeBtn')
+		let openBoard = document.getElementsByClassName('openBoard')
+		let closeBoard = document.getElementsByClassName('closeBoard')
+		let boardJob_listTop = document.getElementsByClassName('boardJob_listTop')
+		let boardJob_li = document.querySelectorAll('div.boardJob02>ul>li')
+		
+		boardJob_add[0].style.display = 'none'
+		boardJob_add[1].style.display = 'none'
+		boardJob_add[2].style.display = 'none'
+		
+		closeBtn[0].onclick=()=>{
+			boardJob_add[0].style.display= 'none'
+		}
+		closeBtn[1].onclick=()=>{
+			boardJob_add[1].style.display= 'none'
+		}
+		closeBtn[2].onclick=()=>{
+			boardJob_add[2].style.display= 'none'
+		}
+		
+		optionBtn[0].onclick=()=>{
+			console.log("optionBtn[0] click")
+			boardJob_add[0].style.display = 'block'
+			boardJob_add[1].style.display = 'none'
+			boardJob_add[2].style.display = 'none'
+		}
+		
+		optionBtn[1].onclick=()=>{
+			console.log("optionBtn[1] click")
+			boardJob_add[1].style.display = 'block'
+			boardJob_add[0].style.display = 'none'
+			boardJob_add[2].style.display = 'none'
+		}
+		
+		optionBtn[2].onclick=()=>{
+			console.log("optionBtn[2] click")
+			boardJob_add[1].style.display = 'none'
+			boardJob_add[0].style.display = 'none'
+			boardJob_add[2].style.display = 'block'
+		}
+		
+		openBoard[0].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[0])
+			boardJob_li[0].classList.add('open')
+			boardJob_li[1].classList.remove('open')
+			boardJob_li[2].classList.remove('open')
+		}
+		openBoard[1].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[0])
+			boardJob_li[1].classList.add('open')
+			boardJob_li[0].classList.remove('open')
+			boardJob_li[2].classList.remove('open')
+		}
+		openBoard[2].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[0])
+			boardJob_li[2].classList.add('open')
+			boardJob_li[0].classList.remove('open')
+			boardJob_li[1].classList.remove('open')
 		}
 	</script>
 	
