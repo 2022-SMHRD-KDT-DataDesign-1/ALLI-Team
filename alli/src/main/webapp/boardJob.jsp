@@ -516,6 +516,7 @@
     </div>
 	<%@ include file="./include/footer.jsp" %>
 	
+	<!-- 맞춤기업 영역 스크립트 -->
 	<script>
 		let pro_lan = document.getElementById('pro_lan')
 		let frameWork = document.getElementById('frameWork')
@@ -657,9 +658,10 @@
 			WindowBtn.style.border = '1px solid #d3d3d3'
 			MacBtn.style.border = '2px solid #6c00ff'
 		}
-		
-		/* 이력서 영역 */
-		
+		</script>
+	
+	<!-- 이력서 스크립트 -->
+	<script>
 		let optionBtn = document.getElementsByClassName('optionBtn')
 		let boardJob_add = document.getElementsByClassName('boardJob_add')
 		let closeBtn = document.getElementsByClassName('closeBtn')
@@ -671,6 +673,7 @@
 		boardJob_add[0].style.display = 'none'
 		boardJob_add[1].style.display = 'none'
 		boardJob_add[2].style.display = 'none'
+		closeBoard[0].style.display='none'
 		
 		closeBtn[0].onclick=()=>{
 			boardJob_add[0].style.display= 'none'
@@ -709,7 +712,18 @@
 			boardJob_li[0].classList.add('open')
 			boardJob_li[1].classList.remove('open')
 			boardJob_li[2].classList.remove('open')
+			openBoard[0].style.display = 'none'
+			closeBoard[0].style.display = 'block'
 		}
+		
+		closeBoard[0].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[0])
+			boardJob_li[0].classList.remove('open')
+			openBoard[0].style.display = 'block'
+			closeBoard[0].style.display = 'none'
+		}
+		
 		openBoard[1].onclick=()=>{
 			console.log('openBoard click')
 			console.log(boardJob_li[0])
