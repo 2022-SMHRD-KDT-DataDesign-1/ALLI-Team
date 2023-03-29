@@ -17,7 +17,7 @@
                 <p>주부은님, 반갑습니다.</p>
             </div>
             <div class="sub_box">
-                <h2 class="sub_title"></h2>이력서 미리보기</h1>
+                <h2 class="sub_title">이력서 출력</h2>
                 <form>
                     <div class="resume_box rbox1">
                         <p>
@@ -25,7 +25,6 @@
                         </p>
                     </div>
                     <div class="resume_box rbox2">
-                        <h3>인적사항</h3>
                         <div>
                             <section class="col-sm-2 imgUp">
 						    	<div class="imagePreviewPri"></div>
@@ -45,12 +44,40 @@
                     </div>
                     <div class="resume_box rbox3">
                         <h3>최종학력</h3>
-                        <div class="rbox3divPri">
-                            <span>서울대학교</span>
-                            <span>화학과</span>
-                            <span>졸업</span>
-                            <span>대입검정고시: </span>
-                            <span>해당없음</span>
+                        <div>
+	                        <div class="rbox3divPri">
+	                        	<p>최종학력</p>
+	                            <p>서울대학교</p>
+	                            <p>화학과</p>
+	                            <p>졸업</p>
+	                            <span>대입검정고시: </span>
+	                            <span>해당없음</span>
+	                        </div>
+	                        <div class="rbox3divPri">
+	                        	<p>경력</p>
+	                            <p>서울대학교</p>
+	                            <p>화학과</p>
+	                            <p>졸업</p>
+	                            <span>대입검정고시: </span>
+	                            <span>해당없음</span>
+	                        </div>
+	                        <div class="rbox3divPri">
+	                        	<p>수상</p>
+	                            <p>서울대학교</p>
+	                            <p>화학과</p>
+	                            <p>졸업</p>
+	                            <span>대입검정고시: </span>
+	                            <span>해당없음</span>
+	                        </div>
+	                        <div class="rbox3divPri">
+	                        	<p>기타자격증</p>
+	                            <p>서울대학교</p>
+	                            <p>화학과</p>
+	                            <p>졸업</p>
+	                            <span>대입검정고시: </span>
+	                            <span>해당없음</span>
+	                        </div>
+	                        
                         </div>
                     </div>
                     <div class="resume_box rbox4">
@@ -177,24 +204,15 @@
                         			<td>희망지역2</td>
                         		</tr>
                         		<tr>
-                        			<td>9999</td>
+                        			<td>
+                        				<span>9999</span>
+                        				<span>만원이상</span>
+                        			</td>
                         			<td>서울</td>
                         			<td>판교</td>
                         		</tr>
                         	</table>
-                        	<!-- <div>
-                                <label>희망연봉: </label>
-                                <span>9999</span>                        		
-                                <span>만원이상</span>
-                        	</div>
-                        	<div>
-                                <label>희망지역: </label>
-                                <span>서울</span>                        	
-                        	</div>
-                        	<div>
-                                <label>희망지역2: </label>
-                                <span>판교</span>
-                        	</div> -->
+
                         </div>
                     </div>
                     <input type="submit" id="resumeReg_btn" value="이력서 출력">

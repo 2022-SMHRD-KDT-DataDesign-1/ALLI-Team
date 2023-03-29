@@ -16,7 +16,7 @@
                 <p>주부은님, 반갑습니다.</p>
             </div>
             <div class="sub_box">
-                <h2 class="sub_title"></h2>이력서 등록</h1>
+                <h2 class="sub_title">이력서 등록</h2>
                 <form>
                     <div class="resume_box rbox1">
                         <input type="text" placeholder="기업에게 알리는 나의 강점,목표,관심분야 등 이력서의 제목을 적어주세요">
