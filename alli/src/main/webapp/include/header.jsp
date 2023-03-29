@@ -8,26 +8,26 @@
 		cmpVO cmpLogin_vo = (cmpVO)session.getAttribute("cmpLogin_vo");
 	%>
     <div id="h_container">
-        <div id="logo">
-            <a href="#">
-                <img src="./img/logo.png" alt="ALL-IT">
-            </a>
-            <p>
-                개발인력 전문사이트 <span>ALL-IT</span>
-            </p>
-        </div>
-        <ul id="gnb">
-            <li>
-                <a href="#">구직</a>
-            </li>
-            <li>
-                <a href="#">채용</a>
-            </li>
-            <li>
-                <a href="#"><span>NEW</span>TREND</a>
-            </li>
-        </ul>
         <%if(login_vo == null && cmpLogin_vo == null) {%>
+	        <div id="logo">
+	            <a href="#">
+	                <img src="./img/logo.png" alt="ALL-IT">
+	            </a>
+	            <p>
+	                개발인력 전문사이트 <span>ALL-IT</span>
+	            </p>
+	        </div>
+	        <ul id="gnb">
+	            <li>
+	                <a href="#">구직</a>
+	            </li>
+	            <li>
+	                <a href="#">채용</a>
+	            </li>
+	            <li>
+	                <a href="#"><span>NEW</span>TREND</a>
+	            </li>
+	        </ul>
 	        <ul id="nav">
 	            <li>
 	                <a href="join.jsp">회원가입</a>
@@ -40,15 +40,32 @@
 	            </li>
 	        </ul>
         <%}else if(login_vo != null){%>
-        	<ul id="nav">
+        	<div id="logo">
+	            <a href="#">
+	                <img src="./img/logo.png" alt="ALL-IT">
+	            </a>
+	            <p>
+	                개발인력 전문사이트 <span>ALL-IT</span>
+	            </p>
+	        </div>
+	        <ul id="gnb">
 	            <li>
-	               <%=login_vo.getUser_name() %>
+	            	<!-- 수정필요 임시 링크 -->
+	                <a href="resumeReg.jsp">구직</a>
 	            </li>
 	            <li>
-	                &#124;
+	                <a href="#">채용</a>
 	            </li>
 	            <li>
-	                <a href="LogoutService.do">개인정보수정</a>
+	                <a href="#"><span>NEW</span>TREND</a>
+	            </li>
+	        </ul>
+        	<ul id="nav" class="nav_AfterLogin">
+	            <li class="name">
+	               <span><%=login_vo.getUser_name() %></span>님 환영합니다.
+	            </li>
+	            <li>
+	                <a href="#">내정보수정</a>
 	            </li>
 	            <li>
 	                &#124;
@@ -58,7 +75,39 @@
 	            </li>
 	        </ul>
         <%}else if(cmpLogin_vo != null){ %>
-        
+        	<div id="logo">
+	            <a href="#">
+	                <img src="./img/logo.png" alt="ALL-IT">
+	            </a>
+	            <p>
+	                개발인력 전문사이트 <span>ALL-IT</span>
+	            </p>
+	        </div>
+	        <ul id="gnb">
+	            <li>
+	                <a href="#">구직</a>
+	            </li>
+	            <li>
+	                <a href="#">채용</a>
+	            </li>
+	            <li>
+	                <a href="#"><span>NEW</span>TREND</a>
+	            </li>
+	        </ul>
+        	<ul id="nav" class="nav_AfterLogin">
+	            <li class="name">
+	               <span><%=login_vo.getUser_name() %></span>님 환영합니다.
+	            </li>
+	            <li>
+	                <a href="#">내정보수정</a>
+	            </li>
+	            <li>
+	                &#124;
+	            </li>
+	            <li>
+	                <a href="LogoutService.do">로그아웃</a>
+	            </li>
+	        </ul>
         <%} %>
         <a id="h_btn" href='javascript:showPopUp()'>Site Information<img src="./img/h_btn.png" alt="사이트 안내영상"></a>
     </div>

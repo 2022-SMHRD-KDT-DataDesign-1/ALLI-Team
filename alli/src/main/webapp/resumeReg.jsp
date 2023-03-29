@@ -4,6 +4,9 @@
 </head>
 <body>
 	<%@ include file="./include/header.jsp" %>
+	<%
+		
+	%>
 	<div id="wrap" class="resumeReg_wrap">
        <div class="sub_top sub_top_a">
             <div>
@@ -13,7 +16,7 @@
        <div class="resumeReg">
             <div class="member_inform">
                 <div>개인<br>회원</div>
-                <p>주부은님, 반갑습니다.</p>
+                <p><%=login_vo.getUser_name()%>님, 반갑습니다.</p>
             </div>
             <div class="sub_box">
                 <h2 class="sub_title"></h2>이력서 등록</h1>
@@ -34,15 +37,15 @@
                             <div>
                                 <div class="input readonly">
                                     <label>이름 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder="주부은" readonly>
+                                    <input type="text" placeholder=<%=login_vo.getUser_name() %> name="user_name" readonly>
                                 </div>
                                 <div class="input readonly">
                                     <label>생년월일 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder="2023.03.02" readonly>
+                                    <input type="text" placeholder=<%=login_vo.getDate_birth() %> name="date_birth" readonly>
                                 </div>
                                 <div class="input readonly">
                                     <label>성별 <span class="star">&#42;</span></label>
-                                    <input type="text" placeholder="여자" readonly>
+                                    <input type="text" name="gender">
                                 </div>
                                 <div class="input">
                                     <label>연락처<span class="star">&#42;</span></label>
