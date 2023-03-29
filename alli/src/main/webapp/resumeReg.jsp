@@ -222,7 +222,7 @@
                             <span class="material-symbols-outlined delete">
                                 Close
                             </span>
-                            <div class="add">
+                            <div class="add add2">
                             	<div>
 	                                <span class="material-symbols-outlined">
 	                                    add_circle
@@ -242,7 +242,7 @@
                             <span class="material-symbols-outlined delete">
                                 Close
                             </span>
-                            <div class="add">
+                            <div class="add add3">
                             	<div>
 	                                <span class="material-symbols-outlined">
 	                                    add_circle
@@ -301,7 +301,6 @@
 	     for(let i = 0; i < $('.c_btn').length; i++){
 	         tabOpen(i); 
 	     }
-	
 	     //함수에 보관
 	     function tabOpen(e){
 	         $('.c_btn').eq(e).click(function(){
@@ -311,13 +310,11 @@
 	             $('.c_content').not( $('.c_content').eq(e)).hide();
 	         });
 	     }
-	
-	     
-	     
-	 // 이력서사진
-		 $(document).on("click", "i.del" , function() {
+
+	 	// 이력서사진
+		$(document).on("click", "i.del" , function() {
 		// 	to remove card
-		  $(this).parent().remove();
+		$(this).parent().remove();
 		// to clear image
 		  // $(this).parent().find('.imagePreview').css("background-image","url('')");
 		});
@@ -340,24 +337,45 @@
 		      
 		    });
 		});
-		 
-	 
+		// 삭제 및 추가 기타자격증
+		$('.add > div').click(function() {
+			var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
+			$(this).parent().siblings('ul').append(input);
+			input.find('.delete').click(function() {
+				$(this).parent('li').remove();
+			});
+		});
 
-		//삭제추가..
-		$('.add > div')
-				.click(
-						function() {
-							var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
-							$(this).parent().siblings('ul').append(input);
-							input.find('.delete').click(function() {
-								$(this).parent('li').remove();
-							});
-						});
-
-		// 삭제추가 수상
-
+		// 삭제 및 추가 수상
+		$(document).ready(function() {
+		  // 추가 버튼을 누르면 input 클래스를 가진 div를 추가합니다.
+		  $('.add3').click(function() {
+		    var newInput = '<div class="input" style="margin-top: 10px"><div class="label">수상명, 수여기관, 수상연도, 수상내용 등을 입력해주세요.</div><textarea placeholder=""></textarea></div><span class="material-symbols-outlined delete">Close</span>';
+		    $(this).before(newInput);
+		  });
+		  
+		  // 삭제 버튼을 누르면 해당 input 클래스를 가진 div를 삭제합니다.
+ 		  $(document).on('click', '.delete', function() {
+		    $(this).prev('.input').remove();
+		    $(this).remove();
+		  });
+		});
+		
+		// 삭제 및 추가 경력
+		$(document).ready(function() {
+		  // 추가 버튼을 누르면 input 클래스를 가진 div를 추가합니다.
+		  $('.add2').click(function() {
+		    var newInput = '<div class="input" style="margin-top: 10px"><div class="label">회사명, 부서명, 입사년월과 퇴사년월, 직급/직책, 담당직무 등을 입력해주세요.</div><textarea placeholder=""></textarea></div><span class="material-symbols-outlined delete">Close</span>';
+		    $(this).before(newInput);
+		  });
+		  
+		  // 삭제 버튼을 누르면 해당 input 클래스를 가진 div를 삭제합니다.
+		  $(document).on('click', '.delete', function() {
+		    $(this).prev('.input').remove();
+		    $(this).remove();
+		  });
+		});
 		// 대입검정고시
-
 		var schoolDivision = document
 				.querySelector('select[name="school_division"]');
 		var schoolName = document.querySelector('input[name="school_name"]');
@@ -378,7 +396,6 @@
 				graduationStatus.disabled = false;
 			}
 		});
-
 		const form = document.querySelector('#myForm');
 		form.addEventListener('submit', function(event) {
 			const requiredInputs = document.querySelectorAll('.mandatory');
