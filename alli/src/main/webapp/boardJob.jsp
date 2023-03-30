@@ -15,6 +15,8 @@
                 <div>개인<br>회원</div>
                 <p><%=login_vo.getUser_name() %>님, 반갑습니다.</p>
             </div>
+            
+            <!-- 기업추천 시작 -->
             <div class="sub_box">
                 <h2 class="sub_title">맞춤기업 추천 서비스</h2>
                 <p class="sub_title_text">이력서에 기재한 기술스택을 바탕으로 맞춤기업을 추천해드립니다. 나와 맞는 기업을 확인해보세요. 공개이력서 기준으로 추천되며, 이력서가 없거나 모두 비공개하는 경우 추천되지 않습니다.</p>
@@ -376,7 +378,7 @@
 								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										<span><%=login_vo.getUser_name() %></span><span>(남,26세)</span>
 									</p>
 									<p>
 										신입
@@ -424,7 +426,7 @@
 								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										<span><%=login_vo.getUser_name() %></span><span>(남,26세)</span>
 									</p>
 									<p>
 										신입
@@ -472,7 +474,7 @@
 								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										<span><%=login_vo.getUser_name() %></span><span>(남,26세)</span>
 									</p>
 									<p>
 										신입
@@ -673,7 +675,22 @@
 		boardJob_add[0].style.display = 'none'
 		boardJob_add[1].style.display = 'none'
 		boardJob_add[2].style.display = 'none'
+		
+		/* if(closeBoard[0]).style.display.equals('block')){
+			closeBoard[1]).style.display = 'none'
+			closeBoard[2]).style.display = 'none'
+		}else if(closeBoard[1]).style.display.equals('block')){
+			closeBoard[0]).style.display = 'none'
+			closeBoard[2]).style.display = 'none'
+		}else if(closeBoard[2]).style.display.equals('block')){
+			closeBoard[0]).style.display = 'none'
+			closeBoard[1]).style.display = 'none'
+		} */
+		
+		
 		closeBoard[0].style.display='none'
+		closeBoard[1].style.display='none'
+		closeBoard[2].style.display='none'
 		
 		closeBtn[0].onclick=()=>{
 			boardJob_add[0].style.display= 'none'
@@ -713,7 +730,11 @@
 			boardJob_li[1].classList.remove('open')
 			boardJob_li[2].classList.remove('open')
 			openBoard[0].style.display = 'none'
+			openBoard[1].style.display = 'block'
+			openBoard[2].style.display = 'block'
 			closeBoard[0].style.display = 'block'
+			closeBoard[1].style.display = 'none'
+			closeBoard[2].style.display = 'none'
 		}
 		
 		closeBoard[0].onclick=()=>{
@@ -730,13 +751,42 @@
 			boardJob_li[1].classList.add('open')
 			boardJob_li[0].classList.remove('open')
 			boardJob_li[2].classList.remove('open')
+			openBoard[1].style.display = 'none'
+			openBoard[0].style.display = 'block'
+			openBoard[2].style.display = 'block'
+			closeBoard[1].style.display = 'block'
+			closeBoard[0].style.display = 'none'
+			closeBoard[2].style.display = 'none'
 		}
+		
+		closeBoard[1].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[1])
+			boardJob_li[1].classList.remove('open')
+			openBoard[1].style.display = 'block'
+			closeBoard[1].style.display = 'none'
+		}
+		
 		openBoard[2].onclick=()=>{
 			console.log('openBoard click')
 			console.log(boardJob_li[0])
 			boardJob_li[2].classList.add('open')
 			boardJob_li[0].classList.remove('open')
 			boardJob_li[1].classList.remove('open')
+			openBoard[2].style.display = 'none'
+			openBoard[0].style.display = 'block'
+			openBoard[1].style.display = 'block'
+			closeBoard[2].style.display = 'block'
+			closeBoard[0].style.display = 'none'
+			closeBoard[1].style.display = 'none'
+		}
+		
+		closeBoard[2].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[2])
+			boardJob_li[2].classList.remove('open')
+			openBoard[2].style.display = 'block'
+			closeBoard[2].style.display = 'none'
 		}
 	</script>
 	
