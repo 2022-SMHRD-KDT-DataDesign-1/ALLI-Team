@@ -36,17 +36,11 @@ public class resumeVO {
 		
 	}
 	
-	//기업게시판에 이력서미리보기
-	
-	public resumeVO() {
-		
-	}
-	
 	public resumeVO(BigDecimal resume_num, String user_id, String user_name, String user_tel, String user_email,
 			String date_birth, String hope_area, String resume_title, String address, String self_introduction,
 			String gender, Timestamp cre_date, String school_division, String school_name, String graduation_status, String hope_salary,
-			String picture, String file_name, String major, String career, String award, String url, String hope_area2,
-			String on_off) {
+		String picture, String file_name, String major, String career, String award, String url, String hope_area2,
+			String on_off, String career_date) {
 		super();
 		this.resume_num = resume_num;
 		this.user_id = user_id;
@@ -58,7 +52,7 @@ public class resumeVO {
 		this.resume_title = resume_title;
 		this.address = address;
 		this.self_introduction = self_introduction;
-		this.gender = gender;
+	    this.gender = gender;
 		this.cre_date = cre_date;
 		this.school_division = school_division;
 		this.school_name = school_name;
@@ -179,6 +173,4 @@ public class resumeVO {
 	public String getCareer_date() {
 		return career_date;
 	}
-	
-	
 }
