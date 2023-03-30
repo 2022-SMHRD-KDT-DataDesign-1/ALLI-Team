@@ -31,6 +31,10 @@ public class resumeVO {
 	private String on_off;
 	private String user_tel2;
 
+	public resumeVO() {
+		
+	}
+	
 	//기업게시판에 이력서미리보기
 	
 	public resumeVO(BigDecimal resume_num, String user_id, String user_name, String user_tel, String user_email,

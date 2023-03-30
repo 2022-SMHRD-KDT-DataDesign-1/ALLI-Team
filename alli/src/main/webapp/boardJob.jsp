@@ -1,9 +1,44 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="./include/metatag.jsp" %>  
 </head>
 <body>
 	<%@ include file="./include/header.jsp" %>
+	<!-- 생년월일 나이 변환 스크립틀릿 -->
+	<%  
+		// 사용자의 생년월일 정보를 세션의 login_vo에서 가져옴
+		String birth = (String)login_vo.getDate_birth();
+		System.out.println(birth); // ex) 940911
+		// 현재 날짜를 초기화
+		Date date = new Date(); // 날짜형 데이터임
+		System.out.println(date);
+		SimpleDateFormat format = new SimpleDateFormat("yymmdd"); // yymmdd형으로 전환
+		String str = format.format(date); // yymmdd형의 문자형으로 전환
+		System.out.println(str);
+		String birth_y = birth.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
+		System.out.println(birth_y);
+		String date_y = str.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
+		System.out.println(date_y);
+		int birth_y_int = Integer.parseInt(birth_y); // 문자열을 정수형으로 바꾼다.
+		int date_y_int = Integer.parseInt(date_y); // 문자열을 정수형으로 바꾼다.
+		
+		// 생년월일의 연도가 현재 연도보다 작으면 2000을 더하고 크면 1900을 더해서
+		// 생년월일 연도 추출
+		if(birth_y_int>date_y_int){
+			birth_y_int += 1900;
+		}else{
+			birth_y_int += 2000;
+		};
+		
+		date_y_int += 2000 ; // 2000을 더해서 2023의 형태로
+		System.out.println(date_y_int);
+		System.out.println(birth_y_int);
+		int age = date_y_int - birth_y_int + 1 ; // 현재 연도에서 생년 연도를 빼서 나이 계산
+		System.out.println(age);
+	%>
 	<div id="wrap" class="boardJob_wrap">
        <div class="sub_top sub_top_a">
             <div>
@@ -378,7 +413,7 @@
 								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
-										<span><%=login_vo.getUser_name() %></span><span>(남,26세)</span>
+										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
 									</p>
 									<p>
 										신입
@@ -426,7 +461,7 @@
 								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
-										<span><%=login_vo.getUser_name() %></span><span>(남,26세)</span>
+										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
 									</p>
 									<p>
 										신입
@@ -474,7 +509,7 @@
 								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
-										<span><%=login_vo.getUser_name() %></span><span>(남,26세)</span>
+										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
 									</p>
 									<p>
 										신입
@@ -664,6 +699,7 @@
 	
 	<!-- 이력서 스크립트 -->
 	<script>
+		
 		let optionBtn = document.getElementsByClassName('optionBtn')
 		let boardJob_add = document.getElementsByClassName('boardJob_add')
 		let closeBtn = document.getElementsByClassName('closeBtn')
