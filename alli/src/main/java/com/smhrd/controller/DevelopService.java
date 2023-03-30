@@ -14,21 +14,18 @@ public class DevelopService  implements Command{
 	
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		String moveURL="";
-		developDAO dao = new developDAO();
-		List<developVO> list = dao.selectDevelopList();
-		
-		if(list != null) {
-			System.out.println("개발T 성공");
-			HttpSession session = request.getSession();
-			session.setAttribute("developList", list);
-//			request.setAttribute("developList", list);
-			moveURL ="boardEmp.jsp";
-
-		} else {
-
-			System.out.println("개발T 실패");
+		/*
+		 * String moveURL=""; developDAO dao = new developDAO(); List<developVO> list =
+		 * dao.selectDevelopList();
+		 * 
+		 * if(list != null) { System.out.println("개발T 성공"); HttpSession session =
+		 * request.getSession(); session.setAttribute("developList", list); moveURL
+		 * ="boardEmp.jsp";
+		 * 
+		 * } else {
+		 * 
+		 * System.out.println("개발T 실패"); }
+		 */
+		return null;
 		}
-		return moveURL;
-	}
 }

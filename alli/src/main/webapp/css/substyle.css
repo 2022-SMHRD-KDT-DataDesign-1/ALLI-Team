@@ -175,7 +175,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 .choose > ul:nth-child(2) > li:nth-child(n+2){display:none;}
 .choose > ul:nth-child(2) > li > ul{overflow:hidden;}
 .choose > ul:nth-child(2) > li > ul > li{width:32%;float:left;padding-top:8px;}
-.choose > ul:nth-child(2) > li > ul > li:nth-child(-n+4){padding-top:0;}
+.choose > ul:nth-child(2) > li > ul > li:nth-child(-n+3){padding-top:0;}
 .choose > ul:nth-child(2) > li > ul > li:nth-child(3n-1),.choose > ul:nth-child(2) > li > ul > li:nth-child(3n+1){margin-right:2%;}
 .choose > ul:nth-child(2) > li > ul > li >p{font-size: 14px;color: #424242;float:left;font-weight:600;margin-right:7px;}
 .choose > ul:nth-child(2) > li > ul > li >div{float:left;}
