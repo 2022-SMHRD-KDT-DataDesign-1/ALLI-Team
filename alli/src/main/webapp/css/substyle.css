@@ -329,9 +329,10 @@ box-sizing:border-box;display: inline-block;float:left;}
 .boardJob_wrap #resumeReg_btn{width: 64px;font-size: 14px;position: absolute;right: 0;top: 0;margin: 0;padding:8px 15px;}
 .boardJob02{width:100%;height:auto;background:#f6f7f9;margin-top:10px;}
 .boardJob02 > ul{box-sizing: border-box;overflow:hidden;padding: 12px 12px 30px 12px;}
-.boardJob02 > ul > li{margin-right: 1%;width: 19%;background: #fff;border: 1px solid #c5c5c5;border-radius: 10px;float:left;position: relative;font-size: 13px;line-height: 1.2;padding: 11px;box-sizing: border-box;}
+.boardJob02 > ul > li{margin-right: 1%;width: 19%;background: #fff;border: 1px solid #c5c5c5;border-radius: 10px;float:left;position: relative;font-size: 13px;line-height: 1.2;padding: 11px;box-sizing: border-box;min-height: 190.56px;}
 .boardJob_listTop{overflow: hidden;position: relative;}
 .boardJob_listTop > div:nth-of-type(1){width: 40px;height: 40px;border-radius: 50px;float: left;overflow:hidden;}
+.boardJob_listTop > div:nth-of-type(1) > img{display: block;width: 100%;}
 .boardJob_listTop a{display:block;position: absolute;right: -5px;top: -1px;padding: 5px 8px;}
 .boardJob_listTop > div:nth-of-type(2){float: left;margin-top: 6px;margin-left: 5px;}
 .boardJob_listTop > div:nth-of-type(2) > p:nth-child(1) > span:nth-child(1){font-weight:700;}
