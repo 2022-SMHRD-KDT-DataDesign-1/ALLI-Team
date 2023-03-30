@@ -1,4 +1,5 @@
-<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.smhrd.model.resumeVO"%>
 <%@page import="com.smhrd.model.resumeDAO"%>
 <%@page import="com.smhrd.model.developDAO"%>
@@ -42,6 +43,38 @@
 		System.out.println("이력서 미리보기 실패");
 	}
 	
+	// 이력서 미리보기(나이변경)
+	int age = 0;
+	Date date = new Date(); // 날짜형 데이터임
+	for(int i = 0; i<rlist.size();i++){
+	// 사용자의 생년월일 정보를 세션의 login_vo에서 가져옴
+      String birth = rlist.get(i).getDate_birth();
+      System.out.println(birth); // ex) 940911
+      // 현재 날짜를 초기화
+      System.out.println(date);
+      SimpleDateFormat format = new SimpleDateFormat("yymmdd"); // yymmdd형으로 전환
+      String str = format.format(date); // yymmdd형의 문자형으로 전환
+      System.out.println(str);
+      String birth_y = birth.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
+      System.out.println(birth_y);
+      String date_y = str.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
+      System.out.println(date_y);
+      int birth_y_int = Integer.parseInt(birth_y); // 문자열을 정수형으로 바꾼다.
+      int date_y_int = Integer.parseInt(date_y)+2000; // 문자열을 정수형으로 바꾸고 2000을 더해서 2023의 형태로
+      
+      // 생년월일의 연도가 현재 연도보다 작으면 2000을 더하고 크면 1900을 더해서
+      // 생년월일 연도 추출
+      if(birth_y_int<date_y_int){
+         birth_y_int += 1900;
+      }else{
+         birth_y_int += 2000;
+      };
+      
+      System.out.println(date_y_int);
+      System.out.println(birth_y_int);
+      age = date_y_int - birth_y_int + 1 ; // 현재 연도에서 생년 연도를 빼서 나이 계산
+      System.out.println(age);
+	}
 	%>
 	<div id="wrap" class="boardEmp_wrap">
 		<div class="sub_top sub_top_a">
@@ -337,39 +370,57 @@
 				</div>
 				<div class="boardJob02">
 					<ul>
-						<%
-							//생년월일 > 나이로
-							LocalDate now = LocalDate.now();
-							int year = now.getYear();
-							int age = 0;
-							for(int i =0; i<rlist.size();i++){
-								age = year - Integer.parseInt(rlist.get(i).getDate_birth());
-							}
-						%>
 						<c:forEach items="${rlist}" var="item">
 							<li>
 								<div class="boardJob_listTop">
 									<div>
-										<span class="material-symbols-outlined person_icon">
-											account_circle </span>
-										<!-- <img src=""> -->
+										<!-- 사진구분 -->
+											<c:choose> 
+										         <c:when test = "${item.picture ne null }">
+										            <img src="${item.picture}">
+										         </c:when>
+										         <c:otherwise>
+										         	<span class="material-symbols-outlined person_icon">
+														account_circle
+													</span>
+										         </c:otherwise>
+										     </c:choose>
 									</div>
 									<a href="#"> <img src="./img/star0.png">
 									</a>
 									<div>
 										<p>
-											<span>${item.user_name}</span><span>(${item.gender}, <%=age%>세)</span>
+											<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
 										</p>
-										<p>신입</p>
+										<p>
+											${item.career_date}
+										</p>
 									</div>
 								</div>
 								<div class="boardJob_listBtm">
 									<h3>${item.resume_title}</h3>
 									<p>
-										${item.school_name}<br> 스킨스쿠버과 졸업
+										${item.school_name}
+										<!-- 학교구분 -->
+											<c:choose> 
+										         <c:when test = "${item.school_division == '대학(4년)'}">
+										            (4년)
+										         </c:when>
+										         <c:when test = "${item.school_division == '대학(2,3년)'}">
+										            (2,3년)
+										         </c:when>
+										         <c:when test = "${item.school_division == '대입검정고시'}">
+										            대입검정고시(검정고시)<br>
+										            졸업
+										         </c:when>
+										         <c:otherwise>
+										         	(${item.school_division})
+										         </c:otherwise>
+										     </c:choose>
+										<br> ${item.major} ${item.graduation_status}
 									</p>
 									<p>
-										희망지역:서울<br> 희망연봉:100억
+										희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
 									</p>
 									<p>
 										<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
@@ -377,35 +428,6 @@
 								</div>
 							</li>
 						</c:forEach>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
 					</ul>
 				</div>
 				<div class="board_list">
