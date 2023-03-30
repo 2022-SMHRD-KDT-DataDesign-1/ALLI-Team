@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectListToEmp" resultType="resumeVO">
-		select * from T_RESUME WHERE on_off = 'on'
+		select * from T_RESUME WHERE on_off = 'on' order by resume_num desc
 	</select>
 
 </mapper>

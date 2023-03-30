@@ -11,10 +11,10 @@
 <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
-	
+
 	<%
 
-		BigDecimal resume_num = new BigDecimal(253);
+		BigDecimal resume_num = new BigDecimal(253); //253 270
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(resume_num);
 		LocalDate now = LocalDate.now();
@@ -47,177 +47,176 @@
 			 <%} %>
 	<%} %>
 
-	<%@ include file="./include/header.jsp" %>
-	<div id="wrap" class="resumeReg_wrap">
-		<div class="sub_top sub_top_a">
-			<div>
-				<p>
-					구직을 위한, <img src="./img/logo_w.png">
-				</p>
-			</div>
-		</div>
-		<div class="resumeReg">
-			<div class="member_inform">
-				<div>
-					개인<br>회원
-				</div>
-				<p><%=print_vo.getUser_name()%>님, 반갑습니다.
-				</p>
-			</div>
-			<div class="sub_box">
-				<form>
-					<div id="resumePDF">
-						<div class="print_box" id="pbox1">
-							<p>취미는 백엔드개발인 3년차 웹퍼블리셔입니다.</p>
-						</div>
-						<div class="print_box" id="pbox2">
-							<div class="w_box">
-								<div>
-									<img src="./img/R_01.jpg">
-								</div>
-								<div>
-									<p><%=print_vo.getUser_name()%>
-										<span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>
-											(만 <%=age%>세)</span>
-									</p>
-									<ul>
-										<li><span>연락처</span> <span>｜</span> <span><%=print_vo.getUser_tel()%></span>
-										</li>
-										<li><span>추가연락처</span> <span>｜</span> <span> <%if(print_vo.getUser_tel2() == null){%>
-												<span>-</span> <%}else{%> <%=print_vo.getUser_tel2() %> <%}%>
-										</span></li>
-										<li><span>Email</span> <span>｜</span> <span><%=print_vo.getUser_email()%></span>
-										</li>
-										<li><span>주소</span> <span>｜</span> <span><%=print_vo.getAddress()%></span>
-										</li>
-										<li><span>최종학력</span> <span>｜</span> <span><%=print_vo.getSchool_division()%>
-												<%=print_vo.getGraduation_status()%></span></li>
-										<li><span>희망근무지</span> <span>｜</span> <span><%=print_vo.getHope_area()%>
-												<%if(print_vo.getHope_area2() == null){%> <span> </span> <%}else{%>
-												, <%=print_vo.getHope_area2()%> <%}%> </span></li>
-										<li><span>희망연봉</span> <span>｜</span> <span> <%if(print_vo.getHope_salary() == null){%>
-												<span>-</span> <%}else{%> <%=print_vo.getHope_salary()%> 만원 <%}%>
-										</span></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="print_box" id="pbox3">
-							<h3>개발기술스택</h3>
-							<div class="w_box">
-								<ul>
-									<li><span>프로그래밍 언어</span> <span>｜</span>
-										<div>
-											<span>Java[상]</span> <span>Python[상]</span> <span>JSP[상]</span>
-											<span>HTML,CSS[상]</span> <span>servlet[상]</span>
-										</div>
-									</li>
-									<li><span>프레임워크</span> <span>｜</span>
-										<div>
-											<span>Spring[상]</span> <span>Eclipse[상]</span> <span>Visual
-												Studio Code[상]</span> <span>Intellij[상]</span>
-										</div>
-									</li>
-									<li><span>OS</span> <span>｜</span>
-										<div>
-											<span>Windows[상]</span>
+   <%@ include file="./include/header.jsp" %>
+   <div id="wrap" class="resumeReg_wrap">
+      <div class="sub_top sub_top_a">
+         <div>
+            <p>
+               구직을 위한, <img src="./img/logo_w.png">
+            </p>
+         </div>
+      </div>
+      <div class="resumeReg">
+         <div class="member_inform">
+            <div>
+               개인<br>회원
+            </div>
+            <p><%=print_vo.getUser_name()%>님, 반갑습니다.
+            </p>
+         </div>
+         <div class="sub_box">
+            <form>
+               <div id="resumePDF">
+                  <div class="print_box" id="pbox1">
+                     <p>취미는 백엔드개발인 3년차 웹퍼블리셔입니다.</p>
+                  </div>
+                  <div class="print_box" id="pbox2">
+                     <div class="w_box">
+                        <div>
+                           <img src="./img/R_01.jpg">
+                        </div>
+                        <div>
+                           <p><%=print_vo.getUser_name()%>
+                              <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>
+                                 (만 <%=age%>세)</span>
+                           </p>
+                           <ul>
+                              <li><span>연락처</span> <span>｜</span> <span><%=print_vo.getUser_tel()%></span>
+                              </li>
+                              <li><span>추가연락처</span> <span>｜</span> <span> <%if(print_vo.getUser_tel2() == null){%>
+                                    <span>-</span> <%}else{%> <%=print_vo.getUser_tel2() %> <%}%>
+                              </span></li>
+                              <li><span>Email</span> <span>｜</span> <span><%=print_vo.getUser_email()%></span>
+                              </li>
+                              <li><span>주소</span> <span>｜</span> <span><%=print_vo.getAddress()%></span>
+                              </li>
+                              <li><span>최종학력</span> <span>｜</span> <span><%=print_vo.getSchool_division()%>
+                                    <%=print_vo.getGraduation_status()%></span></li>
+                              <li><span>희망근무지</span> <span>｜</span> <span><%=print_vo.getHope_area()%>
+                                    <%if(print_vo.getHope_area2() == null){%> <span> </span> <%}else{%>
+                                    , <%=print_vo.getHope_area2()%> <%}%> </span></li>
+                              <li><span>희망연봉</span> <span>｜</span> <span> <%if(print_vo.getHope_salary() == null){%>
+                                    <span>-</span> <%}else{%> <%=print_vo.getHope_salary()%> 만원 <%}%>
+                              </span></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="print_box" id="pbox3">
+                     <h3>개발기술스택</h3>
+                     <div class="w_box">
+                        <ul>
+                           <li><span>프로그래밍 언어</span> <span>｜</span>
+                              <div>
+                                 <span>Java[상]</span> <span>Python[상]</span> <span>JSP[상]</span>
+                                 <span>HTML,CSS[상]</span> <span>servlet[상]</span>
+                              </div>
+                           </li>
+                           <li><span>프레임워크</span> <span>｜</span>
+                              <div>
+                                 <span>Spring[상]</span> <span>Eclipse[상]</span> <span>Visual
+                                    Studio Code[상]</span> <span>Intellij[상]</span>
+                              </div>
+                           </li>
+                           <li><span>OS</span> <span>｜</span>
+                              <div>
+                                 <span>Windows[상]</span>
 
-										</div>
-									</li>
-									<li><span>자격증</span> <span>｜</span>
-										<div>
-											<span>정보처리기사</span> <span>SQLD</span>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<%if(print_vo.getFile_name()!= null && print_vo.getUrl() != null){%>
-							<div class="print_box" id="pbox4">
-								<h3>포트폴리오</h3>
-								<div class="w_box">
-									<ul>
-										<li><span>URL</span> <span>｜</span> <span> <a
-												href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
-										</span></li>
-										<li><span>파일</span> <span>｜</span> <span> <%=print_vo.getFile_name() %>
-												<a href="#" class="download"> 다운로드</a>
-										</span></li>
-									</ul>
-								</div>
-							</div>
-						<%}else if(print_vo.getFile_name()!= null || print_vo.getUrl() != null){%>
-							<%if(print_vo.getFile_name() != null){ %>
-							<div class="print_box" id="pbox4">
-								<h3>포트폴리오</h3>
-								<div class="w_box">
-									<ul>
-										<li><span>파일</span> <span>｜</span> <span> <a
-												href="#" class="download"><%=print_vo.getFile_name() %>
-													다운로드</a>
-										</span></li>
-									</ul>
-								</div>
-							</div>
-							<%}else{%>
-							<div class="print_box" id="pbox4">
-								<h3>포트폴리오</h3>
-								<div class="w_box">
-									<ul>
-										<li><span>URL</span> <span>｜</span> <span> <a
-												href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
-										</span></li>
-									</ul>
-								</div>
-							</div>
-							<%}%>
-						<%}%>						
-						<div class="print_box" id="pbox5">
-							<h3>기타자격증</h3>
-							<div class="w_box">
-								<p>- 자동차운전면허</p>
-								<p>- 웹디자인기능사</p>
-								<p>- (국가공인)GTQ1급</p>
-								<p>- 컴퓨터그래픽스운용기능사</p>
-							</div>
-						</div>
-						<%if(print_vo.getCareer() != null){%>
-						<div class="print_box" id="pbox5">
-							<h3>경력</h3>
-							<div class="w_box">
-								<p>- <%=print_vo.getCareer()%></p>
-							</div>
-						</div>
-						<%}%>
-						<%if(print_vo.getAward() != null){%>
-						<div class="print_box" id="pbox5">
-							<h3>수상</h3>
-							<div class="w_box">
-								<p>- <%=print_vo.getAward()%></p>
-							</div>
-						</div>
-						<%}%>
-						<div class="print_box" id="pbox6">
-							<h3>자기소개서</h3>
-							<div class="w_box">
-								<p>
-									<%=print_vo.getSelf_introduction()%>
-								</p>
-							</div>
-						</div>
-					</div>
-					<ul class="print_btns">
-						<li><a href="boardJob.jsp">목록</a></li>
-						<li><a href="#" id="pdf">PDF 변환</a></li>
-						<li><a href="resumeModify.jsp">수정하기</a></li>
-						<li><a href="boardJob.jsp" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a>
-						</li>
-					</ul>
-				</form>
-			</div>
-		</div>
-	</div>
-
+                              </div>
+                           </li>
+                           <li><span>자격증</span> <span>｜</span>
+                              <div>
+                                 <span>정보처리기사</span> <span>SQLD</span>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <%if(print_vo.getFile_name()!= null && print_vo.getUrl() != null){%>
+                     <div class="print_box" id="pbox4">
+                        <h3>포트폴리오</h3>
+                        <div class="w_box">
+                           <ul>
+                              <li><span>URL</span> <span>｜</span> <span> <a
+                                    href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
+                              </span></li>
+                              <li><span>파일</span> <span>｜</span> <span> <%=print_vo.getFile_name() %>
+                                    <a href="./img/logo_w.png" class="download" download> 다운로드</a>
+                              </span></li>
+                           </ul>
+                        </div>
+                     </div>
+                  <%}else if(print_vo.getFile_name()!= null || print_vo.getUrl() != null){%>
+                     <%if(print_vo.getFile_name() != null){ %>
+                     <div class="print_box" id="pbox4">
+                        <h3>포트폴리오</h3>
+                        <div class="w_box">
+                           <ul>
+                              <li><span>파일</span> <span>｜</span> <span> <a
+                                    href="./img/logo_w.png" class="download" download><%=print_vo.getFile_name() %>
+                                       다운로드</a>
+                              </span></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <%}else{%>
+                     <div class="print_box" id="pbox4">
+                        <h3>포트폴리오</h3>
+                        <div class="w_box">
+                           <ul>
+                              <li><span>URL</span> <span>｜</span> <span> <a
+                                    href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
+                              </span></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <%}%>
+                  <%}%>                  
+                  <div class="print_box" id="pbox5">
+                     <h3>기타자격증</h3>
+                     <div class="w_box">
+                        <p>- 자동차운전면허</p>
+                        <p>- 웹디자인기능사</p>
+                        <p>- (국가공인)GTQ1급</p>
+                        <p>- 컴퓨터그래픽스운용기능사</p>
+                     </div>
+                  </div>
+                  <%if(print_vo.getCareer() != null){%>
+                  <div class="print_box" id="pbox5">
+                     <h3>경력</h3>
+                     <div class="w_box">
+                        <p>- <%=print_vo.getCareer()%></p>
+                     </div>
+                  </div>
+                  <%}%>
+                  <%if(print_vo.getAward() != null){%>
+                  <div class="print_box" id="pbox5">
+                     <h3>수상</h3>
+                     <div class="w_box">
+                        <p>- <%=print_vo.getAward()%></p>
+                     </div>
+                  </div>
+                  <%}%>
+                  <div class="print_box" id="pbox6">
+                     <h3>자기소개서</h3>
+                     <div class="w_box">
+                        <p>
+                           <%=print_vo.getSelf_introduction()%>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <ul class="print_btns">
+                  <li><a href="boardJob.jsp">목록</a></li>
+                  <li><a href="#" id="pdf">PDF 변환</a></li>
+                  <li><a href="resumeModify.jsp">수정하기</a></li>
+                  <li><a href="boardJob.jsp" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a>
+                  </li>
+               </ul>
+            </form>
+         </div>
+      </div>
+   </div>
 
 	<%@ include file="./include/footer.jsp" %>
 	<script>
@@ -227,117 +226,125 @@
 			tabOpen(i);
 		}
 
-		//함수에 보관
-		function tabOpen(e) {
-			$('.c_btn').eq(e)
-					.click(
-							function() {
-								$(this).removeClass('choose_off').addClass(
-										'choose_on');
-								$('.c_btn').not(this).removeClass('choose_on')
-										.addClass('choose_off');
-								$('.c_content').eq(e).show();
-								$('.c_content').not($('.c_content').eq(e))
-										.hide();
-							});
-		}
+   <%@ include file="./include/footer.jsp" %>
+   <script>
+      // 개발기술스택 tab 처리
+      //함수 호출 반복문
+      for (let i = 0; i < $('.c_btn').length; i++) {
+         tabOpen(i);
+      }
 
-		// 이력서사진
-		$(document).on("click", "i.del", function() {
-			// 	to remove card
-			$(this).parent().remove();
-			// to clear image
-			// $(this).parent().find('.imagePreview').css("background-image","url('')");
-		});
-		$(function() {
-			$(document).on(
-					"change",
-					".uploadFile",
-					function() {
-						var uploadFile = $(this);
-						var files = !!this.files ? this.files : [];
-						if (!files.length || !window.FileReader)
-							return; // no file selected, or no FileReader support
+      //함수에 보관
+      function tabOpen(e) {
+         $('.c_btn').eq(e)
+               .click(
+                     function() {
+                        $(this).removeClass('choose_off').addClass(
+                              'choose_on');
+                        $('.c_btn').not(this).removeClass('choose_on')
+                              .addClass('choose_off');
+                        $('.c_content').eq(e).show();
+                        $('.c_content').not($('.c_content').eq(e))
+                              .hide();
+                     });
+      }
 
-						if (/^image/.test(files[0].type)) { // only image file
-							var reader = new FileReader(); // instance of the FileReader
-							reader.readAsDataURL(files[0]); // read the local file
+      // 이력서사진
+      $(document).on("click", "i.del", function() {
+         //    to remove card
+         $(this).parent().remove();
+         // to clear image
+         // $(this).parent().find('.imagePreview').css("background-image","url('')");
+      });
+      $(function() {
+         $(document).on(
+               "change",
+               ".uploadFile",
+               function() {
+                  var uploadFile = $(this);
+                  var files = !!this.files ? this.files : [];
+                  if (!files.length || !window.FileReader)
+                     return; // no file selected, or no FileReader support
 
-							reader.onloadend = function() { // set image data as background of div
-								//alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-								uploadFile.closest(".imgUp").find(
-										'.imagePreview').css(
-										"background-image",
-										"url(" + this.result + ")");
-							}
-						}
+                  if (/^image/.test(files[0].type)) { // only image file
+                     var reader = new FileReader(); // instance of the FileReader
+                     reader.readAsDataURL(files[0]); // read the local file
 
-					});
-		});
+                     reader.onloadend = function() { // set image data as background of div
+                        //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                        uploadFile.closest(".imgUp").find(
+                              '.imagePreview').css(
+                              "background-image",
+                              "url(" + this.result + ")");
+                     }
+                  }
 
-		//삭제추가..
-		$('.delete').click(function() {
-			$(this).parent('li').hide();
-		});
+               });
+      });
 
-		var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
-		$('.add > div').click(function() {
-			$(this).parent().siblings('ul').append(input);
-		});		
-		
-	</script>
-	
-	<!--pdf 변환  -->
-	<script type="text/javascript">
-	    let all_area_array = ['#a','#b','#c','#d']; //전체영역 area
-	    let area_array = ['#a','#c','#d']; //pdf 다운 영역
-	
-	    $('#pdf').on("click", function () {
-	      let difference = all_area_array.filter(x => !area_array.includes(x));
-	
-	      $.each(difference,function(index, item){
-	        $(item).attr('data-html2canvas-ignore', true);
-	      });
-	      setTimeout(pdfMake(),500);
-	    });
-	
-	    const pdfMake = () => {
-	      html2canvas($('#resumePDF')[0]).then(function(canvas) {
-	        let imgData = canvas.toDataURL('image/png');
-	
-	        let imgWidth = 210; // 이미지 가로 길이(mm) A4 기준
-	        let pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
-	        let imgHeight = canvas.height * imgWidth / canvas.width;
-	        let heightLeft = imgHeight;
-	
-	        let doc = new jsPDF('p', 'mm');
-	        let position = 0;
-	
-	        // 첫 페이지 출력
-	        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-	        heightLeft -= pageHeight;
-	
-	        // 한 페이지 이상일 경우 루프 돌면서 출력
-	        while (heightLeft >= 20) {
-	            position = heightLeft - imgHeight;
-	            doc.addPage();
-	            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-	            heightLeft -= pageHeight;
-	        }
-	
-	        let today = new Date();
-	        let year = today.getFullYear();
-	        let month = ('0' + (today.getMonth() + 1)).slice(-2);
-	        let day = ('0' + today.getDate()).slice(-2);
-	        let hours = ('0' + today.getHours()).slice(-2);
-	        let minutes = ('0' + today.getMinutes()).slice(-2);
-	
-	        let dateString = year + month + day + hours + minutes;
-	
-	        // 파일 저장
-	        doc.save("Report"+dateString+'.pdf');
-	      });
-	    }
-	</script>
+      //삭제추가..
+      $('.delete').click(function() {
+         $(this).parent('li').hide();
+      });
+
+      var input = $("<li><div class='input'><label>자격증명</label><input type='text' placeholder=''></div><span class='material-symbols-outlined delete'>Close</span></li>");
+      $('.add > div').click(function() {
+         $(this).parent().siblings('ul').append(input);
+      });      
+      
+   </script>
+   
+   <!--pdf 변환  -->
+   <script type="text/javascript">
+       let all_area_array = ['#a','#b','#c','#d']; //전체영역 area
+       let area_array = ['#a','#c','#d']; //pdf 다운 영역
+   
+       $('#pdf').on("click", function () {
+         let difference = all_area_array.filter(x => !area_array.includes(x));
+   
+         $.each(difference,function(index, item){
+           $(item).attr('data-html2canvas-ignore', true);
+         });
+         setTimeout(pdfMake(),500);
+       });
+   
+       const pdfMake = () => {
+         html2canvas($('#resumePDF')[0]).then(function(canvas) {
+           let imgData = canvas.toDataURL('image/png');
+   
+           let imgWidth = 200; // 이미지 가로 길이(mm) A4 기준
+           let pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
+           let imgHeight = canvas.height * imgWidth / canvas.width;
+           let heightLeft = imgHeight;
+   		   
+           let doc = new jsPDF('p', 'mm');
+           let position = 0;
+           
+           // 첫 페이지 출력
+           doc.addImage(imgData, 'PNG', 10,10 , position, imgWidth, imgHeight);
+           heightLeft -= pageHeight;
+   
+           // 한 페이지 이상일 경우 루프 돌면서 출력
+           while (heightLeft >= 20) {
+               position = heightLeft - imgHeight;
+               doc.addPage();
+               doc.addImage(imgData, 'PNG',10,10, position, imgWidth, imgHeight);
+               heightLeft -= pageHeight;
+           }
+   
+           let today = new Date();
+           let year = today.getFullYear();
+           let month = ('0' + (today.getMonth() + 1)).slice(-2);
+           let day = ('0' + today.getDate()).slice(-2);
+           let hours = ('0' + today.getHours()).slice(-2);
+           let minutes = ('0' + today.getMinutes()).slice(-2);
+   
+           let dateString = year + month + day + hours + minutes;
+   
+           // 파일 저장
+           doc.save("Report"+dateString+'.pdf');
+         });
+       }
+   </script>
 </body>
 </html>
