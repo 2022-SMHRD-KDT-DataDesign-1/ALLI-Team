@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.resumeDAO"%>
+<%@page import="com.smhrd.model.resumeVO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
@@ -39,6 +41,12 @@
 		int age = date_y_int - birth_y_int + 1 ; // 현재 연도에서 생년 연도를 빼서 나이 계산
 		System.out.println(age);
 	%>
+	
+	<% 
+		resumeVO resumeVO = new resumeVO();
+		resumeDAO dao = new resumeDAO();
+	%>
+	
 	<div id="wrap" class="boardJob_wrap">
        <div class="sub_top sub_top_a">
             <div>
@@ -413,7 +421,7 @@
 								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
-										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
+										<span><%=login_vo.getUser_name() %></span><span>(여,<%=age %>세)</span>
 									</p>
 									<p>
 										신입
@@ -450,7 +458,7 @@
 								</ul>
 							</div>
 						</li>
-						<li>
+						<%-- <li>
 							<div class="boardJob_listTop">
 								<div>
 									<span class="material-symbols-outlined person_icon">
@@ -497,8 +505,8 @@
 									<li><a href="#">삭제</a></li>
 								</ul>
 							</div>
-						</li>
-						<li>
+						</li> --%>
+						<%-- <li>
 							<div class="boardJob_listTop">
 								<div>
 									<span class="material-symbols-outlined person_icon">
@@ -545,7 +553,7 @@
 									<li><a href="#">삭제</a></li>
 								</ul>
 							</div>
-						</li>
+						</li> --%>
 					</ul>
 				</div>
             </div>

@@ -32,10 +32,7 @@ public class resumeVO {
 	private String user_tel2;
 	private String career_date;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DataDesign-1/ALLI-Team.git
 	public resumeVO() {
 		
 	}
