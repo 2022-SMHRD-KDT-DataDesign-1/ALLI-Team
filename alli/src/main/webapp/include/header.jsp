@@ -9,7 +9,7 @@
 	%>
     <div id="h_container">
         <div id="logo">
-            <a href="#">
+            <a href="index.jsp">
                 <img src="./img/logo.png" alt="ALL-IT">
             </a>
             <p>
@@ -42,13 +42,13 @@
         <%}else if(login_vo != null){%>
         	<ul id="gnb">
 	            <li>
-	                <a href="resumeReg.jsp">구직</a>
+	                <a href="boardJob.jsp">구직</a>
 	            </li>
 	            <li>
 	                <a href="#">채용</a>
 	            </li>
 	            <li>
-	                <a href="#"><span>NEW</span>TREND</a>
+	                <a href="dashWhole.jsp"><span>NEW</span>TREND</a>
 	            </li>
 	        </ul>
         	<ul id="nav" class="nav_AfterLogin">

@@ -9,12 +9,11 @@
 <body>
 	
 	<%
-		String user_id = "smhr65";
+		String user_id = "smhrd4";
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(user_id);
 		LocalDate now = LocalDate.now();
-		int year = now.getYear();
-		int age = year - Integer.parseInt(print_vo.getDate_birth());
+
 	%>
 
 	<%@ include file="./include/header.jsp" %>
@@ -42,7 +41,7 @@
                         		<img src="./img/R_01.jpg">
                         	</div>
                         	<div>
-                        		<p><%=print_vo.getUser_name()%> <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>년 (만 <%=age%>세)</span></p>
+                        		<p><%=print_vo.getUser_name()%> <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>년 (만 세)</span></p>
                         		<ul>
                         			<li>
                         				<span>연락처</span>

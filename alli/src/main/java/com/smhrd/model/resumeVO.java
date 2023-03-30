@@ -32,6 +32,10 @@ public class resumeVO {
 	private String user_tel2;
 	private String career_date;
 
+	public resumeVO() {
+		
+	}
+	
 	//기업게시판에 이력서미리보기
 	
 	public resumeVO() {
