@@ -3,19 +3,46 @@
 <%@page import="com.smhrd.model.resumeDAO"%>
 <%@page import="com.smhrd.model.resumeVO"%>
 <%@page import=" java.time.LocalDate"%>
+<%@page import=" java.math.BigDecimal"%>
 <%@ include file="./include/metatag.jsp" %>  
 <link href="./css/dashKO.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
 	
 	<%
-		String user_id = "smhr65";
+		BigDecimal resume_num = new BigDecimal(253);
 		resumeDAO dao = new resumeDAO();
-		resumeVO print_vo = dao.resume_Print(user_id);
+		resumeVO print_vo = dao.resume_Print(resume_num);
 		LocalDate now = LocalDate.now();
-		int year = now.getYear();
-		int age = year - Integer.parseInt(print_vo.getDate_birth());
+		int year = now.getYear(); // 현재 년도
+		String year_temp = Integer.toString(year).substring(2, 3); // 년도 끝 2자리
+		int year_temp1 = Integer.parseInt(year_temp);
+		int month = now.getDayOfYear(); // 현재 월
+		int date = now.getDayOfMonth(); // 현재 일
+		String birth = print_vo.getDate_birth(); // 태어난 년,월,일
+		int birth_temp1 = Integer.parseInt(birth.substring(0,2)); // 태어난 년도
+		int birth_temp2 = Integer.parseInt(birth.substring(2,4)); // 태어난 월
+		int birth_temp3 = Integer.parseInt(birth.substring(4)); // 태어난 일
+		int age = 0;
 	%>
+	
+	<!-- 만 나이 계산 -->
+	<%if(birth_temp1 > year_temp1){ %>
+			 <% int temp_b = birth_temp1+ 1900;%>
+			 <% age = year - temp_b;%>
+			 <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
+					<%age--; %>
+			<%} %>
+	<%}else{ %>
+			 <% int temp_b = birth_temp1 + 2000; %>
+			 <% age = year - temp_b;%>
+			 <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
+					<%age--; %>
+			 <%} %>
+	<%} %>
 
 	<%@ include file="./include/header.jsp" %>
 	<div id="wrap" class="resumeReg_wrap">
@@ -24,231 +51,233 @@
                 <p>구직을 위한, <img src="./img/logo_w.png"></p>
             </div>
        </div>	       
-       <div class="resumeReg" id="resumePDF">
+       <div class="resumeReg" >
             <div class="member_inform">
                 <div>개인<br>회원</div>
                 <p><%=print_vo.getUser_name()%>님, 반갑습니다.</p>
             </div>
             <div class="sub_box">
                 <form>
-                    <div class="print_box" id="pbox1">
-                        <p>
-                        	취미는 백엔드개발인 3년차 웹퍼블리셔입니다.
-                        </p>
-                    </div>
-                    <div class="print_box" id="pbox2">
-                        <div class="w_box">
-                        	<div>
-                        		<img src="./img/R_01.jpg">
-                        	</div>
-                        	<div>
-                        		<p><%=print_vo.getUser_name()%> <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>년 (만 <%=age%>세)</span></p>
-                        		<ul>
-                        			<li>
-                        				<span>연락처</span>
-                        				<span>｜</span>
-                        				<span><%=print_vo.getUser_tel()%></span>
-                        			</li>
-                        			<li>
-                        				<span>추가연락처</span>
-                        				<span>｜</span>
-                        				<span>
-		                        			<%if(print_vo.getUser_tel2() == null){%>
-	                        						<span>-</span>
-		                        			<%}else{%>
-		                        					<%=print_vo.getUser_tel2() %>
-		                        			<%}%>
-                        				</span>
-	                        			
-                        			</li>
-                        			<li>
-                        				<span>Email</span>
-                        				<span>｜</span>
-                        				<span><%=print_vo.getUser_email()%></span>
-                        			</li>
-                        			<li>
-                        				<span>주소</span>
-                        				<span>｜</span>
-                        				<span><%=print_vo.getAddress()%></span>
-                        			</li>
-                        			<li>
-                        				<span>최종학력</span>
-                        				<span>｜</span>
-                        				<span><%=print_vo.getSchool_division()%><%=print_vo.getGraduation_status()%></span>
-                        			</li>
-                        			<li>
-                        				<span>희망근무지</span>
-                        				<span>｜</span>
-                        				<span><%=print_vo.getHope_area()%>
-                        						  <%if(print_vo.getHope_area2() == null){%>
-	                        							<span> </span>
-		                        				  <%}else{%>
-		                        				  		, <%=print_vo.getHope_area2()%>
-		                        			      <%}%>
-                        				</span>
-                        			</li>
-                        			<li>
-                        				<span>희망연봉</span>
-                        				<span>｜</span>
-                        				<span>
-                        					<%if(print_vo.getHope_salary() == null){%>
-	                        						<span>-</span>
-		                        			<%}else{%>
-		                        				    <%=print_vo.getHope_salary()%> 만원
-		                        			<%}%>
-                        				</span>
-                        			</li>
-                        		</ul>
-                        	</div>
-                        </div>
-                    </div>
-                    <div class="print_box" id="pbox3">
-                        <h3>개발기술스택</h3>
-                        <div class="w_box">
-                        	<ul>
-                        		<li>
-                        			<span>프로그래밍 언어</span>
-                       				<span>｜</span>
-                       				<div>
-                       					<span>Java[상]</span>
-                       					<span>Python[상]</span>
-                       					<span>JSP[상]</span>
-                       					<span>HTML,CSS[상]</span>
-                       					<span>servlet[상]</span>
-                       				</div>
-                        		</li>
-                        		<li>
-                        			<span>프레임워크</span>
-                       				<span>｜</span>
-                       				<div>
-                       					<span>Spring[상]</span>
-                       					<span>Eclipse[상]</span>
-                       					<span>Visual Studio Code[상]</span>
-                       					<span>Intellij[상]</span>
-                       				</div>
-                        		</li>
-                        		<li>
-                        			<span>OS</span>
-                       				<span>｜</span>
-                       				<div>
-                       					<span>Windows[상]</span>
-
-                       				</div>
-                        		</li>
-                        		<li>
-                        			<span>자격증</span>
-                       				<span>｜</span>
-                       				<div>
-                       					<span>정보처리기사</span>
-										<span>SQLD</span>
-                       				</div>
-                        		</li>
-                        	</ul>
-	                    </div>    
-                    </div>
-                    <%if(print_vo.getFile_name()!= null && print_vo.getUrl() != null){%>
-	                    <div class="print_box" id="pbox4">
-	                        <h3>포트폴리오</h3>
+                	<div id="resumePDF">
+	                    <div class="print_box" id="pbox1">
+	                        <p>
+	                        	취미는 백엔드개발인 3년차 웹퍼블리셔입니다.
+	                        </p>
+	                    </div>
+	                    <div class="print_box" id="pbox2">
+	                        <div class="w_box">
+	                        	<div>
+	                        		<img src="./img/R_01.jpg">
+	                        	</div>
+	                        	<div>
+	                        		<p><%=print_vo.getUser_name()%> <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%> (만 <%=age%>세)</span></p>
+	                        		<ul>
+	                        			<li>
+	                        				<span>연락처</span>
+	                        				<span>｜</span>
+	                        				<span><%=print_vo.getUser_tel()%></span>
+	                        			</li>
+	                        			<li>
+	                        				<span>추가연락처</span>
+	                        				<span>｜</span>
+	                        				<span>
+			                        			<%if(print_vo.getUser_tel2() == null){%>
+		                        						<span>-</span>
+			                        			<%}else{%>
+			                        					<%=print_vo.getUser_tel2() %>
+			                        			<%}%>
+	                        				</span>
+		                        			
+	                        			</li>
+	                        			<li>
+	                        				<span>Email</span>
+	                        				<span>｜</span>
+	                        				<span><%=print_vo.getUser_email()%></span>
+	                        			</li>
+	                        			<li>
+	                        				<span>주소</span>
+	                        				<span>｜</span>
+	                        				<span><%=print_vo.getAddress()%></span>
+	                        			</li>
+	                        			<li>
+	                        				<span>최종학력</span>
+	                        				<span>｜</span>
+	                        				<span><%=print_vo.getSchool_division()%> <%=print_vo.getGraduation_status()%></span>
+	                        			</li>
+	                        			<li>
+	                        				<span>희망근무지</span>
+	                        				<span>｜</span>
+	                        				<span><%=print_vo.getHope_area()%>
+	                        						  <%if(print_vo.getHope_area2() == null){%>
+		                        							<span> </span>
+			                        				  <%}else{%>
+			                        				  		, <%=print_vo.getHope_area2()%>
+			                        			      <%}%>
+	                        				</span>
+	                        			</li>
+	                        			<li>
+	                        				<span>희망연봉</span>
+	                        				<span>｜</span>
+	                        				<span>
+	                        					<%if(print_vo.getHope_salary() == null){%>
+		                        						<span>-</span>
+			                        			<%}else{%>
+			                        				    <%=print_vo.getHope_salary()%> 만원
+			                        			<%}%>
+	                        				</span>
+	                        			</li>
+	                        		</ul>
+	                        	</div>
+	                        </div>
+	                    </div>
+	                    <div class="print_box" id="pbox3">
+	                        <h3>개발기술스택</h3>
 	                        <div class="w_box">
 	                        	<ul>
 	                        		<li>
-	                        			<span>URL</span>
+	                        			<span>프로그래밍 언어</span>
 	                       				<span>｜</span>
-	                       				<span>
-	                       					<a href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
-	                       				</span>
+	                       				<div>
+	                       					<span>Java[상]</span>
+	                       					<span>Python[상]</span>
+	                       					<span>JSP[상]</span>
+	                       					<span>HTML,CSS[상]</span>
+	                       					<span>servlet[상]</span>
+	                       				</div>
 	                        		</li>
 	                        		<li>
-	                        			<span>파일</span>
+	                        			<span>프레임워크</span>
 	                       				<span>｜</span>
-	                       				<span>
-	                       					<a href="#" class="download" download><%=print_vo.getFile_name() %> 다운로드</a>
-	                       				</span>
+	                       				<div>
+	                       					<span>Spring[상]</span>
+	                       					<span>Eclipse[상]</span>
+	                       					<span>Visual Studio Code[상]</span>
+	                       					<span>Intellij[상]</span>
+	                       				</div>
+	                        		</li>
+	                        		<li>
+	                        			<span>OS</span>
+	                       				<span>｜</span>
+	                       				<div>
+	                       					<span>Windows[상]</span>
+	
+	                       				</div>
+	                        		</li>
+	                        		<li>
+	                        			<span>자격증</span>
+	                       				<span>｜</span>
+	                       				<div>
+	                       					<span>정보처리기사</span>
+											<span>SQLD</span>
+	                       				</div>
 	                        		</li>
 	                        	</ul>
+		                    </div>    
+	                    </div>
+	                    <%if(print_vo.getFile_name()!= null && print_vo.getUrl() != null){%>
+		                    <div class="print_box" id="pbox4">
+		                        <h3>포트폴리오</h3>
+		                        <div class="w_box">
+		                        	<ul>
+		                        		<li>
+		                        			<span>URL</span>
+		                       				<span>｜</span>
+		                       				<span>
+		                       					<a href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
+		                       				</span>
+		                        		</li>
+		                        		<li>
+		                        			<span>파일</span>
+		                       				<span>｜</span>
+		                       				<span>
+		                       					<%=print_vo.getFile_name() %>
+		                       					<a href="#" class="download" download> 다운로드</a>
+		                       				</span>
+		                        		</li>
+		                        	</ul>
+			                    </div>
+			                </div>    
+			            <%}else if(print_vo.getFile_name()!= null || print_vo.getUrl() != null){%>
+			            		<%if(print_vo.getFile_name() != null){ %>
+				                    <div class="print_box" id="pbox4">
+				                        <h3>포트폴리오</h3>
+				                        <div class="w_box">
+				                        	<ul>
+				                        		<li>
+				                        			<span>파일</span>
+				                       				<span>｜</span>
+				                       				<span>
+				                       					<a href="#" class="download" download><%=print_vo.getFile_name() %> 다운로드</a>
+				                       				</span>
+				                        		</li>
+				                        	</ul>
+					                    </div>
+					                </div>    
+			            		<%}else{%>
+				                    <div class="print_box" id="pbox4">
+				                        <h3>포트폴리오</h3>
+				                        <div class="w_box">
+				                        	<ul>
+				                        		<li>
+		                        					<span>URL</span>
+		                       						<span>｜</span>
+		                       						<span>
+		                       							<a href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
+		                       						</span>
+		                        				</li>
+				                        	</ul>
+					                    </div>   
+					                </div> 
+			            		<%}%>
+			            <%}%>
+	                    <div class="print_box" id="pbox5">
+	                        <h3>기타자격증</h3>
+	                        <div class="w_box">
+	                        	<p>- 자동차운전면허</p>
+	                        	<p>- 웹디자인기능사</p>
+	                        	<p>- (국가공인)GTQ1급</p>
+	                        	<p>- 컴퓨터그래픽스운용기능사</p>
+		                    </div>    
+	                    </div>
+	                    <%if(print_vo.getCareer() != null){%>
+		                    <div class="print_box" id="pbox5">
+		                        <h3>경력</h3>
+		                        <div class="w_box">
+		                        	<p>- <%=print_vo.getCareer()%></p>
+			                    </div>    
 		                    </div>
-		                </div>    
-		            <%}else if(print_vo.getFile_name()!= null || print_vo.getUrl() != null){%>
-		            		<%if(print_vo.getFile_name() != null){ %>
-			                    <div class="print_box" id="pbox4">
-			                        <h3>포트폴리오</h3>
-			                        <div class="w_box">
-			                        	<ul>
-			                        		<li>
-			                        			<span>파일</span>
-			                       				<span>｜</span>
-			                       				<span>
-			                       					<a href="#" class="download" download><%=print_vo.getFile_name() %> 다운로드</a>
-			                       				</span>
-			                        		</li>
-			                        	</ul>
-				                    </div>
-				                </div>    
-		            		<%}else{%>
-			                    <div class="print_box" id="pbox4">
-			                        <h3>포트폴리오</h3>
-			                        <div class="w_box">
-			                        	<ul>
-			                        		<li>
-	                        					<span>URL</span>
-	                       						<span>｜</span>
-	                       						<span>
-	                       							<a href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
-	                       						</span>
-	                        				</li>
-			                        	</ul>
-				                    </div>   
-				                </div> 
-		            		<%}%>
-		            <%}%>
-                    <div class="print_box" id="pbox5">
-                        <h3>기타자격증</h3>
-                        <div class="w_box">
-                        	<p>- 자동차운전면허</p>
-                        	<p>- 웹디자인기능사</p>
-                        	<p>- (국가공인)GTQ1급</p>
-                        	<p>- 컴퓨터그래픽스운용기능사</p>
-	                    </div>    
-                    </div>
-                    <%if(print_vo.getCareer() != null){%>
-	                    <div class="print_box" id="pbox5">
-	                        <h3>경력</h3>
+			            <%}%>
+	                    <%if(print_vo.getAward() != null){%>
+		                    <div class="print_box" id="pbox5">
+		                        <h3>수상</h3>
+		                        <div class="w_box">
+		                        	<p>- <%=print_vo.getAward()%></p>
+			                    </div>    
+		                    </div>
+			            <%}%>
+	                    <div class="print_box" id="pbox6">
+	                        <h3>자기소개서</h3>
 	                        <div class="w_box">
-	                        	<p>- <%=print_vo.getCareer()%></p>
+	                        	<p>
+	                               <%=print_vo.getSelf_introduction()%>
+	                            </p>
 		                    </div>    
 	                    </div>
-		            <%}%>
-                    <%if(print_vo.getAward() != null){%>
-	                    <div class="print_box" id="pbox5">
-	                        <h3>수상</h3>
-	                        <div class="w_box">
-	                        	<p>- <%=print_vo.getAward()%></p>
-		                    </div>    
-	                    </div>
-		            <%}%>
-                    <div class="print_box" id="pbox6">
-                        <h3>자기소개서</h3>
-                        <div class="w_box">
-                        	<p>
-                               <%=print_vo.getSelf_introduction()%>
-                            </p>
-	                    </div>    
-                    </div>
-
-                    <ul class="print_btns">
-                    	<li>
-                    		<a href="boardJob.jsp">목록</a>
-                    	</li>
-                    	<li>
-                    		<a href="#" >PDF변환</a>
-                    	</li>
-                    	<li>
-                    		<a href="#">수정</a>
-                    	</li>
-                    	<li>
-                    		<a href="#">삭제</a>
-                    	</li>
-                    </ul>
+                	</div>
+	                    <ul class="print_btns">
+	                    	<li>
+	                    		<a href="boardJob.jsp">목록</a>
+	                    	</li>
+	                    	<li>
+	                    		<a href="#" id="pdf">PDF 변환</a>
+	                    	</li>
+	                    	<li>
+	                    		<a href="resumeModify.jsp">수정하기</a>
+	                    	</li>
+	                    	<li>
+	                    		<a href="boardJob.jsp" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a>
+	                    	</li>
+	                    </ul>
                 </form>
             </div>
        </div>
@@ -319,6 +348,59 @@
 			$(this).parent().siblings('ul').append(input);
 		});		
 		
+	</script>
+	
+	<!--pdf 변환  -->
+	<script type="text/javascript">
+	    let all_area_array = ['#a','#b','#c','#d']; //전체영역 area
+	    let area_array = ['#a','#c','#d']; //pdf 다운 영역
+	
+	    $('#pdf').on("click", function () {
+	      let difference = all_area_array.filter(x => !area_array.includes(x));
+	
+	      $.each(difference,function(index, item){
+	        $(item).attr('data-html2canvas-ignore', true);
+	      });
+	      setTimeout(pdfMake(),500);
+	    });
+	
+	    const pdfMake = () => {
+	      html2canvas($('#resumePDF')[0]).then(function(canvas) {
+	        let imgData = canvas.toDataURL('image/png');
+	
+	        let imgWidth = 210; // 이미지 가로 길이(mm) A4 기준
+	        let pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
+	        let imgHeight = canvas.height * imgWidth / canvas.width;
+	        let heightLeft = imgHeight;
+	
+	        let doc = new jsPDF('p', 'mm');
+	        let position = 0;
+	
+	        // 첫 페이지 출력
+	        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+	        heightLeft -= pageHeight;
+	
+	        // 한 페이지 이상일 경우 루프 돌면서 출력
+	        while (heightLeft >= 20) {
+	            position = heightLeft - imgHeight;
+	            doc.addPage();
+	            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+	            heightLeft -= pageHeight;
+	        }
+	
+	        let today = new Date();
+	        let year = today.getFullYear();
+	        let month = ('0' + (today.getMonth() + 1)).slice(-2);
+	        let day = ('0' + today.getDate()).slice(-2);
+	        let hours = ('0' + today.getHours()).slice(-2);
+	        let minutes = ('0' + today.getMinutes()).slice(-2);
+	
+	        let dateString = year + month + day + hours + minutes;
+	
+	        // 파일 저장
+	        doc.save("Report"+dateString+'.pdf');
+	      });
+	    }
 	</script>
 </body>
 </html>
