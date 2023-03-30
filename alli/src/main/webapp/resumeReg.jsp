@@ -1,9 +1,33 @@
+<%@page import="com.smhrd.model.resumeVO"%>
+<%@page import="com.smhrd.model.resumeDAO"%>
+<%@page import="com.smhrd.model.developVO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.developDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="./include/metatag.jsp" %>  
 </head>
 <body>
 	<%@ include file="./include/header.jsp" %>
+	<%
+	// session값 가져오기
+	cmpVO cmpLoginVO = (cmpVO) session.getAttribute("cmpLogin_vo");
+
+	// 개발T 가져오기
+	developDAO dao = new developDAO();
+	List<developVO> list = dao.selectDevelopList();
+
+	if (list != null) {
+		System.out.println("개발T 성공");
+		// 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
+		request.setAttribute("list", list);
+		//session.setAttribute("list", list);
+		System.out.println(list);
+	} else {
+		System.out.println("개발T 실패");
+	}
+	%>
 	<div id="wrap" class="resumeReg_wrap">
        <div class="sub_top sub_top_a">
             <div>
@@ -21,7 +45,7 @@
                 <!-- 임의 스타일 수정 추후 확인바람 -->
                 <p align="right" style="font-size: 12px;margin-bottom: 3px"><span class="star">&#42;</span> 필수 입력 정보입니다.</p>
                     <div class="resume_box rbox1">
-                        <input class="mandatory" type="text" placeholder="기업에게 알리는 나의 강점,목표,관심분야 등 이력서의 제목을 적어주세요">
+                        <input name="resume_title" class="mandatory" type="text" placeholder="기업에게 알리는 나의 강점,목표,관심분야 등 이력서의 제목을 적어주세요">
                     </div>
                     <div class="resume_box rbox2">
                         <h3>인적사항</h3>
@@ -30,7 +54,7 @@
                             <section class="col-sm-2 imgUp">
 						    	<div class="imagePreview"></div>
 								<label class="btn btn-primary">
-									사진등록<input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+									사진등록<input name="picture" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
 								</label>
 						 	 </section><!-- col-2 -->
                             <div>
@@ -95,7 +119,6 @@
                                     <option value="졸업">졸업</option>
                                     <option value="졸업예정">졸업예정</option>
                                     <option value="재학중">재학중</option>
-                                    <option value="대입검정고시">대입검정고시</option>
                                 </select>
                             </div>
                         </div>
@@ -126,59 +149,65 @@
                                     <ul>
                                         <li class="c_content"><!-- 프로그래밍언어 시작 -->
                                             <ul>
+												<c:forEach items="${list}" var="item">
 												<li>
-													<p>Java</p>
+													<p>${item.languages}</p>
 													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
+														<input type="radio" value="상" name="${item.languages}">
+														<input type="radio" value="중" name="${item.languages}">
+														<input type="radio" value="하" name="${item.languages}">
 													</div>
 												</li>
-                                            </ul>
+											</c:forEach> 
+                                          </ul>
                                         </li>
                                         <li class="c_content"><!-- 프레임워크 시작 -->
                                             <ul>
+												<c:forEach items="${list}" var="item">
 												<li>
-													<p>프레임워크</p>
+													<p>${item.frameworks}</p>
 													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
+														<input type="radio" value="상" name="level">
+														<input type="radio" value="중" name="level">
+														<input type="radio" value="하" name="level">
 													</div>
 												</li>
+											</c:forEach> 
                                             </ul>
                                         </li>
                                         <li class="c_content"><!-- OS 시작 -->
                                             <ul>
+												<c:forEach items="${list}" var="item">
 												<li>
-													<p>OS</p>
+													<p>${item.oss}</p>
 													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
+														<input type="radio" value="상" name="level">
+														<input type="radio" value="중" name="level">
+														<input type="radio" value="하" name="level">
 													</div>
 												</li>
+											</c:forEach> 
                                             </ul>
                                         </li>
                                         <li class="c_content"><!-- 자격증 시작 -->
                                             <ul>
+												<c:forEach items="${list}" var="item">
 												<li>
-													<p>자격증</p>
+													<p>${item.licenses}</p>
 													<div>
-														<input type="radio">
-														<input type="radio">
-														<input type="radio">
+														<input type="radio" value="상" name="level">
+														<input type="radio" value="중" name="level">
+														<input type="radio" value="하" name="level">
 													</div>
 												</li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+											</c:forEach> 
+                                    	</ul>
+                                </ul>
                                 </div>
-                                <div class="choose_content">
+                                <div class="choose_content" style="display:none">
                                     <p>선택한 항목</p>
                                     <div>
-                                    	<p>
-                                    		JAVA [상]
+                                    	<p> 자바
                                     		<span class="material-symbols-outlined delete_choose">
                                 				Close
                                 			</span>
@@ -289,7 +318,8 @@
                             </div>
                         </div>
                     </div>
-                    <input type="submit" id="resumeReg_btn" value="이력서 저장">
+                    <input type="hidden" name="choice" id="choice" value="">
+                    <input type="submit" id="resumeReg_btn" value="이력서 저장" onclick="confirmSubmit(event)">
                 </form>
             </div>
        </div>
@@ -387,7 +417,7 @@
 			if (schoolDivision.value === '대입검정고시') {
 				schoolName.readOnly = true;
 				major.readOnly = true;
-				graduationStatus.value = '대입검정고시';
+				graduationStatus.value = '';
 				graduationStatus.disabled = true;
 			} else {
 				schoolName.readOnly = false;
@@ -396,6 +426,7 @@
 				graduationStatus.disabled = false;
 			}
 		});
+		// 필수항목 null체크
 		const form = document.querySelector('#myForm');
 		form.addEventListener('submit', function(event) {
 			const requiredInputs = document.querySelectorAll('.mandatory');
@@ -410,6 +441,51 @@
 				alert('모든 필수 입력 항목을 작성해주세요.');
 			}
 		});
+		// 이력서 공개여부
+		function confirmSubmit(event) {
+			  event.preventDefault(); // submit 기본 동작 취소
+
+			  // 예/아니오 선택 창 띄우기
+			  var confirmed = confirm("이력서를 공개 하시겠습니까?");
+			  if (confirmed) {
+			    // "예"를 선택한 경우
+			    document.getElementById("choice").value = "on";
+			    document.getElementById("myForm").submit(); // form 제출
+			  } else {
+			    // "아니오"를 선택한 경우
+			    document.getElementById("choice").value = null;
+			    // 다른 작업 수행...
+			  }
+			}
+		// 라디오 버튼 중복 방지
+		const radioButtons = document.getElementsByName("licenseLevel");
+		for (let i = 0; i < radioButtons.length; i++) {
+		  radioButtons[i].addEventListener("change", function() {
+		    // 선택한 라디오 버튼이 이미 선택되어 있는 경우 해제하기
+		    if (this.checked) {
+		      const selectedValue = this.value;
+		      const chooseContentDiv = document.querySelector(".choose_content div");
+		      chooseContentDiv.textContent = selectedValue;
+		    } else {
+		      const chooseContentDiv = document.querySelector(".choose_content div");
+		      chooseContentDiv.textContent = "";
+		    }
+		  });
+		}
+		
+		$(document).ready(function(){
+			  $('input[type="radio"]').click(function(){
+			    const language = $(this).attr('name');
+			    const level = $(this).val();
+			    $('.choose_content').show();
+			    $('.selected_item p').text(language + ' ' + level);
+			  });
+			  
+			  $('.delete_choose').click(function(){
+			    $('.selected_item p').empty();
+			    $('.choose_content').hide();
+			  });
+			});
 	</script>
 </body>
 </html>
