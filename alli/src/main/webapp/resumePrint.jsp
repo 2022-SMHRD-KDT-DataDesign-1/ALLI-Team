@@ -13,10 +13,15 @@
 <body>
 	
 	<%
+<<<<<<< HEAD
 		BigDecimal resume_num = new BigDecimal(253);
+=======
+		String user_id = "smhrd4";
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DataDesign-1/ALLI-Team.git
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(resume_num);
 		LocalDate now = LocalDate.now();
+<<<<<<< HEAD
 		int year = now.getYear(); // 현재 년도
 		String year_temp = Integer.toString(year).substring(2, 3); // 년도 끝 2자리
 		int year_temp1 = Integer.parseInt(year_temp);
@@ -27,6 +32,9 @@
 		int birth_temp2 = Integer.parseInt(birth.substring(2,4)); // 태어난 월
 		int birth_temp3 = Integer.parseInt(birth.substring(4)); // 태어난 일
 		int age = 0;
+=======
+
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DataDesign-1/ALLI-Team.git
 	%>
 	
 	<!-- 만 나이 계산 -->
@@ -58,6 +66,7 @@
             </div>
             <div class="sub_box">
                 <form>
+<<<<<<< HEAD
                 	<div id="resumePDF">
 	                    <div class="print_box" id="pbox1">
 	                        <p>
@@ -132,6 +141,126 @@
 	                    </div>
 	                    <div class="print_box" id="pbox3">
 	                        <h3>개발기술스택</h3>
+=======
+                    <div class="print_box" id="pbox1">
+                        <p>
+                        	취미는 백엔드개발인 3년차 웹퍼블리셔입니다.
+                        </p>
+                    </div>
+                    <div class="print_box" id="pbox2">
+                        <div class="w_box">
+                        	<div>
+                        		<img src="./img/R_01.jpg">
+                        	</div>
+                        	<div>
+                        		<p><%=print_vo.getUser_name()%> <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>년 (만 세)</span></p>
+                        		<ul>
+                        			<li>
+                        				<span>연락처</span>
+                        				<span>｜</span>
+                        				<span><%=print_vo.getUser_tel()%></span>
+                        			</li>
+                        			<li>
+                        				<span>추가연락처</span>
+                        				<span>｜</span>
+                        				<span>
+		                        			<%if(print_vo.getUser_tel2() == null){%>
+	                        						<span>-</span>
+		                        			<%}else{%>
+		                        					<%=print_vo.getUser_tel2() %>
+		                        			<%}%>
+                        				</span>
+	                        			
+                        			</li>
+                        			<li>
+                        				<span>Email</span>
+                        				<span>｜</span>
+                        				<span><%=print_vo.getUser_email()%></span>
+                        			</li>
+                        			<li>
+                        				<span>주소</span>
+                        				<span>｜</span>
+                        				<span><%=print_vo.getAddress()%></span>
+                        			</li>
+                        			<li>
+                        				<span>최종학력</span>
+                        				<span>｜</span>
+                        				<span><%=print_vo.getSchool_division()%><%=print_vo.getGraduation_status()%></span>
+                        			</li>
+                        			<li>
+                        				<span>희망근무지</span>
+                        				<span>｜</span>
+                        				<span><%=print_vo.getHope_area()%>
+                        						  <%if(print_vo.getHope_area2() == null){%>
+	                        							<span> </span>
+		                        				  <%}else{%>
+		                        				  		, <%=print_vo.getHope_area2()%>
+		                        			      <%}%>
+                        				</span>
+                        			</li>
+                        			<li>
+                        				<span>희망연봉</span>
+                        				<span>｜</span>
+                        				<span>
+                        					<%if(print_vo.getHope_salary() == null){%>
+	                        						<span>-</span>
+		                        			<%}else{%>
+		                        				    <%=print_vo.getHope_salary()%> 만원
+		                        			<%}%>
+                        				</span>
+                        			</li>
+                        		</ul>
+                        	</div>
+                        </div>
+                    </div>
+                    <div class="print_box" id="pbox3">
+                        <h3>개발기술스택</h3>
+                        <div class="w_box">
+                        	<ul>
+                        		<li>
+                        			<span>프로그래밍 언어</span>
+                       				<span>｜</span>
+                       				<div>
+                       					<span>Java[상]</span>
+                       					<span>Python[상]</span>
+                       					<span>JSP[상]</span>
+                       					<span>HTML,CSS[상]</span>
+                       					<span>servlet[상]</span>
+                       				</div>
+                        		</li>
+                        		<li>
+                        			<span>프레임워크</span>
+                       				<span>｜</span>
+                       				<div>
+                       					<span>Spring[상]</span>
+                       					<span>Eclipse[상]</span>
+                       					<span>Visual Studio Code[상]</span>
+                       					<span>Intellij[상]</span>
+                       				</div>
+                        		</li>
+                        		<li>
+                        			<span>OS</span>
+                       				<span>｜</span>
+                       				<div>
+                       					<span>Windows[상]</span>
+
+                       				</div>
+                        		</li>
+                        		<li>
+                        			<span>자격증</span>
+                       				<span>｜</span>
+                       				<div>
+                       					<span>정보처리기사</span>
+										<span>SQLD</span>
+                       				</div>
+                        		</li>
+                        	</ul>
+	                    </div>    
+                    </div>
+                    <%if(print_vo.getFile_name()!= null && print_vo.getUrl() != null){%>
+	                    <div class="print_box" id="pbox4">
+	                        <h3>포트폴리오</h3>
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-KDT-DataDesign-1/ALLI-Team.git
 	                        <div class="w_box">
 	                        	<ul>
 	                        		<li>

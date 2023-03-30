@@ -1,9 +1,44 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ include file="./include/metatag.jsp" %>  
 </head>
 <body>
 	<%@ include file="./include/header.jsp" %>
+	<!-- 생년월일 나이 변환 스크립틀릿 -->
+	<%  
+		// 사용자의 생년월일 정보를 세션의 login_vo에서 가져옴
+		String birth = (String)login_vo.getDate_birth();
+		System.out.println(birth); // ex) 940911
+		// 현재 날짜를 초기화
+		Date date = new Date(); // 날짜형 데이터임
+		System.out.println(date);
+		SimpleDateFormat format = new SimpleDateFormat("yymmdd"); // yymmdd형으로 전환
+		String str = format.format(date); // yymmdd형의 문자형으로 전환
+		System.out.println(str);
+		String birth_y = birth.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
+		System.out.println(birth_y);
+		String date_y = str.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
+		System.out.println(date_y);
+		int birth_y_int = Integer.parseInt(birth_y); // 문자열을 정수형으로 바꾼다.
+		int date_y_int = Integer.parseInt(date_y); // 문자열을 정수형으로 바꾼다.
+		
+		// 생년월일의 연도가 현재 연도보다 작으면 2000을 더하고 크면 1900을 더해서
+		// 생년월일 연도 추출
+		if(birth_y_int>date_y_int){
+			birth_y_int += 1900;
+		}else{
+			birth_y_int += 2000;
+		};
+		
+		date_y_int += 2000 ; // 2000을 더해서 2023의 형태로
+		System.out.println(date_y_int);
+		System.out.println(birth_y_int);
+		int age = date_y_int - birth_y_int + 1 ; // 현재 연도에서 생년 연도를 빼서 나이 계산
+		System.out.println(age);
+	%>
 	<div id="wrap" class="boardJob_wrap">
        <div class="sub_top sub_top_a">
             <div>
@@ -13,8 +48,10 @@
        <div class="resumeReg">
             <div class="member_inform">
                 <div>개인<br>회원</div>
-                <p>주부은님, 반갑습니다.</p>
+                <p><%=login_vo.getUser_name() %>님, 반갑습니다.</p>
             </div>
+            
+            <!-- 기업추천 시작 -->
             <div class="sub_box">
                 <h2 class="sub_title">맞춤기업 추천 서비스</h2>
                 <p class="sub_title_text">이력서에 기재한 기술스택을 바탕으로 맞춤기업을 추천해드립니다. 나와 맞는 기업을 확인해보세요. 공개이력서 기준으로 추천되며, 이력서가 없거나 모두 비공개하는 경우 추천되지 않습니다.</p>
@@ -373,10 +410,10 @@
 									</span>
 									<!-- <img src=""> -->
 								</div>
-								<a href="#"><img src="./img/boardJob_icon.png"></a>
+								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
 									</p>
 									<p>
 										신입
@@ -398,52 +435,19 @@
 								</p>
 								<p class="boardJob_date">최종수정일 : 23.04.01</p>
 							</div>
-							<div class="boardJob_add">
-								<a href="#">
+							<div class="boardJob_add" id="option">
+								<a href="#" class="closeBtn">
 									<span class="material-symbols-outlined delete">
 		                                Close
 		                            </span>
 								</a>
 								<ul>
-									<li><a href="#">공개이력서로 설정</a></li>
+									<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
+									<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
 									<li><a href="#">PDF 다운로드</a></li>
 									<li><a href="#">수정</a></li>
 									<li><a href="#">삭제</a></li>
 								</ul>
-							</div>
-						</li>
-						<li class="open">
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle
-									</span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"><img src="./img/boardJob_icon.png"></a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>
-										신입
-									</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br>
-									스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br>
-									희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-								<p class="boardJob_date">최종수정일 : 23.04.01</p>
 							</div>
 						</li>
 						<li>
@@ -454,10 +458,10 @@
 									</span>
 									<!-- <img src=""> -->
 								</div>
-								<a href="#"><img src="./img/boardJob_icon.png"></a>
+								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 								<div>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
 									</p>
 									<p>
 										신입
@@ -479,6 +483,68 @@
 								</p>
 								<p class="boardJob_date">최종수정일 : 23.04.01</p>
 							</div>
+							<div class="boardJob_add" id="option">
+								<a href="#" class="closeBtn">
+									<span class="material-symbols-outlined delete">
+		                                Close
+		                            </span>
+								</a>
+								<ul>
+									<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
+									<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
+									<li><a href="#">PDF 다운로드</a></li>
+									<li><a href="#">수정</a></li>
+									<li><a href="#">삭제</a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<div class="boardJob_listTop">
+								<div>
+									<span class="material-symbols-outlined person_icon">
+										account_circle
+									</span>
+									<!-- <img src=""> -->
+								</div>
+								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
+								<div>
+									<p>
+										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
+									</p>
+									<p>
+										신입
+									</p>
+								</div>
+							</div>
+							<div class="boardJob_listBtm">
+								<h3>뽑지않으면 후회할겁니다</h3>
+								<p>
+									서울대학교(4년)<br>
+									스킨스쿠버과 졸업
+								</p>
+								<p>
+									희망지역:서울<br>
+									희망연봉:100억
+								</p>
+								<p>
+									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
+								</p>
+								<p class="boardJob_date">최종수정일 : 23.04.01</p>
+							</div>
+							<div class="boardJob_add" id="option">
+								<a href="#" class="closeBtn">
+									<span class="material-symbols-outlined delete">
+		                                Close
+		                            </span>
+								</a>
+								<ul>
+									<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
+									<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
+									<li><a href="#">PDF 다운로드</a></li>
+									<li><a href="#">수정</a></li>
+									<li><a href="#">삭제</a></li>
+								</ul>
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -487,6 +553,7 @@
     </div>
 	<%@ include file="./include/footer.jsp" %>
 	
+	<!-- 맞춤기업 영역 스크립트 -->
 	<script>
 		let pro_lan = document.getElementById('pro_lan')
 		let frameWork = document.getElementById('frameWork')
@@ -627,6 +694,135 @@
 			Mac_ul.style.display = 'block'
 			WindowBtn.style.border = '1px solid #d3d3d3'
 			MacBtn.style.border = '2px solid #6c00ff'
+		}
+		</script>
+	
+	<!-- 이력서 스크립트 -->
+	<script>
+		
+		let optionBtn = document.getElementsByClassName('optionBtn')
+		let boardJob_add = document.getElementsByClassName('boardJob_add')
+		let closeBtn = document.getElementsByClassName('closeBtn')
+		let openBoard = document.getElementsByClassName('openBoard')
+		let closeBoard = document.getElementsByClassName('closeBoard')
+		let boardJob_listTop = document.getElementsByClassName('boardJob_listTop')
+		let boardJob_li = document.querySelectorAll('div.boardJob02>ul>li')
+		
+		boardJob_add[0].style.display = 'none'
+		boardJob_add[1].style.display = 'none'
+		boardJob_add[2].style.display = 'none'
+		
+		/* if(closeBoard[0]).style.display.equals('block')){
+			closeBoard[1]).style.display = 'none'
+			closeBoard[2]).style.display = 'none'
+		}else if(closeBoard[1]).style.display.equals('block')){
+			closeBoard[0]).style.display = 'none'
+			closeBoard[2]).style.display = 'none'
+		}else if(closeBoard[2]).style.display.equals('block')){
+			closeBoard[0]).style.display = 'none'
+			closeBoard[1]).style.display = 'none'
+		} */
+		
+		
+		closeBoard[0].style.display='none'
+		closeBoard[1].style.display='none'
+		closeBoard[2].style.display='none'
+		
+		closeBtn[0].onclick=()=>{
+			boardJob_add[0].style.display= 'none'
+		}
+		closeBtn[1].onclick=()=>{
+			boardJob_add[1].style.display= 'none'
+		}
+		closeBtn[2].onclick=()=>{
+			boardJob_add[2].style.display= 'none'
+		}
+		
+		optionBtn[0].onclick=()=>{
+			console.log("optionBtn[0] click")
+			boardJob_add[0].style.display = 'block'
+			boardJob_add[1].style.display = 'none'
+			boardJob_add[2].style.display = 'none'
+		}
+		
+		optionBtn[1].onclick=()=>{
+			console.log("optionBtn[1] click")
+			boardJob_add[1].style.display = 'block'
+			boardJob_add[0].style.display = 'none'
+			boardJob_add[2].style.display = 'none'
+		}
+		
+		optionBtn[2].onclick=()=>{
+			console.log("optionBtn[2] click")
+			boardJob_add[1].style.display = 'none'
+			boardJob_add[0].style.display = 'none'
+			boardJob_add[2].style.display = 'block'
+		}
+		
+		openBoard[0].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[0])
+			boardJob_li[0].classList.add('open')
+			boardJob_li[1].classList.remove('open')
+			boardJob_li[2].classList.remove('open')
+			openBoard[0].style.display = 'none'
+			openBoard[1].style.display = 'block'
+			openBoard[2].style.display = 'block'
+			closeBoard[0].style.display = 'block'
+			closeBoard[1].style.display = 'none'
+			closeBoard[2].style.display = 'none'
+		}
+		
+		closeBoard[0].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[0])
+			boardJob_li[0].classList.remove('open')
+			openBoard[0].style.display = 'block'
+			closeBoard[0].style.display = 'none'
+		}
+		
+		openBoard[1].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[0])
+			boardJob_li[1].classList.add('open')
+			boardJob_li[0].classList.remove('open')
+			boardJob_li[2].classList.remove('open')
+			openBoard[1].style.display = 'none'
+			openBoard[0].style.display = 'block'
+			openBoard[2].style.display = 'block'
+			closeBoard[1].style.display = 'block'
+			closeBoard[0].style.display = 'none'
+			closeBoard[2].style.display = 'none'
+		}
+		
+		closeBoard[1].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[1])
+			boardJob_li[1].classList.remove('open')
+			openBoard[1].style.display = 'block'
+			closeBoard[1].style.display = 'none'
+		}
+		
+		openBoard[2].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[0])
+			boardJob_li[2].classList.add('open')
+			boardJob_li[0].classList.remove('open')
+			boardJob_li[1].classList.remove('open')
+			openBoard[2].style.display = 'none'
+			openBoard[0].style.display = 'block'
+			openBoard[1].style.display = 'block'
+			closeBoard[2].style.display = 'block'
+			closeBoard[0].style.display = 'none'
+			closeBoard[1].style.display = 'none'
+		}
+		
+		closeBoard[2].onclick=()=>{
+			console.log('openBoard click')
+			console.log(boardJob_li[2])
+			boardJob_li[2].classList.remove('open')
+			openBoard[2].style.display = 'block'
+			closeBoard[2].style.display = 'none'
 		}
 	</script>
 	
