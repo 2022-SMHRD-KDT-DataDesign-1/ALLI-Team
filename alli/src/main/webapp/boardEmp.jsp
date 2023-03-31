@@ -437,11 +437,7 @@
 									</div>
 								</div>
 								<div class="boardJob_listBtm">
-									<h3>
-										<a href="#">
-											${item.resume_title}
-										</a>
-									</h3>
+									<h3>${item.resume_title}</h3>
 									<p>
 										${item.school_name}
 										<!-- 학교구분 -->
@@ -466,11 +462,11 @@
 										희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
 									</p>
 									<p>
-										<%-- <c:forEach items="${Llist}" var="tech">
+										<c:forEach items="${Llist}" var="tech">
 											<c:if test = "${item.resume_num eq tech.resume_num}"> 
 										         <span>${tech.language_name }</span>
 										    </c:if>
-										</c:forEach> --%>
+										</c:forEach>
 										<%-- <c:forEach items="${Flist}" var="tech">
 											<c:if test = "${item.resume_num eq tech.resume_num}"> 
 										         <span>${tech.framework_name }</span>
