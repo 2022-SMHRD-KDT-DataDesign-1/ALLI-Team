@@ -151,9 +151,9 @@
                                             <ul>
 												<c:forEach items="${list}" var="item">
 												<li>
-													<p>${item.languages}</p>
+													<p class='language'>${item.languages}</p>
 													<div>
-														<input type="radio" value="상" name="${item.languages}">
+														<input type="radio" value="상" name="${item.languages}" class="radio">
 														<input type="radio" value="중" name="${item.languages}">
 														<input type="radio" value="하" name="${item.languages}">
 													</div>
@@ -204,12 +204,13 @@
                                     	</ul>
                                 </ul>
                                 </div>
-                                <div class="choose_content" style="display:none">
+                                <div class="choose_content">
                                     <p>선택한 항목</p>
-                                    <div>
-                                    	<p> 자바
-                                    		<span class="material-symbols-outlined delete_choose">
-                                				Close
+                                     <div>	
+                                    	<p>
+											<span class="selected_language"></span> 
+											<span class="selected_level"></span> 
+											<span>
                                 			</span>
                                     	</p>
                                     </div>
@@ -472,20 +473,9 @@
 		    }
 		  });
 		}
-		
-		$(document).ready(function(){
-			  $('input[type="radio"]').click(function(){
-			    const language = $(this).attr('name');
-			    const level = $(this).val();
-			    $('.choose_content').show();
-			    $('.selected_item p').text(language + ' ' + level);
-			  });
-			  
-			  $('.delete_choose').click(function(){
-			    $('.selected_item p').empty();
-			    $('.choose_content').hide();
-			  });
-			});
+		function getValue() {
+			let inputValue = document.getElementsByClassName(".radio")
+		}
 	</script>
 </body>
 </html>
