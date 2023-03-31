@@ -153,7 +153,7 @@
 												<li>
 													<p class='language'>${item.languages}</p>
 													<div>
-														<input type="radio" value="상" name="${item.languages}" class="radio">
+														<input type="radio" value="상" name="${item.languages}" onchange="showSelected(this)">
 														<input type="radio" value="중" name="${item.languages}">
 														<input type="radio" value="하" name="${item.languages}">
 													</div>
@@ -190,8 +190,8 @@
                                             </ul>
                                         </li>
                                         <li class="c_content"><!-- 자격증 시작 -->
-                                            <ul>
-												<c:forEach items="${list}" var="item">
+                                         <ul>
+											<c:forEach items="${list}" var="item">
 												<li>
 													<p>${item.licenses}</p>
 													<div>
@@ -206,12 +206,11 @@
                                 </div>
                                 <div class="choose_content">
                                     <p>선택한 항목</p>
-                                     <div>	
+                                     <div class="test">	
                                     	<p>
-											<span class="selected_language"></span> 
-											<span class="selected_level"></span> 
-											<span>
-                                			</span>
+		                            		<span class="material-symbols-outlined delete">
+		                                	Close
+		                            		</span>
                                     	</p>
                                     </div>
                                 </div>
@@ -458,24 +457,11 @@
 			    // 다른 작업 수행...
 			  }
 			}
-		// 라디오 버튼 중복 방지
-		const radioButtons = document.getElementsByName("licenseLevel");
-		for (let i = 0; i < radioButtons.length; i++) {
-		  radioButtons[i].addEventListener("change", function() {
-		    // 선택한 라디오 버튼이 이미 선택되어 있는 경우 해제하기
-		    if (this.checked) {
-		      const selectedValue = this.value;
-		      const chooseContentDiv = document.querySelector(".choose_content div");
-		      chooseContentDiv.textContent = selectedValue;
-		    } else {
-		      const chooseContentDiv = document.querySelector(".choose_content div");
-		      chooseContentDiv.textContent = "";
-		    }
-		  });
-		}
-		function getValue() {
-			let inputValue = document.getElementsByClassName(".radio")
-		}
+		$(document).on('click', 'input[type="radio"]', function(){
+			  const val = $(this).val();
+			  const name = $(this).attr('name');
+			  console.log("value: " + val + ", name: " + name);
+			});
 	</script>
 </body>
 </html>
