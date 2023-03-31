@@ -25,7 +25,7 @@
 
 	<%
 
-		int resume_num = 451; 
+		int resume_num = 243; 
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(resume_num);
 		LocalDate now = LocalDate.now();
