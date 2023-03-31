@@ -11,41 +11,41 @@
 <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
-   
-   <%
 
-      BigDecimal resume_num = new BigDecimal(253);
-      resumeDAO dao = new resumeDAO();
-      resumeVO print_vo = dao.resume_Print(resume_num);
-      LocalDate now = LocalDate.now();
+	<%
 
-      int year = now.getYear(); // 현재 년도
-      String year_temp = Integer.toString(year).substring(2, 3); // 년도 끝 2자리
-      int year_temp1 = Integer.parseInt(year_temp);
-      int month = now.getDayOfYear(); // 현재 월
-      int date = now.getDayOfMonth(); // 현재 일
-      String birth = print_vo.getDate_birth(); // 태어난 년,월,일
-      int birth_temp1 = Integer.parseInt(birth.substring(0,2)); // 태어난 년도
-      int birth_temp2 = Integer.parseInt(birth.substring(2,4)); // 태어난 월
-      int birth_temp3 = Integer.parseInt(birth.substring(4)); // 태어난 일
-      int age = 0;
+		BigDecimal resume_num = new BigDecimal(253); //253 270
+		resumeDAO dao = new resumeDAO();
+		resumeVO print_vo = dao.resume_Print(resume_num);
+		LocalDate now = LocalDate.now();
 
-   %>
-   
-   <!-- 만 나이 계산 -->
-   <%if(birth_temp1 > year_temp1){ %>
-          <% int temp_b = birth_temp1+ 1900;%>
-          <% age = year - temp_b;%>
-          <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
-               <%age--; %>
-         <%} %>
-   <%}else{ %>
-          <% int temp_b = birth_temp1 + 2000; %>
-          <% age = year - temp_b;%>
-          <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
-               <%age--; %>
-          <%} %>
-   <%} %>
+		int year = now.getYear(); // 현재 년도
+		String year_temp = Integer.toString(year).substring(2, 3); // 년도 끝 2자리
+		int year_temp1 = Integer.parseInt(year_temp);
+		int month = now.getDayOfYear(); // 현재 월
+		int date = now.getDayOfMonth(); // 현재 일
+		String birth = print_vo.getDate_birth(); // 태어난 년,월,일
+		int birth_temp1 = Integer.parseInt(birth.substring(0,2)); // 태어난 년도
+		int birth_temp2 = Integer.parseInt(birth.substring(2,4)); // 태어난 월
+		int birth_temp3 = Integer.parseInt(birth.substring(4)); // 태어난 일
+		int age = 0;
+
+	%>
+	
+	<!-- 만 나이 계산 -->
+	<%if(birth_temp1 > year_temp1){ %>
+			 <% int temp_b = birth_temp1+ 1900;%>
+			 <% age = year - temp_b;%>
+			 <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
+					<%age--; %>
+			<%} %>
+	<%}else{ %>
+			 <% int temp_b = birth_temp1 + 2000; %>
+			 <% age = year - temp_b;%>
+			 <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
+					<%age--; %>
+			 <%} %>
+	<%} %>
 
    <%@ include file="./include/header.jsp" %>
    <div id="wrap" class="resumeReg_wrap">
@@ -141,7 +141,7 @@
                                     href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
                               </span></li>
                               <li><span>파일</span> <span>｜</span> <span> <%=print_vo.getFile_name() %>
-                                    <a href="#" class="download"> 다운로드</a>
+                                    <a href="./img/logo_w.png" class="download" download> 다운로드</a>
                               </span></li>
                            </ul>
                         </div>
@@ -153,7 +153,7 @@
                         <div class="w_box">
                            <ul>
                               <li><span>파일</span> <span>｜</span> <span> <a
-                                    href="#" class="download"><%=print_vo.getFile_name() %>
+                                    href="./img/logo_w.png" class="download" download><%=print_vo.getFile_name() %>
                                        다운로드</a>
                               </span></li>
                            </ul>
@@ -218,6 +218,13 @@
       </div>
    </div>
 
+	<%@ include file="./include/footer.jsp" %>
+	<script>
+		// 개발기술스택 tab 처리
+		//함수 호출 반복문
+		for (let i = 0; i < $('.c_btn').length; i++) {
+			tabOpen(i);
+		}
 
    <%@ include file="./include/footer.jsp" %>
    <script>
@@ -305,23 +312,23 @@
          html2canvas($('#resumePDF')[0]).then(function(canvas) {
            let imgData = canvas.toDataURL('image/png');
    
-           let imgWidth = 210; // 이미지 가로 길이(mm) A4 기준
+           let imgWidth = 200; // 이미지 가로 길이(mm) A4 기준
            let pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
            let imgHeight = canvas.height * imgWidth / canvas.width;
            let heightLeft = imgHeight;
-   
+   		   
            let doc = new jsPDF('p', 'mm');
            let position = 0;
-   
+           
            // 첫 페이지 출력
-           doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+           doc.addImage(imgData, 'PNG', 10,10 , position, imgWidth, imgHeight);
            heightLeft -= pageHeight;
    
            // 한 페이지 이상일 경우 루프 돌면서 출력
            while (heightLeft >= 20) {
                position = heightLeft - imgHeight;
                doc.addPage();
-               doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+               doc.addImage(imgData, 'PNG',10,10, position, imgWidth, imgHeight);
                heightLeft -= pageHeight;
            }
    
