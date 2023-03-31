@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.db.LanguageMapper">
+
+	<select id="selectLanguage" resultType="LanguageVO">
+		select resume_num, language_name, language_level
+		from language_list
+	</select>
+	
+	<select id="selectFramework" resultType="FrameworkVO">
+		select resume_num, framework_name, framework_level
+		from framework_list
+	</select>
+	
+	<select id="selectOs" resultType="OsVO">
+		select resume_num, os_name, os_level
+		from os_list
+	</select>
+	
+	<select id="selectLicense" resultType="LicenseVO">
+		select resume_num, license_name
+		from license_list
+	</select>
+
+</mapper>
