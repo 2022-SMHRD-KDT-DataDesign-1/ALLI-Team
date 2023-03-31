@@ -1,10 +1,11 @@
 package com.smhrd.model;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class resumeVO {
    
-   private int resume_num;
+   private BigDecimal resume_num;
    private String user_id;
    private String user_name;
    private String user_tel;
@@ -31,12 +32,12 @@ public class resumeVO {
    private String user_tel2;
    private String career_date;
 
-   //기업게시판에 이력서미리보기
    public resumeVO() {
       
    }
 
-   public resumeVO(int resume_num, String user_id, String user_name, String user_tel, String user_email,
+   //기업게시판에 이력서미리보기
+   public resumeVO(BigDecimal resume_num, String user_id, String user_name, String user_tel, String user_email,
          String date_birth, String hope_area, String resume_title, String address, String self_introduction,
          String gender, Timestamp cre_date, String school_division, String school_name, String graduation_status, String hope_salary,
          String picture, String file_name, String major, String career, String award, String url, String hope_area2,
@@ -68,9 +69,16 @@ public class resumeVO {
          this.on_off = on_off;
          this.career_date = career_date;
    }
-
    
-   public int getResume_num() {
+   // 구직자 이력서 공개/비공개 전환을 위한 생성자
+   public resumeVO(BigDecimal resume_num, String user_id) {
+	   super();
+	   this.resume_num = resume_num;
+	   this.user_id = user_id;
+   }
+   
+
+   public BigDecimal getResume_num() {
       return resume_num;
    }
 
