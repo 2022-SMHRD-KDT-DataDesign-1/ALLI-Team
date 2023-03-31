@@ -32,11 +32,17 @@ public class resumeVO {
 	private String user_tel2;
 	private String career_date;
 
-
+	// user_id만 받는 생성자
+	public resumeVO(String user_id) {
+		super();
+		this.user_id = user_id;
+	}
+	
 	public resumeVO() {
 		
 	}
-	
+
+
 	public resumeVO(BigDecimal resume_num, String user_id, String user_name, String user_tel, String user_email,
 			String date_birth, String hope_area, String resume_title, String address, String self_introduction,
 			String gender, Timestamp cre_date, String school_division, String school_name, String graduation_status, String hope_salary,
