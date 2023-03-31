@@ -10,7 +10,7 @@
 <body>
 	
 	<%
-		BigDecimal resume_num = new BigDecimal(253);
+		int resume_num = 253;
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(resume_num);
 		LocalDate now = LocalDate.now();
