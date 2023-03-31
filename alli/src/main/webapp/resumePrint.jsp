@@ -1,6 +1,16 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.smhrd.model.OsVO"%>
+<%@page import="com.smhrd.model.FrameworkVO"%>
+<%@page import="com.smhrd.model.LanguageVO"%>
+<%@page import="com.smhrd.model.LicenseVO"%>
+<%@page import="com.smhrd.model.LicenseDAO"%>
+<%@page import="com.smhrd.model.OsDAO"%>
+<%@page import="com.smhrd.model.FrameworkDAO"%>
+<%@page import="com.smhrd.model.LanguageDAO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="com.smhrd.model.resumeDAO"%>
 <%@page import="com.smhrd.model.resumeVO"%>
 <%@page import=" java.time.LocalDate"%>
@@ -15,7 +25,7 @@
 
 	<%
 
-		BigDecimal resume_num = new BigDecimal(419); 
+		int resume_num = 451; 
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(resume_num);
 		LocalDate now = LocalDate.now();
@@ -30,6 +40,32 @@
 		int birth_temp2 = Integer.parseInt(birth.substring(2,4)); // 태어난 월
 		int birth_temp3 = Integer.parseInt(birth.substring(4)); // 태어난 일
 		int age = 0;
+		
+		// 개발스택 상중하 가져오기
+		LanguageDAO Ldao = new LanguageDAO();
+		List<LanguageVO> Llist = Ldao.selectLanguage();
+		
+		FrameworkDAO Fdao = new FrameworkDAO();
+		List<FrameworkVO> Flist = Fdao.selectFramework();
+
+		OsDAO Odao = new OsDAO();
+		List<OsVO> Olist = Odao.selectOs();
+
+		LicenseDAO LIdao = new LicenseDAO();
+		List<LicenseVO> LIlist = LIdao.selectLicense();
+		
+		
+		 if(Llist != null || Flist != null || Olist != null || LIlist != null ) {
+				System.out.println("개발상중하 성공");
+				// 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
+					request.setAttribute("Llist", Llist);
+					request.setAttribute("Flist", Flist);
+					request.setAttribute("Olist", Olist);
+					request.setAttribute("LIlist", LIlist);
+	
+		} else {
+			System.out.println("개발상중하 실패");
+		}
 
 	%>
 	
@@ -109,25 +145,46 @@
                         <ul>
                            <li><span>프로그래밍 언어</span> <span>｜</span>
                               <div>
-                                 <span>Java[상]</span> <span>Python[상]</span> <span>JSP[상]</span>
-                                 <span>HTML,CSS[상]</span> <span>servlet[상]</span>
+                              	  	<%for(LanguageVO l : Llist){ %>
+	                              		<%if( l.getResume_num() == 243) {%>
+	                              			<span>
+	                              				<%=l.getLanguage_name()%> [<%=l.getLanguage_level() %>]
+	                              			</span>
+	                              		<%} %>	
+                              		<%} %>
                               </div>
                            </li>
                            <li><span>프레임워크</span> <span>｜</span>
                               <div>
-                                 <span>Spring[상]</span> <span>Eclipse[상]</span> <span>Visual
-                                    Studio Code[상]</span> <span>Intellij[상]</span>
+                              	  	<%for(FrameworkVO F : Flist){ %>
+	                              		<%if( F.getResume_num() == 243) {%>
+	                              			<span>
+	                              				<%=F.getFramework_name()%> [<%=F.getFramework_level() %>]
+	                              			</span>
+	                              		<%} %>	
+                              		<%} %>
                               </div>
                            </li>
                            <li><span>OS</span> <span>｜</span>
                               <div>
-                                 <span>Windows[상]</span>
-
+                              	  	<%for(OsVO O : Olist){ %>
+	                              		<%if( O.getResume_num() == 245) {%>
+	                              			<span>
+	                              				<%=O.getOs_name()%> [<%=O.getOs_level() %>]
+	                              			</span>
+	                              		<%} %>	
+                              		<%} %>
                               </div>
                            </li>
                            <li><span>자격증</span> <span>｜</span>
                               <div>
-                                 <span>정보처리기사</span> <span>SQLD</span>
+                              	  	<%for(LicenseVO LI : LIlist){ %>
+	                              		<%if( LI.getResume_num() == 243) {%>
+	                              			<span>
+	                              				<%=LI.getLicense_name()%>
+	                              			</span>
+	                              		<%} %>	
+                              		<%} %>
                               </div>
                            </li>
                         </ul>

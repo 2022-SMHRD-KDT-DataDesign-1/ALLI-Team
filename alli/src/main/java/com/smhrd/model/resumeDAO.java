@@ -1,6 +1,5 @@
 package com.smhrd.model;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,7 +12,7 @@ public class resumeDAO {
 	// 세션을 생성해 줄 수 있는 factory 생성
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	
-	 public resumeVO resume_Print(BigDecimal resume_num) {
+	 public resumeVO resume_Print(int resume_num) {
 		 SqlSession sqlSession = sqlSessionFactory.openSession(true); // true -> auto
 		 resumeVO print_vo = sqlSession.selectOne("resume_Print",resume_num); 
 		 sqlSession.close(); 

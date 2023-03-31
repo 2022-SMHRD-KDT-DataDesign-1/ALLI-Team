@@ -1,11 +1,10 @@
 package com.smhrd.model;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class resumeVO {
    
-   private BigDecimal resume_num;
+   private int resume_num;
    private String user_id;
    private String user_name;
    private String user_tel;
@@ -37,7 +36,7 @@ public class resumeVO {
       
    }
 
-   public resumeVO(BigDecimal resume_num, String user_id, String user_name, String user_tel, String user_email,
+   public resumeVO(int resume_num, String user_id, String user_name, String user_tel, String user_email,
          String date_birth, String hope_area, String resume_title, String address, String self_introduction,
          String gender, Timestamp cre_date, String school_division, String school_name, String graduation_status, String hope_salary,
          String picture, String file_name, String major, String career, String award, String url, String hope_area2,
@@ -71,7 +70,7 @@ public class resumeVO {
    }
 
    
-   public BigDecimal getResume_num() {
+   public int getResume_num() {
       return resume_num;
    }
 
