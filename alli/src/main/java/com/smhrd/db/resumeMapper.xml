@@ -23,5 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="openUpdate" parameterType="resumeVO">
 		update t_resume set on_off = 'on' where resume_num=#{resume_num} and user_id=#{user_id}
 	</update>
+	
+	<update id="closeUpdate" parameterType="BigDecimal">
+		update t_resume set on_off = null where resume_num=#{resume_num}
+	</update>
+	
+	<update id="openUpdate2" parameterType="resumeVO">
+		update t_resume set on_off = null where user_id=#{user_id} and on_off = 'on'
+	</update>
 
 </mapper>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.command.Command;
+import com.smhrd.controller.CloseUpdateService;
 import com.smhrd.controller.LogoutService;
 import com.smhrd.controller.OpenUpdateService;
 import com.smhrd.controller.cmpJoinService;
@@ -58,6 +59,8 @@ public class Frontcontroller extends HttpServlet {
 			service = new resumeDeleteService();
 		}else if(result.equals("OpenUpdateService.do")) {
 			service = new OpenUpdateService();
+		}else if(result.equals("CloseUpdateService.do")) {
+			service = new CloseUpdateService();
 		}
 		
 		String moveURL = service.excute(request, response);

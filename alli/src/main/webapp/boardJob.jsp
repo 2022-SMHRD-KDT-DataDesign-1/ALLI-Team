@@ -51,8 +51,8 @@
 		List<resumeVO> resumes = dao.selectResumeList(login_vo.getUser_id());
 		System.out.println(resumes.size());
 		BigDecimal resumeNum = new BigDecimal(0);
-		String openli = "";
 	%>
+    <input type="hidden" value="<%= resumes.size() %>" id="resumesSize">
 	
 	<div id="wrap" class="boardJob_wrap">
        <div class="sub_top sub_top_a">
@@ -410,7 +410,6 @@
 				</div>
             </div>
             
-            <input type="hidden" value="<%= resumes.size() %>" id="resumesSize">
             
             
             <!-- 이력서 시작 -->
@@ -421,14 +420,37 @@
  				<div class="boardJob02">
 					<ul>
 						<%if(resumes.size()==0){ %>
-						
+							<%System.out.println("등록된 이력서 없음"); %>
 						<%}else{ %>
 							<%for(int i = 0 ; i<resumes.size();i++){ %>
 							<% resumeNum = resumes.get(i).getResume_num();%>
-							<li>
+							<!-- <li class="open"> -->
+							
+						<%-- 	<%
+							if(resumes.get(i).getOn_off() != null){
+								if(resumes.get(i).getOn_off().equals("on")){
+									out.print("<li class='open'>");
+								}else{
+									out.print("<li>");
+								}
+							}else{
+								out.print("<li>");
+							}%> --%>
+							
+							<%if(resumes.get(i).getOn_off() != null){ %>
+								<% if(resumes.get(i).getOn_off().equals("on")){%>
+									<li class='open'>
+								<%}else{ %>
+									<li>
+								<%} %>
+							<%}else{ %>
+								<li>
+							<%} %>
+							
+							<!-- <li> -->
 								<div class="boardJob_listTop">
 									<div>
-										<span class="material-symbols-outlined person_icon">
+										<span style="cursor: pointer;"  onclick="location.href='resumePrint.jsp'" class="material-symbols-outlined person_icon">
 											account_circle
 										</span>
 										<!-- <img src=""> -->
@@ -447,7 +469,7 @@
 									<h3><%=resumes.get(i).getResume_title() %></h3>
 									<p>
 										<%=resumes.get(i).getSchool_name() %><br>
-										<%=resumes.get(i).getMajor() %> <%=resumes.get(0).getGraduation_status() %>
+										<%=resumes.get(i).getMajor() %> <%=resumes.get(i).getGraduation_status() %>
 									</p>
 									<p>
 										희망지역:<%=resumes.get(i).getHope_area() %><br>
@@ -458,6 +480,7 @@
 									</p>
 									<p class="boardJob_date">최종수정일 : 23.04.01</p>
 								</div>
+								
 								<div class="boardJob_add" id="option">
 									<a href="#" class="closeBtn">
 										<span class="material-symbols-outlined delete">
@@ -465,8 +488,19 @@
 			                            </span>
 									</a>
 									<ul>
-										<li class="openBoard"><a href="OpenUpdateService.do?resume_num=<%=resumeNum%>&user_id=<%=login_vo.getUser_id() %>">공개이력서로 설정</a></li>
-										<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
+										<%if(resumes.get(i).getOn_off() != null){ %>
+											<%if(resumes.get(i).getOn_off().equals("on")){ %>
+											<!-- 공개로 되어있을 때 -->
+												<li class="closeBoard"><a href="CloseUpdateService.do?resume_num=<%=resumeNum%>">공개이력서 해제</a></li>
+											<%}else{ %>
+											<!-- 비공개일 때 -->
+												<li class="openBoard"><a href="OpenUpdateService.do?resume_num=<%=resumeNum%>&user_id=<%=login_vo.getUser_id() %>">공개이력서로 설정</a></li>
+											<%} %>
+										<%}else{ %>
+											<li class="openBoard"><a href="OpenUpdateService.do?resume_num=<%=resumeNum%>&user_id=<%=login_vo.getUser_id() %>">공개이력서로 설정</a></li>
+										<%} %>
+										<%-- <li class="openBoard"><a href="OpenUpdateService.do?resume_num=<%=resumeNum%>&user_id=<%=login_vo.getUser_id() %>">공개이력서로 설정</a></li> --%>
+										<%-- <li class="closeBoard"><a href="CloseUpdateService.do?resume_num=<%=resumeNum%>">공개이력서 해제</a></li> --%>
 										<li><a href="#">PDF 다운로드</a></li>
 										<li><a href="#">수정</a></li>
 										<li class="resumeDelBtn"><a href="resumeDeleteService.do?delIndex=<%=resumeNum%>">삭제</a></li>
@@ -759,9 +793,9 @@
 		
 		
 		// 공개 이력서 해제 꺼두는 for문
-		for(let i = 0 ; i < resumesSize ; i++){
+		/* for(let i = 0 ; i < resumesSize ; i++){
 			closeBoard[i].style.display='none'
-		}
+		} */
 		/* closeBoard[1].style.display='none'
 		closeBoard[2].style.display='none' */
 		
@@ -811,32 +845,33 @@
 		
 		// 공개이력서 설정 클릭 시 해당 이력서의 테두리가 바뀌고 공개 이력서 설정 글씨가 공개 이력서 해제로
 		// 다른 이력서 테두리가 바뀌고 공개이력서해제로 되어있던게 공개이력서 설정으로 바뀌는 for문
-		for(let i = 0 ; i < resumesSize ; i++){
-			openBoard[i].onclick=()=>{
-				console.log('openBoard click')
-				console.log(boardJob_li[i])
-				boardJob_li[i].classList.add('open')
+		//for(let i = 0 ; i < resumesSize ; i++){
+			//openBoard[i].onclick=()=>{
+				//console.log('openBoard click')
+				//console.log(boardJob_li[i])
+				//boardJob_li[i].classList.add('open')
 				/* boardJob_li[1].classList.remove('open')
 				boardJob_li[2].classList.remove('open') */
-				openBoard[i].style.display = 'none'
+				//openBoard[i].style.display = 'none'
 				/* openBoard[1].style.display = 'block'
 				openBoard[2].style.display = 'block' */
-				closeBoard[i].style.display = 'block'
+				//closeBoard[i].style.display = 'block'
 				/* closeBoard[1].style.display = 'none'
 				closeBoard[2].style.display = 'none' */
-				for(let j = 0 ; j < resumesSize ; j++){
-					if(j!=i){
-						boardJob_li[j].classList.remove('open')
-						openBoard[j].style.display = 'block'
-						closeBoard[j].style.display = 'none'
-					}
-				}
-			}
-		}
+				
+			//	for(let j = 0 ; j < resumesSize ; j++){
+					//if(j!=i){
+						//boardJob_li[j].classList.remove('open')
+						//openBoard[j].style.display = 'block'
+						//closeBoard[j].style.display = 'none'
+					//}
+				//}
+			//}
+		//}
 		
 		// 공개 이력서 해제 클릭시 해당 공개 이력서의 테두리가 바뀌고 공개이력서해제 글씨가
 		// 공개 이력서 설정으로 바뀌는 for문
-		for(let i = 0 ; i < resumesSize ; i++){
+		/* for(let i = 0 ; i < resumesSize ; i++){
 			closeBoard[i].onclick=()=>{
 				console.log('openBoard click')
 				console.log(boardJob_li[i])
@@ -844,7 +879,7 @@
 				openBoard[i].style.display = 'block'
 				closeBoard[i].style.display = 'none'
 			}
-		}
+		} */
 		
 		/* openBoard[1].onclick=()=>{
 			console.log('openBoard click')
