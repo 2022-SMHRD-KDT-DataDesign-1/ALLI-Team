@@ -4,12 +4,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.resumeMapper">
 
-	<select id="resume_Print" parameterType="String" resultType="resumeVO">
-		select * from t_resume where user_id=#{user_id}
+	<select id="resume_Print" parameterType="BigDecimal" resultType="resumeVO">
+		select * from t_resume where resume_num=#{resume_num}
 	</select>
 	
 	<select id="selectListToEmp" resultType="resumeVO">
-		select * from T_RESUME WHERE on_off = 'on'
+		select * from T_RESUME WHERE on_off = 'on' order by resume_num desc
+	</select>
+	
+	<select id="select_userResumes" resultType="resumeVO">
+		select * from t_resume where user_id=#{id} order by resume_num asc
 	</select>
 
 </mapper>

@@ -1,8 +1,13 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.smhrd.model.resumeDAO"%>
+<%@page import="com.smhrd.model.resumeVO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="./include/metatag.jsp" %>  
 </head>
 <body>
@@ -39,6 +44,13 @@
 		int age = date_y_int - birth_y_int + 1 ; // 현재 연도에서 생년 연도를 빼서 나이 계산
 		System.out.println(age);
 	%>
+	
+	<% 
+		resumeDAO dao = new resumeDAO();
+		List<resumeVO> resumes = dao.selectResumeList(login_vo.getUser_id());
+		System.out.println(resumes.size());
+	%>
+	
 	<div id="wrap" class="boardJob_wrap">
        <div class="sub_top sub_top_a">
             <div>
@@ -395,6 +407,9 @@
 				</div>
             </div>
             
+            <input type="hidden" value="<%= resumes.size() %>" id="resumesSize">
+            
+            
             <!-- 이력서 시작 -->
             <div class="sub_box">
                 <h2 class="sub_title">구직자를 위한 '특별한'IT전문이력서</h2>
@@ -402,7 +417,60 @@
  				<a href="resumeReg.jsp" id="resumeReg_btn">이력서 등록</a>
  				<div class="boardJob02">
 					<ul>
-						<li>
+						<%if(resumes.size()==0){ %>
+						<%}else{ %>
+							<%for(int i = 0 ; i<resumes.size();i++){ %>
+							<li>
+								<div class="boardJob_listTop">
+									<div>
+										<span class="material-symbols-outlined person_icon">
+											account_circle
+										</span>
+										<!-- <img src=""> -->
+									</div>
+									<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
+									<div>
+										<p>
+											<span><%= login_vo.getUser_name() %></span><span>(<%=resumes.get(i).getGender() %>,<%=age %>세)</span>
+										</p>
+										<p>
+											<%=resumes.get(i).getCareer_date() %>
+										</p>
+									</div>
+								</div>
+								<div class="boardJob_listBtm">
+									<h3><%=resumes.get(i).getResume_title() %></h3>
+									<p>
+										<%=resumes.get(i).getSchool_name() %><br>
+										<%=resumes.get(i).getMajor() %> <%=resumes.get(0).getGraduation_status() %>
+									</p>
+									<p>
+										희망지역:<%=resumes.get(i).getHope_area() %><br>
+										희망연봉:<%=resumes.get(i).getHope_salary() %>
+									</p>
+									<p>
+										<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
+									</p>
+									<p class="boardJob_date">최종수정일 : 23.04.01</p>
+								</div>
+								<div class="boardJob_add" id="option">
+									<a href="#" class="closeBtn">
+										<span class="material-symbols-outlined delete">
+			                                Close
+			                            </span>
+									</a>
+									<ul>
+										<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
+										<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
+										<li><a href="#">PDF 다운로드</a></li>
+										<li><a href="#">수정</a></li>
+										<li class="resumeDelBtn"><a href="#">삭제</a></li>
+									</ul>
+								</div>
+							</li>
+							<%} %>
+						<%} %>
+						<%-- <li>
 							<div class="boardJob_listTop">
 								<div>
 									<span class="material-symbols-outlined person_icon">
@@ -449,8 +517,8 @@
 									<li><a href="#">삭제</a></li>
 								</ul>
 							</div>
-						</li>
-						<li>
+						</li> --%>
+						<%-- <li>
 							<div class="boardJob_listTop">
 								<div>
 									<span class="material-symbols-outlined person_icon">
@@ -497,55 +565,7 @@
 									<li><a href="#">삭제</a></li>
 								</ul>
 							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle
-									</span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
-								<div>
-									<p>
-										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
-									</p>
-									<p>
-										신입
-									</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br>
-									스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br>
-									희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-								<p class="boardJob_date">최종수정일 : 23.04.01</p>
-							</div>
-							<div class="boardJob_add" id="option">
-								<a href="#" class="closeBtn">
-									<span class="material-symbols-outlined delete">
-		                                Close
-		                            </span>
-								</a>
-								<ul>
-									<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
-									<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
-									<li><a href="#">PDF 다운로드</a></li>
-									<li><a href="#">수정</a></li>
-									<li><a href="#">삭제</a></li>
-								</ul>
-							</div>
-						</li>
+						</li> --%>
 					</ul>
 				</div>
             </div>
@@ -700,6 +720,10 @@
 	<!-- 이력서 스크립트 -->
 	<script>
 		
+		var resumesSize = $('#resumesSize').val();
+		console.log("resumesSize : " + resumesSize);
+	
+	
 		let optionBtn = document.getElementsByClassName('optionBtn')
 		let boardJob_add = document.getElementsByClassName('boardJob_add')
 		let closeBtn = document.getElementsByClassName('closeBtn')
@@ -707,10 +731,14 @@
 		let closeBoard = document.getElementsByClassName('closeBoard')
 		let boardJob_listTop = document.getElementsByClassName('boardJob_listTop')
 		let boardJob_li = document.querySelectorAll('div.boardJob02>ul>li')
+		let resumeDelBtn = document.getElementsByClassName('resumeDelBtn')
 		
-		boardJob_add[0].style.display = 'none'
-		boardJob_add[1].style.display = 'none'
-		boardJob_add[2].style.display = 'none'
+		// 더보기 창 꺼두는 for문
+		for(let i = 0 ; i < resumesSize ; i++){
+			boardJob_add[i].style.display = 'none'
+		}
+		/* boardJob_add[1].style.display = 'none'
+		boardJob_add[2].style.display = 'none' */
 		
 		/* if(closeBoard[0]).style.display.equals('block')){
 			closeBoard[1]).style.display = 'none'
@@ -724,28 +752,43 @@
 		} */
 		
 		
-		closeBoard[0].style.display='none'
-		closeBoard[1].style.display='none'
-		closeBoard[2].style.display='none'
-		
-		closeBtn[0].onclick=()=>{
-			boardJob_add[0].style.display= 'none'
+		// 공개 이력서 해제 꺼두는 for문
+		for(let i = 0 ; i < resumesSize ; i++){
+			closeBoard[i].style.display='none'
 		}
-		closeBtn[1].onclick=()=>{
+		/* closeBoard[1].style.display='none'
+		closeBoard[2].style.display='none' */
+		
+		// 더보기 닫기 클릭 시 닫히는 for문
+		for(let i = 0 ; i < resumesSize ; i++){
+			closeBtn[i].onclick=()=>{
+				boardJob_add[i].style.display= 'none'
+			}
+		}
+		/* closeBtn[1].onclick=()=>{
 			boardJob_add[1].style.display= 'none'
 		}
 		closeBtn[2].onclick=()=>{
 			boardJob_add[2].style.display= 'none'
+		} */
+		
+		
+		// 더보기 버튼 클릭시 더보기 창이 열리고 다른 곳에 열려 있던 더보기 창은 닫히는 for문
+		for(let i = 0 ; i < resumesSize ; i++){
+			optionBtn[i].onclick=()=>{
+				console.log("optionBtn["+i+"] click")
+				boardJob_add[i].style.display = 'block'
+				for(let j = 0 ; j < resumesSize ; j++){
+					if(j!=i){
+					boardJob_add[j].style.display='none'
+					}
+				}
+			}
+			/* boardJob_add[1].style.display = 'none'
+			boardJob_add[2].style.display = 'none' */
 		}
 		
-		optionBtn[0].onclick=()=>{
-			console.log("optionBtn[0] click")
-			boardJob_add[0].style.display = 'block'
-			boardJob_add[1].style.display = 'none'
-			boardJob_add[2].style.display = 'none'
-		}
-		
-		optionBtn[1].onclick=()=>{
+		/* optionBtn[1].onclick=()=>{
 			console.log("optionBtn[1] click")
 			boardJob_add[1].style.display = 'block'
 			boardJob_add[0].style.display = 'none'
@@ -757,31 +800,47 @@
 			boardJob_add[1].style.display = 'none'
 			boardJob_add[0].style.display = 'none'
 			boardJob_add[2].style.display = 'block'
+		} */
+		
+		
+		// 공개이력서 설정 클릭 시 해당 이력서의 테두리가 바뀌고 공개 이력서 설정 글씨가 공개 이력서 해제로
+		// 다른 이력서 테두리가 바뀌고 공개이력서해제로 되어있던게 공개이력서 설정으로 바뀌는 for문
+		for(let i = 0 ; i < resumesSize ; i++){
+			openBoard[i].onclick=()=>{
+				console.log('openBoard click')
+				console.log(boardJob_li[i])
+				boardJob_li[i].classList.add('open')
+				/* boardJob_li[1].classList.remove('open')
+				boardJob_li[2].classList.remove('open') */
+				openBoard[i].style.display = 'none'
+				/* openBoard[1].style.display = 'block'
+				openBoard[2].style.display = 'block' */
+				closeBoard[i].style.display = 'block'
+				/* closeBoard[1].style.display = 'none'
+				closeBoard[2].style.display = 'none' */
+				for(let j = 0 ; j < resumesSize ; j++){
+					if(j!=i){
+						boardJob_li[j].classList.remove('open')
+						openBoard[j].style.display = 'block'
+						closeBoard[j].style.display = 'none'
+					}
+				}
+			}
 		}
 		
-		openBoard[0].onclick=()=>{
-			console.log('openBoard click')
-			console.log(boardJob_li[0])
-			boardJob_li[0].classList.add('open')
-			boardJob_li[1].classList.remove('open')
-			boardJob_li[2].classList.remove('open')
-			openBoard[0].style.display = 'none'
-			openBoard[1].style.display = 'block'
-			openBoard[2].style.display = 'block'
-			closeBoard[0].style.display = 'block'
-			closeBoard[1].style.display = 'none'
-			closeBoard[2].style.display = 'none'
+		// 공개 이력서 해제 클릭시 해당 공개 이력서의 테두리가 바뀌고 공개이력서해제 글씨가
+		// 공개 이력서 설정으로 바뀌는 for문
+		for(let i = 0 ; i < resumesSize ; i++){
+			closeBoard[i].onclick=()=>{
+				console.log('openBoard click')
+				console.log(boardJob_li[i])
+				boardJob_li[i].classList.remove('open')
+				openBoard[i].style.display = 'block'
+				closeBoard[i].style.display = 'none'
+			}
 		}
 		
-		closeBoard[0].onclick=()=>{
-			console.log('openBoard click')
-			console.log(boardJob_li[0])
-			boardJob_li[0].classList.remove('open')
-			openBoard[0].style.display = 'block'
-			closeBoard[0].style.display = 'none'
-		}
-		
-		openBoard[1].onclick=()=>{
+		/* openBoard[1].onclick=()=>{
 			console.log('openBoard click')
 			console.log(boardJob_li[0])
 			boardJob_li[1].classList.add('open')
@@ -823,6 +882,10 @@
 			boardJob_li[2].classList.remove('open')
 			openBoard[2].style.display = 'block'
 			closeBoard[2].style.display = 'none'
+		} */
+		
+		resumeDelBtn[0].onclick=()=>{
+			console.log("resumeDelBtn[0] click")
 		}
 	</script>
 	

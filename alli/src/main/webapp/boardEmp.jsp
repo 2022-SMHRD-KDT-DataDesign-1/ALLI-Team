@@ -437,7 +437,11 @@
 									</div>
 								</div>
 								<div class="boardJob_listBtm">
-									<h3>${item.resume_title}</h3>
+									<h3>
+										<a href="#">
+											${item.resume_title}
+										</a>
+									</h3>
 									<p>
 										${item.school_name}
 										<!-- 학교구분 -->
