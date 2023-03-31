@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.smhrd.model.resumeDAO"%>
@@ -14,7 +15,7 @@
 
 	<%
 
-		BigDecimal resume_num = new BigDecimal(253); //253 270
+		BigDecimal resume_num = new BigDecimal(419); 
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(resume_num);
 		LocalDate now = LocalDate.now();
@@ -140,7 +141,7 @@
                               <li><span>URL</span> <span>｜</span> <span> <a
                                     href="<%=print_vo.getUrl()%>" class="URL" target="_blank"><%=print_vo.getUrl()%></a>
                               </span></li>
-                              <li><span>파일</span> <span>｜</span> <span> <%=print_vo.getFile_name() %>
+                              <li><span>파일</span> <span>｜</span> <span> 
                                     <a href="./img/logo_w.png" class="download" download> 다운로드</a>
                               </span></li>
                            </ul>
@@ -153,7 +154,7 @@
                         <div class="w_box">
                            <ul>
                               <li><span>파일</span> <span>｜</span> <span> <a
-                                    href="./img/logo_w.png" class="download" download><%=print_vo.getFile_name() %>
+                                    href="./img/logo_w.png" class="download" download>
                                        다운로드</a>
                               </span></li>
                            </ul>
@@ -210,14 +211,12 @@
                   <li><a href="boardJob.jsp">목록</a></li>
                   <li><a href="#" id="pdf">PDF 변환</a></li>
                   <li><a href="resumeModify.jsp">수정하기</a></li>
-                  <li><a href="boardJob.jsp" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a>
-                  </li>
+                  <li><a href="printDeleteService.do?resume_num=<%=print_vo.getResume_num()%>" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a></li>
                </ul>
             </form>
          </div>
       </div>
-   </div>
-
+   </div>	
 	<%@ include file="./include/footer.jsp" %>
 	<script>
 		// 개발기술스택 tab 처리
@@ -346,5 +345,6 @@
          });
        }
    </script>
+
 </body>
 </html>

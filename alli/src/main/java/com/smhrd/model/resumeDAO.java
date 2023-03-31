@@ -35,6 +35,6 @@ public class resumeDAO {
 		 sqlSession.close();
 		 return user_resume_list ;
 	 }
-	
+
 
 }
