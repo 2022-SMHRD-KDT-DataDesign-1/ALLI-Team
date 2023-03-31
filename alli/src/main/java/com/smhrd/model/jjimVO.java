@@ -11,6 +11,12 @@ public class jjimVO {
 	public jjimVO() {
 		
 	}
+	
+	public jjimVO(String cmp_id, int resume_num) {
+		super();
+		this.cmp_id = cmp_id;
+		this.resume_num = resume_num;
+	}
 
 	public jjimVO(int jjim, String cmp_id, int resume_num) {
 		super();

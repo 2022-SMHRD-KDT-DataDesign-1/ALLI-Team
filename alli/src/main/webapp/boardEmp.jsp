@@ -25,8 +25,8 @@
 	<%@ include file="./include/header.jsp"%>
 	<%
 	// session값 가져오기
-	cmpVO cmpLoginVO = (cmpVO) session.getAttribute("cmpLogin_vo");
-
+	cmpVO cmpLoginVO = (cmpVO)session.getAttribute("cmpLogin_vo"); //cmpLoginVO는 스크립틀릿의 변수명이고, session명을 가져와서 뿌려야함
+	
 	// 개발T 가져오기
 	developDAO dao = new developDAO();
 	List<developVO> list = dao.selectDevelopList();
@@ -36,7 +36,6 @@
 			// 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
 				request.setAttribute("list", list);
 				//session.setAttribute("list", list);
-				System.out.println(list);
 	} else {
 		System.out.println("개발T 실패");
 	}
@@ -48,7 +47,6 @@
 	if(rlist != null){
 		System.out.println("이력서 미리보기 성공");
 		request.setAttribute("rlist", rlist);
-		//System.out.println(rlist.get(0).getUser_name());
 	}else{
 		System.out.println("이력서 미리보기 실패");
 	}
@@ -59,16 +57,11 @@
 	for(int i = 0; i<rlist.size();i++){
 	// 사용자의 생년월일 정보를 세션의 login_vo에서 가져옴
       String birth = rlist.get(i).getDate_birth();
-      System.out.println(birth); // ex) 940911
       // 현재 날짜를 초기화
-      System.out.println(date);
       SimpleDateFormat format = new SimpleDateFormat("yymmdd"); // yymmdd형으로 전환
       String str = format.format(date); // yymmdd형의 문자형으로 전환
-      System.out.println(str);
       String birth_y = birth.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
-      System.out.println(birth_y);
       String date_y = str.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
-      System.out.println(date_y);
       int birth_y_int = Integer.parseInt(birth_y); // 문자열을 정수형으로 바꾼다.
       int date_y_int = Integer.parseInt(date_y)+2000; // 문자열을 정수형으로 바꾸고 2000을 더해서 2023의 형태로
       
@@ -80,10 +73,7 @@
          birth_y_int += 2000;
       };
       
-      System.out.println(date_y_int);
-      System.out.println(birth_y_int);
       age = date_y_int - birth_y_int + 1 ; // 현재 연도에서 생년 연도를 빼서 나이 계산
-      System.out.println(age);
 	}
 	
 	// 개발스택 상중하 가져오기
@@ -123,6 +113,10 @@
 		} else {
 			System.out.println("찜목록가져오기 실패");
 		}
+		
+		
+		
+		
 
 	%>
 	<div id="wrap" class="boardEmp_wrap">
@@ -138,96 +132,111 @@
 				<div>
 					기업<br>회원
 				</div>
-				<%if(cmpLoginVO != null){ %>
-				<p><%=cmpLoginVO.getCmp_name()%>님, 반갑습니다.
-				</p>
-				<%}%>
-
+				<c:if test="${not empty cmpLogin_vo}" >
+					<p>
+						${cmpLogin_vo.cmp_name}님, 반갑습니다.
+					</p>
+				</c:if>
 			</div>
-			<div class="sub_box">
+			<div class="sub_box" id="pick">
 				<h2 class="sub_title">인재 PICK</h2>
 				<p class="sub_title_text">기업이 원하는 인재를 '즐겨찾기 기능'으로 PICK하세요. 아래
 					게시판에서 관리가 가능합니다. (단, 구직자가 이력서를 비공개 처리한 경우, 자동으로 숨김처리됩니다.)</p>
 				<div class="boardJob02">
 					<ul>
-						<%-- <c:forEach items="${rlist}" var="item">
-							<li>
-								<div class="boardJob_listTop">
-									<div>
-										<!-- 사진구분 -->
-											<c:choose> 
-										         <c:when test = "${item.picture ne null }">
-										            <img src="${item.picture}">
-										         </c:when>
-										         <c:otherwise>
-										         	<span class="material-symbols-outlined person_icon">
-														account_circle
-													</span>
-										         </c:otherwise>
-										     </c:choose>
-									</div>
-									<a class="like" href='javascript:void(0);'> 
-										<img src="./img/star0.png">
-									</a>
-									<div>
-										<p>
-											<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
-										</p>
-										<p>
-											${item.career_date}
-										</p>
-									</div>
-								</div>
-								<div class="boardJob_listBtm">
-									<h3>${item.resume_title}</h3>
-									<p>
-										${item.school_name}
-										<!-- 학교구분 -->
-											<c:choose> 
-										         <c:when test = "${item.school_division == '대학(4년)'}">
-										            (4년)
-										         </c:when>
-										         <c:when test = "${item.school_division == '대학(2,3년)'}">
-										            (2,3년)
-										         </c:when>
-										         <c:when test = "${item.school_division == '대입검정고시'}">
-										            대입검정고시(검정고시)<br>
-										            졸업
-										         </c:when>
-										         <c:otherwise>
-										         	(${item.school_division})
-										         </c:otherwise>
-										     </c:choose>
-										<br> ${item.major} ${item.graduation_status}
-									</p>
-									<p>
-										희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
-									</p>
-									<p>
-										<c:forEach items="${Llist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.language_name }</span>
-										    </c:if>
-										</c:forEach>
-										<c:forEach items="${Flist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.framework_name }</span>
-										    </c:if>
-										</c:forEach>
-										<c:forEach items="${Olist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.os_name }</span>
-										    </c:if>
-										</c:forEach>
-										<c:forEach items="${LIlist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.license_name }</span>
-										    </c:if>
-										</c:forEach>
-									</p>
-								</div>
-							</li>
-						</c:forEach> --%>
+						<c:forEach items="${rlist}" var="item">
+							<c:forEach items="${jlist}" var="jjim">		
+								<c:if test="${item.resume_num eq jjim.resume_num}">
+									<li>
+										<div class="boardJob_listTop">
+											<div>
+												<!-- 사진구분 -->
+													<c:choose> 
+												         <c:when test = "${item.picture ne null }">
+												            <img src="${item.picture}">
+												         </c:when>
+												         <c:otherwise>
+												         	<span class="material-symbols-outlined person_icon">
+																account_circle
+															</span>
+												         </c:otherwise>
+												     </c:choose>
+											</div>
+											<c:set var="isCheckList" value="true" />
+											<c:if test="${item.resume_num eq jjim.resume_num}">
+												<a class="like" href='jjimservice.do?'> 
+													<img src="./img/star1.png">
+												</a>
+												<c:set var="isCheckList" value="false" />
+											</c:if>
+
+											<c:if test="${isCheckList eq true}">
+												<a class="like_off" href='javascript:void(0);'> 
+													<img src="./img/star0.png">
+												</a>
+											</c:if>
+
+											<div>
+												<p>
+													<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+												</p>
+												<p>
+													${item.career_date}
+												</p>
+											</div>
+										</div>
+										<div class="boardJob_listBtm">
+											<h3>${item.resume_title}</h3>
+											<p>
+												${item.school_name}
+												<!-- 학교구분 -->
+													<c:choose> 
+												         <c:when test = "${item.school_division == '대학(4년)'}">
+												            (4년)
+												         </c:when>
+												         <c:when test = "${item.school_division == '대학(2,3년)'}">
+												            (2,3년)
+												         </c:when>
+												         <c:when test = "${item.school_division == '대입검정고시'}">
+												            대입검정고시(검정고시)<br>
+												            졸업
+												         </c:when>
+												         <c:otherwise>
+												         	(${item.school_division})
+												         </c:otherwise>
+												     </c:choose>
+												<br> ${item.major} ${item.graduation_status}
+											</p>
+											<p>
+												희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
+											</p>
+											<p>
+												<c:forEach items="${Llist}" var="tech">
+													<c:if test = "${item.resume_num eq tech.resume_num}"> 
+												         <span>${tech.language_name }</span>
+												    </c:if>
+												</c:forEach>
+												<c:forEach items="${Flist}" var="tech">
+													<c:if test = "${item.resume_num eq tech.resume_num}"> 
+												         <span>${tech.framework_name }</span>
+												    </c:if>
+												</c:forEach>
+												<c:forEach items="${Olist}" var="tech">
+													<c:if test = "${item.resume_num eq tech.resume_num}"> 
+												         <span>${tech.os_name }</span>
+												    </c:if>
+												</c:forEach>
+												<c:forEach items="${LIlist}" var="tech">
+													<c:if test = "${item.resume_num eq tech.resume_num}"> 
+												         <span>${tech.license_name }</span>
+												    </c:if>
+												</c:forEach>
+											</p>
+										</div>
+									</li>
+								</c:if>
+							</c:forEach>
+						</c:forEach>
 					</ul>
 				</div>
 				<div class="board_list">
@@ -369,18 +378,25 @@
 										         </c:otherwise>
 										     </c:choose>
 									</div>
-									<c:choose>
-										<c:when test="${jlist}">
-											<a class="like" href='javascript:void(0);'> 
-												<img src="./img/star0.png">
-											</a>
-										</c:when>
-										<c:otherwise>
-											<a class="like" href='javascript:void(0);'> 
-												<img src="./img/star1.png">
-											</a>
-										</c:otherwise>
-									</c:choose>
+									<c:set var="isCheckList" value="true" />
+									<c:forEach items="${jlist}" var="jjim">
+											<c:choose>
+											<c:when test="${item.resume_num eq jjim.resume_num}">
+												<a class="like" href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
+													<img src="./img/star1.png">
+												</a>
+												<c:set var="isCheckList" value="false" />
+											</c:when>
+											
+											</c:choose>
+									</c:forEach>
+									
+									<c:if test="${isCheckList eq true}">
+										<a class="like_off" href='javascript:void(0);'> 
+											<img src="./img/star0.png">
+										</a>
+									</c:if>
+
 									<div>
 										<p>
 											<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
