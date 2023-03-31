@@ -1,3 +1,11 @@
+<%@page import="com.smhrd.model.LicenseVO"%>
+<%@page import="com.smhrd.model.LicenseDAO"%>
+<%@page import="com.smhrd.model.OsVO"%>
+<%@page import="com.smhrd.model.OsDAO"%>
+<%@page import="com.smhrd.model.FrameworkVO"%>
+<%@page import="com.smhrd.model.FrameworkDAO"%>
+<%@page import="com.smhrd.model.LanguageDAO"%>
+<%@page import="com.smhrd.model.LanguageVO"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.smhrd.model.resumeVO"%>
@@ -75,6 +83,37 @@
       age = date_y_int - birth_y_int + 1 ; // 현재 연도에서 생년 연도를 빼서 나이 계산
       System.out.println(age);
 	}
+	
+	// 개발스택 상중하 가져오기
+		LanguageDAO Ldao = new LanguageDAO();
+		List<LanguageVO> Llist = Ldao.selectLanguage();
+		
+		FrameworkDAO Fdao = new FrameworkDAO();
+		List<FrameworkVO> Flist = Fdao.selectFramework();
+
+		OsDAO Odao = new OsDAO();
+		List<OsVO> Olist = Odao.selectOs();
+
+		LicenseDAO LIdao = new LicenseDAO();
+		List<LicenseVO> LIlist = LIdao.selectLicense();
+		
+		
+		 if(Llist != null || Flist != null || Olist != null || LIlist != null ) {
+				System.out.println("개발언어,프레임워크 성공");
+				// 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
+					request.setAttribute("Llist", Llist);
+					request.setAttribute("Flist", Llist);
+					request.setAttribute("Olist", Llist);
+					request.setAttribute("LIist", Llist);
+					System.out.println(Llist);
+					System.out.println(Flist);
+					System.out.println(Olist);
+					System.out.println(LIlist.get(0).getLicense_name());
+					
+		} else {
+			System.out.println("개발상중하 실패");
+		}
+
 	%>
 	<div id="wrap" class="boardEmp_wrap">
 		<div class="sub_top sub_top_a">
@@ -423,7 +462,26 @@
 										희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
 									</p>
 									<p>
-										<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
+										<%-- <c:forEach items="${Llist}" var="tech">
+											<c:if test = "${item.resume_num eq tech.resume_num}"> 
+										         <span>${tech.language_name }</span>
+										    </c:if>
+										</c:forEach> --%>
+										<%-- <c:forEach items="${Flist}" var="tech">
+											<c:if test = "${item.resume_num eq tech.resume_num}"> 
+										         <span>${tech.framework_name }</span>
+										    </c:if>
+										</c:forEach>
+										<c:forEach items="${Olist}" var="tech">
+											<c:if test = "${item.resume_num eq tech.resume_num}"> 
+										         <span>${tech.os_name }</span>
+										    </c:if>
+										</c:forEach> --%>
+										<c:forEach items="${LIlist}" var="tech">
+											<c:if test = "${item.resume_num eq tech.resume_num}"> 
+										         <span>${tech.license_name }</span>
+										    </c:if>
+										</c:forEach>
 									</p>
 								</div>
 							</li>

@@ -32,10 +32,6 @@ public class resumeVO {
 	private String user_tel2;
 	private String career_date;
 
-	public resumeVO() {
-		
-	}
-	
 	//기업게시판에 이력서미리보기
 	
 	public resumeVO() {
@@ -46,7 +42,7 @@ public class resumeVO {
 			String date_birth, String hope_area, String resume_title, String address, String self_introduction,
 			String gender, Timestamp cre_date, String school_division, String school_name, String graduation_status, String hope_salary,
 			String picture, String file_name, String major, String career, String award, String url, String hope_area2,
-			String on_off) {
+			String on_off, String career_date) {
 		super();
 		this.resume_num = resume_num;
 		this.user_id = user_id;
