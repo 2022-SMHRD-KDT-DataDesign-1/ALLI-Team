@@ -2,21 +2,18 @@ package com.smhrd.frontcontroller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.smhrd.command.Command;
-import com.smhrd.controller.DevelopService;
 import com.smhrd.controller.LogoutService;
+import com.smhrd.controller.OpenUpdateService;
 import com.smhrd.controller.cmpJoinService;
 import com.smhrd.controller.cmpLoginService;
+import com.smhrd.controller.resumeDeleteService;
 import com.smhrd.controller.userJoinService;
 import com.smhrd.controller.userLoginService;
 
@@ -57,6 +54,10 @@ public class Frontcontroller extends HttpServlet {
 		}else if(result.equals("LogoutService.do")) {
 			service = new LogoutService();
 			
+		}else if(result.equals("resumeDeleteService.do")) {
+			service = new resumeDeleteService();
+		}else if(result.equals("OpenUpdateService.do")) {
+			service = new OpenUpdateService();
 		}
 		
 		String moveURL = service.excute(request, response);

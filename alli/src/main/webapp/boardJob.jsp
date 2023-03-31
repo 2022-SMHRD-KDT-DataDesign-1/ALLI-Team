@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.smhrd.model.resumeDAO"%>
@@ -49,6 +50,8 @@
 		resumeDAO dao = new resumeDAO();
 		List<resumeVO> resumes = dao.selectResumeList(login_vo.getUser_id());
 		System.out.println(resumes.size());
+		BigDecimal resumeNum = new BigDecimal(0);
+		String openli = "";
 	%>
 	
 	<div id="wrap" class="boardJob_wrap">
@@ -418,8 +421,10 @@
  				<div class="boardJob02">
 					<ul>
 						<%if(resumes.size()==0){ %>
+						
 						<%}else{ %>
 							<%for(int i = 0 ; i<resumes.size();i++){ %>
+							<% resumeNum = resumes.get(i).getResume_num();%>
 							<li>
 								<div class="boardJob_listTop">
 									<div>
@@ -460,11 +465,11 @@
 			                            </span>
 									</a>
 									<ul>
-										<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
+										<li class="openBoard"><a href="OpenUpdateService.do?resume_num=<%=resumeNum%>&user_id=<%=login_vo.getUser_id() %>">공개이력서로 설정</a></li>
 										<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
 										<li><a href="#">PDF 다운로드</a></li>
 										<li><a href="#">수정</a></li>
-										<li class="resumeDelBtn"><a href="#">삭제</a></li>
+										<li class="resumeDelBtn"><a href="resumeDeleteService.do?delIndex=<%=resumeNum%>">삭제</a></li>
 									</ul>
 								</div>
 							</li>
@@ -722,6 +727,7 @@
 		
 		var resumesSize = $('#resumesSize').val();
 		console.log("resumesSize : " + resumesSize);
+		let delIndex = null;
 	
 	
 		let optionBtn = document.getElementsByClassName('optionBtn')
@@ -884,9 +890,14 @@
 			closeBoard[2].style.display = 'none'
 		} */
 		
-		resumeDelBtn[0].onclick=()=>{
-			console.log("resumeDelBtn[0] click")
-		}
+		// 이력서 삭제 버튼
+		/* for(let i = 0 ; i < resumesSize ; i++){
+			resumeDelBtn[i].onclick=()=>{
+				console.log("resumeDelBtn["+i+"] click")
+				let delIndex = i
+				console.log("delIndex :",i)
+			}
+		} */
 	</script>
 	
 	<script>
