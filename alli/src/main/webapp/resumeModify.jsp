@@ -266,7 +266,7 @@
                     		<a href="#" >PDF변환</a>
                     	</li>
                     	<li>
-                    		<a href="#">수정완료</a>
+                    		<a href="boardJob.jsp">수정완료</a>
                     	</li>
                     	<li>
                     		<a href="#">삭제</a>

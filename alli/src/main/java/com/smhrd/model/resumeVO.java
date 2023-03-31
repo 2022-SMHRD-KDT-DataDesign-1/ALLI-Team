@@ -32,11 +32,11 @@ public class resumeVO {
    private String user_tel2;
    private String career_date;
 
-   //기업게시판에 이력서미리보기
    public resumeVO() {
       
    }
 
+   //기업게시판에 이력서미리보기
    public resumeVO(BigDecimal resume_num, String user_id, String user_name, String user_tel, String user_email,
          String date_birth, String hope_area, String resume_title, String address, String self_introduction,
          String gender, Timestamp cre_date, String school_division, String school_name, String graduation_status, String hope_salary,
@@ -69,13 +69,20 @@ public class resumeVO {
          this.on_off = on_off;
          this.career_date = career_date;
    }
-
+   
+   // 구직자 이력서 공개/비공개 전환을 위한 생성자
+   public resumeVO(BigDecimal resume_num, String user_id) {
+	   super();
+	   this.resume_num = resume_num;
+	   this.user_id = user_id;
+   }
    
    public BigDecimal getResume_num() {
       return resume_num;
    }
 
-   public String getUser_id() {
+
+public String getUser_id() {
       return user_id;
    }
 

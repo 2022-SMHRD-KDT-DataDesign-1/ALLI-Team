@@ -35,6 +35,40 @@ public class resumeDAO {
 		 sqlSession.close();
 		 return user_resume_list ;
 	 }
+
+	public int deleteResume(BigDecimal deleteIndex) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int cnt = sqlSession.delete("resumeDelete",deleteIndex);
+		sqlSession.close();
+		return cnt;
+	}
+
+	public int openUpdate(resumeVO vo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int cnt = sqlSession.update("openUpdate",vo);
+		sqlSession.close();
+		return cnt;
+	}
+
+	public int closeUpdate(BigDecimal resume_num) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int cnt = sqlSession.update("closeUpdate",resume_num);
+		sqlSession.close();
+		return cnt;
+	}
+
+	
+	 public int openUpdate2(resumeVO vo) { 
+		SqlSession sqlSession = sqlSessionFactory.openSession(true); 
+	 	int cnt2 = sqlSession.update("openUpdate2",vo);
+	 	sqlSession.close();
+		return cnt2;
+	  
+	}
+	 
+
+	
+	
 	
 
 }
