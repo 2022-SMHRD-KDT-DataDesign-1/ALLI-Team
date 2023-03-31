@@ -2,30 +2,30 @@ package com.smhrd.model;
 
 public class OsVO {
 	private int resume_num;
-	private String OS_name;
-	private String OS_level;
+	private String os_name;
+	private String os_level;
 	
 	public OsVO() {
 		
 	}
 	
-	public OsVO(int resume_num, String oS_name, String oS_level) {
+	public OsVO(int resume_num, String os_name, String os_level) {
 		super();
 		this.resume_num = resume_num;
-		OS_name = oS_name;
-		OS_level = oS_level;
+		os_name = os_name;
+		os_level = os_level;
 	}
 	
 	public int getResume_num() {
 		return resume_num;
 	}
 
-	public String getOS_name() {
-		return OS_name;
+	public String getOs_name() {
+		return os_name;
 	}
 
-	public String getOS_level() {
-		return OS_level;
+	public String getOs_level() {
+		return os_level;
 	}
 
 	

@@ -15,6 +15,7 @@
 		<typeAlias type="com.smhrd.model.FrameworkVO" alias="FrameworkVO" />
 		<typeAlias type="com.smhrd.model.OsVO" alias="OsVO" />
 		<typeAlias type="com.smhrd.model.LicenseVO" alias="LicenseVO" />
+		<typeAlias type="com.smhrd.model.jjimVO" alias="jjimVO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -35,6 +36,7 @@
 		<mapper resource="com/smhrd/db/DevelopMapper.xml" />
 		<mapper resource="com/smhrd/db/resumeMapper.xml" />
 		<mapper resource="com/smhrd/db/LanguageMapper.xml" />
+		<mapper resource="com/smhrd/db/JjimMapper.xml" />
 	</mappers>
 
 </configuration>
