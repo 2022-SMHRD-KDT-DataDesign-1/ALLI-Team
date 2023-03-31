@@ -7,5 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectjjim" resultType="jjimVO">
 		select * from jjim_list
 	</select>
+	
+	<insert id="insertjjim" parameterType="jjimVO">
+		INSERT INTO jjim_list values(jjim_num_sequence.nextval, #{cmp_name}, #{resume_num})
+	</insert>
 
 </mapper>

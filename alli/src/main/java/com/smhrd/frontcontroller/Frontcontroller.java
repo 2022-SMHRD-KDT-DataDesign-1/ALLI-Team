@@ -17,6 +17,7 @@ import com.smhrd.controller.DevelopService;
 import com.smhrd.controller.LogoutService;
 import com.smhrd.controller.cmpJoinService;
 import com.smhrd.controller.cmpLoginService;
+import com.smhrd.controller.jjimService;
 import com.smhrd.controller.userJoinService;
 import com.smhrd.controller.userLoginService;
 
@@ -56,6 +57,9 @@ public class Frontcontroller extends HttpServlet {
 			
 		}else if(result.equals("LogoutService.do")) {
 			service = new LogoutService();
+			
+		}else if(result.equals("jjimService.do")) {
+			service = new jjimService();
 			
 		}
 		

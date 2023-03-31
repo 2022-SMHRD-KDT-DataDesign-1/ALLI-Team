@@ -11,10 +11,21 @@ public class jjimDAO {
 	
 	SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 
+	//찜 목록 가져오기
 	public List<jjimVO> selectjjim() {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		List<jjimVO> list = session.selectList("selectjjim");
 		session.close();
 		return list;
 	}
+
+	//찜 넣어주기
+	public int insertjjim(jjimVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.insert("insertjjim", vo);
+		session.close();
+		return 0;
+	}
+
+
 }
