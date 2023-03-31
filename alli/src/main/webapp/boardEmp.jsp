@@ -382,7 +382,7 @@
 									<c:forEach items="${jlist}" var="jjim">
 											<c:choose>
 											<c:when test="${item.resume_num eq jjim.resume_num}">
-												<a class="like" href="jjimService.do?cmp_name=${cmpLogin_vo.cmp_name}&resume_num=${item.resume_num}">
+												<a class="like" href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
 													<img src="./img/star1.png">
 												</a>
 												<c:set var="isCheckList" value="false" />

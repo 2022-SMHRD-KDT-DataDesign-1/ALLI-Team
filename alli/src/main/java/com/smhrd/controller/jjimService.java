@@ -12,13 +12,13 @@ public class jjimService implements Command {
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
 	
-		  String cmp_name = request.getParameter("cmp_name");
+		  String cmp_id = request.getParameter("cmp_id");
 		  int resume_num = Integer.parseInt(request.getParameter("resume_num"));
 		  
-		  System.out.println(cmp_name);
+		  System.out.println(cmp_id);
 		  System.out.println(resume_num);
 		
-		  jjimVO vo = new jjimVO(cmp_name, resume_num);
+		  jjimVO vo = new jjimVO(cmp_id, resume_num);
 		  jjimDAO dao = new jjimDAO(); 
 		  int cnt = dao.insertjjim(vo);
 		  
