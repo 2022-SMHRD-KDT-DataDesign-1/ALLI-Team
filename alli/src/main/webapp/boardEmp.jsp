@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.jjimVO"%>
+<%@page import="com.smhrd.model.jjimDAO"%>
 <%@page import="com.smhrd.model.LicenseVO"%>
 <%@page import="com.smhrd.model.LicenseDAO"%>
 <%@page import="com.smhrd.model.OsVO"%>
@@ -99,19 +101,27 @@
 		
 		
 		 if(Llist != null || Flist != null || Olist != null || LIlist != null ) {
-				System.out.println("개발언어,프레임워크 성공");
+				System.out.println("개발상중하 성공");
 				// 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
 					request.setAttribute("Llist", Llist);
-					request.setAttribute("Flist", Llist);
-					request.setAttribute("Olist", Llist);
-					request.setAttribute("LIist", Llist);
-					System.out.println(Llist);
-					System.out.println(Flist);
-					System.out.println(Olist);
-					System.out.println(LIlist.get(0).getLicense_name());
+					request.setAttribute("Flist", Flist);
+					request.setAttribute("Olist", Olist);
+					request.setAttribute("LIlist", LIlist);	
 					
 		} else {
 			System.out.println("개발상중하 실패");
+		}
+		 
+	//찜기능
+		jjimDAO jdao = new jjimDAO();
+		List<jjimVO> jlist = jdao.selectjjim();
+		
+		if(jlist != null) {
+			System.out.println("찜목록가져오기 성공");
+			// 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
+				request.setAttribute("jlist", jlist);			
+		} else {
+			System.out.println("찜목록가져오기 실패");
 		}
 
 	%>
@@ -132,6 +142,7 @@
 				<p><%=cmpLoginVO.getCmp_name()%>님, 반갑습니다.
 				</p>
 				<%}%>
+
 			</div>
 			<div class="sub_box">
 				<h2 class="sub_title">인재 PICK</h2>
@@ -139,151 +150,84 @@
 					게시판에서 관리가 가능합니다. (단, 구직자가 이력서를 비공개 처리한 경우, 자동으로 숨김처리됩니다.)</p>
 				<div class="boardJob02">
 					<ul>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
+						<%-- <c:forEach items="${rlist}" var="item">
+							<li>
+								<div class="boardJob_listTop">
+									<div>
+										<!-- 사진구분 -->
+											<c:choose> 
+										         <c:when test = "${item.picture ne null }">
+										            <img src="${item.picture}">
+										         </c:when>
+										         <c:otherwise>
+										         	<span class="material-symbols-outlined person_icon">
+														account_circle
+													</span>
+										         </c:otherwise>
+										     </c:choose>
+									</div>
+									<a class="like" href='javascript:void(0);'> 
+										<img src="./img/star0.png">
+									</a>
+									<div>
+										<p>
+											<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+										</p>
+										<p>
+											${item.career_date}
+										</p>
+									</div>
 								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
+								<div class="boardJob_listBtm">
+									<h3>${item.resume_title}</h3>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										${item.school_name}
+										<!-- 학교구분 -->
+											<c:choose> 
+										         <c:when test = "${item.school_division == '대학(4년)'}">
+										            (4년)
+										         </c:when>
+										         <c:when test = "${item.school_division == '대학(2,3년)'}">
+										            (2,3년)
+										         </c:when>
+										         <c:when test = "${item.school_division == '대입검정고시'}">
+										            대입검정고시(검정고시)<br>
+										            졸업
+										         </c:when>
+										         <c:otherwise>
+										         	(${item.school_division})
+										         </c:otherwise>
+										     </c:choose>
+										<br> ${item.major} ${item.graduation_status}
 									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
 									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
 									<p>
-										<span>고유빈</span><span>(남,26세)</span>
+										<c:forEach items="${Llist}" var="tech">
+											<c:if test = "${item.resume_num eq tech.resume_num}"> 
+										         <span>${tech.language_name }</span>
+										    </c:if>
+										</c:forEach>
+										<c:forEach items="${Flist}" var="tech">
+											<c:if test = "${item.resume_num eq tech.resume_num}"> 
+										         <span>${tech.framework_name }</span>
+										    </c:if>
+										</c:forEach>
+										<c:forEach items="${Olist}" var="tech">
+											<c:if test = "${item.resume_num eq tech.resume_num}"> 
+										         <span>${tech.os_name }</span>
+										    </c:if>
+										</c:forEach>
+										<c:forEach items="${LIlist}" var="tech">
+											<c:if test = "${item.resume_num eq tech.resume_num}"> 
+										         <span>${tech.license_name }</span>
+										    </c:if>
+										</c:forEach>
 									</p>
-									<p>신입</p>
 								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
-						<li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle </span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#"> <img src="./img/star1.png">
-								</a>
-								<div>
-									<p>
-										<span>고유빈</span><span>(남,26세)</span>
-									</p>
-									<p>신입</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br> 스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br> 희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-							</div>
-						</li>
+							</li>
+						</c:forEach> --%>
 					</ul>
 				</div>
 				<div class="board_list">
@@ -425,8 +369,18 @@
 										         </c:otherwise>
 										     </c:choose>
 									</div>
-									<a href="#"> <img src="./img/star0.png">
-									</a>
+									<c:choose>
+										<c:when test="${jlist}">
+											<a class="like" href='javascript:void(0);'> 
+												<img src="./img/star0.png">
+											</a>
+										</c:when>
+										<c:otherwise>
+											<a class="like" href='javascript:void(0);'> 
+												<img src="./img/star1.png">
+											</a>
+										</c:otherwise>
+									</c:choose>
 									<div>
 										<p>
 											<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
@@ -467,7 +421,7 @@
 										         <span>${tech.language_name }</span>
 										    </c:if>
 										</c:forEach>
-										<%-- <c:forEach items="${Flist}" var="tech">
+										<c:forEach items="${Flist}" var="tech">
 											<c:if test = "${item.resume_num eq tech.resume_num}"> 
 										         <span>${tech.framework_name }</span>
 										    </c:if>
@@ -476,7 +430,7 @@
 											<c:if test = "${item.resume_num eq tech.resume_num}"> 
 										         <span>${tech.os_name }</span>
 										    </c:if>
-										</c:forEach> --%>
+										</c:forEach>
 										<c:forEach items="${LIlist}" var="tech">
 											<c:if test = "${item.resume_num eq tech.resume_num}"> 
 										         <span>${tech.license_name }</span>
@@ -488,10 +442,10 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<div class="board_list">
+				<ul class="board_list">
 					<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
 					<a href="#">5</a> <a href="#" class="end">></a>
-				</div>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -517,6 +471,31 @@
 										.hide();
 							});
 		}
+		
+		
+		/*star 클릭이벤트*/
+		$(".like").click(function() {
+		    var img = $(this).children("img");
+		    img.attr("src", function(index, attr){
+		      if (attr.match('0')) {
+		        return attr.replace("0", "1");
+		      }
+		      else {
+		        return attr.replace("1", "0")
+		      }
+		    });
+		  });
+		
+		
+		
+		
+		
+		//페이징
+		
+		
+		
+		
+		
 	</script>
 </body>
 </html>
