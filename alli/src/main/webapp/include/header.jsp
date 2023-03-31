@@ -19,13 +19,13 @@
         <%if(login_vo == null && cmpLogin_vo == null) {%>
 	        <ul id="gnb">
 	            <li>
-	                <a href="#">구직</a>
+	                <a href="boardJob.jsp">구직</a>
 	            </li>
 	            <li>
-	                <a href="#">채용</a>
+	                <a href="boardEmp.jsp">채용</a>
 	            </li>
 	            <li>
-	                <a href="#"><span>NEW</span>TREND</a>
+	                <a href="dashWhole.jsp"><span>NEW</span>TREND</a>
 	            </li>
 	        </ul>
 	        <ul id="nav">
@@ -45,7 +45,7 @@
 	                <a href="boardJob.jsp">구직</a>
 	            </li>
 	            <li>
-	                <a href="#">채용</a>
+	                <a href="boardEmp.jsp">채용</a>
 	            </li>
 	            <li>
 	                <a href="dashWhole.jsp"><span>NEW</span>TREND</a>
@@ -68,13 +68,13 @@
         <%}else if(cmpLogin_vo != null){ %>
         	<ul id="gnb">
 	            <li>
-	                <a href="">구직</a>
+	                <a href="boardJob.jsp">구직</a>
 	            </li>
 	            <li>
-	                <a href="#">채용</a>
+	                <a href="boardEmp.jsp">채용</a>
 	            </li>
 	            <li>
-	                <a href="#"><span>NEW</span>TREND</a>
+	                <a href="dashWhole.jsp"><span>NEW</span>TREND</a>
 	            </li>
 	        </ul>
         	<ul id="nav" class="nav_AfterLogin">

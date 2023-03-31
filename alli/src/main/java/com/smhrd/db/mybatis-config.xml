@@ -11,6 +11,10 @@
 		<typeAlias type="com.smhrd.model.cmpVO" alias="cmpVO" />
 		<typeAlias type="com.smhrd.model.developVO" alias="developVO" />
 		<typeAlias type="com.smhrd.model.resumeVO" alias="resumeVO" />
+		<typeAlias type="com.smhrd.model.LanguageVO" alias="LanguageVO" />
+		<typeAlias type="com.smhrd.model.FrameworkVO" alias="FrameworkVO" />
+		<typeAlias type="com.smhrd.model.OsVO" alias="OsVO" />
+		<typeAlias type="com.smhrd.model.LicenseVO" alias="LicenseVO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -30,6 +34,7 @@
 		<mapper resource="com/smhrd/db/CmpMemberMapper.xml" />
 		<mapper resource="com/smhrd/db/DevelopMapper.xml" />
 		<mapper resource="com/smhrd/db/resumeMapper.xml" />
+		<mapper resource="com/smhrd/db/LanguageMapper.xml" />
 	</mappers>
 
 </configuration>
