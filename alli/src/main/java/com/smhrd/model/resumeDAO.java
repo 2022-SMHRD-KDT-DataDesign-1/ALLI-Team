@@ -27,6 +27,14 @@ public class resumeDAO {
 		 sqlSession.close(); 
 		 return rlist; 
 	 }
+	 
+	 // 유저 아이디로 이력서 찾아오는 기능
+	 public List<resumeVO> selectResumeList(String id){
+		 SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		 List<resumeVO> user_resume_list = sqlSession.selectList("select_userResumes",id);
+		 sqlSession.close();
+		 return user_resume_list ;
+	 }
 	
 
 }
