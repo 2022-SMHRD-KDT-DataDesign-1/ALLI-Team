@@ -96,7 +96,7 @@
                         <div>
                             <div class="input">
                                 <div class="label">학교구분<span class="star">&#42;</span></div>
-                                <select name="school_division" class="mandatory">
+                                <select id="school_division" name="school_division" class="mandatory" onChange="AddClass()">
                                     <option value="고등학교">고등학교</option>
                                     <option value="대학(2,3년)">대학(2,3년)</option>
                                     <option value="대학(4년)">대학(4년)</option>
@@ -104,15 +104,15 @@
                                     <option value="대입검정고시">대입검정고시</option>
                                 </select>
                             </div>
-                            <div class="input" class="mandatory">
+                            <div class="input mandatory ged">
                                 <label>학교명 <span class="star">&#42;</span></label>
                                 <input type="text" placeholder="" name="school_name">
                             </div>
-                            <div class="input">
+                            <div class="input ged">
                                 <label>전공</label>
                                 <input type="text" placeholder="" name="major">
                             </div>
-                            <div class="input">
+                            <div class="input ged">
                                 <div class="label">졸업상태<span class="star">&#42;</span></div>
                                 <!-- 글자 세로로 출력댐 수정필요 -->
                                 <select name="graduation_status" class="mandatory">
@@ -462,6 +462,25 @@
 			  const name = $(this).attr('name');
 			  console.log("value: " + val + ", name: " + name);
 			});
+		// 대입검정고시 선택시, class추가
+		
+		function AddClass(){
+			let ged_all = document.getElementById('school_division');
+			let ged = ged_all.options[ged_all.selectedIndex].value;
+			let gedList = document.getElementsByClassName('ged'); 
+			
+			if(ged == '대입검정고시'){
+				for(var i = 0; i<gedList.length;i++){
+				 	gedList[i].classList += ' readonly';
+				}
+			} 
+		}
+		
+		
+		
+		
+		
+
 	</script>
 </body>
 </html>

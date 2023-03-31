@@ -158,7 +158,6 @@ box-sizing:border-box;display: inline-block;float:left;}
 .rbox3 > div{display:flex;justify-content: space-between;}
 .rbox3 > div > div{width:13%;}
 .rbox3 > div > div:nth-child(n+2):nth-child(-n+3){width:28%;}
-.rbox3 > div > div:last-child{display:flex;align-items: center;}
 .rbox3 > div > div:last-child > input{display:inline;width:auto;vertical-align: middle;}
 
 .choose{display:flex;justify-content:space-between}
@@ -237,8 +236,8 @@ box-sizing:border-box;display: inline-block;float:left;}
 #pbox4 .w_box > ul > li{line-height:1.5;}
 #pbox4 .w_box > ul > li > span:nth-child(1){display: inline-block;width: 11%;}
 #pbox4 .w_box > ul > li > span:nth-child(2){display: inline-block;width: 5%;}
-#pbox4 .w_box > ul > li > span:nth-child(3){font-weight: 600;text-decoration:underline;}
-#pbox4 .w_box > ul > li:nth-child(2) > span:nth-child(3){font-weight:400;background:#6c00ff;color:#fff;text-decoration:none;font-size:13px;padding:3px 5px;}
+#pbox4 .w_box > ul > li .URL{font-weight: 600;text-decoration:underline;}
+#pbox4 .w_box > ul > li .download{font-weight:400;background:#6c00ff;color:#fff;text-decoration:none;font-size:13px;padding:3px 5px;}
 #pbox5{line-height:1.5;}
 #pbox6{line-height:1.3;}
 .print_btns{display:flex;justify-content:right;margin-top:25px;}
@@ -256,7 +255,8 @@ box-sizing:border-box;display: inline-block;float:left;}
 .info1{width: 444px !important; overflow:hidden !important;} 
 .namePri {position: absolute;left: 153px;font-size: 20px;font-weight: 400;}
 .imagePreviewPri {width: 100%; height: 140px; background-position: center center; background: url(http://cliquecities.com/assets/no-image-e3699ae….jpg);background-color: #fff;background-size: cover;background-repeat: no-repeat;display: inline-block;box-shadow: 0px -3px 6px 2px rgba(0,0,0,0.2);}
-.rbox3 > div > div{width:25% !important;}
+.rbox3 > div > div{width:25% !important;border-right:none;}
+.rbox3 > div > div:last-child{border-right:1px solid #d2d2d2;}
 .rbox3divPri{display: block !important;}
 .choose_content >p{text-align: center; margin-top:17px;} /*  */
 .rbox10 > div > table{width:100%; height:100px; border: 1px solid; margin:0 auto;}
@@ -330,10 +330,11 @@ box-sizing:border-box;display: inline-block;float:left;}
 .boardJob02{width:100%;height:auto;background:#f6f7f9;margin-top:10px;}
 .boardJob02 > ul{box-sizing: border-box;overflow:hidden;padding: 12px 12px 30px 12px;}
 .boardJob02 > ul > li{margin-right: 1%;width: 19%;background: #fff;border: 1px solid #c5c5c5;border-radius: 10px;float:left;position: relative;font-size: 13px;line-height: 1.2;padding: 11px;box-sizing: border-box;min-height: 190.56px;}
+.boardJob02 > ul > li:nth-child(n+6){margin-top:28px;}
 .boardJob_listTop{overflow: hidden;position: relative;}
 .boardJob_listTop > div:nth-of-type(1){width: 40px;height: 40px;border-radius: 50px;float: left;overflow:hidden;}
 .boardJob_listTop > div:nth-of-type(1) > img{display: block;width: 100%;}
-.boardJob_listTop a{display:block;position: absolute;    right: -11px;top: -10px;padding: 5px 8px;width:50px;}
+.boardJob_listTop a{display:block;position: absolute; right:0;top:0;padding: 5px 8px;}
 .boardJob_listTop > div:nth-of-type(2){float: left;margin-top: 6px;margin-left: 5px;}
 .boardJob_listTop > div:nth-of-type(2) > p:nth-child(1) > span:nth-child(1){font-weight:700;}
 .boardJob_listTop > div:nth-of-type(2) > p:nth-child(1) > span:nth-child(2){color:#a1a1a1;}
@@ -353,17 +354,15 @@ box-sizing:border-box;display: inline-block;float:left;}
 
 /*sub_boardEmp*/
 .boardEmp_wrap .boardJob02 > ul{padding:12px;}
-.boardEmp_wrap .boardJob_listTop a{right: -30px;top: -12px;}
-.boardEmp_wrap .boardJob_listTop a > img{width:34px;}
+.boardEmp_wrap .boardJob_listTop a{right: -14px;top: -11px;width: 34px;}
+.boardEmp_wrap .boardJob_listTop a > img{width:100%}
 .boardEmp_wrap .boardJob02 > ul > li{margin-right:1.2%;}
 .boardEmp_wrap .boardJob02 > ul > li:nth-child(5n){margin-right:0;}
 .board_list{text-align: center;margin: 15px 0;}
 .board_list > a{padding:0 5px;}
 .board_list > a.end{border: 1px solid #cbcbcb;}
 
-
 #pick .boardJob02 > ul > li:nth-child(n+6){margin-top:12px;}
-
 
 #filter .boardJob02 > ul > li:nth-child(n+6){margin-top:12px;}
 #filter .choose > ul:nth-child(2){height:232px;}

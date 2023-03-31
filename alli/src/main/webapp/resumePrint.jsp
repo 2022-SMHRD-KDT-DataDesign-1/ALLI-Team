@@ -25,7 +25,7 @@
 
 	<%
 
-		int resume_num = 243; 
+		int resume_num = 934; 
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(resume_num);
 		LocalDate now = LocalDate.now();
@@ -210,9 +210,9 @@
                         <h3>포트폴리오</h3>
                         <div class="w_box">
                            <ul>
-                              <li><span>파일</span> <span>｜</span> <span> <a
-                                    href="./img/logo_w.png" class="download" download>
-                                       다운로드</a>
+                              <li>
+                              	<span>파일</span> <span>｜</span> <span> 
+                              	<a href="./img/logo_w.png" class="download" download>다운로드</a>
                               </span></li>
                            </ul>
                         </div>

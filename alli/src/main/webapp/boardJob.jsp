@@ -455,7 +455,7 @@
 										</span>
 										<!-- <img src=""> -->
 									</div>
-									<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
+									<a href="javascript:void(0);" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 									<div>
 										<p>
 											<span><%= login_vo.getUser_name() %></span><span>(<%=resumes.get(i).getGender() %>,<%=age %>세)</span>
@@ -482,7 +482,7 @@
 								</div>
 								
 								<div class="boardJob_add" id="option">
-									<a href="#" class="closeBtn">
+									<a href="javascript:void(0);" class="closeBtn">
 										<span class="material-symbols-outlined delete">
 			                                Close
 			                            </span>
