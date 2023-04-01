@@ -23,50 +23,51 @@
 </head>
 <body>
 
-   <%
-      BigDecimal resume_num = new BigDecimal(request.getParameter("resume_num"));
-      resumeDAO dao = new resumeDAO();
-      resumeVO print_vo = dao.resume_Print(resume_num);
-      LocalDate now = LocalDate.now();
-      
-      System.out.println(resume_num);
 
-      int year = now.getYear(); // 현재 년도
-      String year_temp = Integer.toString(year).substring(2, 3); // 년도 끝 2자리
-      int year_temp1 = Integer.parseInt(year_temp);
-      int month = now.getDayOfYear(); // 현재 월
-      int date = now.getDayOfMonth(); // 현재 일
-      String birth = print_vo.getDate_birth(); // 태어난 년,월,일
-      int birth_temp1 = Integer.parseInt(birth.substring(0,2)); // 태어난 년도
-      int birth_temp2 = Integer.parseInt(birth.substring(2,4)); // 태어난 월
-      int birth_temp3 = Integer.parseInt(birth.substring(4)); // 태어난 일
-      int age = 0;
-      
-      // 개발스택 상중하 가져오기
-      LanguageDAO Ldao = new LanguageDAO();
-      List<LanguageVO> Llist = Ldao.selectLanguage();
-      
-      FrameworkDAO Fdao = new FrameworkDAO();
-      List<FrameworkVO> Flist = Fdao.selectFramework();
+	<%
+		BigDecimal resume_num = new BigDecimal(request.getParameter("resume_num"));
+		resumeDAO dao = new resumeDAO();
+		resumeVO print_vo = dao.resume_Print(resume_num);
+		LocalDate now = LocalDate.now();
+		
+		System.out.println(resume_num);
 
-      OsDAO Odao = new OsDAO();
-      List<OsVO> Olist = Odao.selectOs();
 
-      LicenseDAO LIdao = new LicenseDAO();
-      List<LicenseVO> LIlist = LIdao.selectLicense();
+		int year = now.getYear(); // 현재 년도
+	    String year_temp = Integer.toString(year).substring(2, 3); // 년도 끝 2자리
+	    int year_temp1 = Integer.parseInt(year_temp);
+	    int month = now.getDayOfYear(); // 현재 월
+	    int date = now.getDayOfMonth(); // 현재 일
+	    String birth = print_vo.getDate_birth(); // 태어난 년,월,일
+	    int birth_temp1 = Integer.parseInt(birth.substring(0,2)); // 태어난 년도
+	    int birth_temp2 = Integer.parseInt(birth.substring(2,4)); // 태어난 월
+	    int birth_temp3 = Integer.parseInt(birth.substring(4)); // 태어난 일
+	    int age = 0;
       
+        // 개발스택 상중하 가져오기
+        LanguageDAO Ldao = new LanguageDAO();
+        List<LanguageVO> Llist = Ldao.selectLanguage();
       
-       if(Llist != null || Flist != null || Olist != null || LIlist != null ) {
-            System.out.println("개발상중하 성공");
-            // 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
-               request.setAttribute("Llist", Llist);
-               request.setAttribute("Flist", Flist);
-               request.setAttribute("Olist", Olist);
-               request.setAttribute("LIlist", LIlist);
-   
-      } else {
-         System.out.println("개발상중하 실패");
-      }
+        FrameworkDAO Fdao = new FrameworkDAO();
+        List<FrameworkVO> Flist = Fdao.selectFramework();
+
+        OsDAO Odao = new OsDAO();
+        List<OsVO> Olist = Odao.selectOs();
+
+	    LicenseDAO LIdao = new LicenseDAO();
+	    List<LicenseVO> LIlist = LIdao.selectLicense();
+	      
+	      
+	    if(Llist != null || Flist != null || Olist != null || LIlist != null ) {
+	         System.out.println("개발상중하 성공");
+	         // 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
+	            request.setAttribute("Llist", Llist);
+	            request.setAttribute("Flist", Flist);
+	            request.setAttribute("Olist", Olist);
+	            request.setAttribute("LIlist", LIlist);
+	   } else {
+	       System.out.println("개발상중하 실패");
+	   }
 
    %>
    

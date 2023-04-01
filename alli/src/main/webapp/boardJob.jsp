@@ -423,7 +423,9 @@
 							<%System.out.println("등록된 이력서 없음"); %>
 						<%}else{ %>
 							<%for(int i = 0 ; i<resumes.size();i++){ %>
+
 							<% resumeNum = resumes.get(i).getResume_num();%>
+
 							<!-- <li class="open"> -->
 							
 						<%-- 	<%

@@ -17,17 +17,16 @@ public class printDeleteService implements Command {
 		
 		BigDecimal resume_num = new BigDecimal(request.getParameter("resume_num"));
 		System.out.println(resume_num);
-		// MemereDAO -> deleteMember() 만들기
 		resumeDAO dao = new resumeDAO();
-		//int cnt = dao.deletePrint(resume_num);
+		int cnt = dao.deletePrint(resume_num);
 		
-		//if(cnt > 0) {
+		if(cnt > 0) {
 			System.out.println("삭제 성공");
 			moveURL = "boardJob.jsp";
-		//}else {
+		}else {
 			System.out.println("삭제 실패");
-		//	moveURL = "boardJob.jsp";
-		//}
+			moveURL = "boardJob.jsp";
+		}
 		return moveURL;
 	}
 
