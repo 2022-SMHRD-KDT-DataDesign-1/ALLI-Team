@@ -453,11 +453,11 @@
 								<div class="boardJob_listTop">
 									<div>
 										<%if(resumes.get(i).getPicture()==null){ %>
-										<span style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumeNum%>'"  class="material-symbols-outlined person_icon">
+										<span style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumes.get(i).getResume_num() %>'"  class="material-symbols-outlined person_icon">
 											account_circle
 										</span>
 										<%}else { %>
-										<img style="cursor: pointer;"  onclick="location.href='resumePrint.jsp'" src="<%= resumes.get(i).getPicture() %>">
+										<img style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumes.get(i).getResume_num() %>'" src="<%= resumes.get(i).getPicture() %>">
 										<%} %>
 									</div>
 									<a href="javascript:void(0);" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
