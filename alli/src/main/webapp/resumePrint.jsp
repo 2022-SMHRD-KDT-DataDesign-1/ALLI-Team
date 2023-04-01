@@ -23,66 +23,67 @@
 </head>
 <body>
 
-	<%
+   <%
+      BigDecimal resume_num = new BigDecimal(request.getParameter("resume_num"));
+      resumeDAO dao = new resumeDAO();
+      resumeVO print_vo = dao.resume_Print(resume_num);
+      LocalDate now = LocalDate.now();
+      
+      System.out.println(resume_num);
 
-		int resume_num = 934; 
-		resumeDAO dao = new resumeDAO();
-		resumeVO print_vo = dao.resume_Print(resume_num);
-		LocalDate now = LocalDate.now();
+      int year = now.getYear(); // 현재 년도
+      String year_temp = Integer.toString(year).substring(2, 3); // 년도 끝 2자리
+      int year_temp1 = Integer.parseInt(year_temp);
+      int month = now.getDayOfYear(); // 현재 월
+      int date = now.getDayOfMonth(); // 현재 일
+      String birth = print_vo.getDate_birth(); // 태어난 년,월,일
+      int birth_temp1 = Integer.parseInt(birth.substring(0,2)); // 태어난 년도
+      int birth_temp2 = Integer.parseInt(birth.substring(2,4)); // 태어난 월
+      int birth_temp3 = Integer.parseInt(birth.substring(4)); // 태어난 일
+      int age = 0;
+      
+      // 개발스택 상중하 가져오기
+      LanguageDAO Ldao = new LanguageDAO();
+      List<LanguageVO> Llist = Ldao.selectLanguage();
+      
+      FrameworkDAO Fdao = new FrameworkDAO();
+      List<FrameworkVO> Flist = Fdao.selectFramework();
 
-		int year = now.getYear(); // 현재 년도
-		String year_temp = Integer.toString(year).substring(2, 3); // 년도 끝 2자리
-		int year_temp1 = Integer.parseInt(year_temp);
-		int month = now.getDayOfYear(); // 현재 월
-		int date = now.getDayOfMonth(); // 현재 일
-		String birth = print_vo.getDate_birth(); // 태어난 년,월,일
-		int birth_temp1 = Integer.parseInt(birth.substring(0,2)); // 태어난 년도
-		int birth_temp2 = Integer.parseInt(birth.substring(2,4)); // 태어난 월
-		int birth_temp3 = Integer.parseInt(birth.substring(4)); // 태어난 일
-		int age = 0;
-		
-		// 개발스택 상중하 가져오기
-		LanguageDAO Ldao = new LanguageDAO();
-		List<LanguageVO> Llist = Ldao.selectLanguage();
-		
-		FrameworkDAO Fdao = new FrameworkDAO();
-		List<FrameworkVO> Flist = Fdao.selectFramework();
+      OsDAO Odao = new OsDAO();
+      List<OsVO> Olist = Odao.selectOs();
 
-		OsDAO Odao = new OsDAO();
-		List<OsVO> Olist = Odao.selectOs();
+      LicenseDAO LIdao = new LicenseDAO();
+      List<LicenseVO> LIlist = LIdao.selectLicense();
+      
+      
+       if(Llist != null || Flist != null || Olist != null || LIlist != null ) {
+            System.out.println("개발상중하 성공");
+            // 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
+               request.setAttribute("Llist", Llist);
+               request.setAttribute("Flist", Flist);
+               request.setAttribute("Olist", Olist);
+               request.setAttribute("LIlist", LIlist);
+   
+      } else {
+         System.out.println("개발상중하 실패");
+      }
 
-		LicenseDAO LIdao = new LicenseDAO();
-		List<LicenseVO> LIlist = LIdao.selectLicense();
-		
-		
-		 if(Llist != null || Flist != null || Olist != null || LIlist != null ) {
-				System.out.println("개발상중하 성공");
-				// 주의. el문법을 사용하기 위해서는 값을 가져와서 'set'해야한다
-					request.setAttribute("Llist", Llist);
-					request.setAttribute("Flist", Flist);
-					request.setAttribute("Olist", Olist);
-					request.setAttribute("LIlist", LIlist);
-	
-		} else {
-			System.out.println("개발상중하 실패");
-		}
-
-	%>
-	
-	<!-- 만 나이 계산 -->
-	<%if(birth_temp1 > year_temp1){ %>
-			 <% int temp_b = birth_temp1+ 1900;%>
-			 <% age = year - temp_b;%>
-			 <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
-					<%age--; %>
-			<%} %>
-	<%}else{ %>
-			 <% int temp_b = birth_temp1 + 2000; %>
-			 <% age = year - temp_b;%>
-			 <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
-					<%age--; %>
-			 <%} %>
-	<%} %>
+   %>
+   
+   <!-- 만 나이 계산 -->
+   <%if(birth_temp1 > year_temp1){ %>
+          <% int temp_b = birth_temp1+ 1900;%>
+          <% age = year - temp_b;%>
+          <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
+               <%age--; %>
+         <%} %>
+   <%}else{ %>
+          <% int temp_b = birth_temp1 + 2000; %>
+          <% age = year - temp_b;%>
+          <%if(birth_temp2 * 100 + birth_temp3 > month * 100 + date){ %>
+               <%age--; %>
+          <%} %>
+   <%} %>
 
    <%@ include file="./include/header.jsp" %>
    <div id="wrap" class="resumeReg_wrap">
@@ -105,12 +106,12 @@
             <form>
                <div id="resumePDF">
                   <div class="print_box" id="pbox1">
-                     <p>취미는 백엔드개발인 3년차 웹퍼블리셔입니다.</p>
+                     <p><%=print_vo.getResume_title() %></p>
                   </div>
                   <div class="print_box" id="pbox2">
                      <div class="w_box">
                         <div>
-                           <img src="./img/R_01.jpg">
+                           <img src=<%=print_vo.getPicture()%>>
                         </div>
                         <div>
                            <p><%=print_vo.getUser_name()%>
@@ -145,46 +146,46 @@
                         <ul>
                            <li><span>프로그래밍 언어</span> <span>｜</span>
                               <div>
-                              	  	<%for(LanguageVO l : Llist){ %>
-	                              		<%if( l.getResume_num() == 243) {%>
-	                              			<span>
-	                              				<%=l.getLanguage_name()%> [<%=l.getLanguage_level() %>]
-	                              			</span>
-	                              		<%} %>	
-                              		<%} %>
+                                      <%for(LanguageVO l : Llist){ %>
+                                       <%if( l.getResume_num() == 243) {%>
+                                          <span>
+                                             <%=l.getLanguage_name()%> [<%=l.getLanguage_level() %>]
+                                          </span>
+                                       <%} %>   
+                                    <%} %>
                               </div>
                            </li>
                            <li><span>프레임워크</span> <span>｜</span>
                               <div>
-                              	  	<%for(FrameworkVO F : Flist){ %>
-	                              		<%if( F.getResume_num() == 243) {%>
-	                              			<span>
-	                              				<%=F.getFramework_name()%> [<%=F.getFramework_level() %>]
-	                              			</span>
-	                              		<%} %>	
-                              		<%} %>
+                                      <%for(FrameworkVO F : Flist){ %>
+                                       <%if( F.getResume_num() == 243) {%>
+                                          <span>
+                                             <%=F.getFramework_name()%> [<%=F.getFramework_level() %>]
+                                          </span>
+                                       <%} %>   
+                                    <%} %>
                               </div>
                            </li>
                            <li><span>OS</span> <span>｜</span>
                               <div>
-                              	  	<%for(OsVO O : Olist){ %>
-	                              		<%if( O.getResume_num() == 245) {%>
-	                              			<span>
-	                              				<%=O.getOs_name()%> [<%=O.getOs_level() %>]
-	                              			</span>
-	                              		<%} %>	
-                              		<%} %>
+                                      <%for(OsVO O : Olist){ %>
+                                       <%if( O.getResume_num() == 245) {%>
+                                          <span>
+                                             <%=O.getOs_name()%> [<%=O.getOs_level() %>]
+                                          </span>
+                                       <%} %>   
+                                    <%} %>
                               </div>
                            </li>
                            <li><span>자격증</span> <span>｜</span>
                               <div>
-                              	  	<%for(LicenseVO LI : LIlist){ %>
-	                              		<%if( LI.getResume_num() == 243) {%>
-	                              			<span>
-	                              				<%=LI.getLicense_name()%>
-	                              			</span>
-	                              		<%} %>	
-                              		<%} %>
+                                      <%for(LicenseVO LI : LIlist){ %>
+                                       <%if( LI.getResume_num() == 243) {%>
+                                          <span>
+                                             <%=LI.getLicense_name()%>
+                                          </span>
+                                       <%} %>   
+                                    <%} %>
                               </div>
                            </li>
                         </ul>
@@ -211,8 +212,8 @@
                         <div class="w_box">
                            <ul>
                               <li>
-                              	<span>파일</span> <span>｜</span> <span> 
-                              	<a href="./img/logo_w.png" class="download" download>다운로드</a>
+                                 <span>파일</span> <span>｜</span> <span> 
+                                 <a href="./img/logo_w.png" class="download" download>다운로드</a>
                               </span></li>
                            </ul>
                         </div>
@@ -267,20 +268,20 @@
                <ul class="print_btns">
                   <li><a href="boardJob.jsp">목록</a></li>
                   <li><a href="#" id="pdf">PDF 변환</a></li>
-                  <li><a href="resumeModify.jsp">수정하기</a></li>
-                  <li><a href="printDeleteService.do?resume_num=<%=print_vo.getResume_num()%>" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a></li>
+                  <li><a href="resumeModify.jsp?resume_num=<%=resume_num%>">수정하기</a></li>
+                  <li><a href="printDeleteService.do?resume_num=<%=resume_num%>" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a></li>
                </ul>
             </form>
          </div>
       </div>
-   </div>	
-	<%@ include file="./include/footer.jsp" %>
-	<script>
-		// 개발기술스택 tab 처리
-		//함수 호출 반복문
-		for (let i = 0; i < $('.c_btn').length; i++) {
-			tabOpen(i);
-		}
+   </div>   
+   <%@ include file="./include/footer.jsp" %>
+   <script>
+      // 개발기술스택 tab 처리
+      //함수 호출 반복문
+      for (let i = 0; i < $('.c_btn').length; i++) {
+         tabOpen(i);
+      }
 
    <%@ include file="./include/footer.jsp" %>
    <script>
@@ -372,7 +373,7 @@
            let pageHeight = imgWidth * 1.414;  // 출력 페이지 세로 길이 계산 A4 기준
            let imgHeight = canvas.height * imgWidth / canvas.width;
            let heightLeft = imgHeight;
-   		   
+            
            let doc = new jsPDF('p', 'mm');
            let position = 0;
            

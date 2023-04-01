@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.resumeMapper">
 
-	<select id="resume_Print" parameterType="int" resultType="resumeVO">
+	<select id="resume_Print" parameterType="BigDecimal" resultType="resumeVO">
 		select * from t_resume where resume_num=#{resume_num}
 	</select>
 	

@@ -423,7 +423,7 @@
 							<%System.out.println("등록된 이력서 없음"); %>
 						<%}else{ %>
 							<%for(int i = 0 ; i<resumes.size();i++){ %>
-							<%--  <% resumeNum = resumes.get(i).getResume_num();%>--%>
+							<% resumeNum = resumes.get(i).getResume_num();%>
 							<!-- <li class="open"> -->
 							
 						<%-- 	<%
@@ -450,10 +450,13 @@
 							<!-- <li> -->
 								<div class="boardJob_listTop">
 									<div>
-										<span style="cursor: pointer;"  onclick="location.href='resumePrint.jsp'" class="material-symbols-outlined person_icon">
+										<%if(resumes.get(i).getPicture()==null){ %>
+										<span style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumeNum%>'"  class="material-symbols-outlined person_icon">
 											account_circle
 										</span>
-										<!-- <img src=""> -->
+										<%}else { %>
+										<img style="cursor: pointer;"  onclick="location.href='resumePrint.jsp'" src="<%= resumes.get(i).getPicture() %>">
+										<%} %>
 									</div>
 									<a href="javascript:void(0);" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
 									<div>
@@ -468,8 +471,23 @@
 								<div class="boardJob_listBtm">
 									<h3><%=resumes.get(i).getResume_title() %></h3>
 									<p>
-										<%=resumes.get(i).getSchool_name() %><br>
-										<%=resumes.get(i).getMajor() %> <%=resumes.get(i).getGraduation_status() %>
+										<%=resumes.get(i).getSchool_name() %> 
+										<%if(resumes.get(i).getSchool_division().equals("고등학교")){ %>
+										<%}else if(resumes.get(i).getSchool_division().equals("대학(2,3년)")){ %>
+											(2,3년)
+										<%}else if(resumes.get(i).getSchool_division().equals("대학(4년)")){%>
+											(4년)
+										<%}else if(resumes.get(i).getSchool_division().equals("대학원")){ %>
+											대학원
+										<%}else if(resumes.get(i).getSchool_division().equals("대입검정고시")){ %>
+											대입검정고시(검정고시)
+										<%} %><br>
+										<%=resumes.get(i).getMajor() %> 
+										<%if(resumes.get(i).getGraduation_status()==null){ %>
+										
+										<%}else{ %>
+										<%=resumes.get(i).getGraduation_status() %>
+										<%} %>
 									</p>
 									<p>
 										희망지역:<%=resumes.get(i).getHope_area() %><br>
@@ -478,7 +496,7 @@
 									<p>
 										<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
 									</p>
-									<p class="boardJob_date">최종수정일 : 23.04.01</p>
+									<p class="boardJob_date"><%=resumes.get(i).getCre_date() %></p>
 								</div>
 								
 								<div class="boardJob_add" id="option">
@@ -501,8 +519,7 @@
 										<%} %>
 										<%-- <li class="openBoard"><a href="OpenUpdateService.do?resume_num=<%=resumeNum%>&user_id=<%=login_vo.getUser_id() %>">공개이력서로 설정</a></li> --%>
 										<%-- <li class="closeBoard"><a href="CloseUpdateService.do?resume_num=<%=resumeNum%>">공개이력서 해제</a></li> --%>
-										<li><a href="#">PDF 다운로드</a></li>
-										<li><a href="#">수정</a></li>
+										<li><a href="resumeModify.jsp">수정</a></li>
 										<li class="resumeDelBtn"><a href="resumeDeleteService.do?delIndex=<%=resumeNum%>">삭제</a></li>
 									</ul>
 								</div>
