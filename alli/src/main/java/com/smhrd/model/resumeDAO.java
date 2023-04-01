@@ -67,10 +67,10 @@ public class resumeDAO {
 	}
 	 
 	// 출력페이지에서 이력서 삭제
-	public int deletePrint(BigDecimal resume_num) {
+	public int deletePrint(int myInt) {
 		int cnt = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		cnt = sqlSession.delete("com.smhrd.db.resumeMapper.deletePrint", resume_num);
+		cnt = sqlSession.delete("com.smhrd.db.resumeMapper.deletePrint", myInt);
 		sqlSession.close();
 		return cnt;
 	}

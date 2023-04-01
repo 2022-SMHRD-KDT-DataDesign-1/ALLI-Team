@@ -16,9 +16,11 @@ public class printDeleteService implements Command {
 		String moveURL = "";
 		
 		BigDecimal resume_num = new BigDecimal(request.getParameter("resume_num"));
-		System.out.println(resume_num);
+		int myInt = resume_num.intValue();
+		System.out.println("printDelete_myInt: "+myInt);
+		System.out.println("printDelete_myInt: "+int.class.getName());		
 		resumeDAO dao = new resumeDAO();
-		int cnt = dao.deletePrint(resume_num);
+		int cnt = dao.deletePrint(myInt);
 		
 		if(cnt > 0) {
 			System.out.println("삭제 성공");
