@@ -6,7 +6,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="./include/metatag.jsp" %>  
+<%@ include file="./include/metatag.jsp" %>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
 </head>
 <body>
 	<%@ include file="./include/header.jsp" %>
@@ -104,9 +105,9 @@
                                     <option value="대입검정고시">대입검정고시</option>
                                 </select>
                             </div>
-                            <div class="input mandatory ged">
+                            <div class="input ged">
                                 <label>학교명 <span class="star">&#42;</span></label>
-                                <input type="text" placeholder="" name="school_name">
+                                <input type="text" placeholder="" name="school_name" class="mandatory">
                             </div>
                             <div class="input ged">
                                 <label>전공</label>
@@ -153,9 +154,10 @@
 												<li>
 													<p class='language'>${item.languages}</p>
 													<div>
-														<input type="radio" value="상" name="${item.languages}" onchange="showSelected(this)">
+														<input type="radio" value="상" name="${item.languages}">
 														<input type="radio" value="중" name="${item.languages}">
 														<input type="radio" value="하" name="${item.languages}">
+														<input type="hidden" value="${item.languages}" name="languages">
 													</div>
 												</li>
 											</c:forEach> 
@@ -167,9 +169,10 @@
 												<li>
 													<p>${item.frameworks}</p>
 													<div>
-														<input type="radio" value="상" name="level">
-														<input type="radio" value="중" name="level">
-														<input type="radio" value="하" name="level">
+														<input type="radio" value="상" name="${item.frameworks}">
+														<input type="radio" value="중" name="${item.frameworks}">
+														<input type="radio" value="하" name="${item.frameworks}">
+														<input type="hidden" value="${item.frameworks}" name="frameworks">
 													</div>
 												</li>
 											</c:forEach> 
@@ -181,9 +184,10 @@
 												<li>
 													<p>${item.oss}</p>
 													<div>
-														<input type="radio" value="상" name="level">
-														<input type="radio" value="중" name="level">
-														<input type="radio" value="하" name="level">
+														<input type="radio" value="상" name="${item.oss}">
+														<input type="radio" value="중" name="${item.oss}">
+														<input type="radio" value="하" name="${item.oss}">
+														<input type="hidden" value="${item.oss}" name="oss">
 													</div>
 												</li>
 											</c:forEach> 
@@ -195,9 +199,8 @@
 												<li>
 													<p>${item.licenses}</p>
 													<div>
-														<input type="radio" value="상" name="level">
-														<input type="radio" value="중" name="level">
-														<input type="radio" value="하" name="level">
+														<input type="radio" value="" name="${item.licenses}">
+														<input type="hidden" value="${item.licenses}" name="licenses">
 													</div>
 												</li>
 											</c:forEach> 
@@ -206,11 +209,8 @@
                                 </div>
                                 <div class="choose_content">
                                     <p>선택한 항목</p>
-                                     <div class="test">	
+                                     <div id="selected_values_list">	
                                     	<p>
-		                            		<span class="material-symbols-outlined delete">
-		                                	Close
-		                            		</span>
                                     	</p>
                                     </div>
                                 </div>
@@ -224,7 +224,7 @@
                         		<li>
 		                            <div class="input">
 		                                <label>자격증명</label>
-		                                <input type="text" placeholder="">
+		                                <input type="text" placeholder="" name="other_licens">
 		                            </div>
 		                            <span class="material-symbols-outlined delete">
 		                                Close
@@ -244,9 +244,18 @@
                     <div class="resume_box rbox6">
                         <h3>경력</h3>
                         <div>
+                             <select name="career_date">
+                                    <option value="신입">신입</option>
+                                    <option value="1년 이상">1년 이상</option>
+                                    <option value="2년 이상">2년 이상</option>
+                                    <option value="3년 이상">3년 이상</option>
+                                    <option value="5년 이상">5년 이상</option>
+                                    <option value="7년 이상">7년 이상</option>
+                                    <option value="10년 이상">10년 이상</option>
+                                </select>
                             <div class="input">
                                 <div class="label">회사명, 부서명, 입사년월과 퇴사년월, 직급/직책, 담당직무 등을 입력해주세요.</div>
-                                <textarea placeholder=""></textarea>
+                                <textarea placeholder="" name="career"></textarea>
                             </div>
                             <span class="material-symbols-outlined delete">
                                 Close
@@ -266,7 +275,7 @@
                         <div>
                             <div class="input">
                                 <div class="label">수상명, 수여기관, 수상연도, 수상내용 등을 입력해주세요.</div>
-                                <textarea placeholder=""></textarea>
+                                <textarea placeholder="" name=""></textarea>
                             </div>
                             <span class="material-symbols-outlined delete">
                                 Close
@@ -286,17 +295,17 @@
                         <div>
                             <div class="input">
                                 <div class="label">성장과정, 성격의 장단점, 경력사항, 지원동기 및 입사 후 포부 등을 입력해주세요.</div>
-                                <textarea placeholder="" class="mandatory"></textarea>
+                                <textarea placeholder="" name="self_introduction" class="mandatory"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="resume_box rbox9">
                         <h3>포트폴리오</h3>
                         <div>
-                            <input type="file">
+                            <input type="file" name="file_name">
                             <div class="input">
                                 <label>URL</label>
-                                <input type="text" placeholder="">
+                                <input type="text" placeholder="" name="url">
                             </div>
                         </div>
                     </div>
@@ -305,22 +314,21 @@
                         <div>
                             <div class="input">
                                 <label>희망연봉</label>
-                                <input type="text" placeholder="">
+                                <input type="text" placeholder="" name="hope_salary">
                                 <span>만원이상</span>
                             </div>
                             <div class="input">
                                 <label>희망지역<span class="star">&#42;</span></label>
-                                <input type="text" placeholder="" class="mandatory">
+                                <input type="text" placeholder="" class="mandatory" name="hope_area">
                             </div>
                             <div class="input">
                                 <label>희망지역2</label>
-                                <input type="text" placeholder="">
+                                <input type="text" placeholder="" name="hope_area2">
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="choice" id="choice" value="">
+                    <input type="hidden" name="on_off" id="choice" value="">
                     <input type="submit" id="resumeReg_btn" value="이력서 저장" onclick="confirmSubmit(event)">
-                </form>
             </div>
        </div>
     </div>
@@ -426,26 +434,22 @@
 				graduationStatus.disabled = false;
 			}
 		});
-		// 필수항목 null체크
-		const form = document.querySelector('#myForm');
-		form.addEventListener('submit', function(event) {
-			const requiredInputs = document.querySelectorAll('.mandatory');
-			let hasError = false;
-			requiredInputs.forEach(function(input) {
-				if (!input.value) {
-					hasError = true;
-				}
-			});
-			if (hasError) {
-				event.preventDefault(); // form submit 취소
-				alert('모든 필수 입력 항목을 작성해주세요.');
-			}
-		});
-		// 이력서 공개여부
 		function confirmSubmit(event) {
-			  event.preventDefault(); // submit 기본 동작 취소
+			  // 필수항목 null체크
+			  const requiredInputs = document.querySelectorAll('.mandatory');
+			  let hasError = false;
+			  requiredInputs.forEach(function(input) {
+			    if (!input.value) {
+			      hasError = true;
+			    }
+			  });
+			  if (hasError) {
+			    event.preventDefault(); // form submit 취소
+			    alert('모든 필수 입력 항목을 작성해주세요.');
+			    return;
+			  }
 
-			  // 예/아니오 선택 창 띄우기
+			  // 이력서 공개여부
 			  var confirmed = confirm("이력서를 공개 하시겠습니까?");
 			  if (confirmed) {
 			    // "예"를 선택한 경우
@@ -457,11 +461,6 @@
 			    // 다른 작업 수행...
 			  }
 			}
-		$(document).on('click', 'input[type="radio"]', function(){
-			  const val = $(this).val();
-			  const name = $(this).attr('name');
-			  console.log("value: " + val + ", name: " + name);
-			});
 		// 대입검정고시 선택시, class추가
 		
 		function AddClass(){
@@ -475,12 +474,65 @@
 				}
 			} 
 		}
-		
-		
-		
-		
-		
+		$(document).ready(function() {
+		    // 선택된 값을 저장할 배열
+		    var selectedValues = [];
 
+		    // 라디오 버튼 클릭 이벤트 처리
+		    $('input[type="radio"]').click(function() {
+		        // 선택된 값 가져오기
+		        var selectedValue = $(this).val();
+		        var selectedLanguage = $(this).siblings('input[type="hidden"]').val();
+
+		        // 선택된 값이 이전에 선택된 값인지 확인
+		        var isDuplicate = false;
+		        for (var i = 0; i < selectedValues.length; i++) {
+		            if (selectedValues[i].value === selectedValue && selectedValues[i].language === selectedLanguage) {
+		                isDuplicate = true;
+		                break;
+		            }
+		        }
+
+		        // 중복된 값이 없으면 선택된 값 추가하기
+		        if (!isDuplicate) {
+		            selectedValues.push({
+		                value: selectedValue,
+		                language: selectedLanguage
+		            });
+
+		            // 선택된 값들을 출력할 div 태그 찾기
+		            var selectedValuesList = $('#selected_values_list');
+
+		            // 선택된 값 추가하기
+		            var newItem = $('<div class="selected_item" style="float: left;"></div>');
+		            newItem.text(selectedLanguage + ' ' + selectedValue);
+
+		            // 삭제 버튼 추가하기
+		            var deleteButton = $('<span class="material-symbols-outlined delete">Close</span>');
+		            newItem.append(deleteButton);
+
+		            // 선택된 값들을 가로로 출력하기
+		            selectedValuesList.append(newItem);
+
+		            // 기존에 선택되어 있던 라디오 버튼 비활성화
+		            $('input[type="radio"][name="' + selectedLanguage + '"]').not(this).prop('disabled', true);
+
+		            // 삭제 버튼 클릭 이벤트 처리
+		            deleteButton.click(function() {
+		                $(this).parent().remove();
+		                $('input[type="radio"][name="' + selectedLanguage + '"]').prop('checked', false).prop('disabled', false);
+
+		                // 선택된 값 배열에서 제거하기
+		                for (var i = 0; i < selectedValues.length; i++) {
+		                    if (selectedValues[i].value === selectedValue && selectedValues[i].language === selectedLanguage) {
+		                        selectedValues.splice(i, 1);
+		                        break;
+		                    }
+		                }
+		            });
+		        }
+		    });
+		});
 	</script>
 </body>
 </html>
