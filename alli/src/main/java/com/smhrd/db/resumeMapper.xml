@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.db.resumeMapper">
 
-	<select id="resume_Print" parameterType="int" resultType="resumeVO">
+	<select id="resume_Print" parameterType="BigDecimal" resultType="resumeVO">
 		select * from t_resume where resume_num=#{resume_num}
 	</select>
 	
@@ -31,6 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="openUpdate2" parameterType="resumeVO">
 		update t_resume set on_off = null where user_id=#{user_id} and on_off = 'on'
 	</update>
+	
+	<delete id="deletePrint" parameterType="BigDecimal">
+		delete * from t_resume,framework_list,language_list, license_list where resume_num= #{resume_num};
+	</delete>
+	
 
 
 </mapper>

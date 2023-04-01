@@ -24,11 +24,12 @@
 <body>
 
 	<%
-
-		int resume_num = 934; 
+		BigDecimal resume_num = new BigDecimal(request.getParameter("resume_num"));
 		resumeDAO dao = new resumeDAO();
 		resumeVO print_vo = dao.resume_Print(resume_num);
 		LocalDate now = LocalDate.now();
+		
+		System.out.println(resume_num);
 
 		int year = now.getYear(); // 현재 년도
 		String year_temp = Integer.toString(year).substring(2, 3); // 년도 끝 2자리
@@ -105,12 +106,12 @@
             <form>
                <div id="resumePDF">
                   <div class="print_box" id="pbox1">
-                     <p>취미는 백엔드개발인 3년차 웹퍼블리셔입니다.</p>
+                     <p><%=print_vo.getResume_title() %></p>
                   </div>
                   <div class="print_box" id="pbox2">
                      <div class="w_box">
                         <div>
-                           <img src="./img/R_01.jpg">
+                           <img src=<%=print_vo.getPicture()%>>
                         </div>
                         <div>
                            <p><%=print_vo.getUser_name()%>
@@ -267,8 +268,8 @@
                <ul class="print_btns">
                   <li><a href="boardJob.jsp">목록</a></li>
                   <li><a href="#" id="pdf">PDF 변환</a></li>
-                  <li><a href="resumeModify.jsp">수정하기</a></li>
-                  <li><a href="printDeleteService.do?resume_num=<%=print_vo.getResume_num()%>" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a></li>
+                  <li><a href="resumeModify.jsp?resume_num=<%=resume_num%>">수정하기</a></li>
+                  <li><a href="printDeleteService.do?resume_num=<%=resume_num%>" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a></li>
                </ul>
             </form>
          </div>

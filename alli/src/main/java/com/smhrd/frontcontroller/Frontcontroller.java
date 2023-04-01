@@ -15,6 +15,7 @@ import com.smhrd.controller.OpenUpdateService;
 import com.smhrd.controller.cmpJoinService;
 import com.smhrd.controller.cmpLoginService;
 import com.smhrd.controller.jjimService;
+import com.smhrd.controller.printDeleteService;
 import com.smhrd.controller.resumeDeleteService;
 import com.smhrd.controller.userJoinService;
 import com.smhrd.controller.userLoginService;
@@ -64,7 +65,10 @@ public class Frontcontroller extends HttpServlet {
 			service = new OpenUpdateService();
 		}else if(result.equals("CloseUpdateService.do")) {
 			service = new CloseUpdateService();
+		}else if(result.equals("printDeleteService.do")) {
+			service = new printDeleteService();
 		}
+
 
 		String moveURL = service.excute(request, response);
 		response.sendRedirect(moveURL);

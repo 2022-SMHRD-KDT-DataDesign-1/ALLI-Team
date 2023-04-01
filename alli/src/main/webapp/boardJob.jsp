@@ -423,7 +423,7 @@
 							<%System.out.println("등록된 이력서 없음"); %>
 						<%}else{ %>
 							<%for(int i = 0 ; i<resumes.size();i++){ %>
-							<%--  <% resumeNum = resumes.get(i).getResume_num();%>--%>
+							  <% resumeNum = resumes.get(i).getResume_num();%>
 							<!-- <li class="open"> -->
 							
 						<%-- 	<%
@@ -450,7 +450,7 @@
 							<!-- <li> -->
 								<div class="boardJob_listTop">
 									<div>
-										<span style="cursor: pointer;"  onclick="location.href='resumePrint.jsp'" class="material-symbols-outlined person_icon">
+										<span style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumeNum%>'" class="material-symbols-outlined person_icon">
 											account_circle
 										</span>
 										<!-- <img src=""> -->
