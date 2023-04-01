@@ -17,4 +17,12 @@ public class OsDAO {
 		session.close();
 		return list;
 	}
+	
+	// 구직자 로그인 아이디로 OS 가져오기
+	public List<String> selectUserOS(String userId) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<String> osList = session.selectList("selectUserOS",userId);
+		session.close();
+		return osList ;
+	}
 }

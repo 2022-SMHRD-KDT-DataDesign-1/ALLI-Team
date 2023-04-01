@@ -17,4 +17,12 @@ public class FrameworkDAO {
 		session.close();
 		return list;
 	}
+	
+	// 구직자 아이디 기반 프레임워크 가져오기
+	public List<String> selectUserFrameWork(String userId){
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<String> frameList = session.selectList("selectUserFrameWork",userId);
+		session.close();
+		return frameList ;
+	}
 }

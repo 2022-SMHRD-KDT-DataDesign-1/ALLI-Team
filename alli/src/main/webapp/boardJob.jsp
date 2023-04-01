@@ -1,3 +1,7 @@
+<%@page import="com.smhrd.model.OsDAO"%>
+<%@page import="com.smhrd.model.FrameworkDAO"%>
+<%@page import="com.smhrd.model.LanguageDAO"%>
+<%@page import="com.smhrd.model.LanguageVO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -46,12 +50,50 @@
 		System.out.println(age);
 	%>
 	
+	<!-- 내 아이디의 리스트 받아오는 스크립클릿 -->
 	<% 
 		resumeDAO dao = new resumeDAO();
 		List<resumeVO> resumes = dao.selectResumeList(login_vo.getUser_id());
 		System.out.println(resumes.size());
 		BigDecimal resumeNum = new BigDecimal(0);
 	%>
+	
+	<!-- 언어 가져오는 스크립틀릿 -->
+	<%
+		LanguageVO lanVO = new LanguageVO();
+		LanguageDAO lanDAO = new LanguageDAO();
+		List<String> lanList = lanDAO.selectUserLanguage(login_vo.getUser_id());
+		for(int i = 0 ; i < lanList.size() ; i++){
+		System.out.println(lanList.get(i));
+		}
+	%>
+	
+	<!-- 프레임워크 가져오는 스크립틀릿 -->
+	<%
+		FrameworkDAO frameDAO = new FrameworkDAO();
+		List<String> frameList = frameDAO.selectUserFrameWork(login_vo.getUser_id());
+		if(frameList.size() != 0 ){
+			for(int i = 0 ; i < frameList.size() ; i++){
+				System.out.println(frameList.get(i));
+			}
+		}else{
+			System.out.println("프레임워크 없음");
+		}
+	%>
+	
+	<!-- OS 가져오는 스크립틀릿 -->
+	<%
+		OsDAO osDAO = new OsDAO();
+		List<String> osList = osDAO.selectUserOS(login_vo.getUser_id());
+		if(osList.size() != 0 ){
+			for(int i = 0 ; i < osList.size() ; i++){
+				System.out.println(osList.get(i));
+			}
+		}else{
+			System.out.println("OS 없음");
+		}
+	%>
+	
     <input type="hidden" value="<%= resumes.size() %>" id="resumesSize">
 	
 	<div id="wrap" class="boardJob_wrap">
@@ -448,8 +490,6 @@
 							<%}else{ %>
 								<li>
 							<%} %>
-							
-							<!-- <li> -->
 								<div class="boardJob_listTop">
 									<div>
 										<%if(resumes.get(i).getPicture()==null){ %>
@@ -496,7 +536,24 @@
 										희망연봉:<%=resumes.get(i).getHope_salary() %>
 									</p>
 									<p>
-										<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
+									<%for(int j = 0 ; j < lanList.size() ; j++){ %>
+										<%if(resumes.get(i).getResume_num().equals(resumes.get(j).getResume_num())){ %>
+											<span><%=lanList.get(j) %></span>
+										<%} %>
+									<%} %>
+									
+									<%for(int j = 0 ; j < frameList.size() ; j++){ %>
+										<%if(resumes.get(i).getResume_num().equals(resumes.get(j).getResume_num())){ %>
+											<span><%=frameList.get(j) %></span>
+										<%} %>
+									<%} %>
+									
+									<%for(int j = 0 ; j < osList.size() ; j++){ %>
+										<%if(resumes.get(i).getResume_num().equals(resumes.get(j).getResume_num())){ %>
+											<span><%=osList.get(j) %></span>
+										<%} %>
+									<%} %>
+										<span>기타...</span>
 									</p>
 									<p class="boardJob_date"><%=resumes.get(i).getCre_date() %></p>
 								</div>
@@ -521,7 +578,7 @@
 										<%} %>
 										<%-- <li class="openBoard"><a href="OpenUpdateService.do?resume_num=<%=resumeNum%>&user_id=<%=login_vo.getUser_id() %>">공개이력서로 설정</a></li> --%>
 										<%-- <li class="closeBoard"><a href="CloseUpdateService.do?resume_num=<%=resumeNum%>">공개이력서 해제</a></li> --%>
-										<li><a href="resumeModify.jsp">수정</a></li>
+										<li><a href="resumeModify.jsp?resume_num=<%=resumeNum %>">수정</a></li>
 										<li class="resumeDelBtn"><a href="resumeDeleteService.do?delIndex=<%=resumeNum%>">삭제</a></li>
 									</ul>
 								</div>

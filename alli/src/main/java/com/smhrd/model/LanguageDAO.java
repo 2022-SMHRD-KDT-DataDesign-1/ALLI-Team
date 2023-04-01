@@ -1,5 +1,6 @@
 package com.smhrd.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,5 +18,12 @@ public class LanguageDAO {
 		List<LanguageVO> list = session.selectList("selectLanguage");
 		session.close();
 		return list;
+	}
+	
+	public List<String> selectUserLanguage(String userId) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<String> lanList = session.selectList("selectUserLanguage",userId);
+		session.close();
+		return lanList ;
 	}
 }

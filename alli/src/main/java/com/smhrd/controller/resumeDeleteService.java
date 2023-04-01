@@ -17,9 +17,10 @@ public class resumeDeleteService implements Command {
 	      
 	      BigDecimal deleteIndex = new BigDecimal(request.getParameter("delIndex"));
 	      System.out.println(deleteIndex);
-	      // MemereDAO -> deleteMember() 만들기
+	      // MemberDAO -> deleteMember() 만들기
 	      resumeDAO dao = new resumeDAO();
-	      int cnt = dao.deleteResume(deleteIndex);
+	      int delIndex = deleteIndex.intValue();
+	      int cnt = dao.deleteResume(delIndex);
 	      
 	      if(cnt > 0) {
 	         System.out.println("삭제 성공");

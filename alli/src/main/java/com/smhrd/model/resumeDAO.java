@@ -36,7 +36,7 @@ public class resumeDAO {
 		 return user_resume_list ;
 	 }
 
-	public int deleteResume(BigDecimal deleteIndex) {
+	public int deleteResume(int deleteIndex) {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		int cnt = sqlSession.delete("resumeDelete",deleteIndex);
 		sqlSession.close();

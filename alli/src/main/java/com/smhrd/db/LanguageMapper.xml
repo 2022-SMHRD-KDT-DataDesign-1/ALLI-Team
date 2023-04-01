@@ -23,5 +23,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select resume_num, license_name
 		from license_list
 	</select>
+	
+	<select id="selectUserLanguage" resultType = "String">
+		select language_name from language_list a,(select * from t_resume where user_id = #{userId} order by resume_num asc) b where a.resume_num = b.resume_num
+	</select>
+	
+	<select id="selectUserFrameWork" resultType = "String">
+		select framework_name from framework_list a,(select * from t_resume where user_id = #{userId} order by resume_num asc) b where a.resume_num = b.resume_num
+	</select>
+	
+	<select id="selectUserOS" resultType = "String">
+		select os_name from os_list a,(select * from t_resume where user_id = #{userId} order by resume_num asc) b where a.resume_num = b.resume_num
+	</select>
 
 </mapper>
