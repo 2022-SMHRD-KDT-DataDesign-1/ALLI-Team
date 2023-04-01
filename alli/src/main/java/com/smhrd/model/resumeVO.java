@@ -31,6 +31,8 @@ public class resumeVO {
    private String on_off;
    private String user_tel2;
    private String career_date;
+   private String other_license;
+
 
    public resumeVO() {
       
@@ -41,7 +43,7 @@ public class resumeVO {
          String date_birth, String hope_area, String resume_title, String address, String self_introduction,
          String gender, Timestamp cre_date, String school_division, String school_name, String graduation_status, String hope_salary,
          String picture, String file_name, String major, String career, String award, String url, String hope_area2,
-         String on_off, String career_date) {
+         String on_off, String career_date,String other_license) {
          super();
          this.resume_num = resume_num;
          this.user_id = user_id;
@@ -68,6 +70,7 @@ public class resumeVO {
          this.hope_area2 = hope_area2;
          this.on_off = on_off;
          this.career_date = career_date;
+         this.other_license = other_license;
    }
    
    // 구직자 이력서 공개/비공개 전환을 위한 생성자
@@ -180,5 +183,8 @@ public class resumeVO {
    
    public String getCareer_date() {
       return career_date;
+   }
+   public String getOther_license() {
+	   return other_license;
    }
 }

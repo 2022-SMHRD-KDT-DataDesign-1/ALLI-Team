@@ -231,16 +231,15 @@
                         </div>
                      </div>
                      <%}%>
-                  <%}%>                  
+                  <%}%>
+                  <%if(print_vo.getOther_license() != null){%>
                   <div class="print_box" id="pbox5">
                      <h3>기타자격증</h3>
                      <div class="w_box">
-                        <p>- 자동차운전면허</p>
-                        <p>- 웹디자인기능사</p>
-                        <p>- (국가공인)GTQ1급</p>
-                        <p>- 컴퓨터그래픽스운용기능사</p>
+                        <p>- <%=print_vo.getOther_license()%></p>
                      </div>
                   </div>
+                  <%}%>                  
                   <%if(print_vo.getCareer() != null){%>
                   <div class="print_box" id="pbox5">
                      <h3>경력</h3>
@@ -270,7 +269,7 @@
                   <li><a href="boardJob.jsp">목록</a></li>
                   <li><a href="#" id="pdf">PDF 변환</a></li>
                   <li><a href="resumeModify.jsp?resume_num=<%=resume_num%>">수정하기</a></li>
-                  <li><a href="printDeleteService.do?resume_num=<%=resume_num%>" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a></li>
+                  <li><a href="printDeleteService.do?resume_num=<%=resume_num%>" onclick="alert('이력서가 삭제 되었습니다.')"><%=resume_num%>삭제</a></li>
                </ul>
             </form>
          </div>
