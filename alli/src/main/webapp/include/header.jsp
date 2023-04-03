@@ -19,7 +19,7 @@
         <%if(login_vo == null && cmpLogin_vo == null) {%>
 	        <ul id="gnb">
 	            <li>
-	                <a href="boardJob.jsp">구직</a>
+	                <a href="boardJob.jsp" onclick="alert('로그인이 필요합니다.'); return false;">구직</a>
 	            </li>
 	            <li>
 	                <a href="boardEmp.jsp">채용</a>
