@@ -146,7 +146,7 @@
 					<ul>
 						<c:forEach items="${rlist}" var="item">
 							<c:forEach items="${jlist}" var="jjim">		
-								<c:if test="${item.resume_num eq jjim.resume_num}">
+								<c:if test="${jjim.resume_num eq item.resume_num }">
 									<li>
 										<div class="boardJob_listTop">
 											<div>
@@ -239,10 +239,10 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<div class="board_list">
+				<!-- <div class="board_list">
 					<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
 					<a href="#">5</a> <a href="#" class="end">></a>
-				</div>
+				</div> -->
 			</div>
 			<div class="sub_box" id="filter">
 				<h2 class="sub_title">인재 필터링</h2>
@@ -382,7 +382,8 @@
 									<c:forEach items="${jlist}" var="jjim">
 											<c:choose>
 											<c:when test="${item.resume_num eq jjim.resume_num}">
-												<a class="like" href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
+												<%-- <a class="like" href="jjimDelService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}"> --%>
+												<a class="like" href="javascript:void(0);">
 													<img src="./img/star1.png">
 												</a>
 												<c:set var="isCheckList" value="false" />
@@ -392,7 +393,8 @@
 									</c:forEach>
 									
 									<c:if test="${isCheckList eq true}">
-										<a class="like_off" href='javascript:void(0);'> 
+										<%-- <a class="like_off" href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">  --%>
+										<a class="like_off" href="javascript:void(0);"> 
 											<img src="./img/star0.png">
 										</a>
 									</c:if>
@@ -488,9 +490,29 @@
 							});
 		}
 		
+		//찜기능 Ajax처리
+		let url = 'jjimService.do'
+        
+        const jjimAjax = ()=>{
+            console.log('jjimAjax')
+
+            $.ajax({
+                url : url, 
+                type : 'get', 
+                success : (res)=>{
+                    console.log('통신(찜추가)에 성공했습니다.', )
+                },
+                error : ()=>{
+                    console.log('통신(찜추가)에 실패하셨습니다!')
+                }
+            })
+        }
+		
+        $('.like').click(jjimAjax)
+		
 		
 		/*star 클릭이벤트*/
-		$(".like").click(function() {
+		/* $(".like").click(function() {
 		    var img = $(this).children("img");
 		    img.attr("src", function(index, attr){
 		      if (attr.match('0')) {
@@ -500,7 +522,7 @@
 		        return attr.replace("1", "0")
 		      }
 		    });
-		  });
+		  }); */
 		
 		
 		

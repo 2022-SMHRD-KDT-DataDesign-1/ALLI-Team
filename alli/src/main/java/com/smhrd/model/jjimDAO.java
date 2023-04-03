@@ -24,7 +24,15 @@ public class jjimDAO {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		int cnt = session.insert("insertjjim", vo);
 		session.close();
-		return 0;
+		return cnt;
+	}
+
+	//찜 삭제하기
+	public int deletejjim(jjimVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.insert("deletejjim", vo);
+		session.close();
+		return cnt;
 	}
 
 
