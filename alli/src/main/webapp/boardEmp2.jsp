@@ -336,79 +336,13 @@
 										</ul>
 									</li>
 									<li class="c_content">
-										<!-- 경력 시작 -->
-										<ul>
-											<li>
-												<p>신입</p>
-												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
-												</div>
-											</li>
-										</ul>
-										<ul>
-											<li>
-												<p>1년 이상</p>
-												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
-												</div>
-											</li>
-										</ul>
-										<ul>
-											<li>
-												<p>2년 이상</p>
-												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
-												</div>
-											</li>
-										</ul>
-										<ul>
-											<li>
-												<p>3년 이상</p>
-												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
-												</div>
-											</li>
-										</ul>
-										<ul>
-											<li>
-												<p>5년 이상</p>
-												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
-												</div>
-											</li>
-										</ul>
-										<ul>
-											<li>
-												<p>7년 이상</p>
-												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
-												</div>
-											</li>
-										</ul>
-										<ul>
-											<li>
-												<p>10년 이상</p>
-												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
-												</div>
-											</li>
-										</ul>
-									</li>
-									<li class="c_content">
 										<!-- 학력 시작 -->
 										<ul>
 											<li>
 												<p>고졸(검정고시)</p>
 												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
+													<input type="checkbox" value="" name="{item.school_division}">
+													<input type="hidden" value="고졸(검정고시)" name="school_division">
 												</div>
 											</li>
 										</ul>
@@ -416,8 +350,8 @@
 											<li>
 												<p>대학(2,3년)</p>
 												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
+													<input type="checkbox" value="" name="{item.school_division}">
+													<input type="hidden" value="대학(2,3년)" name="school_division">
 												</div>
 											</li>
 										</ul>
@@ -425,8 +359,8 @@
 											<li>
 												<p>대학(4년)</p>
 												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
+													<input type="checkbox" value="" name="{item.school_division}">
+													<input type="hidden" value="대학(4년)" name="school_division">
 												</div>
 											</li>
 										</ul>
@@ -434,21 +368,88 @@
 											<li>
 												<p>대학원</p>
 												<div>
-													<input type="checkbox" value="" name="item.licenses}">
-													<input type="hidden" value="${item.licenses}" name="licenses">
+													<input type="checkbox" value="" name="{item.school_division}">
+													<input type="hidden" value="대학원" name="school_division">
 												</div>
 											</li>
 										</ul>
+									</li>
+									<li class="c_content">
+										<!-- 경력 시작 -->
+										<ul>
+											<li>
+												<p>신입</p>
+												<div>
+													<input type="checkbox" value="" name="{item.career}">
+													<input type="hidden" value="신입" name="career">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>1년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="{item.career}">
+													<input type="hidden" value="1년 이상" name="career">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>2년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="{item.career}">
+													<input type="hidden" value="2년 이상" name="career">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>3년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="{item.career}">
+													<input type="hidden" value="3년 이상" name="career">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>5년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="{item.career}">
+													<input type="hidden" value="5년 이상" name="career">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>7년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="{item.career}">
+													<input type="hidden" value="7년 이상" name="career">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>10년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="{item.career}">
+													<input type="hidden" value="10년 이상" name="career">
+												</div>
+											</li>
+										</ul>
+										
 									</li>
 								</ul>
 							</div>
 							<div class="choose_content">
 								<p>선택한 항목</p>
 								<div id="selected_values_list">	
-                                   <p>
+                                   <p name="checkbox">
                                    </p>
                                 </div>
-								<a href="#">선택한 조건<br>검색하기
+								<a href="#" type="button" onclick="submitValues()">선택한 조건<br>검색하기
 								</a>
 							</div>
 						</section>
@@ -456,100 +457,105 @@
 				</div>
 				<div class="boardJob02">
 					<ul>
-						<c:forEach items="${rlist}" var="item">
-							<li>
-								<div class="boardJob_listTop">
-									<div>
-										<!-- 사진구분 -->
-											<c:choose> 
-										         <c:when test = "${item.picture ne null }">
-										            <img src="${item.picture}">
-										         </c:when>
-										         <c:otherwise>
-										         	<span class="material-symbols-outlined person_icon">
-														account_circle
-													</span>
-										         </c:otherwise>
-										     </c:choose>
+						<c:if test="${item.resume_num == null}">
+							<p style="text-align:center;">선택한 조건에 맞는 이력서가 없습니다.</p>
+						</c:if>
+						<c:if test="${item.resume_num != null}">
+							<c:forEach items="${rlist}" var="item">
+								<li>
+									<div class="boardJob_listTop">
+										<div>
+											<!-- 사진구분 -->
+												<c:choose> 
+											         <c:when test = "${item.picture ne null }">
+											            <img src="${item.picture}">
+											         </c:when>
+											         <c:otherwise>
+											         	<span class="material-symbols-outlined person_icon">
+															account_circle
+														</span>
+											         </c:otherwise>
+											     </c:choose>
+										</div>
+										<c:set var="isCheckList" value="true" />
+										<c:forEach items="${jlist}" var="jjim">
+												<c:choose>
+												<c:when test="${item.resume_num eq jjim.resume_num}">
+													<a class="like" href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
+														<img src="./img/star1.png">
+													</a>
+													<c:set var="isCheckList" value="false" />
+												</c:when>
+												
+												</c:choose>
+										</c:forEach>
+										
+										<c:if test="${isCheckList eq true}">
+											<a class="like_off" href='javascript:void(0);'> 
+												<img src="./img/star0.png">
+											</a>
+										</c:if>
+	
+										<div>
+											<p>
+												<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+											</p>
+											<p>
+												${item.career_date}
+											</p>
+										</div>
 									</div>
-									<c:set var="isCheckList" value="true" />
-									<c:forEach items="${jlist}" var="jjim">
-											<c:choose>
-											<c:when test="${item.resume_num eq jjim.resume_num}">
-												<a class="like" href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
-													<img src="./img/star1.png">
-												</a>
-												<c:set var="isCheckList" value="false" />
-											</c:when>
-											
-											</c:choose>
-									</c:forEach>
-									
-									<c:if test="${isCheckList eq true}">
-										<a class="like_off" href='javascript:void(0);'> 
-											<img src="./img/star0.png">
-										</a>
-									</c:if>
-
-									<div>
+									<div class="boardJob_listBtm">
+										<h3>${item.resume_title}</h3>
 										<p>
-											<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+											${item.school_name}
+											<!-- 학교구분 -->
+												<c:choose> 
+											         <c:when test = "${item.school_division == '대학(4년)'}">
+											            (4년)
+											         </c:when>
+											         <c:when test = "${item.school_division == '대학(2,3년)'}">
+											            (2,3년)
+											         </c:when>
+											         <c:when test = "${item.school_division == '대입검정고시'}">
+											            대입검정고시(검정고시)<br>
+											            졸업
+											         </c:when>
+											         <c:otherwise>
+											         	(${item.school_division})
+											         </c:otherwise>
+											     </c:choose>
+											<br> ${item.major} ${item.graduation_status}
 										</p>
 										<p>
-											${item.career_date}
+											희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
+										</p>
+										<p>
+											<c:forEach items="${Llist}" var="tech">
+												<c:if test = "${item.resume_num eq tech.resume_num}"> 
+											         <span>${tech.language_name }</span>
+											    </c:if>
+											</c:forEach>
+											<c:forEach items="${Flist}" var="tech">
+												<c:if test = "${item.resume_num eq tech.resume_num}"> 
+											         <span>${tech.framework_name }</span>
+											    </c:if>
+											</c:forEach>
+											<c:forEach items="${Olist}" var="tech">
+												<c:if test = "${item.resume_num eq tech.resume_num}"> 
+											         <span>${tech.os_name }</span>
+											    </c:if>
+											</c:forEach>
+											<c:forEach items="${LIlist}" var="tech">
+												<c:if test = "${item.resume_num eq tech.resume_num}"> 
+											         <span>${tech.license_name }</span>
+											    </c:if>
+											</c:forEach>
 										</p>
 									</div>
-								</div>
-								<div class="boardJob_listBtm">
-									<h3>${item.resume_title}</h3>
-									<p>
-										${item.school_name}
-										<!-- 학교구분 -->
-											<c:choose> 
-										         <c:when test = "${item.school_division == '대학(4년)'}">
-										            (4년)
-										         </c:when>
-										         <c:when test = "${item.school_division == '대학(2,3년)'}">
-										            (2,3년)
-										         </c:when>
-										         <c:when test = "${item.school_division == '대입검정고시'}">
-										            대입검정고시(검정고시)<br>
-										            졸업
-										         </c:when>
-										         <c:otherwise>
-										         	(${item.school_division})
-										         </c:otherwise>
-										     </c:choose>
-										<br> ${item.major} ${item.graduation_status}
-									</p>
-									<p>
-										희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
-									</p>
-									<p>
-										<c:forEach items="${Llist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.language_name }</span>
-										    </c:if>
-										</c:forEach>
-										<c:forEach items="${Flist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.framework_name }</span>
-										    </c:if>
-										</c:forEach>
-										<c:forEach items="${Olist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.os_name }</span>
-										    </c:if>
-										</c:forEach>
-										<c:forEach items="${LIlist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.license_name }</span>
-										    </c:if>
-										</c:forEach>
-									</p>
-								</div>
-							</li>
-						</c:forEach>
+								</li>
+							</c:forEach>
+						</c:if>
 					</ul>
 				</div>
 				<ul class="board_list">
@@ -659,10 +665,34 @@
                           }
                       }
                   });
-              }
+              } 
           });
-      });
+      }); // 필터링
+      
+  	   // 고유빈 - 선택한 항목 db에 보내기
+	  function submitValues() {
+		  var checkboxes = document.getElementsByName("checkbox");
+		  var checkedValues = "";
+		  for(var i=0; i<checkboxes.length; i++) {
+		    if(checkboxes[i].checked) {
+		      checkedValues += checkboxes[i].value + " ";
+		    }
+		  }
+		  document.getElementById("selected_values_list").innerHTML = checkedValues;
+		  sendData(checkedValues);
+		}
 		
+		function sendData(data) {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		      console.log(this.responseText);
+		    }
+		  };
+		  xhttp.open("POST", "project-db-stu3.ddns.net", true);
+		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		  xhttp.send("data=" + data);
+		}	
 		
 		
 		
