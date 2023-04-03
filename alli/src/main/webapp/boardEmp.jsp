@@ -164,16 +164,16 @@
 											</div>
 											<c:set var="isCheckList" value="true" />
 											<c:if test="${item.resume_num eq jjim.resume_num}">
-												<a class="like" href='jjimservice.do?'> 
-													<img src="./img/star1.png">
+												<a href="jjimDelService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
+													<img class="like" src="./img/star1.png" data-num="${item.resume_num}">
 												</a>
 												<c:set var="isCheckList" value="false" />
 											</c:if>
 
 											<c:if test="${isCheckList eq true}">
-												<a class="like_off" href='javascript:void(0);'> 
-													<img src="./img/star0.png">
-												</a>
+												<a href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}"> 
+											<img class="like_off" src="./img/star0.png" data-num="${item.resume_num}">
+										</a>
 											</c:if>
 
 											<div>
@@ -382,9 +382,8 @@
 									<c:forEach items="${jlist}" var="jjim">
 											<c:choose>
 											<c:when test="${item.resume_num eq jjim.resume_num}">
-												<%-- <a class="like" href="jjimDelService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}"> --%>
-												<a class="like" href="javascript:void(0);">
-													<img src="./img/star1.png">
+												<a href="jjimDelService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
+													<img class="like" src="./img/star1.png" data-num="${item.resume_num}">
 												</a>
 												<c:set var="isCheckList" value="false" />
 											</c:when>
@@ -393,9 +392,8 @@
 									</c:forEach>
 									
 									<c:if test="${isCheckList eq true}">
-										<%-- <a class="like_off" href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">  --%>
-										<a class="like_off" href="javascript:void(0);"> 
-											<img src="./img/star0.png">
+										<a href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}"> 
+											<img class="like_off" src="./img/star0.png" data-num="${item.resume_num}">
 										</a>
 									</c:if>
 
@@ -491,16 +489,24 @@
 		}
 		
 		//찜기능 Ajax처리
-		let url = 'jjimService.do'
-        
-        const jjimAjax = ()=>{
+	   const jjimAjax = (event)=>{
+		   
+		   	event.preventDefault();
+		   
             console.log('jjimAjax')
+            console.log(event.target.getAttribute("data-num"));
 
-            $.ajax({
-                url : url, 
-                type : 'get', 
+            let cmp_id = '<%=cmpLogin_vo.getCmp_id() %>';
+            let resume_num = event.target.getAttribute("data-num");
+            
+           	$.ajax({
+                url : 'jjimService.do', 
+                type : 'get',
+                data : {cmp_id : cmp_id, resume_num : resume_num},
+                datatype : 'JSON',
                 success : (res)=>{
                     console.log('통신(찜추가)에 성공했습니다.', )
+                    location.reload();
                 },
                 error : ()=>{
                     console.log('통신(찜추가)에 실패하셨습니다!')
@@ -508,7 +514,36 @@
             })
         }
 		
-        $('.like').click(jjimAjax)
+        $('.like_off').click(jjimAjax);
+        
+        
+        
+        const jjimDelAjax = (event)=>{
+ 		   
+		   	event.preventDefault();
+		   
+            console.log('jjimDelAjax')
+            console.log(event.target.getAttribute("data-num"));
+
+            let cmp_id = '<%=cmpLogin_vo.getCmp_id() %>';
+            let resume_num = event.target.getAttribute("data-num");
+            
+           	$.ajax({
+                url : 'jjimDelService.do', 
+                type : 'get',
+                data : {cmp_id : cmp_id, resume_num : resume_num},
+                datatype : 'JSON',
+                success : (res)=>{
+                    console.log('통신(찜추가)에 성공했습니다.', )
+                    location.reload();
+                },
+                error : ()=>{
+                    console.log('통신(찜추가)에 실패하셨습니다!')
+                }
+            })
+        }
+		
+        $('.like').click(jjimDelAjax);
 		
 		
 		/*star 클릭이벤트*/

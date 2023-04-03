@@ -250,6 +250,7 @@
 					사용하는 프로그래밍 언어, 프레임워크, 필수자격증 뿐 아니라 학력, 경력도 선택이 가능합니다.</p>
 				<div class="resume_box rbox4">
 					<div>
+						<form id="searchForm" action="testService.do" method="post">
 						<section>
 							<div class="choose">
 								<ul>
@@ -286,7 +287,7 @@
 												<li>
 													<p class='language'>${item.languages}</p>
 													<div>
-														<input type="checkbox" name="${item.languages}">
+														<input type="checkbox" name="${item.languages}" value="${item.languages}">
 														<input type="hidden" value="${item.languages}" name="languages">
 													</div>
 												</li>
@@ -300,7 +301,7 @@
 												<li>
 													<p>${item.frameworks}</p>
 													<div>
-														<input type="checkbox" name="${item.frameworks}">
+														<input type="checkbox" name="frameworks" value="${item.frameworks}">
 														<input type="hidden" value="${item.frameworks}" name="frameworks">
 													</div>
 												</li>
@@ -449,10 +450,10 @@
                                    <p name="checkbox">
                                    </p>
                                 </div>
-								<a href="#" type="button" onclick="submitValues()">선택한 조건<br>검색하기
-								</a>
+								<button type="submit" onclick="submitValues()">선택한 조건<br>검색하기</button>
 							</div>
 						</section>
+						</form>
 					</div>
 				</div>
 				<div class="boardJob02">
@@ -667,36 +668,25 @@
                   });
               } 
           });
-      }); // 필터링
-      
-  	   // 고유빈 - 선택한 항목 db에 보내기
-	  function submitValues() {
-		  var checkboxes = document.getElementsByName("checkbox");
-		  var checkedValues = "";
-		  for(var i=0; i<checkboxes.length; i++) {
-		    if(checkboxes[i].checked) {
-		      checkedValues += checkboxes[i].value + " ";
-		    }
-		  }
-		  document.getElementById("selected_values_list").innerHTML = checkedValues;
-		  sendData(checkedValues);
-		}
-		
-		function sendData(data) {
-		  var xhttp = new XMLHttpRequest();
-		  xhttp.onreadystatechange = function() {
-		    if (this.readyState == 4 && this.status == 200) {
-		      console.log(this.responseText);
-		    }
-		  };
-		  xhttp.open("POST", "project-db-stu3.ddns.net", true);
-		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		  xhttp.send("data=" + data);
-		}	
-		
-		
-		
-		
+      }); 
+		// 필터링
+function submitValues() {
+  // 체크된 언어들 가져오기
+  var checkedLanguages = [];
+  var languageCheckboxes = document.getElementsByName('languages');
+  for (var i = 0; i < languageCheckboxes.length; i++) {
+    if (languageCheckboxes[i].checked) {
+      checkedLanguages.push(languageCheckboxes[i].value);
+    }
+  }
+  
+  // 체크된 언어 출력
+  console.log("선택된 언어: " + checkedLanguages);
+  
+  // form submit
+  var form = document.getElementById("searchForm");
+  form.submit();
+}
 	</script>
 </body>
 </html>
