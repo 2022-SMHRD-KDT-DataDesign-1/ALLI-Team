@@ -9,8 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.smhrd.command.Command;
+import com.smhrd.model.FrameworkDAO;
+import com.smhrd.model.FrameworkVO;
 import com.smhrd.model.LanguageDAO;
 import com.smhrd.model.LanguageVO;
+import com.smhrd.model.LicenseDAO;
+import com.smhrd.model.LicenseVO;
+import com.smhrd.model.OsDAO;
+import com.smhrd.model.OsVO;
 import com.smhrd.model.resumeDAO;
 import com.smhrd.model.resumeVO;
 
@@ -58,30 +64,91 @@ public class resumeReqService implements Command{
 		
 		if(cnt > 0) {
 			
-			BigDecimal resume_num = vo.getResume_num();
+			resumeDAO resumeDAO = new resumeDAO();
+			resumeVO select_resumeVO = resumeDAO.selectResumeNum(user_id);
+			
+			BigDecimal resume_num = select_resumeVO.getResume_num();
 			System.out.println(resume_num);
 			String[] languages = request.getParameterValues("languages");
+			String[] frameworks = request.getParameterValues("frameworks");
+			String[] oss = request.getParameterValues("oss");
+			String[] licenses = request.getParameterValues("licenses");
 			List<String> languagesLevelsList = new ArrayList<>();
+			List<String> frameworksLevelsList = new ArrayList<>();
+			List<String> ossLevelsList = new ArrayList<>();
+			List<String> licensesLevelsList = new ArrayList<>();
 			for (int i = 0; i < languages.length; i++) {
 			    String languagesLevel = request.getParameter(languages[i]);
 			    if (languagesLevel != null) {
 			    	languagesLevelsList.add(languagesLevel);
 			    }
 			}
+			for (int i = 0; i < frameworks.length; i++) {
+			    String frameworkLevel = request.getParameter(frameworks[i]);
+			    if (frameworkLevel != null) {
+			    	frameworksLevelsList.add(frameworkLevel);
+			    }
+			}
+			for (int i = 0; i < oss.length; i++) {
+			    String ossLevel = request.getParameter(oss[i]);
+			    if (ossLevel != null) {
+			    	ossLevelsList.add(ossLevel);
+			    }
+			}
+			for (int i = 0; i < licenses.length; i++) {
+			    String licensesLevel = request.getParameter(licenses[i]);
+			    if (licensesLevel != null) {
+			    	licensesLevelsList.add(licensesLevel);
+			    }
+			}
 			String[] languagesLevels = languagesLevelsList.toArray(new String[0]);
+			String[] frameworksLevels = frameworksLevelsList.toArray(new String[0]);
+			String[] ossLevels = ossLevelsList.toArray(new String[0]);
+			String[] licensesLevels = licensesLevelsList.toArray(new String[0]);
 			
 			LanguageDAO lagnguageDAO = new LanguageDAO();
-			
-			System.out.println("Selected radio button values:");
+			FrameworkDAO frameworkDAO = new FrameworkDAO();
+			OsDAO osDAO = new OsDAO();
+			LicenseDAO licenseDAO = new LicenseDAO();
+
 			for (int i = 0; i < languagesLevels.length; i++) {
 			    System.out.println(languages[i] + " - " + languagesLevels[i]);
 			    LanguageVO languageVo = new LanguageVO(resume_num, languages[i], languagesLevels[i]);
-			    
 			    int cnt2 = lagnguageDAO.insertLanguages(languageVo);
 			    if(cnt2 > 0) {
-			    	System.out.println("성공");
+			    	System.out.println("언어성공");
 			    }else {
-			    	System.out.println("실패");
+			    	System.out.println("언어실패");
+			    }
+			}
+			for (int i = 0; i < frameworksLevels.length; i++) {
+			    System.out.println(frameworks[i] + " - " + frameworksLevels[i]);
+			    FrameworkVO frameworkVO = new FrameworkVO(resume_num, frameworks[i], frameworksLevels[i]);
+			    int cnt2 = frameworkDAO.insertFrameworks(frameworkVO);
+			    if(cnt2 > 0) {
+			    	System.out.println("프레임워크성공");
+			    }else {
+			    	System.out.println("프레임워크실패");
+			    }
+			}
+			for (int i = 0; i < ossLevels.length; i++) {
+			    System.out.println(oss[i] + " - " + ossLevels[i]);
+			    OsVO osVO = new OsVO(resume_num, oss[i], ossLevels[i]);
+			    int cnt2 = osDAO.insertOss(osVO);
+			    if(cnt2 > 0) {
+			    	System.out.println("운영체제성공");
+			    }else {
+			    	System.out.println("운영체제실패");
+			    }
+			}
+			for (int i = 0; i < licensesLevels.length; i++) {
+			    System.out.println(licenses[i] + " - " + licensesLevels[i]);
+			    LicenseVO licenseVO = new LicenseVO(resume_num, licenses[i]);
+			    int cnt2 = licenseDAO.insertLicenses(licenseVO);
+			    if(cnt2 > 0) {
+			    	System.out.println("자격증성공");
+			    }else {
+			    	System.out.println("자격증실패");
 			    }
 			}
 			

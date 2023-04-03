@@ -39,5 +39,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertLanguages" parameterType="LanguageVO">
 		insert into language_list (resume_num, language_name, language_level) values (#{resume_num}, #{language_name}, #{language_level})
 	</insert>
-
+	
+	<insert id="insertLicenses" parameterType="licenseVO">
+		insert into license_list (resume_num, license_name) values (#{resume_num}, #{license_name})
+	</insert>
+	
+	<insert id="insertFrameworks" parameterType="frameworkVO">
+		insert into framework_list (resume_num, framework_name, framework_level) values (#{resume_num}, #{framework_name}, #{framework_level})
+	</insert>
+	
+	<insert id="insertOss" parameterType="OsVO">
+		insert into os_list (resume_num, os_name, os_level) values (#{resume_num}, #{os_name}, #{os_level})
+	</insert>
 </mapper>
