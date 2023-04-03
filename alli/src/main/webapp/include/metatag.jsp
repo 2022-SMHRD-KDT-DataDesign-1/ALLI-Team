@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ALL-IT</title>
+<link rel="shortcut icon" href="img/favicon1.ico">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
 <link rel="stylesheet" href="./css/reset.css" type="text/css">
 <link rel="stylesheet" href="./css/style.css" type="text/css">
