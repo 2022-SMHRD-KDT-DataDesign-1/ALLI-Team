@@ -11,5 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertjjim" parameterType="jjimVO">
 		INSERT INTO jjim_list values(jjim_num_sequence.nextval, #{cmp_id}, #{resume_num})
 	</insert>
+	
+	<delete id="deletejjim" parameterType="jjimVO">
+		delete from jjim_list where cmp_id = #{cmp_id} and resume_num = #{resume_num}
+	</delete>
 
 </mapper>
