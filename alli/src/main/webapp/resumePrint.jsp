@@ -184,8 +184,8 @@
                            <li><span>자격증</span> <span>｜</span>
                               <div>
                                       <%for(LicenseVO LI : LIlist){ %>
-                                      <%BigDecimal liresume_num = new BigDecimal(243); %>
-                                       <%if( LI.getResume_num() == liresume_num) {%>
+                                      <%BigDecimal Liresume_num = new BigDecimal(243); %>
+                                       <%if( LI.getResume_num() == Liresume_num) {%>
                                           <span>
                                              <%=LI.getLicense_name()%>
                                           </span>
