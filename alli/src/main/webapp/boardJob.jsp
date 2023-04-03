@@ -1,3 +1,4 @@
+<%@page import="java.util.LinkedHashSet"%>
 <%@page import="com.smhrd.model.cmpRecomVO"%>
 <%@page import="com.smhrd.model.cmpRecomDAO"%>
 <%@page import="java.util.Set"%>
@@ -93,24 +94,87 @@
 	<!-- 추천 기업정보 가져오는 스크립틀릿 -->
 	<%
 		cmpRecomDAO cmpRecomDAO = new cmpRecomDAO();
-		List<cmpRecomVO> cmpRecomList = cmpRecomDAO.selectCmpInfo();
-		ArrayList<String[]> cmpRecomList1 = new ArrayList<String[]>();
+		List<cmpRecomVO> cmpRecomList = cmpRecomDAO.selectCmpInfo(); // 기업 리스트를 받아옴
+		
+		ArrayList<String[]> cmpRecomList1 = new ArrayList<String[]>(); // 기술스택 담을 리스트 생성
 		for(int i = 0 ; i < cmpRecomList.size() ; i++){
-			cmpRecomList1.add(cmpRecomList.get(i).getStac().replace(" ","").split(",")); // 기술스택 리스트
-		};
-		System.out.println(cmpRecomList.size());
+			cmpRecomList1.add(cmpRecomList.get(i).getStac().replace(" ","").split(","));
+		}; // 기술 스택 담기
+		
+		/* Set<String[]> cmpRecomList2 = new HashSet<String[]>(cmpRecomList1);
+		List<String[]> cmpRecomList3 = new ArrayList<String[]>(cmpRecomList2); */
+		
+		/* System.out.println(cmpRecomList.size());
 		System.out.println(cmpRecomList1.size());
 		System.out.println(cmpRecomList1.get(1).length);
-		ArrayList<cmpRecomVO> cmpRecomList2 = new ArrayList<cmpRecomVO>();
+		System.out.println(cmpRecomList1.get(1)[0]); */
+	%>
+	
+	<!-- 언어로 추천기업 가져오는 스크립틀릿 -->
+	<% 
+		// 기업의 기술스택과 나의 언어를 비교해서 있으면 담고 없으면 안 담는 ArrayList cmpRecomList4
+		ArrayList<cmpRecomVO> lancmpRecomList = new ArrayList<cmpRecomVO>();
 		for(int i = 0 ; i < lanList3.size() ; i++){
 			for(int j = 0 ; j < cmpRecomList.size() ; j++){
 				for(int z = 0 ; z < cmpRecomList1.get(j).length ; z++){
 					if(lanList3.get(i).equals(cmpRecomList1.get(j)[z])){
-						cmpRecomList2.add(cmpRecomList.get(j));
+						lancmpRecomList.add(cmpRecomList.get(j));
 					}
 				}
 			}
-		}
+		};
+		System.out.println(lancmpRecomList.size());
+		
+		// lancmpRecomList2의 중복제거
+		LinkedHashSet<cmpRecomVO> lancmpRecomList1 = new LinkedHashSet<cmpRecomVO>(lancmpRecomList);
+		List<cmpRecomVO> lancmpRecomList2 = new ArrayList<cmpRecomVO>(lancmpRecomList1);
+		System.out.println(lancmpRecomList2.size()); // 언어로 추천된 최종 기업 리스트 lancmpRecomList2
+		System.out.println(lancmpRecomList2.get(0).getCmp_name());
+		
+	%>
+	
+	<!-- 프레임워크로 추천기업 가져오는 스크립틀릿 -->
+	<%
+		// 기업의 기술스택과 나의 언어를 비교해서 있으면 담고 없으면 안 담는 ArrayList cmpRecomList4
+			ArrayList<cmpRecomVO> framecmpRecomList = new ArrayList<cmpRecomVO>();
+			for(int i = 0 ; i < frameList3.size() ; i++){
+				for(int j = 0 ; j < cmpRecomList.size() ; j++){
+					for(int z = 0 ; z < cmpRecomList1.get(j).length ; z++){
+						if(frameList3.get(i).equals(cmpRecomList1.get(j)[z])){
+							framecmpRecomList.add(cmpRecomList.get(j));
+						}
+					}
+				}
+			};
+			System.out.println(framecmpRecomList.size());
+			
+			// lancmpRecomList2의 중복제거
+			LinkedHashSet<cmpRecomVO> framecmpRecomList1 = new LinkedHashSet<cmpRecomVO>(framecmpRecomList);
+			List<cmpRecomVO> framecmpRecomList2 = new ArrayList<cmpRecomVO>(framecmpRecomList1);
+			System.out.println(framecmpRecomList2.size()); // 언어로 추천된 최종 기업 리스트 lancmpRecomList2
+			// System.out.println(framecmpRecomList2.get(0).getCmp_name());
+	%>
+	
+	<!-- OS로 추천기업 가져오는 스크립틀릿 -->
+	<%
+		// 기업의 기술스택과 나의 언어를 비교해서 있으면 담고 없으면 안 담는 ArrayList cmpRecomList4
+				ArrayList<cmpRecomVO> oscmpRecomList = new ArrayList<cmpRecomVO>();
+				for(int i = 0 ; i < osList3.size() ; i++){
+					for(int j = 0 ; j < cmpRecomList.size() ; j++){
+						for(int z = 0 ; z < cmpRecomList1.get(j).length ; z++){
+							if(osList3.get(i).equals(cmpRecomList1.get(j)[z])){
+								oscmpRecomList.add(cmpRecomList.get(j));
+							}
+						}
+					}
+				};
+				System.out.println(cmpRecomList.size());
+				
+				// lancmpRecomList2의 중복제거
+				LinkedHashSet<cmpRecomVO> oscmpRecomList1 = new LinkedHashSet<cmpRecomVO>(oscmpRecomList);
+				List<cmpRecomVO> oscmpRecomList2 = new ArrayList<cmpRecomVO>(oscmpRecomList1);
+				System.out.println(oscmpRecomList2.size()); // 언어로 추천된 최종 기업 리스트 oscmpRecomList2
+				// System.out.println(oscmpRecomList2.get(0).getCmp_name());
 	%>
 
 	
@@ -166,13 +230,12 @@
 		                            	<%for(int i = 0 ; i < 3 ; i++){ %>
 		                            	<li>
 		                            		<div><%=i+1 %></div>
-					                           		<div>(주)페픽</div>
+					                           		<div><%=lancmpRecomList2.get(i).getCmp_name() %></div>
 					                           		<div>
-					                           			<p>웹 개발자 경력 채용</p>
-					                           			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
+					                           			<p><%=lancmpRecomList2.get(i).getCmp_title() %></p>
+					                           			<p><%=lancmpRecomList2.get(i).getCareer() %> ｜ <%=lancmpRecomList2.get(i).getEducation() %> ｜ <%=lancmpRecomList2.get(i).getArea() %> ｜ <%=lancmpRecomList2.get(i).getEmployment() %></p>
 					                           			<p>
-					                           				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-					                           				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
+					                           				<%=lancmpRecomList2.get(i).getStac() %>
 					                           			</p>
 					                           		</div>
 					                           		<div>
@@ -196,99 +259,23 @@
 	                            	</li> -->
 	                            </ul>
 	                            <div class="chooseCon">
-		                            <ul id="Spring_ul">
+		                            <ul>
+		                            	<%for(int i = 0 ; i < 3 ; i++){ %>
 		                            	<li>
-		                            		<div>1</div>
-		                            		<div>(주)페픽</div>
+		                            		<div><%=i+1 %></div>
+		                            		<div><%=framecmpRecomList2.get(i).getCmp_name() %></div>
 		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
+		                            			<p><%=framecmpRecomList2.get(i).getCmp_title() %></p>
+		                            			<p><%=framecmpRecomList2.get(i).getCareer() %> ｜ <%=framecmpRecomList2.get(i).getEducation() %> ｜ <%=framecmpRecomList2.get(i).getArea() %> ｜ <%=framecmpRecomList2.get(i).getEmployment() %></p>
 		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
+		                            				<%=framecmpRecomList2.get(i).getStac() %>
 		                            			</p>
 		                            		</div>
 		                            		<div>
 		                            			<a href="#">상세보기</a>
 		                            		</div>
 		                            	</li>
-		                            	<li>
-		                            		<div>2</div>
-		                            		<div>(주)페픽</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            	<li>
-		                            		<div>3</div>
-		                            		<div>(주)페픽</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            </ul>
-		                            <ul id="Eclipse_ul">
-		                            	<li>
-		                            		<div>1</div>
-		                            		<div>(주)파이썬</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            	<li>
-		                            		<div>2</div>
-		                            		<div>(주)파이썬</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            	<li>
-		                            		<div>3</div>
-		                            		<div>(주)파이썬</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
+		                            	<%} %>
 		                            </ul>
 	                        	</div>
 	                        </li>
@@ -300,18 +287,16 @@
 	                            		<input type="button" value="<%=osList3.get(j) %>" id="<%=osList3.get(j)%>">
 	                            	</li>
 	                            	<%} %>
-	                            	<!-- <li class="chooseBtn">
-	                            		<input type="button" value="Mac" id="Mac">
-	                            	</li> -->
 	                            </ul>
 	                            <div class="chooseCon">
-		                            <ul id="Window_ul">
+		                            <ul>
+		                            	<%for(int i = 0 ; i < 3 ; i++){ %>
 		                            	<li>
-		                            		<div>1</div>
-		                            		<div>(주)페픽</div>
+		                            		<div><%=i+1 %></div>
+		                            		<div><%=oscmpRecomList2.get(i).getCmp_name() %></div>
 		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
+		                            			<p><%=oscmpRecomList2.get(i).getCmp_title() %></p>
+		                            			<p><%=oscmpRecomList2.get(i).getCareer() %> ｜ <%=oscmpRecomList2.get(i).getEducation() %> ｜ <%=oscmpRecomList2.get(i).getArea() %> ｜ <%=oscmpRecomList2.get(i).getEmployment() %></p>
 		                            			<p>
 		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
 		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
@@ -321,83 +306,7 @@
 		                            			<a href="#">상세보기</a>
 		                            		</div>
 		                            	</li>
-		                            	<li>
-		                            		<div>2</div>
-		                            		<div>(주)페픽</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            	<li>
-		                            		<div>3</div>
-		                            		<div>(주)페픽</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            </ul>
-		                            <ul id="Mac_ul">
-		                            	<li>
-		                            		<div>1</div>
-		                            		<div>(주)파이썬</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            	<li>
-		                            		<div>2</div>
-		                            		<div>(주)파이썬</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            	<li>
-		                            		<div>3</div>
-		                            		<div>(주)파이썬</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
+		                            	<%} %>
 		                            </ul>
 	                        	</div>
 	                        </li>
@@ -716,7 +625,7 @@
 		}
 		
 		/* 상단 탭 */
-		try {
+		/* try {
 			for(let i = 0 ; i < lanList2.length ; i++){
 				 document.getElementById(lanList2[i]).onclick=()=>{
 					console.log(lanList2[i]+'Ck')
@@ -731,7 +640,7 @@
 			
 		} catch(err){
 			console.log("프로그래밍 언어 없음")
-		}
+		} */
 		
 		
 		/* 프레임워크 영역 */
@@ -754,7 +663,7 @@
 		}
 		
 		/* 상단 탭 */
-		try {
+		/* try {
 			for(let i = 0 ; i < frameList2.length ; i++){
 				 document.getElementById(frameList2[i]).onclick=()=>{
 					console.log(frameList2[i]+'Ck')
@@ -769,7 +678,7 @@
 			
 		} catch(err){
 			console.log("프레임워크 없음")
-		}
+		} */
 		
 		/* OS 영역 */
 		
@@ -791,7 +700,7 @@
 		}
 		
 		/* 상단 탭 */
-		try{
+		/* try{
 			for(let i = 0 ; i < osList2.length ; i++){
 				 document.getElementById(osList2[i]).onclick=()=>{
 					console.log(osList2[i]+'Ck')
@@ -806,7 +715,7 @@
 			
 		} catch(err){
 			console.log("OS 없음")
-		}
+		} */
 		
 		</script>
 	
