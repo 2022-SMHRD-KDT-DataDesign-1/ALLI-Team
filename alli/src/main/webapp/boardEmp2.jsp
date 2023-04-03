@@ -284,9 +284,10 @@
 										<ul>
 											<c:forEach items="${list}" var="item">
 												<li>
-													<p>${item.languages}</p>
+													<p class='language'>${item.languages}</p>
 													<div>
-														<input type="checkbox">
+														<input type="checkbox" name="${item.languages}">
+														<input type="hidden" value="${item.languages}" name="languages">
 													</div>
 												</li>
 											</c:forEach> 
@@ -299,7 +300,8 @@
 												<li>
 													<p>${item.frameworks}</p>
 													<div>
-														<input type="checkbox">
+														<input type="checkbox" name="${item.frameworks}">
+														<input type="hidden" value="${item.frameworks}" name="frameworks">
 													</div>
 												</li>
 											</c:forEach> 
@@ -312,7 +314,8 @@
 												<li>
 													<p>${item.oss}</p>
 													<div>
-														<input type="checkbox">
+														<input type="checkbox" name="${item.oss}">
+													    <input type="hidden" value="${item.oss}" name="oss">
 													</div>
 												</li>
 											</c:forEach> 
@@ -325,35 +328,126 @@
 												<li>
 													<p>${item.licenses}</p>
 													<div>
-														<input type="checkbox">
+														<input type="checkbox" value="" name="${item.licenses}">
+														<input type="hidden" value="${item.licenses}" name="licenses">
 													</div>
 												</li>
 											</c:forEach> 
+										</ul>
+									</li>
+									<li class="c_content">
+										<!-- 경력 시작 -->
+										<ul>
+											<li>
+												<p>신입</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>1년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>2년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>3년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>5년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>7년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>10년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+									</li>
+									<li class="c_content">
+										<!-- 학력 시작 -->
+										<ul>
+											<li>
+												<p>고졸(검정고시)</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>대학(2,3년)</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>대학(4년)</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>대학원</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
 										</ul>
 									</li>
 								</ul>
 							</div>
 							<div class="choose_content">
 								<p>선택한 항목</p>
-								<div>
-									<p>
-										JAVA <span class="material-symbols-outlined delete_choose">
-											Close </span>
-									</p>
-									<p>
-										C <span class="material-symbols-outlined delete_choose">
-											Close </span>
-									</p>
-									<p>
-										SPRING <span class="material-symbols-outlined delete_choose">
-											Close </span>
-									</p>
-									<p>
-										TypeScript <span
-											class="material-symbols-outlined delete_choose"> Close
-										</span>
-									</p>
-								</div>
+								<div id="selected_values_list">	
+                                   <p>
+                                   </p>
+                                </div>
 								<a href="#">선택한 조건<br>검색하기
 								</a>
 							</div>
@@ -507,6 +601,67 @@
 		
 		
 		//페이징
+		
+		// 필터링
+		$(document).ready(function() {
+          // 선택된 값을 저장할 배열
+          var selectedValues = [];
+
+          // checkbox 클릭 이벤트 처리
+          $('input[type="checkbox"]').click(function() {
+              // 선택된 값 가져오기
+              var selectedValue = $(this).val();
+              var selectedLanguage = $(this).siblings('input[type="hidden"]').val();
+
+              // 선택된 값이 이전에 선택된 값인지 확인
+              var isDuplicate = false;
+              for (var i = 0; i < selectedValues.length; i++) {
+                  if (selectedValues[i].value === selectedValue && selectedValues[i].language === selectedLanguage) {
+                      isDuplicate = true;
+                      break;
+                  }
+              }
+
+              // 중복된 값이 없으면 선택된 값 추가하기
+              if (!isDuplicate) {
+                  selectedValues.push({
+                      value: selectedValue,
+                      language: selectedLanguage
+                  });
+
+                  // 선택된 값들을 출력할 div 태그 찾기
+                  var selectedValuesList = $('#selected_values_list');
+
+                  // 선택된 값 추가하기
+                  var newItem = $('<div class="selected_item" style="float: left;"></div>');
+                  newItem.text(selectedLanguage);
+
+                  // 삭제 버튼 추가하기
+                  var deleteButton = $('<span class="material-symbols-outlined delete">Close</span>');
+                  newItem.append(deleteButton);
+
+                  // 선택된 값들을 가로로 출력하기
+                  selectedValuesList.append(newItem);
+
+                  // 기존에 선택되어 있던 라디오 버튼 비활성화
+                  $('input[type="checkbox"][name="' + selectedLanguage + '"]').not(this).prop('disabled', true);
+
+                  // 삭제 버튼 클릭 이벤트 처리
+                  deleteButton.click(function() {
+                      $(this).parent().remove();
+                      $('input[type="checkbox"][name="' + selectedLanguage + '"]').prop('checked', false).prop('disabled', false);
+
+                      // 선택된 값 배열에서 제거하기
+                      for (var i = 0; i < selectedValues.length; i++) {
+                          if (selectedValues[i].value === selectedValue && selectedValues[i].language === selectedLanguage) {
+                              selectedValues.splice(i, 1);
+                              break;
+                          }
+                      }
+                  });
+              }
+          });
+      });
 		
 		
 		
