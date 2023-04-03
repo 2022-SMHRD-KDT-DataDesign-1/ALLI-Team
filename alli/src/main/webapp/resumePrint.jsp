@@ -160,7 +160,8 @@
                            <li><span>프레임워크</span> <span>｜</span>
                               <div>
                                       <%for(FrameworkVO F : Flist){ %>
-                                       <%if( F.getResume_num() == 243) {%>
+                                       <%BigDecimal fresume_num = new BigDecimal(243); %>
+                                       <%if( F.getResume_num() == fresume_num) {%>
                                           <span>
                                              <%=F.getFramework_name()%> [<%=F.getFramework_level() %>]
                                           </span>

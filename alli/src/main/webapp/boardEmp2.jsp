@@ -335,6 +335,111 @@
 											</c:forEach> 
 										</ul>
 									</li>
+									<li class="c_content">
+										<!-- 경력 시작 -->
+										<ul>
+											<li>
+												<p>신입</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>1년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>2년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>3년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>5년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>7년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>10년 이상</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+									</li>
+									<li class="c_content">
+										<!-- 학력 시작 -->
+										<ul>
+											<li>
+												<p>고졸(검정고시)</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>대학(2,3년)</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>대학(4년)</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>대학원</p>
+												<div>
+													<input type="checkbox" value="" name="item.licenses}">
+													<input type="hidden" value="${item.licenses}" name="licenses">
+												</div>
+											</li>
+										</ul>
+									</li>
 								</ul>
 							</div>
 							<div class="choose_content">
