@@ -94,10 +94,7 @@
 	<%
 		cmpRecomDAO cmpRecomDAO = new cmpRecomDAO();
 		List<cmpRecomVO> cmpRecomList = cmpRecomDAO.selectCmpInfo();
-		ArrayList<String[]> cmpRecomList1 = new ArrayList<String[]>();
-		for(int i = 0 ; i < cmpRecomList.size() ; i++){
-			cmpRecomList1.add(cmpRecomList.get(i).getStac().replace(" ","").split(","));
-		}
+		List<String> cmpRecomList1 = cmpRecomList.get(i).getStac().replace(" ","").split(",");
 	%>
 
 	
