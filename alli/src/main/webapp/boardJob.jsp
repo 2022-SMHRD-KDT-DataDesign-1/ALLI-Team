@@ -1,3 +1,5 @@
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashSet"%>
 <%@page import="com.smhrd.model.OsDAO"%>
 <%@page import="com.smhrd.model.FrameworkDAO"%>
 <%@page import="com.smhrd.model.LanguageDAO"%>
@@ -50,7 +52,7 @@
 		System.out.println(age);
 	%>
 	
-	<!-- 내 아이디의 리스트 받아오는 스크립클릿 -->
+	<!-- 내 아이디의 이력서 리스트 받아오는 스크립클릿 -->
 	<% 
 		resumeDAO dao = new resumeDAO();
 		List<resumeVO> resumes = dao.selectResumeList(login_vo.getUser_id());
@@ -63,38 +65,36 @@
 		LanguageVO lanVO = new LanguageVO();
 		LanguageDAO lanDAO = new LanguageDAO();
 		List<String> lanList = lanDAO.selectUserLanguage(login_vo.getUser_id());
-		for(int i = 0 ; i < lanList.size() ; i++){
-		System.out.println(lanList.get(i));
-		}
+		Set<String> lanList2 = new HashSet<String>(lanList);
+		List<String> lanList3 = new ArrayList<String>(lanList2);
+		System.out.println(lanList3);
 	%>
 	
 	<!-- 프레임워크 가져오는 스크립틀릿 -->
 	<%
 		FrameworkDAO frameDAO = new FrameworkDAO();
 		List<String> frameList = frameDAO.selectUserFrameWork(login_vo.getUser_id());
-		if(frameList.size() != 0 ){
-			for(int i = 0 ; i < frameList.size() ; i++){
-				System.out.println(frameList.get(i));
-			}
-		}else{
-			System.out.println("프레임워크 없음");
-		}
+		Set<String> frameList2 = new HashSet<String>(frameList);
+		List<String> frameList3 = new ArrayList<String>(frameList2);
+		System.out.println(frameList3);
 	%>
 	
 	<!-- OS 가져오는 스크립틀릿 -->
 	<%
 		OsDAO osDAO = new OsDAO();
 		List<String> osList = osDAO.selectUserOS(login_vo.getUser_id());
-		if(osList.size() != 0 ){
-			for(int i = 0 ; i < osList.size() ; i++){
-				System.out.println(osList.get(i));
-			}
-		}else{
-			System.out.println("OS 없음");
-		}
+		Set<String> osList2 = new HashSet<String>(osList);
+		List<String> osList3 = new ArrayList<String>(osList2);
+		System.out.println(osList3);
 	%>
 	
+	<!-- 추천 기업정보 가져오는 스크립틀릿 -->
+	
+	
     <input type="hidden" value="<%= resumes.size() %>" id="resumesSize">
+    <input type="hidden" value="<%= lanList %>" id="lanList">
+    <input type="hidden" value="<%= frameList %>" id="frameList">
+    <input type="hidden" value="<%= osList %>" id="osList">
 	
 	<div id="wrap" class="boardJob_wrap">
        <div class="sub_top sub_top_a">
@@ -129,120 +129,48 @@
 	                        </li>
 	                    </ul>
 	                    <ul>
-	                        <li class="c_content" id="prolan_li"><!-- 프로그래밍언어 시작 -->
+	                    	<!-- 프로그래밍언어 시작 -->
+	                        <li class="c_content" id="prolan_li">
 	                            <ul>
+	                            	<%for(int j = 0 ; j < lanList3.size() ; j++){ %>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="JAVA" id="Java">
+	                            		<input type="button" value="<%=lanList3.get(j) %>" id="<%=lanList3.get(j) %>">
 	                            	</li>
-	                            	<li class="chooseBtn">
-	                            		<input type="button" value="PYTHON" id="Python">
-	                            	</li>
+	                            	<%} %>
 	                            </ul>
 	                            <div class="chooseCon">
-		                            <ul id="Java_ul">
+		                            <ul>
+		                            <%for(int i = 0 ; i < 3 ; i++){ %>
 		                            	<li>
-		                            		<div>1</div>
-		                            		<div>(주)페픽</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
+		                            		<div><%=i+1 %></div>
+			                            		<div>(주)페픽</div>
+			                            		<div>
+			                            			<p>웹 개발자 경력 채용</p>
+			                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
+			                            			<p>
+			                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
+			                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
+			                            			</p>
+			                            		</div>
+			                            		<div>
+			                            			<a href="#">상세보기</a>
+			                            		</div>
 		                            	</li>
-		                            	<li>
-		                            		<div>2</div>
-		                            		<div>(주)페픽</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            	<li>
-		                            		<div>3</div>
-		                            		<div>(주)페픽</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            </ul>
-		                            <ul id="Python_ul">
-		                            	<li>
-		                            		<div>1</div>
-		                            		<div>(주)파이썬</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            	<li>
-		                            		<div>2</div>
-		                            		<div>(주)파이썬</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
-		                            	<li>
-		                            		<div>3</div>
-		                            		<div>(주)파이썬</div>
-		                            		<div>
-		                            			<p>웹 개발자 경력 채용</p>
-		                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            			</p>
-		                            		</div>
-		                            		<div>
-		                            			<a href="#">상세보기</a>
-		                            		</div>
-		                            	</li>
+		                            <%} %>
 		                            </ul>
 	                        	</div>
 	                        </li>
-	                        <li class="c_content" id="frameWork_li"><!-- 프레임워크 시작 -->
+	                        <!-- 프레임워크 시작 -->
+	                        <li class="c_content" id="frameWork_li">
 	                            <ul>
+	                            	<%for(int j = 0 ; j < frameList3.size() ; j++){ %>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="SPRING" id="Spring">
+	                            		<input type="button" value="<%=frameList3.get(j) %>" id="<%=frameList3.get(j)%>">
 	                            	</li>
-	                            	<li class="chooseBtn">
+	                            	<%} %>
+	                            	<!-- <li class="chooseBtn">
 	                            		<input type="button" value="Eclipse" id="Eclipse">
-	                            	</li>
+	                            	</li> -->
 	                            </ul>
 	                            <div class="chooseCon">
 		                            <ul id="Spring_ul">
@@ -341,14 +269,17 @@
 		                            </ul>
 	                        	</div>
 	                        </li>
-	                        <li class="c_content" id="OS_li"><!-- OS 시작 -->
+	                        <!-- OS 시작 -->
+	                        <li class="c_content" id="OS_li">
 	                            <ul>
+	                            	<%for(int j = 0 ; j < osList3.size() ; j++){ %>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="Window" id="Window">
+	                            		<input type="button" value="<%=osList3.get(j) %>" id="<%=osList3.get(j)%>">
 	                            	</li>
-	                            	<li class="chooseBtn">
+	                            	<%} %>
+	                            	<!-- <li class="chooseBtn">
 	                            		<input type="button" value="Mac" id="Mac">
-	                            	</li>
+	                            	</li> -->
 	                            </ul>
 	                            <div class="chooseCon">
 		                            <ul id="Window_ul">
@@ -553,7 +484,6 @@
 											<span><%=osList.get(j) %></span>
 										<%} %>
 									<%} %>
-										<span>기타...</span>
 									</p>
 									<p class="boardJob_date"><%=resumes.get(i).getCre_date() %></p>
 								</div>
@@ -690,6 +620,27 @@
 	
 	<!-- 맞춤기업 영역 스크립트 -->
 	<script>
+		let lanList = $('#lanList').val();
+		console.log('lanList : '+lanList);
+		let lanList1 = lanList.substr(1,lanList.length-2);
+		console.log('lanList1 : '+lanList1);
+		let lanList2 = lanList1.split(', ');
+		console.log('lanList2 : '+lanList2);
+		
+		let frameList = $('#frameList').val();
+		console.log('frameList : '+frameList);
+		let frameList1 = frameList.substr(1,frameList.length-2);
+		console.log('frameList1 : '+frameList1);
+		let frameList2 = frameList1.split(', ');
+		console.log('frameList2 : '+frameList2);
+		
+		let osList = $('#osList').val();
+		console.log('osList : '+osList);
+		let osList1 = osList.substr(1,osList.length-2);
+		console.log('osList1 : '+osList1);
+		let osList2 = osList1.split(', ');
+		console.log('osList2 : '+osList2);
+		
 		let pro_lan = document.getElementById('pro_lan')
 		let frameWork = document.getElementById('frameWork')
 		let OS = document.getElementById('OS')
@@ -702,23 +653,20 @@
 		let frameWorkDiv = document.getElementById('frameWorkDiv')
 		let OSDiv = document.getElementById('OSDiv')
 		
-		let Java_ul = document.getElementById('Java_ul')
-		let Python_ul = document.getElementById('Python_ul')
+		/* let Java_ul = document.getElementById('Java_ul')
+		let Python_ul = document.getElementById('Python_ul') */
 		
-		let Spring_ul = document.getElementById('Spring_ul')
-		let Eclipse_ul = document.getElementById('Eclipse_ul')
+		/* let Spring_ul = document.getElementById('Spring_ul')
+		let Eclipse_ul = document.getElementById('Eclipse_ul') */
 		
-		let Window_ul = document.getElementById('Window_ul')
-		let Mac_ul = document.getElementById('Mac_ul')
+		/* let Window_ul = document.getElementById('Window_ul')
+		let Mac_ul = document.getElementById('Mac_ul') */
 		
-		let JavaBtn = document.getElementById('Java')
-		let PythonBtn = document.getElementById('Python')
+		/* let SpringBtn = document.getElementById('Spring')
+		let EclipseBtn = document.getElementById('Eclipse') */
 		
-		let SpringBtn = document.getElementById('Spring')
-		let EclipseBtn = document.getElementById('Eclipse')
-		
-		let WindowBtn = document.getElementById('Window')
-		let MacBtn = document.getElementById('Mac')
+	/* 	let WindowBtn = document.getElementById('Window')
+		let MacBtn = document.getElementById('Mac') */
 		
 		/* 프로그래밍 언어 영역 */
 		
@@ -740,23 +688,15 @@
 			
 		}
 		
-		/* 상단 탭 */		
-		document.getElementById('Java').onclick=()=>{
-			console.log('JavaCk')
-			/* console.log(Java_ul) */
-			Java_ul.style.display = 'block'
-			Python_ul.style.display = 'none'
-			PythonBtn.style.border = '1px solid #d3d3d3'
-			JavaBtn.style.border = '2px solid #6c00ff'
-		}
-		
-		document.getElementById('Python').onclick=()=>{
-			console.log('PythonCk')
-			/* console.log(Python_ul) */
-			Java_ul.style.display = 'none'
-			Python_ul.style.display = 'block'
-			PythonBtn.style.border = '2px solid #6c00ff'
-			JavaBtn.style.border = '1px solid #d3d3d3'
+		/* 상단 탭 */	
+		for(let i = 0 ; i < lanList2.length ; i++){
+			 document.getElementById(lanList2[i]).onclick=()=>{
+				console.log(lanList2[i]+'Ck')
+				for(let j = 0 ; j < lanList2.length ; j ++) {
+					document.getElementById(lanList2[j]).style.border ='1px solid #d3d3d3'
+				}
+				document.getElementById(lanList2[i]).style.border = '2px solid #6c00ff'
+			}
 		}
 		
 		/* 프레임워크 영역 */
@@ -779,20 +719,14 @@
 		}
 		
 		/* 상단 탭 */
-		document.getElementById('Spring').onclick=()=>{
-			console.log('SpringCk')
-			Spring_ul.style.display = 'block'
-			Eclipse_ul.style.display = 'none'
-			EclipseBtn.style.border = '1px solid #d3d3d3'
-			SpringBtn.style.border = '2px solid #6c00ff'
-		}
-		
-		document.getElementById('Eclipse').onclick=()=>{
-			console.log('EclipseCk')
-			Spring_ul.style.display = 'none'
-			Eclipse_ul.style.display = 'block'
-			SpringBtn.style.border = '1px solid #d3d3d3'
-			EclipseBtn.style.border = '2px solid #6c00ff'
+		for(let i = 0 ; i < frameList2.length ; i++){
+			 document.getElementById(frameList2[i]).onclick=()=>{
+				console.log(frameList2[i]+'Ck')
+				for(let j = 0 ; j < frameList2.length ; j ++) {
+					document.getElementById(frameList2[j]).style.border ='1px solid #d3d3d3'
+				}
+				document.getElementById(frameList2[i]).style.border = '2px solid #6c00ff'
+			}
 		}
 		
 		/* OS 영역 */
@@ -815,21 +749,16 @@
 		}
 		
 		/* 상단 탭 */
-		document.getElementById('Window').onclick=()=>{
-			console.log('WindowCk')
-			Window_ul.style.display = 'block'
-			Mac_ul.style.display = 'none'
-			MacBtn.style.border = '1px solid #d3d3d3'
-			WindowBtn.style.border = '2px solid #6c00ff'
+		for(let i = 0 ; i < osList2.length ; i++){
+			 document.getElementById(osList2[i]).onclick=()=>{
+				console.log(osList2[i]+'Ck')
+				for(let j = 0 ; j < osList2.length ; j ++) {
+					document.getElementById(osList2[j]).style.border ='1px solid #d3d3d3'
+				}
+				document.getElementById(osList2[i]).style.border = '2px solid #6c00ff'
+			}
 		}
 		
-		document.getElementById('Mac').onclick=()=>{
-			console.log('MacCk')
-			Window_ul.style.display = 'none'
-			Mac_ul.style.display = 'block'
-			WindowBtn.style.border = '1px solid #d3d3d3'
-			MacBtn.style.border = '2px solid #6c00ff'
-		}
 		</script>
 	
 	<!-- 이력서 스크립트 -->

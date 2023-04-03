@@ -17,6 +17,7 @@ import com.smhrd.controller.cmpLoginService;
 import com.smhrd.controller.jjimService;
 import com.smhrd.controller.printDeleteService;
 import com.smhrd.controller.resumeDeleteService;
+import com.smhrd.controller.resumeReqService;
 import com.smhrd.controller.userJoinService;
 import com.smhrd.controller.userLoginService;
 
@@ -67,6 +68,8 @@ public class Frontcontroller extends HttpServlet {
 			service = new CloseUpdateService();
 		}else if(result.equals("printDeleteService.do")) {
 			service = new printDeleteService();
+		}else if(result.equals("resumeReqService.do")) {
+			service = new resumeReqService();
 		}
 
 

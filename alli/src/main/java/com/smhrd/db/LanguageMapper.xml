@@ -35,5 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectUserOS" resultType = "String">
 		select os_name from os_list a,(select * from t_resume where user_id = #{userId} order by resume_num asc) b where a.resume_num = b.resume_num
 	</select>
+	
+	<insert id="insertLanguages" parameterType="LanguageVO">
+		insert into language_list (resume_num, language_name, language_level) values (#{resume_num}, #{language_name}, #{language_level})
+	</insert>
 
 </mapper>

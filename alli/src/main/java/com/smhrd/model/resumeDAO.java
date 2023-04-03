@@ -75,6 +75,14 @@ public class resumeDAO {
 		return cnt;
 	}
 
+	// 이력서 저장
+	public int insertResume(resumeVO vo) {
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		int cnt = sqlSession.insert("com.smhrd.db.resumeMapper.insertResume", vo);
+		sqlSession.close();
+		return cnt;
+	}
+
 	 
 
 	
