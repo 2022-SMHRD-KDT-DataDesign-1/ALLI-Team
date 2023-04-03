@@ -5,87 +5,254 @@
 
 <body>
     <%@ include file="./include/header.jsp" %>
-    <div id="wrap">
-        <div id="banner01">
-           <!-- Swiper -->
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="./img/banner01_01.png">
-                    <a href="#" class="btn_bora" id="banner01_btn01">IT이력서 필터링 서비스<img src="./img/banner01_btn.png"></a>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./img/banner01_02.png">
-                    <a href="#" class="btn_bora" id="banner01_btn02">IT이력서 제작 서비스<img src="./img/banner01_btn.png"></a>
-                </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-        <div id="banner02">
-            <ul>
-                <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
-                    Now, Go with <img src="./img/logo.png">
-                </li>
-                <li>
-                    최신 개발 트렌드의 끝
-                </li>
-                <li>
-                    웹/HTTP서버, 데이터베이스등을 포함한 프로그래밍언어, 프레임워크, 운영체제(OS), 인기자격증까지<br>
-                    빠르게 변화하는 개발시장의 다양한 기술 스택을 상위 기술 순으로 대시보드를 통해 한눈에 파악할 수 있습니다.
-                </li>
-                <li>
-                    2023.04.01 기준
-                </li>
-            </ul>
-            <div class="flow_banner">
-                <ul class="list">
-                    <li>
-                        <img src="./img/banner02_slide01.png">
-                        <p><span>HOT</span>국내 인기 기술 스택</p>
-                    </li>
-                    <li>
-                        <img src="./img/banner02_slide01.png">
-                        <p>수도권 인기 개발언어</p>
-                    </li>
-                    <li>
-                        <img src="./img/banner02_slide02.png">
-                        <p><span>HOT</span>국내 인기 기술 스택</p>
-                    </li>
-                    <li>
-                        <img src="./img/banner02_slide02.png">
-                        <p><span>HOT</span>국내 인기 기술 스택</p>
-                    </li>
-                    <li>
-                        <img src="./img/banner02_slide01.png">
-                        <p><span>HOT</span>국내 인기 기술 스택</p>
-                    </li>
-                </ul>
-            </div>
-            <input type="button" value="개발트렌드 자세히보기" data-aos="fade-up" data-aos-duration="4000">
-        </div>
-        <div id="banner03">
-            <ul>
-                <li data-aos="fade-right"data-aos-duration="800" >
-                    <span class="material-symbols-outlined flu_green">
-                        domain
-                    </span>
-                    <p>기업을 위한 <span class="flu_green">'인재 찜하기'</span></p>
-                    <a href="#" class="btn_bora">인재 찜하기 서비스<img src="./img/banner01_btn.png"></a>
-                </li>
-                <li>
-                    <p>We<br><span class="flu_green">support</span><br>you.</p>
-                </li>
-                <li data-aos="fade-left"data-aos-duration="800" >
-                    <span class="material-symbols-outlined flu_green">
-                        groups
-                    </span>
-                    <p>구직자를 위한 <span class="flu_green">'맞춤 기업'</span></p>
-                    <a href="#" class="btn_bora">맞춤 기업 추천 서비스<img src="./img/banner01_btn.png"></a>
-                </li>
-            </ul>
-        </div>
-        <div id="banner04">
+   	<%if(login_vo == null && cmpLogin_vo == null) {%>
+	    <div id="wrap">
+	        <div id="banner01">
+	           <!-- Swiper -->
+	            <div class="swiper mySwiper">
+	                <div class="swiper-wrapper">
+	                <div class="swiper-slide">
+	                    <img src="./img/banner01_01.png">
+	                    <a href="#" class="btn_bora" id="banner01_btn01" onclick="alert('로그인 후 이용 가능합니다.'); return false;">IT이력서 필터링 서비스<img src="./img/banner01_btn.png"></a>
+	                </div>
+	                <div class="swiper-slide">
+	                    <img src="./img/banner01_02.png">
+	                    <a href="#" class="btn_bora" id="banner01_btn02" onclick="alert('로그인 후 이용 가능합니다.'); return false;">IT이력서 제작 서비스<img src="./img/banner01_btn.png"></a>
+	                </div>
+	                </div>
+	                <div class="swiper-pagination"></div>
+	            </div>
+	        </div>
+	        <div id="banner02">
+	            <ul>
+	                <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+	                    Now, Go with <img src="./img/logo.png">
+	                </li>
+	                <li>
+	                    최신 개발 트렌드의 끝
+	                </li>
+	                <li>
+	                    웹/HTTP서버, 데이터베이스등을 포함한 프로그래밍언어, 프레임워크, 운영체제(OS), 인기자격증까지<br>
+	                    빠르게 변화하는 개발시장의 다양한 기술 스택을 상위 기술 순으로 대시보드를 통해 한눈에 파악할 수 있습니다.
+	                </li>
+	                <li>
+	                    2023.04.01 기준
+	                </li>
+	            </ul>
+	            <div class="flow_banner">
+	                <ul class="list">
+	                    <li>
+	                        <img src="./img/banner02_slide01.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide01.png">
+	                        <p>수도권 인기 개발언어</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide02.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide02.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide01.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                </ul>
+	            </div>
+	            <input type="button" value="개발트렌드 자세히보기" onclick="location.href='./dashWhole.jsp'" data-aos="fade-up" data-aos-duration="4000">
+	        </div>
+	        <div id="banner03">
+	            <ul>
+	                <li data-aos="fade-right"data-aos-duration="800" >
+	                    <span class="material-symbols-outlined flu_green">
+	                        domain
+	                    </span>
+	                    <p>기업을 위한 <span class="flu_green">'인재 찜하기'</span></p>
+	                    <a href="#" class="btn_bora" onclick="alert('로그인 후 이용 가능합니다.'); return false;">인재 찜하기 서비스<img src="./img/banner01_btn.png"></a>
+	                </li>
+	                <li>
+	                    <p>We<br><span class="flu_green">support</span><br>you.</p>
+	                </li>
+	                <li data-aos="fade-left"data-aos-duration="800" >
+	                    <span class="material-symbols-outlined flu_green">
+	                        groups
+	                    </span>
+	                    <p>구직자를 위한 <span class="flu_green">'맞춤 기업'</span></p>
+	                    <a href="#" class="btn_bora" onclick="alert('로그인 후 이용 가능합니다.'); return false;">맞춤 기업 추천 서비스<img src="./img/banner01_btn.png"></a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+    <%} else if(login_vo != null){ %>
+	    <div id="wrap">
+	        <div id="banner01">
+	           <!-- Swiper -->
+	            <div class="swiper mySwiper">
+	                <div class="swiper-wrapper">
+	                <div class="swiper-slide">
+	                    <img src="./img/banner01_01.png">
+	                    <a href="#" class="btn_bora" id="banner01_btn01" onclick="alert('기업으로 로그인 후 이용 가능합니다.'); return false;">IT이력서 필터링 서비스<img src="./img/banner01_btn.png"></a>
+	                </div>
+	                <div class="swiper-slide">
+	                    <img src="./img/banner01_02.png">
+	                    <a href="./resumeReg.jsp" class="btn_bora" id="banner01_btn02">IT이력서 제작 서비스<img src="./img/banner01_btn.png"></a>
+	                </div>
+	                </div>
+	                <div class="swiper-pagination"></div>
+	            </div>
+	        </div>
+	        <div id="banner02">
+	            <ul>
+	                <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+	                    Now, Go with <img src="./img/logo.png">
+	                </li>
+	                <li>
+	                    최신 개발 트렌드의 끝
+	                </li>
+	                <li>
+	                    웹/HTTP서버, 데이터베이스등을 포함한 프로그래밍언어, 프레임워크, 운영체제(OS), 인기자격증까지<br>
+	                    빠르게 변화하는 개발시장의 다양한 기술 스택을 상위 기술 순으로 대시보드를 통해 한눈에 파악할 수 있습니다.
+	                </li>
+	                <li>
+	                    2023.04.01 기준
+	                </li>
+	            </ul>
+	            <div class="flow_banner">
+	                <ul class="list">
+	                    <li>
+	                        <img src="./img/banner02_slide01.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide01.png">
+	                        <p>수도권 인기 개발언어</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide02.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide02.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide01.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                </ul>
+	            </div>
+	            <input type="button" value="개발트렌드 자세히보기" onclick="location.href='./dashWhole.jsp'" data-aos="fade-up" data-aos-duration="4000">
+	        </div>
+	        <div id="banner03">
+	            <ul>
+	                <li data-aos="fade-right"data-aos-duration="800" >
+	                    <span class="material-symbols-outlined flu_green">
+	                        domain
+	                    </span>
+	                    <p>기업을 위한 <span class="flu_green">'인재 찜하기'</span></p>
+	                    <a href="#" class="btn_bora" onclick="alert('기업으로 로그인 후 이용 가능합니다.'); return false;">인재 찜하기 서비스<img src="./img/banner01_btn.png"></a>
+	                </li>
+	                <li>
+	                    <p>We<br><span class="flu_green">support</span><br>you.</p>
+	                </li>
+	                <li data-aos="fade-left"data-aos-duration="800" >
+	                    <span class="material-symbols-outlined flu_green">
+	                        groups
+	                    </span>
+	                    <p>구직자를 위한 <span class="flu_green">'맞춤 기업'</span></p>
+	                    <a href="./boardJob.jsp" class="btn_bora">맞춤 기업 추천 서비스<img src="./img/banner01_btn.png"></a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+    <%} else if(cmpLogin_vo != null){%>
+    		    <div id="wrap">
+	        <div id="banner01">
+	           <!-- Swiper -->
+	            <div class="swiper mySwiper">
+	                <div class="swiper-wrapper">
+	                <div class="swiper-slide">
+	                    <img src="./img/banner01_01.png">
+	                    <a href="./boardEmp.jsp" class="btn_bora" id="banner01_btn01">IT이력서 필터링 서비스<img src="./img/banner01_btn.png"></a>
+	                </div>
+	                <div class="swiper-slide">
+	                    <img src="./img/banner01_02.png">
+	                    <a href="#" class="btn_bora" id="banner01_btn02"  onclick="alert('구직자로 로그인 후 이용 가능합니다.'); return false;">IT이력서 제작 서비스<img src="./img/banner01_btn.png"></a>
+	                </div>
+	                </div>
+	                <div class="swiper-pagination"></div>
+	            </div>
+	        </div>
+	        <div id="banner02">
+	            <ul>
+	                <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+	                    Now, Go with <img src="./img/logo.png">
+	                </li>
+	                <li>
+	                    최신 개발 트렌드의 끝
+	                </li>
+	                <li>
+	                    웹/HTTP서버, 데이터베이스등을 포함한 프로그래밍언어, 프레임워크, 운영체제(OS), 인기자격증까지<br>
+	                    빠르게 변화하는 개발시장의 다양한 기술 스택을 상위 기술 순으로 대시보드를 통해 한눈에 파악할 수 있습니다.
+	                </li>
+	                <li>
+	                    2023.04.01 기준
+	                </li>
+	            </ul>
+	            <div class="flow_banner">
+	                <ul class="list">
+	                    <li>
+	                        <img src="./img/banner02_slide01.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide01.png">
+	                        <p>수도권 인기 개발언어</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide02.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide02.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                    <li>
+	                        <img src="./img/banner02_slide01.png">
+	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                    </li>
+	                </ul>
+	            </div>
+	            <input type="button" value="개발트렌드 자세히보기" onclick="location.href='./dashWhole.jsp'" data-aos="fade-up" data-aos-duration="4000">
+	        </div>
+	        <div id="banner03">
+	            <ul>
+	                <li data-aos="fade-right"data-aos-duration="800" >
+	                    <span class="material-symbols-outlined flu_green">
+	                        domain
+	                    </span>
+	                    <p>기업을 위한 <span class="flu_green">'인재 찜하기'</span></p>
+	                    <a href="boardEmp.jsp" class="btn_bora">인재 찜하기 서비스<img src="./img/banner01_btn.png"></a>
+	                </li>
+	                <li>
+	                    <p>We<br><span class="flu_green">support</span><br>you.</p>
+	                </li>
+	                <li data-aos="fade-left"data-aos-duration="800" >
+	                    <span class="material-symbols-outlined flu_green">
+	                        groups
+	                    </span>
+	                    <p>구직자를 위한 <span class="flu_green">'맞춤 기업'</span></p>
+	                    <a href="#" class="btn_bora" onclick="alert('구직자로 로그인 후 이용 가능합니다.'); return false;">맞춤 기업 추천 서비스<img src="./img/banner01_btn.png"></a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+    <%} %>
+            <div id="banner04">
             <div class="itYoutube">
                 <ul>
                     <li data-aos="fade-up" data-aos-delay="300">
@@ -183,7 +350,6 @@
                 </li>
             </ul>
         </div>
-    </div>
     <%@ include file="./include/footer.jsp" %>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>

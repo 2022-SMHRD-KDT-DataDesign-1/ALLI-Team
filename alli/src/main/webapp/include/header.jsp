@@ -19,10 +19,10 @@
         <%if(login_vo == null && cmpLogin_vo == null) {%>
 	        <ul id="gnb">
 	            <li>
-	                <a href="boardJob.jsp" onclick="alert('로그인이 필요합니다.'); return false;">구직</a>
+	                <a href="#" onclick="alert('로그인 후 이용 가능합니다.'); return false;">구직</a>
 	            </li>
 	            <li>
-	                <a href="boardEmp.jsp">채용</a>
+	                <a href="#" onclick="alert('로그인 후 이용 가능합니다.'); return false;">채용</a>
 	            </li>
 	            <li>
 	                <a href="dashWhole.jsp"><span>NEW</span>TREND</a>
@@ -45,7 +45,7 @@
 	                <a href="boardJob.jsp">구직</a>
 	            </li>
 	            <li>
-	                <a href="boardEmp.jsp">채용</a>
+	                <a href="#" onclick="alert('기업으로 로그인 후 이용 가능합니다.'); return false;">채용</a>
 	            </li>
 	            <li>
 	                <a href="dashWhole.jsp"><span>NEW</span>TREND</a>
@@ -56,7 +56,7 @@
 	               <span><%=login_vo.getUser_name() %></span>님 환영합니다.
 	            </li>
 	            <li>
-	                <a href="LogoutService.do">내정보수정</a>
+	                <a href="#">내정보수정</a>
 	            </li>
 	            <li>
 	                &#124;
@@ -68,7 +68,7 @@
         <%}else if(cmpLogin_vo != null){ %>
         	<ul id="gnb">
 	            <li>
-	                <a href="boardJob.jsp">구직</a>
+	                <a href="#" onclick="alert('구작자로 로그인 후 이용 가능합니다.'); return false;">구직</a>
 	            </li>
 	            <li>
 	                <a href="boardEmp.jsp">채용</a>
