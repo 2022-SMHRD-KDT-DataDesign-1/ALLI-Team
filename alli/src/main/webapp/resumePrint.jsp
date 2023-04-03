@@ -172,7 +172,8 @@
                            <li><span>OS</span> <span>｜</span>
                               <div>
                                       <%for(OsVO O : Olist){ %>
-                                       <%if( O.getResume_num() == 245) {%>
+                                      <%BigDecimal oresume_num = new BigDecimal(243); %>
+                                       <%if( O.getResume_num() == oresume_num) {%>
                                           <span>
                                              <%=O.getOs_name()%> [<%=O.getOs_level() %>]
                                           </span>
@@ -183,7 +184,8 @@
                            <li><span>자격증</span> <span>｜</span>
                               <div>
                                       <%for(LicenseVO LI : LIlist){ %>
-                                       <%if( LI.getResume_num() == 243) {%>
+                                      <%BigDecimal Liresume_num = new BigDecimal(243); %>
+                                       <%if( LI.getResume_num() == Liresume_num) {%>
                                           <span>
                                              <%=LI.getLicense_name()%>
                                           </span>
