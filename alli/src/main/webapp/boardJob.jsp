@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.cmpRecomVO"%>
+<%@page import="com.smhrd.model.cmpRecomDAO"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="com.smhrd.model.OsDAO"%>
@@ -89,7 +91,13 @@
 	%>
 	
 	<!-- 추천 기업정보 가져오는 스크립틀릿 -->
-	
+	<%
+		cmpRecomDAO cmpRecomDAO = new cmpRecomDAO();
+		List<cmpRecomVO> cmpRecomList = cmpRecomDAO.selectCmpInfo();
+		String cmpRecomList1 = cmpRecomList.get(0).getStac().replace(" ","");
+		String[] cmpRecomList2 = cmpRecomList1.split(",");
+	%>
+
 	
     <input type="hidden" value="<%= resumes.size() %>" id="resumesSize">
     <input type="hidden" value="<%= lanList %>" id="lanList">
@@ -688,16 +696,24 @@
 			
 		}
 		
-		/* 상단 탭 */	
-		for(let i = 0 ; i < lanList2.length ; i++){
-			 document.getElementById(lanList2[i]).onclick=()=>{
-				console.log(lanList2[i]+'Ck')
-				for(let j = 0 ; j < lanList2.length ; j ++) {
-					document.getElementById(lanList2[j]).style.border ='1px solid #d3d3d3'
+		/* 상단 탭 */
+		try {
+			for(let i = 0 ; i < lanList2.length ; i++){
+				 document.getElementById(lanList2[i]).onclick=()=>{
+					console.log(lanList2[i]+'Ck')
+					for(let j = 0 ; j < lanList2.length ; j ++) {
+						document.getElementById(lanList2[j]).style.border ='1px solid #d3d3d3'
+						document.getElementById(lanList2[j]).style.background ='#fff'
+					}
+					document.getElementById(lanList2[i]).style.border = '2px solid #6c00ff'
+					document.getElementById(lanList2[i]).style.background = '#f5f1fb'
 				}
-				document.getElementById(lanList2[i]).style.border = '2px solid #6c00ff'
 			}
+			
+		} catch(err){
+			console.log("프로그래밍 언어 없음")
 		}
+		
 		
 		/* 프레임워크 영역 */
 		
@@ -719,14 +735,21 @@
 		}
 		
 		/* 상단 탭 */
-		for(let i = 0 ; i < frameList2.length ; i++){
-			 document.getElementById(frameList2[i]).onclick=()=>{
-				console.log(frameList2[i]+'Ck')
-				for(let j = 0 ; j < frameList2.length ; j ++) {
-					document.getElementById(frameList2[j]).style.border ='1px solid #d3d3d3'
+		try {
+			for(let i = 0 ; i < frameList2.length ; i++){
+				 document.getElementById(frameList2[i]).onclick=()=>{
+					console.log(frameList2[i]+'Ck')
+					for(let j = 0 ; j < frameList2.length ; j ++) {
+						document.getElementById(frameList2[j]).style.border ='1px solid #d3d3d3'
+						document.getElementById(frameList2[j]).style.background ='#fff'
+					}
+					document.getElementById(frameList2[i]).style.border = '2px solid #6c00ff'
+					document.getElementById(frameList2[i]).style.background = '#f5f1fb'
 				}
-				document.getElementById(frameList2[i]).style.border = '2px solid #6c00ff'
 			}
+			
+		} catch(err){
+			console.log("프레임워크 없음")
 		}
 		
 		/* OS 영역 */
@@ -749,14 +772,21 @@
 		}
 		
 		/* 상단 탭 */
-		for(let i = 0 ; i < osList2.length ; i++){
-			 document.getElementById(osList2[i]).onclick=()=>{
-				console.log(osList2[i]+'Ck')
-				for(let j = 0 ; j < osList2.length ; j ++) {
-					document.getElementById(osList2[j]).style.border ='1px solid #d3d3d3'
+		try{
+			for(let i = 0 ; i < osList2.length ; i++){
+				 document.getElementById(osList2[i]).onclick=()=>{
+					console.log(osList2[i]+'Ck')
+					for(let j = 0 ; j < osList2.length ; j ++) {
+						document.getElementById(osList2[j]).style.border ='1px solid #d3d3d3'
+						document.getElementById(osList2[j]).style.background ='#fff'
+					}
+					document.getElementById(osList2[i]).style.border = '2px solid #6c00ff'
+					document.getElementById(osList2[i]).style.background = '#f5f1fb'
 				}
-				document.getElementById(osList2[i]).style.border = '2px solid #6c00ff'
 			}
+			
+		} catch(err){
+			console.log("OS 없음")
 		}
 		
 		</script>
