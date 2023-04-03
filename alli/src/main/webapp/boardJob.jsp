@@ -94,7 +94,23 @@
 	<%
 		cmpRecomDAO cmpRecomDAO = new cmpRecomDAO();
 		List<cmpRecomVO> cmpRecomList = cmpRecomDAO.selectCmpInfo();
-		List<String> cmpRecomList1 = cmpRecomList.get(i).getStac().replace(" ","").split(",");
+		ArrayList<String[]> cmpRecomList1 = new ArrayList<String[]>();
+		for(int i = 0 ; i < cmpRecomList.size() ; i++){
+			cmpRecomList1.add(cmpRecomList.get(i).getStac().replace(" ","").split(",")); // 기술스택 리스트
+		};
+		System.out.println(cmpRecomList.size());
+		System.out.println(cmpRecomList1.size());
+		System.out.println(cmpRecomList1.get(1).length);
+		ArrayList<cmpRecomVO> cmpRecomList2 = new ArrayList<cmpRecomVO>();
+		for(int i = 0 ; i < lanList3.size() ; i++){
+			for(int j = 0 ; j < cmpRecomList.size() ; j++){
+				for(int z = 0 ; z < cmpRecomList1.get(j).length ; z++){
+					if(lanList3.get(i).equals(cmpRecomList1.get(j)[z])){
+						cmpRecomList2.add(cmpRecomList.get(j));
+					}
+				}
+			}
+		}
 	%>
 
 	
