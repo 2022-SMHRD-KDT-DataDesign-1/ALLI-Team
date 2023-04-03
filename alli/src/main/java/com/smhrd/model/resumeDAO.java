@@ -84,9 +84,11 @@ public class resumeDAO {
 	}
 
 	 
-
-	
-	
-	
-
+	 // 유저 아이디로 이력서 번호 찾아오기
+	 public resumeVO selectResumeNum(String id){
+		 SqlSession sqlSession = sqlSessionFactory.openSession(true);
+		 resumeVO resumeNumVO = sqlSession.selectOne("com.smhrd.db.resumeMapper.selectResumeNum",id);
+		 sqlSession.close();
+		 return resumeNumVO;
+	 }
 }

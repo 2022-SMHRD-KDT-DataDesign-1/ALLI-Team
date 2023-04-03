@@ -1,6 +1,5 @@
 package com.smhrd.model;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;

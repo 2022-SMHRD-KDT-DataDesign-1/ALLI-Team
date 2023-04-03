@@ -1,20 +1,22 @@
 package com.smhrd.model;
 
+import java.math.BigDecimal;
+
 public class LicenseVO {
-	private int resume_num;
+	private BigDecimal resume_num;
 	private String License_name;
 	
 	public LicenseVO() {
 		
 	}
 	
-	public LicenseVO(int resume_num, String license_name) {
+	public LicenseVO(BigDecimal resume_num, String license_name) {
 		super();
 		this.resume_num = resume_num;
-		License_name = license_name;
+		this.License_name = license_name;
 	}
 
-	public int getResume_num() {
+	public BigDecimal getResume_num() {
 		return resume_num;
 	}
 
