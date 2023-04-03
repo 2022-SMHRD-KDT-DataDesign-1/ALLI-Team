@@ -1,3 +1,5 @@
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashSet"%>
 <%@page import="com.smhrd.model.OsDAO"%>
 <%@page import="com.smhrd.model.FrameworkDAO"%>
 <%@page import="com.smhrd.model.LanguageDAO"%>
@@ -63,38 +65,31 @@
 		LanguageVO lanVO = new LanguageVO();
 		LanguageDAO lanDAO = new LanguageDAO();
 		List<String> lanList = lanDAO.selectUserLanguage(login_vo.getUser_id());
-		for(int i = 0 ; i < lanList.size() ; i++){
-		System.out.print(lanList.get(i)+",");
-		}
+		Set<String> lanList2 = new HashSet<String>(lanList);
+		List<String> lanList3 = new ArrayList<String>(lanList2);
+		System.out.println(lanList3);
 	%>
 	
 	<!-- 프레임워크 가져오는 스크립틀릿 -->
 	<%
 		FrameworkDAO frameDAO = new FrameworkDAO();
 		List<String> frameList = frameDAO.selectUserFrameWork(login_vo.getUser_id());
-		if(frameList.size() != 0 ){
-			for(int i = 0 ; i < frameList.size() ; i++){
-				System.out.print(frameList.get(i)+",");
-			}
-		}else{
-			System.out.println("프레임워크 없음");
-		}
+		Set<String> frameList2 = new HashSet<String>(frameList);
+		List<String> frameList3 = new ArrayList<String>(frameList2);
+		System.out.println(frameList3);
 	%>
 	
 	<!-- OS 가져오는 스크립틀릿 -->
 	<%
 		OsDAO osDAO = new OsDAO();
 		List<String> osList = osDAO.selectUserOS(login_vo.getUser_id());
-		if(osList.size() != 0 ){
-			for(int i = 0 ; i < osList.size() ; i++){
-				System.out.print(osList.get(i)+",");
-			}
-		}else{
-			System.out.println("OS 없음");
-		}
+		Set<String> osList2 = new HashSet<String>(osList);
+		List<String> osList3 = new ArrayList<String>(osList2);
+		System.out.println(osList3);
 	%>
 	
 	<!-- 추천 기업정보 가져오는 스크립틀릿 -->
+	
 	
     <input type="hidden" value="<%= resumes.size() %>" id="resumesSize">
     <input type="hidden" value="<%= lanList %>" id="lanList">
@@ -137,9 +132,9 @@
 	                    	<!-- 프로그래밍언어 시작 -->
 	                        <li class="c_content" id="prolan_li">
 	                            <ul>
-	                            	<%for(int j = 0 ; j < lanList.size() ; j++){ %>
+	                            	<%for(int j = 0 ; j < lanList3.size() ; j++){ %>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="<%=lanList.get(j) %>" id="<%=lanList.get(j) %>">
+	                            		<input type="button" value="<%=lanList3.get(j) %>" id="<%=lanList3.get(j) %>">
 	                            	</li>
 	                            	<%} %>
 	                            </ul>
@@ -168,9 +163,9 @@
 	                        <!-- 프레임워크 시작 -->
 	                        <li class="c_content" id="frameWork_li">
 	                            <ul>
-	                            	<%for(int j = 0 ; j < frameList.size() ; j++){ %>
+	                            	<%for(int j = 0 ; j < frameList3.size() ; j++){ %>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="<%=frameList.get(j) %>" id="<%=frameList.get(j)%>">
+	                            		<input type="button" value="<%=frameList3.get(j) %>" id="<%=frameList3.get(j)%>">
 	                            	</li>
 	                            	<%} %>
 	                            	<!-- <li class="chooseBtn">
@@ -277,9 +272,9 @@
 	                        <!-- OS 시작 -->
 	                        <li class="c_content" id="OS_li">
 	                            <ul>
-	                            	<%for(int j = 0 ; j < osList.size() ; j++){ %>
+	                            	<%for(int j = 0 ; j < osList3.size() ; j++){ %>
 	                            	<li class="chooseBtn">
-	                            		<input type="button" value="<%=osList.get(j) %>" id="<%=osList.get(j)%>">
+	                            		<input type="button" value="<%=osList3.get(j) %>" id="<%=osList3.get(j)%>">
 	                            	</li>
 	                            	<%} %>
 	                            	<!-- <li class="chooseBtn">
@@ -489,7 +484,6 @@
 											<span><%=osList.get(j) %></span>
 										<%} %>
 									<%} %>
-										<span>기타...</span>
 									</p>
 									<p class="boardJob_date"><%=resumes.get(i).getCre_date() %></p>
 								</div>
