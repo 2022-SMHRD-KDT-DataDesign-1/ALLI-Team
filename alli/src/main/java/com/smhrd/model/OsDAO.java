@@ -25,4 +25,12 @@ public class OsDAO {
 		session.close();
 		return osList ;
 	}
+
+	public int insertOss(OsVO vo) {
+		
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.insert("com.smhrd.db.LanguageMapper.insertOss", vo);
+		session.close();
+		return cnt;
+	}
 }

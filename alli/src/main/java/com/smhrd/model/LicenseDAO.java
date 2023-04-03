@@ -17,4 +17,13 @@ public class LicenseDAO {
 		session.close();
 		return list;
 	}
+	
+	public int insertLicenses(LicenseVO vo) {
+		
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.insert("com.smhrd.db.LanguageMapper.insertLicenses", vo);
+		session.close();
+		return cnt;
+
+	}
 }

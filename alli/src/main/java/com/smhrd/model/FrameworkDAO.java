@@ -25,4 +25,12 @@ public class FrameworkDAO {
 		session.close();
 		return frameList ;
 	}
+
+	public int insertFrameworks(FrameworkVO vo) {
+
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.insert("com.smhrd.db.LanguageMapper.insertFrameworks", vo);
+		session.close();
+		return cnt;
+	}
 }
