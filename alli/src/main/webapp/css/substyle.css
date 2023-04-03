@@ -315,7 +315,6 @@ box-sizing:border-box;display: inline-block;float:left;}
 .chooseJob > ul:nth-child(2) > li > ul:nth-child(1){display: flex;justify-content: start;}
 .chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li{margin-right:10px;}
 .chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li > input{cursor:pointer;background: #fff;border: 1px solid #d3d3d3;border-radius: 30px;padding: 8px 15px;}
-.chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li:nth-child(1) > input{border: 2px solid #6c00ff;background: #f5f1fb;}
 .chooseJob > ul:nth-child(2) > li:nth-child(n+2){display:none;}
 .choose_tabOn{border: 2px solid #6c00ff !important;background: #f5f1fb !important;}
 .choose_tabOff{border: 1px solid #d3d3d3 !important;background: #fff !important;}
