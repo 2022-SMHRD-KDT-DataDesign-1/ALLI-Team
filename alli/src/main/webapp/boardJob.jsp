@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.cmpRecomVO"%>
+<%@page import="com.smhrd.model.cmpRecomDAO"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="com.smhrd.model.OsDAO"%>
@@ -89,7 +91,28 @@
 	%>
 	
 	<!-- 추천 기업정보 가져오는 스크립틀릿 -->
-	
+	<%
+		cmpRecomDAO cmpRecomDAO = new cmpRecomDAO();
+		List<cmpRecomVO> cmpRecomList = cmpRecomDAO.selectCmpInfo();
+		ArrayList<String[]> cmpRecomList1 = new ArrayList<String[]>();
+		for(int i = 0 ; i < cmpRecomList.size() ; i++){
+			cmpRecomList1.add(cmpRecomList.get(i).getStac().replace(" ","").split(",")); // 기술스택 리스트
+		};
+		System.out.println(cmpRecomList.size());
+		System.out.println(cmpRecomList1.size());
+		System.out.println(cmpRecomList1.get(1).length);
+		ArrayList<cmpRecomVO> cmpRecomList2 = new ArrayList<cmpRecomVO>();
+		for(int i = 0 ; i < lanList3.size() ; i++){
+			for(int j = 0 ; j < cmpRecomList.size() ; j++){
+				for(int z = 0 ; z < cmpRecomList1.get(j).length ; z++){
+					if(lanList3.get(i).equals(cmpRecomList1.get(j)[z])){
+						cmpRecomList2.add(cmpRecomList.get(j));
+					}
+				}
+			}
+		}
+	%>
+
 	
     <input type="hidden" value="<%= resumes.size() %>" id="resumesSize">
     <input type="hidden" value="<%= lanList %>" id="lanList">
@@ -140,23 +163,23 @@
 	                            </ul>
 	                            <div class="chooseCon">
 		                            <ul>
-		                            <%for(int i = 0 ; i < 3 ; i++){ %>
+		                            	<%for(int i = 0 ; i < 3 ; i++){ %>
 		                            	<li>
 		                            		<div><%=i+1 %></div>
-			                            		<div>(주)페픽</div>
-			                            		<div>
-			                            			<p>웹 개발자 경력 채용</p>
-			                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-			                            			<p>
-			                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-			                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-			                            			</p>
-			                            		</div>
-			                            		<div>
-			                            			<a href="#">상세보기</a>
-			                            		</div>
+					                           		<div>(주)페픽</div>
+					                           		<div>
+					                           			<p>웹 개발자 경력 채용</p>
+					                           			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
+					                           			<p>
+					                           				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
+					                           				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
+					                           			</p>
+					                           		</div>
+					                           		<div>
+					                           			<a href="#">상세보기</a>
+					                           		</div>
+		                            	<%} %>
 		                            	</li>
-		                            <%} %>
 		                            </ul>
 	                        	</div>
 	                        </li>
@@ -464,7 +487,11 @@
 									</p>
 									<p>
 										희망지역:<%=resumes.get(i).getHope_area() %><br>
+										<%if(resumes.get(i).getHope_salary() == null){ %>
+										희망연봉:
+										<%}else{ %>
 										희망연봉:<%=resumes.get(i).getHope_salary() %>
+										<%} %>
 									</p>
 									<p>
 									<%for(int j = 0 ; j < lanList.size() ; j++){ %>
@@ -688,16 +715,24 @@
 			
 		}
 		
-		/* 상단 탭 */	
-		for(let i = 0 ; i < lanList2.length ; i++){
-			 document.getElementById(lanList2[i]).onclick=()=>{
-				console.log(lanList2[i]+'Ck')
-				for(let j = 0 ; j < lanList2.length ; j ++) {
-					document.getElementById(lanList2[j]).style.border ='1px solid #d3d3d3'
+		/* 상단 탭 */
+		try {
+			for(let i = 0 ; i < lanList2.length ; i++){
+				 document.getElementById(lanList2[i]).onclick=()=>{
+					console.log(lanList2[i]+'Ck')
+					for(let j = 0 ; j < lanList2.length ; j ++) {
+						document.getElementById(lanList2[j]).style.border ='1px solid #d3d3d3'
+						document.getElementById(lanList2[j]).style.background ='#fff'
+					}
+					document.getElementById(lanList2[i]).style.border = '2px solid #6c00ff'
+					document.getElementById(lanList2[i]).style.background = '#f5f1fb'
 				}
-				document.getElementById(lanList2[i]).style.border = '2px solid #6c00ff'
 			}
+			
+		} catch(err){
+			console.log("프로그래밍 언어 없음")
 		}
+		
 		
 		/* 프레임워크 영역 */
 		
@@ -719,14 +754,21 @@
 		}
 		
 		/* 상단 탭 */
-		for(let i = 0 ; i < frameList2.length ; i++){
-			 document.getElementById(frameList2[i]).onclick=()=>{
-				console.log(frameList2[i]+'Ck')
-				for(let j = 0 ; j < frameList2.length ; j ++) {
-					document.getElementById(frameList2[j]).style.border ='1px solid #d3d3d3'
+		try {
+			for(let i = 0 ; i < frameList2.length ; i++){
+				 document.getElementById(frameList2[i]).onclick=()=>{
+					console.log(frameList2[i]+'Ck')
+					for(let j = 0 ; j < frameList2.length ; j ++) {
+						document.getElementById(frameList2[j]).style.border ='1px solid #d3d3d3'
+						document.getElementById(frameList2[j]).style.background ='#fff'
+					}
+					document.getElementById(frameList2[i]).style.border = '2px solid #6c00ff'
+					document.getElementById(frameList2[i]).style.background = '#f5f1fb'
 				}
-				document.getElementById(frameList2[i]).style.border = '2px solid #6c00ff'
 			}
+			
+		} catch(err){
+			console.log("프레임워크 없음")
 		}
 		
 		/* OS 영역 */
@@ -749,14 +791,21 @@
 		}
 		
 		/* 상단 탭 */
-		for(let i = 0 ; i < osList2.length ; i++){
-			 document.getElementById(osList2[i]).onclick=()=>{
-				console.log(osList2[i]+'Ck')
-				for(let j = 0 ; j < osList2.length ; j ++) {
-					document.getElementById(osList2[j]).style.border ='1px solid #d3d3d3'
+		try{
+			for(let i = 0 ; i < osList2.length ; i++){
+				 document.getElementById(osList2[i]).onclick=()=>{
+					console.log(osList2[i]+'Ck')
+					for(let j = 0 ; j < osList2.length ; j ++) {
+						document.getElementById(osList2[j]).style.border ='1px solid #d3d3d3'
+						document.getElementById(osList2[j]).style.background ='#fff'
+					}
+					document.getElementById(osList2[i]).style.border = '2px solid #6c00ff'
+					document.getElementById(osList2[i]).style.background = '#f5f1fb'
 				}
-				document.getElementById(osList2[i]).style.border = '2px solid #6c00ff'
 			}
+			
+		} catch(err){
+			console.log("OS 없음")
 		}
 		
 		</script>
