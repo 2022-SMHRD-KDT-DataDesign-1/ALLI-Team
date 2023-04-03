@@ -185,9 +185,11 @@ box-sizing:border-box;display: inline-block;float:left;}
 
 .choose_content{display:flex;justify-content:space-between;margin-top:14px;padding-left:24px;box-sizing:border-box;}
 .choose_content > p{width:20%;font-weight:600;font-size:14px;}
-.choose_content > div{width:91%;background:#f6f7f9;padding:17px;box-sizing:border-box;height:60px;overflow: hidden scroll;}
-.choose_content > div > p{color:#6c00ff;font-weight:600;float: left;margin-right: 34px;}
-.choose_content > div > p > span{color: black;font-size: 22px;vertical-align: text-bottom;}
+.choose_content > div{width:91%;background:#f6f7f9;padding:17px;box-sizing:border-box;height:100px;overflow: hidden scroll;}
+#selected_values_list .selected_item{color:#6c00ff;font-weight:600;float: left;margin-right: 34px;}
+#selected_values_list .selected_item .delete{color: black;font-size: 22px;vertical-align: text-bottom;vertical-align: middle;margin-top: -3px;}
+
+#licenseList > ul > li > div > input:nth-child(1)::before{content:'' !important;}
 
 .rbox5 > div{overflow:hidden;}
 .rbox5 > div > ul > li:nth-child(n+2){margin-top:10px;}
@@ -199,6 +201,9 @@ box-sizing:border-box;display: inline-block;float:left;}
 
 .rbox6 > div{overflow:hidden;}
 .rbox6 > div > .input{width:97%;display:inline-block;}
+#career > div> .input:nth-of-type(1){margin-bottom:10px;}
+
+.rbox8 > h3{display:inline-block;}
 
 .rbox9 > div{overflow:hidden;}
 .rbox9 > div > input{float:left;width:30%;margin-right:12px;height:66px;}
@@ -329,7 +334,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 .boardJob_wrap #resumeReg_btn{width: 64px;font-size: 14px;position: absolute;right: 0;top: 0;margin: 0;padding:8px 15px;}
 .boardJob02{width:100%;height:auto;background:#f6f7f9;margin-top:10px;}
 .boardJob02 > ul{box-sizing: border-box;overflow:hidden;padding: 12px 12px 30px 12px;}
-.boardJob02 > ul > li{margin-right: 1%;width: 19%;background: #fff;border: 1px solid #c5c5c5;border-radius: 10px;float:left;position: relative;font-size: 13px;line-height: 1.2;padding: 11px;box-sizing: border-box;min-height: 190.56px;}
+.boardJob02 > ul > li{margin-right: 1%;width: 19%;background: #fff;border: 1px solid #c5c5c5;border-radius: 10px;float:left;position: relative;font-size: 13px;line-height: 1.2;padding: 11px;box-sizing: border-box;height: 190.56px;}
 .boardJob02 > ul > li:nth-child(n+6){margin-top:28px;}
 .boardJob_listTop{overflow: hidden;position: relative;}
 .boardJob_listTop > div:nth-of-type(1){width: 40px;height: 40px;border-radius: 50px;float: left;overflow:hidden;}
@@ -340,7 +345,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 .boardJob_listTop > div:nth-of-type(2) > p:nth-child(1) > span:nth-child(2){color:#a1a1a1;}
 .boardJob_listTop > div:nth-of-type(2) > p:nth-child(2){color: #0f2bd9;font-weight: 500;}
 .person_icon{color:#f1f2f1;font-size: 42px !important;}
-.boardJob_listBtm{margin-top:8px;position:relative;}
+.boardJob_listBtm{margin-top:8px;position:relative;height: 118.56px;}
 .boardJob_listBtm > h3{font-weight: 700;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;}
 .boardJob_listBtm > p:nth-of-type(1){margin-top: 5px;color: #a1a1a1;}
 .boardJob_listBtm > p:nth-of-type(2){margin-top: 10px;color: #a1a1a1;}
@@ -348,6 +353,8 @@ box-sizing:border-box;display: inline-block;float:left;}
 .boardJob_listBtm > p:nth-of-type(3) > span{background: #f1f2f1;font-size: 10px;padding: 5px;font-weight: 500;margin-right:3px;}
 .boardJob_date{position: absolute;right: 0;bottom: -30px;color:#a1a1a1;font-size:12px;}
 .open{border: 5px solid #6c00ff !important;}
+.open .boardJob_date{bottom: -26px;}
+.open .boardJob_listBtm > p:nth-of-type(3){margin-top:7px;}
 .boardJob_add{background: #fff;border: 1px solid #ddd;position: absolute;right: -1px;top: 34px;padding: 30px 18px 6px 18px;line-height: 2;}
 .boardJob_add > a{display: block;position: absolute;right: 5px;top: 5px;}
 .boardJob_add > a > span{font-size: 20px;}

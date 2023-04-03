@@ -108,16 +108,16 @@
                             </div>
                             <div class="input ged">
                                 <label>학교명 <span class="star">&#42;</span></label>
-                                <input type="text" placeholder="" name="school_name" class="mandatory">
+                                <input type="text" placeholder="" name="school_name" class="mandatory alpha">
                             </div>
                             <div class="input ged">
                                 <label>전공</label>
-                                <input type="text" placeholder="" name="major">
+                                <input type="text" placeholder="" name="major" class="alpha">
                             </div>
                             <div class="input ged">
                                 <div class="label">졸업상태<span class="star">&#42;</span></div>
                                 <!-- 글자 세로로 출력댐 수정필요 -->
-                                <select name="graduation_status" class="mandatory">
+                                <select name="graduation_status" class="mandatory alpha">
                                     <option value="졸업">졸업</option>
                                     <option value="졸업예정">졸업예정</option>
                                     <option value="재학중">재학중</option>
@@ -194,7 +194,7 @@
 											</c:forEach> 
                                             </ul>
                                         </li>
-                                        <li class="c_content"><!-- 자격증 시작 -->
+                                        <li class="c_content" id="licenseList"><!-- 자격증 시작 -->
                                          <ul>
 											<c:forEach items="${list}" var="item">
 												<li>
@@ -242,10 +242,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="resume_box rbox6">
+                    <div class="resume_box rbox6" id="career">
                         <h3>경력</h3>
                         <div>
-                             <select name="career_date">
+                        	 <div class="input">
+                                <div class="label">기간<span class="star">&#42;</span></div>
+                                <select name="career_date">
                                     <option value="신입">신입</option>
                                     <option value="1년 이상">1년 이상</option>
                                     <option value="2년 이상">2년 이상</option>
@@ -254,6 +256,7 @@
                                     <option value="7년 이상">7년 이상</option>
                                     <option value="10년 이상">10년 이상</option>
                                 </select>
+                            </div>
                             <div class="input">
                                 <div class="label">회사명, 부서명, 입사년월과 퇴사년월, 직급/직책, 담당직무 등을 입력해주세요.</div>
                                 <textarea placeholder="" name="career"></textarea>
@@ -472,7 +475,13 @@
 			
 			if(ged == '대입검정고시'){
 				for(var i = 0; i<gedList.length;i++){
-				 	gedList[i].classList += ' readonly';
+					document.querySelectorAll('.alpha')[i].value='';
+					gedList[i].classList += ' readonly';
+				 	
+				}
+			}else{
+				for(var i = 0; i<gedList.length;i++){
+				 	gedList[i].classList.remove('readonly');
 				}
 			} 
 		}
