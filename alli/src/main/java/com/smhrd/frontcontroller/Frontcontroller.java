@@ -19,6 +19,7 @@ import com.smhrd.controller.jjimService;
 import com.smhrd.controller.printDeleteService;
 import com.smhrd.controller.resumeDeleteService;
 import com.smhrd.controller.resumeReqService;
+import com.smhrd.controller.testService;
 import com.smhrd.controller.userJoinService;
 import com.smhrd.controller.userLoginService;
 
@@ -79,6 +80,8 @@ public class Frontcontroller extends HttpServlet {
 			
 		}else if(result.equals("resumeReqService.do")) {
 			service = new resumeReqService();
+		}else if(result.equals("testService.do")) {
+			service = new testService();
 		}
 
 		String moveURL = service.excute(request, response);
