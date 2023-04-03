@@ -94,8 +94,10 @@
 	<%
 		cmpRecomDAO cmpRecomDAO = new cmpRecomDAO();
 		List<cmpRecomVO> cmpRecomList = cmpRecomDAO.selectCmpInfo();
-		String cmpRecomList1 = cmpRecomList.get(0).getStac().replace(" ","");
-		String[] cmpRecomList2 = cmpRecomList1.split(",");
+		ArrayList<String[]> cmpRecomList1 = new ArrayList<String[]>();
+		for(int i = 0 ; i < cmpRecomList.size() ; i++){
+			cmpRecomList1.add(cmpRecomList.get(i).getStac().replace(" ","").split(","));
+		}
 	%>
 
 	
@@ -148,23 +150,23 @@
 	                            </ul>
 	                            <div class="chooseCon">
 		                            <ul>
-		                            <%for(int i = 0 ; i < 3 ; i++){ %>
+		                            	<%for(int i = 0 ; i < 3 ; i++){ %>
 		                            	<li>
 		                            		<div><%=i+1 %></div>
-			                            		<div>(주)페픽</div>
-			                            		<div>
-			                            			<p>웹 개발자 경력 채용</p>
-			                            			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
-			                            			<p>
-			                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-			                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-			                            			</p>
-			                            		</div>
-			                            		<div>
-			                            			<a href="#">상세보기</a>
-			                            		</div>
+					                           		<div>(주)페픽</div>
+					                           		<div>
+					                           			<p>웹 개발자 경력 채용</p>
+					                           			<p>경력1년↑ ｜ 학력무관 ｜ 광주 서구 ｜ 정규직</p>
+					                           			<p>
+					                           				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
+					                           				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
+					                           			</p>
+					                           		</div>
+					                           		<div>
+					                           			<a href="#">상세보기</a>
+					                           		</div>
+		                            	<%} %>
 		                            	</li>
-		                            <%} %>
 		                            </ul>
 	                        	</div>
 	                        </li>
@@ -472,7 +474,11 @@
 									</p>
 									<p>
 										희망지역:<%=resumes.get(i).getHope_area() %><br>
+										<%if(resumes.get(i).getHope_salary() == null){ %>
+										희망연봉:
+										<%}else{ %>
 										희망연봉:<%=resumes.get(i).getHope_salary() %>
+										<%} %>
 									</p>
 									<p>
 									<%for(int j = 0 ; j < lanList.size() ; j++){ %>
