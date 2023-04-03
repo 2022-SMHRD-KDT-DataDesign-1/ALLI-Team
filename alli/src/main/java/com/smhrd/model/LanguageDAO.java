@@ -26,4 +26,12 @@ public class LanguageDAO {
 		session.close();
 		return lanList ;
 	}
+	
+	// 기술 insert
+	public int insertLanguages(LanguageVO vo) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.insert("com.smhrd.db.LanguageMapper.insertLanguages", vo);
+		session.close();
+		return cnt;
+	}
 }

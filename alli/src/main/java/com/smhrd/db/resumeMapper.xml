@@ -36,6 +36,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from t_resume where resume_num= #{myInt}
 	</delete>
 	
-
+	<insert id="insertResume" parameterType="resumeVO">
+		insert into t_resume (user_id, resume_title, picture, user_name, date_birth,
+		gender, user_email, user_tel, user_tel2, address, school_division, school_name,
+		major, graduation_status, other_license, career_date, career, award, self_introduction,
+		file_name, url, hope_salary, hope_area, hope_area2, on_off)
+		values(#{user_id}, #{resume_title}, #{picture}, #{user_name}, #{date_birth},
+		#{gender}, #{user_email}, #{user_tel}, #{user_tel2}, #{address}, #{school_division}, #{school_name},
+		#{major}, #{graduation_status}, #{other_license}, #{career_date}, #{career}, #{award}, #{self_introduction},
+		#{file_name}, #{url}, #{hope_salary}, #{hope_area}, #{hope_area2}, #{on_off})
+	</insert>
 
 </mapper>

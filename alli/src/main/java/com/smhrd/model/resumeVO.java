@@ -73,6 +73,39 @@ public class resumeVO {
          this.other_license = other_license;
    }
    
+   public resumeVO(String user_id, String user_name, String user_tel, String user_email,
+	         String date_birth, String hope_area, String resume_title, String address, String self_introduction,
+	         String gender, String school_division, String school_name, String graduation_status, String hope_salary,
+	         String picture, String file_name, String major, String career, String award, String url, String hope_area2,
+	         String on_off, String user_tel2, String career_date,String other_license) {
+	         super();
+	         this.user_id = user_id;
+	         this.user_name = user_name;
+	         this.user_tel = user_tel;
+	         this.user_email = user_email;
+	         this.date_birth = date_birth;
+	         this.hope_area = hope_area;
+	         this.resume_title = resume_title;
+	         this.address = address;
+	         this.self_introduction = self_introduction;
+	         this.gender = gender;
+	         this.school_division = school_division;
+	         this.school_name = school_name;
+	         this.graduation_status = graduation_status;
+	         this.hope_salary = hope_salary;
+	         this.picture = picture;
+	         this.file_name = file_name;
+	         this.major = major;
+	         this.career = career;
+	         this.award = award;
+	         this.url = url;
+	         this.hope_area2 = hope_area2;
+	         this.on_off = on_off;
+	         this.user_tel2 = user_tel2;
+	         this.career_date = career_date;
+	         this.other_license = other_license;
+	   }
+   
    // 구직자 이력서 공개/비공개 전환을 위한 생성자
    public resumeVO(BigDecimal resume_num, String user_id) {
 	   super();

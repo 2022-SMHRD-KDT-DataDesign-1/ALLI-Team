@@ -62,6 +62,7 @@
                                 <div class="input readonly">
                                     <label>이름 <span class="star">&#42;</span></label>
                                     <input class="mandatory" type="text" placeholder=<%=login_vo.getUser_name() %> value=<%=login_vo.getUser_name() %> name="user_name" readonly>
+                                    <input type="hidden" value="<%=login_vo.getUser_id() %>" name="user_id">
                                 </div>
                                 <div class="input readonly">
                                     <label>생년월일 <span class="star">&#42;</span></label>
@@ -224,7 +225,7 @@
                         		<li>
 		                            <div class="input">
 		                                <label>자격증명</label>
-		                                <input type="text" placeholder="" name="other_licens">
+		                                <input type="text" name="other_license">
 		                            </div>
 		                            <span class="material-symbols-outlined delete">
 		                                Close
@@ -275,7 +276,7 @@
                         <div>
                             <div class="input">
                                 <div class="label">수상명, 수여기관, 수상연도, 수상내용 등을 입력해주세요.</div>
-                                <textarea placeholder="" name=""></textarea>
+                                <textarea placeholder="" name="award"></textarea>
                             </div>
                             <span class="material-symbols-outlined delete">
                                 Close
@@ -291,7 +292,7 @@
                             </div>
                     </div>
                     <div class="resume_box rbox8">
-                        <h3>자기소개서</h3>
+                        <h3>자기소개서</h3><span class="star">&#42;</span>
                         <div>
                             <div class="input">
                                 <div class="label">성장과정, 성격의 장단점, 경력사항, 지원동기 및 입사 후 포부 등을 입력해주세요.</div>
@@ -329,6 +330,7 @@
                     </div>
                     <input type="hidden" name="on_off" id="choice" value="">
                     <input type="submit" id="resumeReg_btn" value="이력서 저장" onclick="confirmSubmit(event)">
+                    </form>
             </div>
        </div>
     </div>
