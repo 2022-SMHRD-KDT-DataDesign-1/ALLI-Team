@@ -145,7 +145,8 @@
                            <li><span>프로그래밍 언어</span> <span>｜</span>
                               <div>
                               	  	<%for(LanguageVO l : Llist){ %>
-	                              		<%if( l.getResume_num() == 243) {%>
+                              	  		<%BigDecimal lresume_num = new BigDecimal(243); %>
+	                              		<%if( l.getResume_num() == lresume_num) {%>
 	                              			<span>
 	                              				<%=l.getLanguage_name()%> [<%=l.getLanguage_level() %>]
 	                              			</span>
