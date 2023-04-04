@@ -19,11 +19,12 @@ public class userJoinService implements Command {
 		String user_email = request.getParameter("user_email");
 		String date_birth = request.getParameter("date_birth");
 		String hope_area = request.getParameter("hope_area");
+		String gender = request.getParameter("gender");
 		String moveURL = null;
 
 		System.out.println(user_id);
 		
-		userVO vo = new userVO(user_id, user_pw, user_name, user_tel, user_email, date_birth, hope_area);
+		userVO vo = new userVO(user_id, user_pw, user_name, user_tel, user_email, date_birth, hope_area, gender);
 
 		userDAO dao = new userDAO();
 

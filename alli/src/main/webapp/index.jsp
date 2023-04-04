@@ -44,12 +44,12 @@
 	                    <li>
 	                        <img src="./img/banner02_slide01.png">
 	                        <p><span>HOT</span>프로그래밍 언어</p>
-	                    </li>
-	                    <li>
+						</li>
+						 <li>
 	                        <img src="./img/banner02_slide02.png">
 	                        <p><span>HOT</span>IDE(프레임워크)</p>
-	                    </li>
-	                    <li>
+						</li>
+						 <li>
 	                        <img src="./img/banner02_slide03.png">
 	                        <p><span>HOT</span>개발시장 요구 학력</p>
 	                    </li>
@@ -202,7 +202,7 @@
 	            <div class="flow_banner">
 	                <ul class="list">
 	                    <li>
-	                        <img src="./img/banner02_slide01.png">
+	                        <img src="./img/wordc.png">
 	                        <p><span>HOT</span>국내 인기 기술 스택</p>
 	                    </li>
 	                    <li>

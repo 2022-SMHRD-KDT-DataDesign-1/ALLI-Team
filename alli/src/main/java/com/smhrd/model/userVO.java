@@ -8,11 +8,12 @@ public class userVO {
 	private String user_tel;
 	private String user_email;
 	private String date_birth;
-	private String hope_area;	
+	private String hope_area;
+	private String gender;
 
 	// 유저(구직자)회원가입 정보
 	public userVO(String user_id, String user_pw, String user_name, String user_tel, String user_email,
-			String date_birth, String hope_area) {
+			String date_birth, String hope_area, String gender) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;
@@ -21,6 +22,7 @@ public class userVO {
 		this.user_email = user_email;
 		this.date_birth = date_birth;
 		this.hope_area = hope_area;
+		this.gender = gender;
 	}
 	
 	// 유저(구직자)로그인 정보
@@ -56,6 +58,10 @@ public class userVO {
 
 	public String getHope_area() {
 		return hope_area;
+	}
+	
+	public String getGender() {
+		return gender;
 	}
 
 	

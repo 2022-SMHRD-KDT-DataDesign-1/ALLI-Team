@@ -106,7 +106,20 @@ public class resumeVO {
 	         this.other_license = other_license;
 	   }
    
-   // 구직자 이력서 공개/비공개 전환을 위한 생성자
+   
+   @Override
+	public String toString() {
+		return "resumeVO [resume_num=" + resume_num + ", user_id=" + user_id + ", user_name=" + user_name + ", user_tel="
+				+ user_tel + ", user_email=" + user_email + ", date_birth=" + date_birth + ", hope_area=" + hope_area
+				+ ", resume_title=" + resume_title + ", address=" + address + ", self_introduction=" + self_introduction
+				+ ", gender=" + gender + ", cre_date=" + cre_date + ", school_division=" + school_division
+				+ ", school_name=" + school_name + ", graduation_status=" + graduation_status + ", hope_salary="
+				+ hope_salary + ", picture=" + picture + ", file_name=" + file_name + ", major=" + major + ", career="
+				+ career + ", award=" + award + ", url=" + url + ", hope_area2=" + hope_area2 + ", on_off=" + on_off
+				+ ", user_tel2=" + user_tel2 + ", career_date=" + career_date + ", other_license=" + other_license + "]";
+	}
+
+// 구직자 이력서 공개/비공개 전환을 위한 생성자
    public resumeVO(BigDecimal resume_num, String user_id) {
 	   super();
 	   this.resume_num = resume_num;

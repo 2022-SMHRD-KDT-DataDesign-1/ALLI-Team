@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="input readonly">
                                     <label>성별 <span class="star">&#42;</span></label>
-                                    <input class="mandatory" type="text" placeholder=<%=login_vo.getDate_birth() %> value=<%=login_vo.getDate_birth() %> name="gender" readonly>
+                                    <input class="mandatory" type="text" placeholder="<%=login_vo.getGender() %>" value="<%=login_vo.getGender() %>" name="gender" readonly>
                                 </div>
                                 <div class="input readonly">
                                     <label>이메일<span class="star">&#42;</span></label>
