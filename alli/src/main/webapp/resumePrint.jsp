@@ -147,8 +147,8 @@
                         <ul>
                            <li><span>프로그래밍 언어</span> <span>｜</span>
                               <div>
-                                      <%for(LanguageVO l : Llist){ %>
-                                       <%BigDecimal lresume_num = new BigDecimal(243); %>
+                                     <%for(LanguageVO l : Llist){ %>
+                                       <%BigDecimal lresume_num = new BigDecimal(1006); %>
                                        <%if( l.getResume_num() == lresume_num) {%>
                                           <span>
                                              <%=l.getLanguage_name()%> [<%=l.getLanguage_level() %>]
@@ -160,7 +160,7 @@
                            <li><span>프레임워크</span> <span>｜</span>
                               <div>
                                       <%for(FrameworkVO F : Flist){ %>
-                                       <%BigDecimal fresume_num = new BigDecimal(243); %>
+                                       <%BigDecimal fresume_num = resume_num; %>
                                        <%if( F.getResume_num() == fresume_num) {%>
                                           <span>
                                              <%=F.getFramework_name()%> [<%=F.getFramework_level() %>]
@@ -172,7 +172,7 @@
                            <li><span>OS</span> <span>｜</span>
                               <div>
                                       <%for(OsVO O : Olist){ %>
-                                      <%BigDecimal oresume_num = new BigDecimal(243); %>
+                                      <%BigDecimal oresume_num = resume_num; %>
                                        <%if( O.getResume_num() == oresume_num) {%>
                                           <span>
                                              <%=O.getOs_name()%> [<%=O.getOs_level() %>]
@@ -184,7 +184,7 @@
                            <li><span>자격증</span> <span>｜</span>
                               <div>
                                       <%for(LicenseVO LI : LIlist){ %>
-                                      <%BigDecimal Liresume_num = new BigDecimal(243); %>
+                                      <%BigDecimal Liresume_num = resume_num; %>
                                        <%if( LI.getResume_num() == Liresume_num) {%>
                                           <span>
                                              <%=LI.getLicense_name()%>
