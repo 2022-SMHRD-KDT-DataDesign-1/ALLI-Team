@@ -323,7 +323,7 @@
                             </div>
                             <div class="input">
                                 <label>희망지역<span class="star">&#42;</span></label>
-                                <input type="text" placeholder="" class="mandatory" name="hope_area">
+                                <input type="text" placeholder="<%=login_vo.getHope_area() %>" class="mandatory" name="hope_area" value="<%=login_vo.getHope_area() %>" readonly>
                             </div>
                             <div class="input">
                                 <label>희망지역2</label>
