@@ -26,17 +26,12 @@
 	<%  
 		// 사용자의 생년월일 정보를 세션의 login_vo에서 가져옴
 		String birth = (String)login_vo.getDate_birth();
-		System.out.println(birth); // ex) 940911
 		// 현재 날짜를 초기화
 		Date date = new Date(); // 날짜형 데이터임
-		System.out.println(date);
 		SimpleDateFormat format = new SimpleDateFormat("yymmdd"); // yymmdd형으로 전환
 		String str = format.format(date); // yymmdd형의 문자형으로 전환
-		System.out.println(str);
 		String birth_y = birth.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
-		System.out.println(birth_y);
 		String date_y = str.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
-		System.out.println(date_y);
 		int birth_y_int = Integer.parseInt(birth_y); // 문자열을 정수형으로 바꾼다.
 		int date_y_int = Integer.parseInt(date_y); // 문자열을 정수형으로 바꾼다.
 		
@@ -49,17 +44,13 @@
 		};
 		
 		date_y_int += 2000 ; // 2000을 더해서 2023의 형태로
-		System.out.println(date_y_int);
-		System.out.println(birth_y_int);
 		int age = date_y_int - birth_y_int + 1 ; // 현재 연도에서 생년 연도를 빼서 나이 계산
-		System.out.println(age);
 	%>
 	
 	<!-- 내 아이디의 이력서 리스트 받아오는 스크립클릿 -->
 	<% 
 		resumeDAO dao = new resumeDAO();
 		List<resumeVO> resumes = dao.selectResumeList(login_vo.getUser_id());
-		System.out.println(resumes.size());
 		BigDecimal resumeNum = new BigDecimal(0);
 	%>
 	
@@ -70,7 +61,6 @@
 		List<String> lanList = lanDAO.selectUserLanguage(login_vo.getUser_id());
 		Set<String> lanList2 = new HashSet<String>(lanList);
 		List<String> lanList3 = new ArrayList<String>(lanList2);
-		System.out.println(lanList3);
 	%>
 	
 	<!-- 프레임워크 가져오는 스크립틀릿 -->
@@ -79,7 +69,6 @@
 		List<String> frameList = frameDAO.selectUserFrameWork(login_vo.getUser_id());
 		Set<String> frameList2 = new HashSet<String>(frameList);
 		List<String> frameList3 = new ArrayList<String>(frameList2);
-		System.out.println(frameList3);
 	%>
 	
 	<!-- OS 가져오는 스크립틀릿 -->
@@ -88,7 +77,6 @@
 		List<String> osList = osDAO.selectUserOS(login_vo.getUser_id());
 		Set<String> osList2 = new HashSet<String>(osList);
 		List<String> osList3 = new ArrayList<String>(osList2);
-		System.out.println(osList3);
 	%>
 	
 	<!-- 추천 기업정보 가져오는 스크립틀릿 -->
@@ -101,13 +89,7 @@
 			cmpRecomList1.add(cmpRecomList.get(i).getStac().replace(" ","").split(","));
 		}; // 기술 스택 담기
 		
-		/* Set<String[]> cmpRecomList2 = new HashSet<String[]>(cmpRecomList1);
-		List<String[]> cmpRecomList3 = new ArrayList<String[]>(cmpRecomList2); */
 		
-		/* System.out.println(cmpRecomList.size());
-		System.out.println(cmpRecomList1.size());
-		System.out.println(cmpRecomList1.get(1).length);
-		System.out.println(cmpRecomList1.get(1)[0]); */
 	%>
 	
 	<!-- 언어로 추천기업 가져오는 스크립틀릿 -->
@@ -123,13 +105,10 @@
 				}
 			}
 		};
-		System.out.println(lancmpRecomList.size());
 		
 		// lancmpRecomList2의 중복제거
 		LinkedHashSet<cmpRecomVO> lancmpRecomList1 = new LinkedHashSet<cmpRecomVO>(lancmpRecomList);
 		List<cmpRecomVO> lancmpRecomList2 = new ArrayList<cmpRecomVO>(lancmpRecomList1);
-		System.out.println(lancmpRecomList2.size()); // 언어로 추천된 최종 기업 리스트 lancmpRecomList2
-		System.out.println(lancmpRecomList2.get(0).getCmp_name());
 		
 	%>
 	
@@ -146,13 +125,10 @@
 					}
 				}
 			};
-			System.out.println(framecmpRecomList.size());
 			
 			// lancmpRecomList2의 중복제거
 			LinkedHashSet<cmpRecomVO> framecmpRecomList1 = new LinkedHashSet<cmpRecomVO>(framecmpRecomList);
 			List<cmpRecomVO> framecmpRecomList2 = new ArrayList<cmpRecomVO>(framecmpRecomList1);
-			System.out.println(framecmpRecomList2.size()); // 언어로 추천된 최종 기업 리스트 lancmpRecomList2
-			// System.out.println(framecmpRecomList2.get(0).getCmp_name());
 	%>
 	
 	<!-- OS로 추천기업 가져오는 스크립틀릿 -->
@@ -168,13 +144,10 @@
 						}
 					}
 				};
-				System.out.println(cmpRecomList.size());
 				
 				// lancmpRecomList2의 중복제거
 				LinkedHashSet<cmpRecomVO> oscmpRecomList1 = new LinkedHashSet<cmpRecomVO>(oscmpRecomList);
 				List<cmpRecomVO> oscmpRecomList2 = new ArrayList<cmpRecomVO>(oscmpRecomList1);
-				System.out.println(oscmpRecomList2.size()); // 언어로 추천된 최종 기업 리스트 oscmpRecomList2
-				// System.out.println(oscmpRecomList2.get(0).getCmp_name());
 	%>
 
 	
@@ -219,17 +192,26 @@
 	                    	<!-- 프로그래밍언어 시작 -->
 	                        <li class="c_content" id="prolan_li">
 	                            <ul>
+	                            	
 	                            	<%for(int j = 0 ; j < lanList3.size() ; j++){ %>
 	                            	<li class="chooseBtn">
+	                            		<%if(lanList3.size()>0){ %>
 	                            		<input type="button" value="<%=lanList3.get(j) %>" id="<%=lanList3.get(j) %>">
+	                            		<%}else{ %>
+	                            		<%} %>
 	                            	</li>
 	                            	<%} %>
 	                            </ul>
 	                            <div class="chooseCon">
 		                            <ul>
+		                            	<%try{ %>
 		                            	<%for(int i = 0 ; i < 3 ; i++){ %>
 		                            	<li>
+		                            		<%if(lancmpRecomList2.size()>0){ %>
 		                            		<div><%=i+1 %></div>
+		                            		<%}else{ %>
+		                            		<div>해당 프로그래밍 언어를 모집하는 회사가 없습니다</div>
+		                            		<%} %>
 					                           		<div><%=lancmpRecomList2.get(i).getCmp_name() %></div>
 					                           		<div>
 					                           			<p><%=lancmpRecomList2.get(i).getCmp_title() %></p>
@@ -239,10 +221,12 @@
 					                           			</p>
 					                           		</div>
 					                           		<div>
-					                           			<a href="#">상세보기</a>
+					                           			<a href="<%=lancmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
 					                           		</div>
-		                            	<%} %>
 		                            	</li>
+		                            	<%} %>
+	                            		<%}catch(Exception e){ %>
+	                            		<%} %>
 		                            </ul>
 	                        	</div>
 	                        </li>
@@ -251,18 +235,24 @@
 	                            <ul>
 	                            	<%for(int j = 0 ; j < frameList3.size() ; j++){ %>
 	                            	<li class="chooseBtn">
+	                            		<%if(frameList3.size()>0){ %>
 	                            		<input type="button" value="<%=frameList3.get(j) %>" id="<%=frameList3.get(j)%>">
+	                            		<%}else{ %>
+	                            		<%} %>
 	                            	</li>
 	                            	<%} %>
-	                            	<!-- <li class="chooseBtn">
-	                            		<input type="button" value="Eclipse" id="Eclipse">
-	                            	</li> -->
+	                            	
 	                            </ul>
 	                            <div class="chooseCon">
 		                            <ul>
+		                            	<%try { %>
 		                            	<%for(int i = 0 ; i < 3 ; i++){ %>
 		                            	<li>
+		                            		<%if(framecmpRecomList2.size()>0){ %>
 		                            		<div><%=i+1 %></div>
+		                            		<%}else{ %>
+		                            		<div>해당 프레임워크를 모집중인 회사가 없습니다</div>
+	                            			<%} %>
 		                            		<div><%=framecmpRecomList2.get(i).getCmp_name() %></div>
 		                            		<div>
 		                            			<p><%=framecmpRecomList2.get(i).getCmp_title() %></p>
@@ -272,9 +262,11 @@
 		                            			</p>
 		                            		</div>
 		                            		<div>
-		                            			<a href="#">상세보기</a>
+		                            			<a href="<%=framecmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
 		                            		</div>
 		                            	</li>
+		                            	<%} %>
+		                            	<%}catch(Exception e){ %>
 		                            	<%} %>
 		                            </ul>
 	                        	</div>
@@ -284,28 +276,37 @@
 	                            <ul>
 	                            	<%for(int j = 0 ; j < osList3.size() ; j++){ %>
 	                            	<li class="chooseBtn">
+	                            		<%if(osList3.size()>0){ %>
 	                            		<input type="button" value="<%=osList3.get(j) %>" id="<%=osList3.get(j)%>">
+	                            		<%}else{ %>
+	                            		<%} %>
 	                            	</li>
 	                            	<%} %>
 	                            </ul>
 	                            <div class="chooseCon">
 		                            <ul>
+		                            	<%try{ %>
 		                            	<%for(int i = 0 ; i < 3 ; i++){ %>
 		                            	<li>
+		                            		<%if(oscmpRecomList2.size()>i){ %>
 		                            		<div><%=i+1 %></div>
+		                            		<%}else{ %>
+		                            		<div>해당 OS를 모집중인 회사가 없습니다</div>
+		                            		<%} %>
 		                            		<div><%=oscmpRecomList2.get(i).getCmp_name() %></div>
 		                            		<div>
 		                            			<p><%=oscmpRecomList2.get(i).getCmp_title() %></p>
 		                            			<p><%=oscmpRecomList2.get(i).getCareer() %> ｜ <%=oscmpRecomList2.get(i).getEducation() %> ｜ <%=oscmpRecomList2.get(i).getArea() %> ｜ <%=oscmpRecomList2.get(i).getEmployment() %></p>
 		                            			<p>
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
-		                            				정보처리기사,전자정부프레임워크 개발,전자정부프레임워크 JAVA개발,ISP,NI,SI,네트워크,
+		                            				<%=oscmpRecomList2.get(i).getStac() %>
 		                            			</p>
 		                            		</div>
 		                            		<div>
-		                            			<a href="#">상세보기</a>
+		                            			<a href="<%=oscmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
 		                            		</div>
 		                            	</li>
+		                            	<%} %>
+		                            	<%}catch(Exception e){ %>
 		                            	<%} %>
 		                            </ul>
 	                        	</div>
@@ -331,19 +332,6 @@
 
 							<% resumeNum = resumes.get(i).getResume_num();%>
 
-							<!-- <li class="open"> -->
-							
-						<%-- 	<%
-							if(resumes.get(i).getOn_off() != null){
-								if(resumes.get(i).getOn_off().equals("on")){
-									out.print("<li class='open'>");
-								}else{
-									out.print("<li>");
-								}
-							}else{
-								out.print("<li>");
-							}%> --%>
-							
 							<%if(resumes.get(i).getOn_off() != null){ %>
 								<% if(resumes.get(i).getOn_off().equals("on")){%>
 									<li class='open'>
@@ -442,8 +430,6 @@
 										<%}else{ %>
 											<li class="openBoard"><a href="OpenUpdateService.do?resume_num=<%=resumeNum%>&user_id=<%=login_vo.getUser_id() %>">공개이력서로 설정</a></li>
 										<%} %>
-										<%-- <li class="openBoard"><a href="OpenUpdateService.do?resume_num=<%=resumeNum%>&user_id=<%=login_vo.getUser_id() %>">공개이력서로 설정</a></li> --%>
-										<%-- <li class="closeBoard"><a href="CloseUpdateService.do?resume_num=<%=resumeNum%>">공개이력서 해제</a></li> --%>
 										<li><a href="resumeModify.jsp?resume_num=<%=resumeNum %>">수정</a></li>
 										<li class="resumeDelBtn"><a href="resumeDeleteService.do?delIndex=<%=resumeNum%>">삭제</a></li>
 									</ul>
@@ -451,102 +437,6 @@
 							</li>
 							<%} %>
 						<%} %>
-						<%-- <li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle
-									</span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
-								<div>
-									<p>
-										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
-									</p>
-									<p>
-										신입
-									</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br>
-									스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br>
-									희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-								<p class="boardJob_date">최종수정일 : 23.04.01</p>
-							</div>
-							<div class="boardJob_add" id="option">
-								<a href="#" class="closeBtn">
-									<span class="material-symbols-outlined delete">
-		                                Close
-		                            </span>
-								</a>
-								<ul>
-									<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
-									<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
-									<li><a href="#">PDF 다운로드</a></li>
-									<li><a href="#">수정</a></li>
-									<li><a href="#">삭제</a></li>
-								</ul>
-							</div>
-						</li> --%>
-						<%-- <li>
-							<div class="boardJob_listTop">
-								<div>
-									<span class="material-symbols-outlined person_icon">
-										account_circle
-									</span>
-									<!-- <img src=""> -->
-								</div>
-								<a href="#" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
-								<div>
-									<p>
-										<span><%=login_vo.getUser_name() %></span><span>(남,<%=age %>세)</span>
-									</p>
-									<p>
-										신입
-									</p>
-								</div>
-							</div>
-							<div class="boardJob_listBtm">
-								<h3>뽑지않으면 후회할겁니다</h3>
-								<p>
-									서울대학교(4년)<br>
-									스킨스쿠버과 졸업
-								</p>
-								<p>
-									희망지역:서울<br>
-									희망연봉:100억
-								</p>
-								<p>
-									<span>JAVA</span><span>JSP</span><span>HTML</span><span>CSS</span><span>기타</span><span>등등</span>
-								</p>
-								<p class="boardJob_date">최종수정일 : 23.04.01</p>
-							</div>
-							<div class="boardJob_add" id="option">
-								<a href="#" class="closeBtn">
-									<span class="material-symbols-outlined delete">
-		                                Close
-		                            </span>
-								</a>
-								<ul>
-									<li class="openBoard"><a href="#">공개이력서로 설정</a></li>
-									<li class="closeBoard"><a href="#">공개이력서 해제</a></li>
-									<li><a href="#">PDF 다운로드</a></li>
-									<li><a href="#">수정</a></li>
-									<li><a href="#">삭제</a></li>
-								</ul>
-							</div>
-						</li> --%>
 					</ul>
 				</div>
             </div>
@@ -557,25 +447,16 @@
 	<!-- 맞춤기업 영역 스크립트 -->
 	<script>
 		let lanList = $('#lanList').val();
-		console.log('lanList : '+lanList);
 		let lanList1 = lanList.substr(1,lanList.length-2);
-		console.log('lanList1 : '+lanList1);
 		let lanList2 = lanList1.split(', ');
-		console.log('lanList2 : '+lanList2);
 		
 		let frameList = $('#frameList').val();
-		console.log('frameList : '+frameList);
 		let frameList1 = frameList.substr(1,frameList.length-2);
-		console.log('frameList1 : '+frameList1);
 		let frameList2 = frameList1.split(', ');
-		console.log('frameList2 : '+frameList2);
 		
 		let osList = $('#osList').val();
-		console.log('osList : '+osList);
 		let osList1 = osList.substr(1,osList.length-2);
-		console.log('osList1 : '+osList1);
 		let osList2 = osList1.split(', ');
-		console.log('osList2 : '+osList2);
 		
 		let pro_lan = document.getElementById('pro_lan')
 		let frameWork = document.getElementById('frameWork')
@@ -608,7 +489,6 @@
 		
 		/* 측면 탭 */
 		document.getElementById('pro_lan').onclick=()=>{
-			console.log('pro_lan_Ck')
 			prolan_li.style.display ='block'
 			frameWork_li.style.display='none'
 			OS_li.style.display = 'none'
@@ -628,7 +508,6 @@
 		/* try {
 			for(let i = 0 ; i < lanList2.length ; i++){
 				 document.getElementById(lanList2[i]).onclick=()=>{
-					console.log(lanList2[i]+'Ck')
 					for(let j = 0 ; j < lanList2.length ; j ++) {
 						document.getElementById(lanList2[j]).style.border ='1px solid #d3d3d3'
 						document.getElementById(lanList2[j]).style.background ='#fff'
@@ -639,7 +518,6 @@
 			}
 			
 		} catch(err){
-			console.log("프로그래밍 언어 없음")
 		} */
 		
 		
@@ -647,7 +525,6 @@
 		
 		/* 측면 탭 */
 		document.getElementById('frameWork').onclick=()=>{
-			console.log('frameWork_Ck')
 			prolan_li.style.display ='none'
 			frameWork_li.style.display='block'
 			OS_li.style.display = 'none'
@@ -666,7 +543,6 @@
 		/* try {
 			for(let i = 0 ; i < frameList2.length ; i++){
 				 document.getElementById(frameList2[i]).onclick=()=>{
-					console.log(frameList2[i]+'Ck')
 					for(let j = 0 ; j < frameList2.length ; j ++) {
 						document.getElementById(frameList2[j]).style.border ='1px solid #d3d3d3'
 						document.getElementById(frameList2[j]).style.background ='#fff'
@@ -677,14 +553,12 @@
 			}
 			
 		} catch(err){
-			console.log("프레임워크 없음")
 		} */
 		
 		/* OS 영역 */
 		
 		/* 측면 탭 */
 		document.getElementById('OS').onclick=()=>{
-			console.log('OS_Ck')
 			prolan_li.style.display ='none'
 			frameWork_li.style.display='none'
 			OS_li.style.display = 'block'
@@ -703,7 +577,6 @@
 		/* try{
 			for(let i = 0 ; i < osList2.length ; i++){
 				 document.getElementById(osList2[i]).onclick=()=>{
-					console.log(osList2[i]+'Ck')
 					for(let j = 0 ; j < osList2.length ; j ++) {
 						document.getElementById(osList2[j]).style.border ='1px solid #d3d3d3'
 						document.getElementById(osList2[j]).style.background ='#fff'
@@ -714,7 +587,6 @@
 			}
 			
 		} catch(err){
-			console.log("OS 없음")
 		} */
 		
 		</script>
@@ -723,7 +595,6 @@
 	<script>
 		
 		var resumesSize = $('#resumesSize').val();
-		console.log("resumesSize : " + resumesSize);
 		let delIndex = null;
 	
 	
@@ -740,27 +611,6 @@
 		for(let i = 0 ; i < resumesSize ; i++){
 			boardJob_add[i].style.display = 'none'
 		}
-		/* boardJob_add[1].style.display = 'none'
-		boardJob_add[2].style.display = 'none' */
-		
-		/* if(closeBoard[0]).style.display.equals('block')){
-			closeBoard[1]).style.display = 'none'
-			closeBoard[2]).style.display = 'none'
-		}else if(closeBoard[1]).style.display.equals('block')){
-			closeBoard[0]).style.display = 'none'
-			closeBoard[2]).style.display = 'none'
-		}else if(closeBoard[2]).style.display.equals('block')){
-			closeBoard[0]).style.display = 'none'
-			closeBoard[1]).style.display = 'none'
-		} */
-		
-		
-		// 공개 이력서 해제 꺼두는 for문
-		/* for(let i = 0 ; i < resumesSize ; i++){
-			closeBoard[i].style.display='none'
-		} */
-		/* closeBoard[1].style.display='none'
-		closeBoard[2].style.display='none' */
 		
 		// 더보기 닫기 클릭 시 닫히는 for문
 		for(let i = 0 ; i < resumesSize ; i++){
@@ -768,12 +618,6 @@
 				boardJob_add[i].style.display= 'none'
 			}
 		}
-		/* closeBtn[1].onclick=()=>{
-			boardJob_add[1].style.display= 'none'
-		}
-		closeBtn[2].onclick=()=>{
-			boardJob_add[2].style.display= 'none'
-		} */
 		
 		
 		// 더보기 버튼 클릭시 더보기 창이 열리고 다른 곳에 열려 있던 더보기 창은 닫히는 for문
@@ -787,147 +631,9 @@
 					}
 				}
 			}
-			/* boardJob_add[1].style.display = 'none'
-			boardJob_add[2].style.display = 'none' */
 		}
 		
-		/* optionBtn[1].onclick=()=>{
-			console.log("optionBtn[1] click")
-			boardJob_add[1].style.display = 'block'
-			boardJob_add[0].style.display = 'none'
-			boardJob_add[2].style.display = 'none'
-		}
-		
-		optionBtn[2].onclick=()=>{
-			console.log("optionBtn[2] click")
-			boardJob_add[1].style.display = 'none'
-			boardJob_add[0].style.display = 'none'
-			boardJob_add[2].style.display = 'block'
-		} */
-		
-		
-		// 공개이력서 설정 클릭 시 해당 이력서의 테두리가 바뀌고 공개 이력서 설정 글씨가 공개 이력서 해제로
-		// 다른 이력서 테두리가 바뀌고 공개이력서해제로 되어있던게 공개이력서 설정으로 바뀌는 for문
-		//for(let i = 0 ; i < resumesSize ; i++){
-			//openBoard[i].onclick=()=>{
-				//console.log('openBoard click')
-				//console.log(boardJob_li[i])
-				//boardJob_li[i].classList.add('open')
-				/* boardJob_li[1].classList.remove('open')
-				boardJob_li[2].classList.remove('open') */
-				//openBoard[i].style.display = 'none'
-				/* openBoard[1].style.display = 'block'
-				openBoard[2].style.display = 'block' */
-				//closeBoard[i].style.display = 'block'
-				/* closeBoard[1].style.display = 'none'
-				closeBoard[2].style.display = 'none' */
-				
-			//	for(let j = 0 ; j < resumesSize ; j++){
-					//if(j!=i){
-						//boardJob_li[j].classList.remove('open')
-						//openBoard[j].style.display = 'block'
-						//closeBoard[j].style.display = 'none'
-					//}
-				//}
-			//}
-		//}
-		
-		// 공개 이력서 해제 클릭시 해당 공개 이력서의 테두리가 바뀌고 공개이력서해제 글씨가
-		// 공개 이력서 설정으로 바뀌는 for문
-		/* for(let i = 0 ; i < resumesSize ; i++){
-			closeBoard[i].onclick=()=>{
-				console.log('openBoard click')
-				console.log(boardJob_li[i])
-				boardJob_li[i].classList.remove('open')
-				openBoard[i].style.display = 'block'
-				closeBoard[i].style.display = 'none'
-			}
-		} */
-		
-		/* openBoard[1].onclick=()=>{
-			console.log('openBoard click')
-			console.log(boardJob_li[0])
-			boardJob_li[1].classList.add('open')
-			boardJob_li[0].classList.remove('open')
-			boardJob_li[2].classList.remove('open')
-			openBoard[1].style.display = 'none'
-			openBoard[0].style.display = 'block'
-			openBoard[2].style.display = 'block'
-			closeBoard[1].style.display = 'block'
-			closeBoard[0].style.display = 'none'
-			closeBoard[2].style.display = 'none'
-		}
-		
-		closeBoard[1].onclick=()=>{
-			console.log('openBoard click')
-			console.log(boardJob_li[1])
-			boardJob_li[1].classList.remove('open')
-			openBoard[1].style.display = 'block'
-			closeBoard[1].style.display = 'none'
-		}
-		
-		openBoard[2].onclick=()=>{
-			console.log('openBoard click')
-			console.log(boardJob_li[0])
-			boardJob_li[2].classList.add('open')
-			boardJob_li[0].classList.remove('open')
-			boardJob_li[1].classList.remove('open')
-			openBoard[2].style.display = 'none'
-			openBoard[0].style.display = 'block'
-			openBoard[1].style.display = 'block'
-			closeBoard[2].style.display = 'block'
-			closeBoard[0].style.display = 'none'
-			closeBoard[1].style.display = 'none'
-		}
-		
-		closeBoard[2].onclick=()=>{
-			console.log('openBoard click')
-			console.log(boardJob_li[2])
-			boardJob_li[2].classList.remove('open')
-			openBoard[2].style.display = 'block'
-			closeBoard[2].style.display = 'none'
-		} */
-		
-		// 이력서 삭제 버튼
-		/* for(let i = 0 ; i < resumesSize ; i++){
-			resumeDelBtn[i].onclick=()=>{
-				console.log("resumeDelBtn["+i+"] click")
-				let delIndex = i
-				console.log("delIndex :",i)
-			}
-		} */
 	</script>
 	
-	<script>
-	// 맞춤기업 추천 서비스
-	    //함수 호출 반복문
-	     /* for(let i = 0; i < $('.c_btn').length; i++){
-	         tabOpen(i); 
-	     }
-	
-	     //함수에 보관
-	     function tabOpen(e){
-	         $('.c_btn').eq(e).click(function(){
-	        	 $(this).removeClass('choose_off').addClass('choose_on');
-	             $('.c_btn').not(this).removeClass('choose_on').addClass('choose_off');
-	             $('.c_content').eq(e).show();
-	             $('.c_content').not( $('.c_content').eq(e)).hide();
-	             
-	             var RightTabAll = $('.c_content').eq(e);
-	             for(let j = 0; j < RightTabAll.find('.chooseBtn').length; j++){
-	            	 tabOpen2(j);
-	             }
-	             
-	             function tabOpen2(e){
-	    	    	 $('.chooseBtn').children('input').click(function(){
-	    	    		 console.log('df');
-	    		    	 $(this).removeClass('choose_tabOff').addClass('choose_tabOn');
-	    	             $('.chooseBtn').not(this).removeClass('choose_tabOn').addClass('choose_tabOff');
-	             	});
-	    	     }
-	             
-	         });
-	     }; */
-	</script>
 </body>
 </html>
