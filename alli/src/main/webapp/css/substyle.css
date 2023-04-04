@@ -373,6 +373,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 
 #pick .boardJob02 > ul > li:nth-child(n+6){margin-top:12px;}
 
+#filter .boardJob02 > ul{min-height:0;}
 #filter .boardJob02 > ul > li:nth-child(n+6){margin-top:12px;}
 #filter .choose > ul:nth-child(2){height:232px;}
 #filter .choose input:nth-child(1)::before{display:none;}
