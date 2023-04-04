@@ -29,7 +29,7 @@ public class resumeReqService implements Command {
 
 		String moveURL = null;
 
-		String path = request.getServletContext().getRealPath("./img");
+		String path = request.getServletContext().getRealPath("./file");
 		System.out.println("저장위치 : " + path);
 
 		int maxSize = 10 * 1024 * 1024;
