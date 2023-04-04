@@ -362,7 +362,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 .boardJob_add > a > span{font-size: 20px;}
 
 /*sub_boardEmp*/
-.boardEmp_wrap .boardJob02 > ul{padding:12px;}
+.boardEmp_wrap .boardJob02 > ul{padding:12px;min-height: 214px;}
 .boardEmp_wrap .boardJob_listTop a{right: -14px;top: -11px;width: 34px;}
 .boardEmp_wrap .boardJob_listTop a > img{width:100%}
 .boardEmp_wrap .boardJob02 > ul > li{margin-right:1.2%;}
