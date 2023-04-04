@@ -312,8 +312,8 @@ box-sizing:border-box;display: inline-block;float:left;}
 .chooseJob > ul:nth-child(1) > li:not(:first-child) > div{margin-left: 14px;}
 .chooseJob > ul:nth-child(1) >li:nth-child(1) > div:nth-child(1){width: 89%;background: #333;color: #fff;height: 40px;float: left;padding:13px;box-sizing:border-box;border-radius:5px;}
 .chooseJob > ul:nth-child(1) >li:nth-child(1) > div:nth-child(2){float: none;width: 0;height: 0;border-bottom: 28px solid #333;border-left: 20px solid transparent;border-right: 20px solid transparent;transform: rotate(90deg);position: absolute;right: 0;top: 15.5px;}
-.chooseJob > ul:nth-child(2){width: 80%;background:none;padding: 17px;box-sizing: border-box;height: auto;overflow:hidden;}
-.chooseJob > ul:nth-child(2) > li > ul:nth-child(1){display: flex;justify-content: start;}
+.chooseJob > ul:nth-child(2){width: 80%;background:none;padding: 17px;box-sizing: border-box;height: 279.56px;overflow:hidden;}
+.chooseJob > ul:nth-child(2) > li > ul:nth-child(1){display: flex;justify-content: start;overflow:hidden;}
 .chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li{margin-right:10px;}
 .chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li > input{background: #fff;border: 1px solid #d3d3d3;border-radius: 30px;padding: 8px 15px;}
 .chooseJob > ul:nth-child(2) > li:nth-child(n+2){display:none;}
