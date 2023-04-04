@@ -68,9 +68,9 @@
                                     <label>생년월일 <span class="star">&#42;</span></label>
                                     <input class="mandatory" type="text" placeholder=<%=login_vo.getDate_birth() %> value=<%=login_vo.getDate_birth() %> name="date_birth" readonly>
                                 </div>
-                                <div class="input">
+                                <div class="input readonly">
                                     <label>성별 <span class="star">&#42;</span></label>
-                                    <input class="mandatory" type="text" name="gender">
+                                    <input class="mandatory" type="text" placeholder=<%=login_vo.getDate_birth() %> value=<%=login_vo.getDate_birth() %> name="gender" readonly>
                                 </div>
                                 <div class="input readonly">
                                     <label>이메일<span class="star">&#42;</span></label>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="input">
                                     <label>주소 <span class="star">&#42;</span></label>
-                                    <input class="mandatory" type="text" placeholder="Ex:ooo시oo구ooo로" name="address">
+                                    <input class="mandatory" type="text" placeholder="동까지 입력해주세요" name="address">
                                 </div>
                             </div>
                         </div>

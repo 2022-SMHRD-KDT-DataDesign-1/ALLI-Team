@@ -81,7 +81,7 @@ footer > p{color:#fff;}
 
 /*sub_resumeReg*/
 .resumeReg_wrap{background:#f6f7f9;}
-.resumeReg{width:1060px;margin:0 auto;padding:60px 0;padding: 60px 0 100px 0;}
+.resumeReg{width:1060px;margin:0 auto;padding:60px 0;padding: 60px 0 100px 0;min-height: 560px;}
 .member_inform{overflow:hidden;padding-bottom:10px;border-bottom: 1px solid #d2d2d2;}
 .member_inform > div{background: #0f2b9d;color: #fff;font-size: 10px;border-radius: 20px;text-align: center;padding-top:4.5px;width:30px;height:30px;
 box-sizing:border-box;display: inline-block;float:left;}
@@ -314,7 +314,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 .chooseJob > ul:nth-child(2){width: 80%;background:none;padding: 17px;box-sizing: border-box;height: auto;overflow:hidden;}
 .chooseJob > ul:nth-child(2) > li > ul:nth-child(1){display: flex;justify-content: start;}
 .chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li{margin-right:10px;}
-.chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li > input{cursor:pointer;background: #fff;border: 1px solid #d3d3d3;border-radius: 30px;padding: 8px 15px;}
+.chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li > input{background: #fff;border: 1px solid #d3d3d3;border-radius: 30px;padding: 8px 15px;}
 .chooseJob > ul:nth-child(2) > li:nth-child(n+2){display:none;}
 .choose_tabOn{border: 2px solid #6c00ff !important;background: #f5f1fb !important;}
 .choose_tabOff{border: 1px solid #d3d3d3 !important;background: #fff !important;}
@@ -322,6 +322,8 @@ box-sizing:border-box;display: inline-block;float:left;}
 .chooseCon > ul > li{display:flex;justify-content:space-around;align-items:center;border-bottom: 1px solid #d3d3d3;padding: 10px;font-size:14px;}
 .chooseCon > ul > li:last-child{border-bottom:none;}
 .chooseCon > ul > li >div:nth-child(1){padding: 14px 19px;background: #f4f4f4;border-radius: 3px;text-align: center;font-weight:600;}
+.nope{padding:14px 160px !important;}
+.chooseCon > ul > li >div:nth-child(2){width:100px;text-align:center;}
 .chooseCon > ul > li >div:nth-child(3){width:425px;line-height:1.2;}
 .chooseCon > ul > li >div:nth-child(3) > p:nth-child(1){font-weight: 600;margin-bottom: 2px;}
 .chooseCon > ul > li >div:nth-child(3) > p:nth-child(2){font-size: 12px;color: #8b8b8b;}

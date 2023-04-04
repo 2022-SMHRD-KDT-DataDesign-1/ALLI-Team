@@ -209,10 +209,7 @@
 		                            	<li>
 		                            		<%if(lancmpRecomList2.size()>0){ %>
 		                            		<div><%=i+1 %></div>
-		                            		<%}else{ %>
-		                            		<div>해당 프로그래밍 언어를 모집하는 회사가 없습니다</div>
-		                            		<%} %>
-					                           		<div><%=lancmpRecomList2.get(i).getCmp_name() %></div>
+		                            		<div><%=lancmpRecomList2.get(i).getCmp_name() %></div>
 					                           		<div>
 					                           			<p><%=lancmpRecomList2.get(i).getCmp_title() %></p>
 					                           			<p><%=lancmpRecomList2.get(i).getCareer() %> ｜ <%=lancmpRecomList2.get(i).getEducation() %> ｜ <%=lancmpRecomList2.get(i).getArea() %> ｜ <%=lancmpRecomList2.get(i).getEmployment() %></p>
@@ -223,6 +220,11 @@
 					                           		<div>
 					                           			<a href="<%=lancmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
 					                           		</div>
+		                            		<%}else{ %>
+		                            		<div class="nope">해당 프로그래밍 언어를 모집하는 회사가 없습니다</div>
+		                            		<% break;
+		                            		 } %>
+					                           		
 		                            	</li>
 		                            	<%} %>
 	                            		<%}catch(Exception e){ %>
@@ -250,9 +252,6 @@
 		                            	<li>
 		                            		<%if(framecmpRecomList2.size()>0){ %>
 		                            		<div><%=i+1 %></div>
-		                            		<%}else{ %>
-		                            		<div>해당 프레임워크를 모집중인 회사가 없습니다</div>
-	                            			<%} %>
 		                            		<div><%=framecmpRecomList2.get(i).getCmp_name() %></div>
 		                            		<div>
 		                            			<p><%=framecmpRecomList2.get(i).getCmp_title() %></p>
@@ -264,6 +263,10 @@
 		                            		<div>
 		                            			<a href="<%=framecmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
 		                            		</div>
+		                            		<%}else{ %>
+		                            		<div class="nope">해당 프레임워크를 모집하는 회사가 없습니다</div>
+		                            		<% break;
+		                            		 } %>
 		                            	</li>
 		                            	<%} %>
 		                            	<%}catch(Exception e){ %>
@@ -290,9 +293,6 @@
 		                            	<li>
 		                            		<%if(oscmpRecomList2.size()>i){ %>
 		                            		<div><%=i+1 %></div>
-		                            		<%}else{ %>
-		                            		<div>해당 OS를 모집중인 회사가 없습니다</div>
-		                            		<%} %>
 		                            		<div><%=oscmpRecomList2.get(i).getCmp_name() %></div>
 		                            		<div>
 		                            			<p><%=oscmpRecomList2.get(i).getCmp_title() %></p>
@@ -304,6 +304,11 @@
 		                            		<div>
 		                            			<a href="<%=oscmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
 		                            		</div>
+		                            		<%}else{ %>
+		                            		<div class="nope">해당 OS를 모집하는 회사가 없습니다</div>
+		                            		<% break;
+		                            		 } %>
+		                            		
 		                            	</li>
 		                            	<%} %>
 		                            	<%}catch(Exception e){ %>

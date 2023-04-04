@@ -61,10 +61,11 @@ footer > p{color:#fff;}
   #banner02 > ul > li:nth-child(2){font-size:32px;font-weight: 500;margin-top:15px;}
   #banner02 > ul > li:nth-child(3){font-size:14px;color:#545454;margin-top:50px;}
   #banner02 > ul > li:nth-child(4){font-size:14px;color:#6c00ff;margin-top:40px;font-weight:600;margin-bottom:20px;}
-  #banner02 > div > ul{padding-top:20px;}
-  #banner02 > div > ul > li{margin-right:200px;}
+  #banner02 > div > ul{padding-top:26px;}
+  #banner02 > div > ul > li{margin-right:200px;height:200px;}
+  #banner02 > div > ul > li > img{height:100%;}  
   #banner02 > div > ul > li > p{font-weight: 600;position: relative;width: 123px;margin: 0 auto;margin-top: 17px;}
-  #banner02 > div > ul > li > p > span{color: #6c00ff;font-size: 10px;zoom: 0.8;font-weight: 800;position: absolute;left: 0;top: -10px;}
+  #banner02 > div > ul > li > p > span{color: #6c00ff;font-size: 10px;zoom: 0.8;font-weight: 800;position: absolute;top: -10px;}
   #banner02 > input{font-size: 18px;font-weight: 800;background: #333;color: #fff;border-radius: 50px;padding: 7px 30px;margin-top: 35px;}
     /*slide*/
     .flow_banner {max-width: 1060px;margin:0 auto;background:#f6f7f9;height:286px;overflow: hidden;display: flex;}

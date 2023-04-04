@@ -43,22 +43,18 @@
 	                <ul class="list">
 	                    <li>
 	                        <img src="./img/banner02_slide01.png">
-	                        <p><span>HOT</span>국내 인기 기술 스택</p>
-	                    </li>
-	                    <li>
-	                        <img src="./img/banner02_slide01.png">
-	                        <p>수도권 인기 개발언어</p>
+	                        <p><span>HOT</span>프로그래밍 언어</p>
 	                    </li>
 	                    <li>
 	                        <img src="./img/banner02_slide02.png">
-	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                        <p><span>HOT</span>IDE(프레임워크)</p>
 	                    </li>
 	                    <li>
-	                        <img src="./img/banner02_slide02.png">
-	                        <p><span>HOT</span>국내 인기 기술 스택</p>
+	                        <img src="./img/banner02_slide03.png">
+	                        <p><span>HOT</span>개발시장 요구 학력</p>
 	                    </li>
 	                    <li>
-	                        <img src="./img/banner02_slide01.png">
+	                        <img src="./img/banner02_slide04.png">
 	                        <p><span>HOT</span>국내 인기 기술 스택</p>
 	                    </li>
 	                </ul>
@@ -256,7 +252,7 @@
             <div class="itYoutube">
                 <ul>
                     <li data-aos="fade-up" data-aos-delay="300">
-                        <a href="https://youtu.be/1BOvKMaSU-8">
+                        <a href="https://youtu.be/1BOvKMaSU-8" target="_blank">
                             <img src ="./img/banner04_youtube01.png">
                             <p>[스마트인재개발원] 수료부터 취업까지 이렇게 빨라도 되나요?</p>
                             <p>오늘은 얼마전 IoT융합 SW전문가 과정을 수료한
@@ -275,7 +271,7 @@
                         </a>
                     </li>
                     <li data-aos="fade-up" data-aos-delay="500">
-                        <a href="https://youtu.be/Rj0qw9nkT84">
+                        <a href="https://youtu.be/Rj0qw9nkT84" target="_blank">
                             <img src ="./img/banner04_youtube02.png">
                             <p>시니어개발자가 말하는 실무에서 가장 중요한 능력, 이베이코리아 현직자에게 물었습니다</p>
                             <p>인싸담당자에 나오는 다양한 선배들의 방법과 이야기를 듣고
@@ -290,7 +286,7 @@
                         </a>
                     </li>
                     <li data-aos="fade-up" data-aos-delay="900">
-                        <a href="https://youtu.be/3H4umWD5bwI">
+                        <a href="https://youtu.be/3H4umWD5bwI" target="_blank">
                             <img src ="./img/banner04_youtube03.png">
                             <p>배달의민족 CEO에게 뽑고 싶은 개발자를 물어보았다</p>
                             <p>오늘 영상의 주인공은 배달의민족을 운영하는 우아한형제들 김범준 대표입니다. 
@@ -309,43 +305,43 @@
             </div>
             <ul class="itNews"  data-aos="fade-up" data-aos-delay="700">
                 <li>
-                    <a href="https://n.news.naver.com/mnews/article/030/0003086838?sid=105">
-                        <img src ="./img/banner04_01.png">
-                        <p>LS, 전기차 배터리 소재 '황산니켈' 공장 준공</p>
-                        <p>전자신문</p>
-                        <p>2023.03.27</p>
+                    <a href="https://n.news.naver.com/mnews/article/047/0002387582?sid=105" target="_blank">
+                        <img src ="./img/banner04_01.jpg">
+                        <p>인천시, 챗GPT 활용 소프트웨어 기업 육성 지원</p>
+                        <p>오마이뉴스</p>
+                        <p>2023.04.04</p>
                     </a>
                 </li>
                 <li>
-                    <a href="https://n.news.naver.com/mnews/article/092/0002286730?sid=105">
-                        <img src ="./img/banner04_01.png">
-                        <p>펄어비스 검은사막, 조선 배경 '아침의 나라' 개발자 영상 공개</p>
-                        <p>ZDNET Korea</p>
-                        <p>2023.03.27</p>
+                    <a href="https://n.news.naver.com/mnews/article/003/0011781630?sid=105" target="_blank">
+                        <img src ="./img/banner04_02.jpg">
+                        <p>드디어 단톡방 초대 거절 기능…근데 부장 단톡방은 거절 못한다고?</p>
+                        <p>뉴시스</p>
+                        <p>2023.04.04</p>
                     </a>
                 </li>
                 <li>
-                    <a href="https://n.news.naver.com/mnews/article/092/0002286729?sid=105">
-                        <img src ="./img/banner04_01.png">
-                        <p>창립 76주년 LG, 구광모 회장 메시지 없이 '조용히'</p>
-                        <p>ZDNET Korea</p>
-                        <p>2023.03.27</p>
+                    <a href="https://n.news.naver.com/mnews/article/016/0002125524?sid=105" target="_blank">
+                        <img src ="./img/banner04_03.jpg">
+                        <p>“수백대 드론 충돌위험 없앤다” ETRI, 드론통신 국제표준화 성공</p>
+                        <p>헤럴드경제</p>
+                        <p>2023.04.04</p>
                     </a>
                 </li>
                 <li>
-                    <a href="https://n.news.naver.com/mnews/article/020/0003487714?sid=105">
-                        <img src ="./img/banner04_01.png">
-                        <p>HK이노엔 ‘컨디션 스틱 1주년’… 개선형 신제품 출시</p>
-                        <p>동아일보</p>
-                        <p>2023.03.27</p>
+                    <a href="https://n.news.naver.com/mnews/article/138/0002145683?sid=105" target="_blank">
+                        <img src ="./img/banner04_04.png">
+                        <p>셀바스AI-로보티즈, 손잡고 대화형 AI 로봇 사업 추진</p>
+                        <p>디지털데일리</p>
+                        <p>2023.04.04</p>
                     </a>
                 </li>
                 <li>
-                    <a href="https://n.news.naver.com/mnews/article/030/0003086833?sid=105">
-                        <img src ="./img/banner04_01.png">
-                        <p>LG 초거대 AI가 만든 이미지 '올해의 광고상' 수상</p>
-                        <p>전자신문</p>
-                        <p>2023.03.27</p>
+                    <a href="https://n.news.naver.com/mnews/article/421/0006723719?sid=105" target="_blank">
+                        <img src ="./img/banner04_05.jpg">
+                        <p>과기정통부, 직원 대상 '챗GPT' 교육…"우리부터 배워야"</p>
+                        <p>뉴스1</p>
+                        <p>2023.04.04</p>
                     </a>
                 </li>
             </ul>
