@@ -235,10 +235,10 @@ box-sizing:border-box;display: inline-block;float:left;}
 #pbox2 .w_box > div:nth-child(2) > ul > li > span:nth-child(3){color:#333;}
 #pbox3 .w_box > ul > li{margin-bottom: 10px;}
 #pbox3 .w_box > ul > li:last-child{margin-bottom: 0;}
-#pbox3 .w_box > ul > li > span:nth-of-type(1){font-weight: 600;width: 11%;display: inline-block;}
-#pbox3 .w_box > ul > li > span:nth-of-type(2){width:3%;display:inline-block;}
-#pbox3 .w_box > ul > li > div{display: inline-block;}
-#pbox3 .w_box > ul > li > div > span{background: #555;border-radius: 2px;color: #fff;padding: 2px 5px;font-size: 14px;margin-right: 5px;font-weight:600;}
+#pbox3 .w_box > ul > li > span:nth-of-type(1){font-weight: 600;width: 11%;display: inline-block;vertical-align:top}
+#pbox3 .w_box > ul > li > span:nth-of-type(2){width:3%;display:inline-block;vertical-align:top;}
+#pbox3 .w_box > ul > li > div{display: inline-block;width: 85%;}
+#pbox3 .w_box > ul > li > div > span{background: #555;border-radius: 2px;color: #fff;padding: 2px 5px;font-size: 14px;margin-right: 5px;font-weight:600;margin-bottom: 5px;display: inline-block;}
 #pbox4 .w_box > ul > li{line-height:1.5;}
 #pbox4 .w_box > ul > li > span:nth-child(1){display: inline-block;width: 11%;}
 #pbox4 .w_box > ul > li > span:nth-child(2){display: inline-block;width: 5%;}
