@@ -112,7 +112,7 @@
                   <div class="print_box" id="pbox2">
                      <div class="w_box">
                         <div>
-                           <img src=<%=print_vo.getPicture()%>>
+                           <img src="./file/<%=print_vo.getPicture()%>">
                         </div>
                         <div>
                            <p><%=print_vo.getUser_name()%>
