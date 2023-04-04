@@ -42,19 +42,19 @@
 	            <div class="flow_banner">
 	                <ul class="list">
 	                    <li>
-	                        <img src="./img/banner02_slide01.png">
+	                        <img src="./img/wordc.png" width="250" height="200">
 	                        <p><span>HOT</span>국내 인기 기술 스택</p>
 	                    </li>
 	                    <li>
-	                        <img src="./img/banner02_slide01.png">
+	                        <img src="./img/languageBar.png" width="250" height="200">
 	                        <p>수도권 인기 개발언어</p>
 	                    </li>
 	                    <li>
-	                        <img src="./img/banner02_slide02.png">
+	                        <img src="./img/frameworkBar.png" width="250" height="200">
 	                        <p><span>HOT</span>국내 인기 기술 스택</p>
 	                    </li>
 	                    <li>
-	                        <img src="./img/banner02_slide02.png">
+	                        <img src="./img/osBar.png" width="250" height="200">
 	                        <p><span>HOT</span>국내 인기 기술 스택</p>
 	                    </li>
 	                    <li>
@@ -206,7 +206,7 @@
 	            <div class="flow_banner">
 	                <ul class="list">
 	                    <li>
-	                        <img src="./img/banner02_slide01.png">
+	                        <img src="./img/wordc.png">
 	                        <p><span>HOT</span>국내 인기 기술 스택</p>
 	                    </li>
 	                    <li>

@@ -250,7 +250,7 @@
 					사용하는 프로그래밍 언어, 프레임워크, 필수자격증 뿐 아니라 학력, 경력도 선택이 가능합니다.</p>
 				<div class="resume_box rbox4">
 					<div>
-						<form id="searchForm" action="testService.do" method="post">
+						<form id="searchForm" action="testService.do" method="post" onsubmit="return submitValues()">
 						<section>
 							<div class="choose">
 								<ul>
@@ -287,8 +287,7 @@
 												<li>
 													<p class='language'>${item.languages}</p>
 													<div>
-														<input type="checkbox" name="${item.languages}" value="${item.languages}">
-														<input type="hidden" value="${item.languages}" name="languages">
+														<input type="checkbox" name="languages" value="${item.languages}">
 													</div>
 												</li>
 											</c:forEach> 
@@ -302,7 +301,7 @@
 													<p>${item.frameworks}</p>
 													<div>
 														<input type="checkbox" name="frameworks" value="${item.frameworks}">
-														<input type="hidden" value="${item.frameworks}" name="frameworks">
+														
 													</div>
 												</li>
 											</c:forEach> 
@@ -315,8 +314,8 @@
 												<li>
 													<p>${item.oss}</p>
 													<div>
-														<input type="checkbox" name="${item.oss}">
-													    <input type="hidden" value="${item.oss}" name="oss">
+														<input type="checkbox" name="oss" value="${item.oss}">
+													    
 													</div>
 												</li>
 											</c:forEach> 
@@ -329,8 +328,8 @@
 												<li>
 													<p>${item.licenses}</p>
 													<div>
-														<input type="checkbox" value="" name="${item.licenses}">
-														<input type="hidden" value="${item.licenses}" name="licenses">
+														<input type="checkbox" value="${item.licenses}" name="licenses">
+														
 													</div>
 												</li>
 											</c:forEach> 
@@ -340,10 +339,9 @@
 										<!-- 학력 시작 -->
 										<ul>
 											<li>
-												<p>고졸(검정고시)</p>
+												<p>고등학교</p>
 												<div>
-													<input type="checkbox" value="" name="{item.school_division}">
-													<input type="hidden" value="고졸(검정고시)" name="school_division">
+													<input type="checkbox" value="고등학교" name="school_division">
 												</div>
 											</li>
 										</ul>
@@ -351,8 +349,7 @@
 											<li>
 												<p>대학(2,3년)</p>
 												<div>
-													<input type="checkbox" value="" name="{item.school_division}">
-													<input type="hidden" value="대학(2,3년)" name="school_division">
+													<input type="checkbox" value="대학(2,3)년" name="school_division">
 												</div>
 											</li>
 										</ul>
@@ -360,8 +357,7 @@
 											<li>
 												<p>대학(4년)</p>
 												<div>
-													<input type="checkbox" value="" name="{item.school_division}">
-													<input type="hidden" value="대학(4년)" name="school_division">
+													<input type="checkbox" value="대학(4년)" name="school_division">
 												</div>
 											</li>
 										</ul>
@@ -369,8 +365,7 @@
 											<li>
 												<p>대학원</p>
 												<div>
-													<input type="checkbox" value="" name="{item.school_division}">
-													<input type="hidden" value="대학원" name="school_division">
+													<input type="checkbox" value="대학원" name="school_division">
 												</div>
 											</li>
 										</ul>
@@ -381,8 +376,8 @@
 											<li>
 												<p>신입</p>
 												<div>
-													<input type="checkbox" value="" name="{item.career}">
-													<input type="hidden" value="신입" name="career">
+													<input type="checkbox" value="신입" name="career_date">
+													
 												</div>
 											</li>
 										</ul>
@@ -390,8 +385,8 @@
 											<li>
 												<p>1년 이상</p>
 												<div>
-													<input type="checkbox" value="" name="{item.career}">
-													<input type="hidden" value="1년 이상" name="career">
+													<input type="checkbox" value="1년 이상" name="career_date">
+													
 												</div>
 											</li>
 										</ul>
@@ -399,8 +394,8 @@
 											<li>
 												<p>2년 이상</p>
 												<div>
-													<input type="checkbox" value="" name="{item.career}">
-													<input type="hidden" value="2년 이상" name="career">
+													<input type="checkbox" value="2년 이상" name="career_date">
+													
 												</div>
 											</li>
 										</ul>
@@ -408,8 +403,7 @@
 											<li>
 												<p>3년 이상</p>
 												<div>
-													<input type="checkbox" value="" name="{item.career}">
-													<input type="hidden" value="3년 이상" name="career">
+													<input type="checkbox" value="3년 이상" name="career_date">
 												</div>
 											</li>
 										</ul>
@@ -417,8 +411,7 @@
 											<li>
 												<p>5년 이상</p>
 												<div>
-													<input type="checkbox" value="" name="{item.career}">
-													<input type="hidden" value="5년 이상" name="career">
+													<input type="checkbox" value="5년 이상" name="career_date">
 												</div>
 											</li>
 										</ul>
@@ -426,8 +419,7 @@
 											<li>
 												<p>7년 이상</p>
 												<div>
-													<input type="checkbox" value="" name="{item.career}">
-													<input type="hidden" value="7년 이상" name="career">
+													<input type="checkbox" value="7년 이상" name="career_date">
 												</div>
 											</li>
 										</ul>
@@ -435,8 +427,7 @@
 											<li>
 												<p>10년 이상</p>
 												<div>
-													<input type="checkbox" value="" name="{item.career}">
-													<input type="hidden" value="10년 이상" name="career">
+													<input type="checkbox" value="10년 이상" name="career_date">
 												</div>
 											</li>
 										</ul>
@@ -450,7 +441,7 @@
                                    <p name="checkbox">
                                    </p>
                                 </div>
-								<button type="submit" onclick="submitValues()">선택한 조건<br>검색하기</button>
+								<button type="submit" id="submitBtn">선택한 조건<br>검색하기</button>
 							</div>
 						</section>
 						</form>
@@ -458,9 +449,18 @@
 				</div>
 				<div class="boardJob02">
 					<ul>
+					<%
+						resumeVO filter = (resumeVO)session.getAttribute("filter");
+					%>
+					<%if(filter == null){ %>
+						<p style="text-align:center;">조건을 선택해주세요.</p>
+					<%} else{%>
+						
+					<%} %>
 						<c:if test="${item.resume_num == null}">
 							<p style="text-align:center;">선택한 조건에 맞는 이력서가 없습니다.</p>
 						</c:if>
+						
 						<c:if test="${item.resume_num != null}">
 							<c:forEach items="${rlist}" var="item">
 								<li>
@@ -565,7 +565,7 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div>>
 	<%@ include file="./include/footer.jsp"%>
 	<script>
 		// 개발기술스택 tab 처리
@@ -608,85 +608,144 @@
 		
 		
 		//페이징
-		
-		// 필터링
 		$(document).ready(function() {
-          // 선택된 값을 저장할 배열
-          var selectedValues = [];
-
-          // checkbox 클릭 이벤트 처리
-          $('input[type="checkbox"]').click(function() {
-              // 선택된 값 가져오기
-              var selectedValue = $(this).val();
-              var selectedLanguage = $(this).siblings('input[type="hidden"]').val();
-
-              // 선택된 값이 이전에 선택된 값인지 확인
-              var isDuplicate = false;
-              for (var i = 0; i < selectedValues.length; i++) {
-                  if (selectedValues[i].value === selectedValue && selectedValues[i].language === selectedLanguage) {
-                      isDuplicate = true;
-                      break;
-                  }
-              }
-
-              // 중복된 값이 없으면 선택된 값 추가하기
-              if (!isDuplicate) {
-                  selectedValues.push({
-                      value: selectedValue,
-                      language: selectedLanguage
-                  });
-
-                  // 선택된 값들을 출력할 div 태그 찾기
-                  var selectedValuesList = $('#selected_values_list');
-
-                  // 선택된 값 추가하기
-                  var newItem = $('<div class="selected_item" style="float: left;"></div>');
-                  newItem.text(selectedLanguage);
-
-                  // 삭제 버튼 추가하기
-                  var deleteButton = $('<span class="material-symbols-outlined delete">Close</span>');
-                  newItem.append(deleteButton);
-
-                  // 선택된 값들을 가로로 출력하기
-                  selectedValuesList.append(newItem);
-
-                  // 기존에 선택되어 있던 라디오 버튼 비활성화
-                  $('input[type="checkbox"][name="' + selectedLanguage + '"]').not(this).prop('disabled', true);
-
-                  // 삭제 버튼 클릭 이벤트 처리
-                  deleteButton.click(function() {
-                      $(this).parent().remove();
-                      $('input[type="checkbox"][name="' + selectedLanguage + '"]').prop('checked', false).prop('disabled', false);
-
-                      // 선택된 값 배열에서 제거하기
-                      for (var i = 0; i < selectedValues.length; i++) {
-                          if (selectedValues[i].value === selectedValue && selectedValues[i].language === selectedLanguage) {
-                              selectedValues.splice(i, 1);
-                              break;
-                          }
-                      }
-                  });
-              } 
-          });
-      }); 
+		  // 선택된 값을 저장할 배열
+		  var selectedValues = [];
+		
+		  // checkbox 클릭 이벤트 처리
+		  $('input[type="checkbox"]').click(function() {
+		    // 선택된 값 가져오기
+		    var selectedValue = $(this).val();
+		    
+		    // 선택된 값이 이전에 선택된 값인지 확인
+		    var isDuplicate = false;
+		    for (var i = 0; i < selectedValues.length; i++) {
+		      if (selectedValues[i] === selectedValue) {
+		        isDuplicate = true;
+		        break;
+		      }
+		    }
+		
+		    // 중복된 값이 없으면 선택된 값 추가하기
+		    if (!isDuplicate) {
+		      selectedValues.push(selectedValue);
+		
+		      // 선택된 값들을 출력할 div 태그 찾기
+		      var selectedValuesList = $('#selected_values_list');
+		
+		      // 선택된 값 추가하기
+		      var newItem = $('<div class="selected_item" style="float: left;"></div>');
+		      newItem.text(selectedValue);
+		
+		      // 삭제 버튼 추가하기
+		      var deleteButton = $('<span class="material-symbols-outlined delete">Close</span>');
+		      newItem.append(deleteButton);
+		
+		      // 선택된 값들을 가로로 출력하기
+		      selectedValuesList.append(newItem);
+		
+		      // 기존에 선택되어 있던 라디오 버튼 비활성화
+		      $('input[type="checkbox"][value="' + selectedValue + '"]').not(this).prop('disabled', true);
+		
+		      // 삭제 버튼 클릭 이벤트 처리
+		      deleteButton.click(function() {
+		        $(this).parent().remove();
+		        $('input[type="checkbox"][value="' + selectedValue + '"]').prop('checked', false).prop('disabled', false);
+		
+		        // 선택된 값 배열에서 제거하기
+		        selectedValues.splice(selectedValues.indexOf(selectedValue), 1);
+		      });
+		    } else {
+		      // 중복된 값이면 체크 해제하기
+		      $(this).prop('checked', false);
+		    }
+		  });
+		}); 	
 		// 필터링
-function submitValues() {
-  // 체크된 언어들 가져오기
-  var checkedLanguages = [];
-  var languageCheckboxes = document.getElementsByName('languages');
-  for (var i = 0; i < languageCheckboxes.length; i++) {
-    if (languageCheckboxes[i].checked) {
-      checkedLanguages.push(languageCheckboxes[i].value);
-    }
-  }
-  
-  // 체크된 언어 출력
-  console.log("선택된 언어: " + checkedLanguages);
-  
-  // form submit
-  var form = document.getElementById("searchForm");
-  form.submit();
-}
+		function submitValues() {
+		  var checkedLanguages = [];
+		  var languageCheckboxes = document.getElementsByName('languages');
+		  for (var i = 0; i < languageCheckboxes.length; i++) {
+		    if (languageCheckboxes[i].checked) {
+		      checkedLanguages.push(languageCheckboxes[i].value);
+		    }
+		  }
+		  
+		  var checkedFrameworks = [];
+		  var frameworkCheckboxes = document.getElementsByName('framework');
+		  for (var i = 0; i < frameworkCheckboxes.length; i++) {
+		    if (frameworkCheckboxes[i].checked) {
+		      checkedFrameworks.push(frameworkCheckboxes[i].value);
+		    }
+		  }
+		  
+		  var checkedOSS = [];
+		  var ossCheckboxes = document.getElementsByName('oss');
+		  for (var i = 0; i < ossCheckboxes.length; i++) {
+		    if (ossCheckboxes[i].checked) {
+		      checkedOSS.push(ossCheckboxes[i].value);
+		    }
+		  }
+		  
+		  var checkedLicenses = [];
+		  var licenseCheckboxes = document.getElementsByName('licenses');
+		  for (var i = 0; i < licenseCheckboxes.length; i++) {
+		    if (licenseCheckboxes[i].checked) {
+		      checkedLicenses.push(licenseCheckboxes[i].value);
+		    }
+		  }
+		  
+		  var checkedSchoolDivision = [];
+		  var schoolDivisionCheckboxes = document.getElementsByName('school_division');
+		  for (var i = 0; i < schoolDivisionCheckboxes.length; i++) {
+		    if (schoolDivisionCheckboxes[i].checked) {
+		      checkedSchoolDivision.push(schoolDivisionCheckboxes[i].nextElementSibling.value);
+		    }
+		  }
+		  
+		  var checkedCareerDate = [];
+		  var careerDateCheckboxes = document.getElementsByName('career_date');
+		  for (var i = 0; i < careerDateCheckboxes.length; i++) {
+		    if (careerDateCheckboxes[i].checked) {
+		      checkedCareerDate.push(careerDateCheckboxes[i].nextElementSibling.value);
+		    }
+		  }
+		
+		  // 선택된 언어, 프레임워크, OSS, 라이선스 출력
+		  console.log("선택된 언어: " + checkedLanguages);
+		  console.log("선택된 프레임워크: " + checkedFrameworks);
+		  console.log("선택된 OSS: " + checkedOSS);
+		  console.log("선택된 라이선스: " + checkedLicenses);
+		  console.log("선택된 학력: " + checkedSchoolDivision);
+		  console.log("선택된 경력: " + checkedCareerDate);
+		  
+		  // 선택된 언어를 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedLanguages");
+		  hiddenInput.value = checkedLanguages.join(',');
+		
+		  // 선택된 프레임워크를 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedFrameworks");
+		  hiddenInput.value = checkedFrameworks.join(',');
+		
+		  // 선택된 OSS를 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedOSS");
+		  hiddenInput.value = checkedOSS.join(',');
+		
+		  // 선택된 라이선스를 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedLicenses");
+		  hiddenInput.value = checkedLicenses.join(',');
+		  
+		  // 선택된 학력을 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedSchoolDivision");
+		  hiddenInput.value = checkedSchoolDivision.join(',');
+		  
+		  // 선택된 학력을 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedCareerDate");
+		  hiddenInput.value = checkedCareerDate.join(',');
+		
+		  // true를 반환하여 폼이 제출될 수 있도록 함
+		  return true;
+		}
 	</script>
 </body>
 </html>

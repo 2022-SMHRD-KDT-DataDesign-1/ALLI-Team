@@ -36,7 +36,10 @@
 									<input type="text" placeholder="이메일 *" name="user_email">
 									<input type="text" placeholder="생년월일(YYMMDD) *"
 									name="date_birth"> <input type="text"
-									placeholder="희망지역 *" name="hope_area"></li>
+									placeholder="희망지역 *" name="hope_area">
+									남<input type="radio" placeholder="성별 *" name="gender" value="남">
+									여<input type="radio" placeholder="성별 *" name="gender" value="여">
+									</li>
 								<li><input type="submit" value="가입하기"></li>
 							</ul>
 						</form>
