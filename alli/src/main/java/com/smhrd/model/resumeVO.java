@@ -3,6 +3,8 @@ package com.smhrd.model;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+import oracle.sql.BLOB;
+
 public class resumeVO {
    
    private BigDecimal resume_num;

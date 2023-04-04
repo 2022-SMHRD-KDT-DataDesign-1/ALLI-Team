@@ -385,7 +385,7 @@
                                  account_circle
                               </span>
                               <%}else { %>
-                              <img style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumes.get(i).getResume_num() %>'" src="<%= resumes.get(i).getPicture() %>">
+                              <img style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumes.get(i).getResume_num() %>'" src="./file/<%= resumes.get(i).getPicture() %>">
                               <%} %>
                            </div>
                            <a href="javascript:void(0);" class="optionBtn"><img src="./img/boardJob_icon.png"></a>
