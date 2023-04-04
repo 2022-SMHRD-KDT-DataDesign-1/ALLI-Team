@@ -146,7 +146,7 @@
 					<ul>
 						<c:forEach items="${rlist}" var="item">
 							<c:forEach items="${jlist}" var="jjim">		
-								<c:if test="${jjim.resume_num eq item.resume_num }">
+								<c:if test="${item.resume_num eq jjim.resume_num}">
 									<li>
 										<div class="boardJob_listTop">
 											<div>
@@ -164,16 +164,16 @@
 											</div>
 											<c:set var="isCheckList" value="true" />
 											<c:if test="${item.resume_num eq jjim.resume_num}">
-												<a href="jjimDelService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
-													<img class="like" src="./img/star1.png" data-num="${item.resume_num}">
+												<a class="like" href='jjimservice.do?'> 
+													<img src="./img/star1.png">
 												</a>
 												<c:set var="isCheckList" value="false" />
 											</c:if>
 
 											<c:if test="${isCheckList eq true}">
-												<a href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}"> 
-											<img class="like_off" src="./img/star0.png" data-num="${item.resume_num}">
-										</a>
+												<a class="like_off" href='javascript:void(0);'> 
+													<img src="./img/star0.png">
+												</a>
 											</c:if>
 
 											<div>
@@ -239,10 +239,10 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<!-- <div class="board_list">
+				<div class="board_list">
 					<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
 					<a href="#">5</a> <a href="#" class="end">></a>
-				</div> -->
+				</div>
 			</div>
 			<div class="sub_box" id="filter">
 				<h2 class="sub_title">인재 필터링</h2>
@@ -250,6 +250,7 @@
 					사용하는 프로그래밍 언어, 프레임워크, 필수자격증 뿐 아니라 학력, 경력도 선택이 가능합니다.</p>
 				<div class="resume_box rbox4">
 					<div>
+						<form id="searchForm" action="testService.do" method="post" onsubmit="return submitValues()">
 						<section>
 							<div class="choose">
 								<ul>
@@ -284,9 +285,9 @@
 										<ul>
 											<c:forEach items="${list}" var="item">
 												<li>
-													<p>${item.languages}</p>
+													<p class='language'>${item.languages}</p>
 													<div>
-														<input type="checkbox">
+														<input type="checkbox" name="languages" value="${item.languages}">
 													</div>
 												</li>
 											</c:forEach> 
@@ -299,7 +300,8 @@
 												<li>
 													<p>${item.frameworks}</p>
 													<div>
-														<input type="checkbox">
+														<input type="checkbox" name="frameworks" value="${item.frameworks}">
+														
 													</div>
 												</li>
 											</c:forEach> 
@@ -312,7 +314,8 @@
 												<li>
 													<p>${item.oss}</p>
 													<div>
-														<input type="checkbox">
+														<input type="checkbox" name="oss" value="${item.oss}">
+													    
 													</div>
 												</li>
 											</c:forEach> 
@@ -325,137 +328,235 @@
 												<li>
 													<p>${item.licenses}</p>
 													<div>
-														<input type="checkbox">
+														<input type="checkbox" value="${item.licenses}" name="licenses">
+														
 													</div>
 												</li>
 											</c:forEach> 
 										</ul>
 									</li>
+									<li class="c_content">
+										<!-- 학력 시작 -->
+										<ul>
+											<li>
+												<p>고등학교</p>
+												<div>
+													<input type="checkbox" value="고등학교" name="school_division">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>대학(2,3년)</p>
+												<div>
+													<input type="checkbox" value="대학(2,3)년" name="school_division">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>대학(4년)</p>
+												<div>
+													<input type="checkbox" value="대학(4년)" name="school_division">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>대학원</p>
+												<div>
+													<input type="checkbox" value="대학원" name="school_division">
+												</div>
+											</li>
+										</ul>
+									</li>
+									<li class="c_content">
+										<!-- 경력 시작 -->
+										<ul>
+											<li>
+												<p>신입</p>
+												<div>
+													<input type="checkbox" value="신입" name="career_date">
+													
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>1년 이상</p>
+												<div>
+													<input type="checkbox" value="1년 이상" name="career_date">
+													
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>2년 이상</p>
+												<div>
+													<input type="checkbox" value="2년 이상" name="career_date">
+													
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>3년 이상</p>
+												<div>
+													<input type="checkbox" value="3년 이상" name="career_date">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>5년 이상</p>
+												<div>
+													<input type="checkbox" value="5년 이상" name="career_date">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>7년 이상</p>
+												<div>
+													<input type="checkbox" value="7년 이상" name="career_date">
+												</div>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<p>10년 이상</p>
+												<div>
+													<input type="checkbox" value="10년 이상" name="career_date">
+												</div>
+											</li>
+										</ul>
+										
+									</li>
 								</ul>
 							</div>
 							<div class="choose_content">
 								<p>선택한 항목</p>
-								<div>
-									<p>
-										JAVA <span class="material-symbols-outlined delete_choose">
-											Close </span>
-									</p>
-									<p>
-										C <span class="material-symbols-outlined delete_choose">
-											Close </span>
-									</p>
-									<p>
-										SPRING <span class="material-symbols-outlined delete_choose">
-											Close </span>
-									</p>
-									<p>
-										TypeScript <span
-											class="material-symbols-outlined delete_choose"> Close
-										</span>
-									</p>
-								</div>
-								<a href="#">선택한 조건<br>검색하기
-								</a>
+								<div id="selected_values_list">	
+                                   <p name="checkbox">
+                                   </p>
+                                </div>
+								<button type="submit" id="submitBtn">선택한 조건<br>검색하기</button>
 							</div>
 						</section>
+						</form>
 					</div>
 				</div>
 				<div class="boardJob02">
 					<ul>
-						<c:forEach items="${rlist}" var="item">
-							<li>
-								<div class="boardJob_listTop">
-									<div>
-										<!-- 사진구분 -->
-											<c:choose> 
-										         <c:when test = "${item.picture ne null }">
-										            <img src="${item.picture}">
-										         </c:when>
-										         <c:otherwise>
-										         	<span class="material-symbols-outlined person_icon">
-														account_circle
-													</span>
-										         </c:otherwise>
-										     </c:choose>
+					<%
+						resumeVO filter = (resumeVO)session.getAttribute("filter");
+					%>
+					<%if(filter == null){ %>
+						<p style="text-align:center;">조건을 선택해주세요.</p>
+					<%} else{%>
+						
+					<%} %>
+						<c:if test="${item.resume_num == null}">
+							<p style="text-align:center;">선택한 조건에 맞는 이력서가 없습니다.</p>
+						</c:if>
+						
+						<c:if test="${item.resume_num != null}">
+							<c:forEach items="${rlist}" var="item">
+								<li>
+									<div class="boardJob_listTop">
+										<div>
+											<!-- 사진구분 -->
+												<c:choose> 
+											         <c:when test = "${item.picture ne null }">
+											            <img src="${item.picture}">
+											         </c:when>
+											         <c:otherwise>
+											         	<span class="material-symbols-outlined person_icon">
+															account_circle
+														</span>
+											         </c:otherwise>
+											     </c:choose>
+										</div>
+										<c:set var="isCheckList" value="true" />
+										<c:forEach items="${jlist}" var="jjim">
+												<c:choose>
+												<c:when test="${item.resume_num eq jjim.resume_num}">
+													<a class="like" href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
+														<img src="./img/star1.png">
+													</a>
+													<c:set var="isCheckList" value="false" />
+												</c:when>
+												
+												</c:choose>
+										</c:forEach>
+										
+										<c:if test="${isCheckList eq true}">
+											<a class="like_off" href='javascript:void(0);'> 
+												<img src="./img/star0.png">
+											</a>
+										</c:if>
+	
+										<div>
+											<p>
+												<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+											</p>
+											<p>
+												${item.career_date}
+											</p>
+										</div>
 									</div>
-									<c:set var="isCheckList" value="true" />
-									<c:forEach items="${jlist}" var="jjim">
-											<c:choose>
-											<c:when test="${item.resume_num eq jjim.resume_num}">
-												<a href="jjimDelService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
-													<img class="like" src="./img/star1.png" data-num="${item.resume_num}">
-												</a>
-												<c:set var="isCheckList" value="false" />
-											</c:when>
-											
-											</c:choose>
-									</c:forEach>
-									
-									<c:if test="${isCheckList eq true}">
-										<a href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}"> 
-											<img class="like_off" src="./img/star0.png" data-num="${item.resume_num}">
-										</a>
-									</c:if>
-
-									<div>
+									<div class="boardJob_listBtm">
+										<h3>${item.resume_title}</h3>
 										<p>
-											<span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+											${item.school_name}
+											<!-- 학교구분 -->
+												<c:choose> 
+											         <c:when test = "${item.school_division == '대학(4년)'}">
+											            (4년)
+											         </c:when>
+											         <c:when test = "${item.school_division == '대학(2,3년)'}">
+											            (2,3년)
+											         </c:when>
+											         <c:when test = "${item.school_division == '대입검정고시'}">
+											            대입검정고시(검정고시)<br>
+											            졸업
+											         </c:when>
+											         <c:otherwise>
+											         	(${item.school_division})
+											         </c:otherwise>
+											     </c:choose>
+											<br> ${item.major} ${item.graduation_status}
 										</p>
 										<p>
-											${item.career_date}
+											희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
+										</p>
+										<p>
+											<c:forEach items="${Llist}" var="tech">
+												<c:if test = "${item.resume_num eq tech.resume_num}"> 
+											         <span>${tech.language_name }</span>
+											    </c:if>
+											</c:forEach>
+											<c:forEach items="${Flist}" var="tech">
+												<c:if test = "${item.resume_num eq tech.resume_num}"> 
+											         <span>${tech.framework_name }</span>
+											    </c:if>
+											</c:forEach>
+											<c:forEach items="${Olist}" var="tech">
+												<c:if test = "${item.resume_num eq tech.resume_num}"> 
+											         <span>${tech.os_name }</span>
+											    </c:if>
+											</c:forEach>
+											<c:forEach items="${LIlist}" var="tech">
+												<c:if test = "${item.resume_num eq tech.resume_num}"> 
+											         <span>${tech.license_name }</span>
+											    </c:if>
+											</c:forEach>
 										</p>
 									</div>
-								</div>
-								<div class="boardJob_listBtm">
-									<h3>${item.resume_title}</h3>
-									<p>
-										${item.school_name}
-										<!-- 학교구분 -->
-											<c:choose> 
-										         <c:when test = "${item.school_division == '대학(4년)'}">
-										            (4년)
-										         </c:when>
-										         <c:when test = "${item.school_division == '대학(2,3년)'}">
-										            (2,3년)
-										         </c:when>
-										         <c:when test = "${item.school_division == '대입검정고시'}">
-										            대입검정고시(검정고시)<br>
-										            졸업
-										         </c:when>
-										         <c:otherwise>
-										         	(${item.school_division})
-										         </c:otherwise>
-										     </c:choose>
-										<br> ${item.major} ${item.graduation_status}
-									</p>
-									<p>
-										희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
-									</p>
-									<p>
-										<c:forEach items="${Llist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.language_name }</span>
-										    </c:if>
-										</c:forEach>
-										<c:forEach items="${Flist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.framework_name }</span>
-										    </c:if>
-										</c:forEach>
-										<c:forEach items="${Olist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.os_name }</span>
-										    </c:if>
-										</c:forEach>
-										<c:forEach items="${LIlist}" var="tech">
-											<c:if test = "${item.resume_num eq tech.resume_num}"> 
-										         <span>${tech.license_name }</span>
-										    </c:if>
-										</c:forEach>
-									</p>
-								</div>
-							</li>
-						</c:forEach>
+								</li>
+							</c:forEach>
+						</c:if>
 					</ul>
 				</div>
 				<ul class="board_list">
@@ -464,7 +565,7 @@
 				</ul>
 			</div>
 		</div>
-	</div>
+	</div>>
 	<%@ include file="./include/footer.jsp"%>
 	<script>
 		// 개발기술스택 tab 처리
@@ -488,66 +589,9 @@
 							});
 		}
 		
-		//찜기능 Ajax처리
-	   const jjimAjax = (event)=>{
-		   
-		   	event.preventDefault();
-		   
-            console.log('jjimAjax')
-            console.log(event.target.getAttribute("data-num"));
-
-            let cmp_id = '<%=cmpLogin_vo.getCmp_id() %>';
-            let resume_num = event.target.getAttribute("data-num");
-            
-           	$.ajax({
-                url : 'jjimService.do', 
-                type : 'get',
-                data : {cmp_id : cmp_id, resume_num : resume_num},
-                datatype : 'JSON',
-                success : (res)=>{
-                    console.log('통신(찜추가)에 성공했습니다.', )
-                    location.reload();
-                },
-                error : ()=>{
-                    console.log('통신(찜추가)에 실패하셨습니다!')
-                }
-            })
-        }
-		
-        $('.like_off').click(jjimAjax);
-        
-        
-        
-        const jjimDelAjax = (event)=>{
- 		   
-		   	event.preventDefault();
-		   
-            console.log('jjimDelAjax')
-            console.log(event.target.getAttribute("data-num"));
-
-            let cmp_id = '<%=cmpLogin_vo.getCmp_id() %>';
-            let resume_num = event.target.getAttribute("data-num");
-            
-           	$.ajax({
-                url : 'jjimDelService.do', 
-                type : 'get',
-                data : {cmp_id : cmp_id, resume_num : resume_num},
-                datatype : 'JSON',
-                success : (res)=>{
-                    console.log('통신(찜추가)에 성공했습니다.', )
-                    location.reload();
-                },
-                error : ()=>{
-                    console.log('통신(찜추가)에 실패하셨습니다!')
-                }
-            })
-        }
-		
-        $('.like').click(jjimDelAjax);
-		
 		
 		/*star 클릭이벤트*/
-		/* $(".like").click(function() {
+		$(".like").click(function() {
 		    var img = $(this).children("img");
 		    img.attr("src", function(index, attr){
 		      if (attr.match('0')) {
@@ -557,18 +601,151 @@
 		        return attr.replace("1", "0")
 		      }
 		    });
-		  }); */
+		  });
 		
 		
 		
 		
 		
 		//페이징
+		$(document).ready(function() {
+		  // 선택된 값을 저장할 배열
+		  var selectedValues = [];
 		
+		  // checkbox 클릭 이벤트 처리
+		  $('input[type="checkbox"]').click(function() {
+		    // 선택된 값 가져오기
+		    var selectedValue = $(this).val();
+		    
+		    // 선택된 값이 이전에 선택된 값인지 확인
+		    var isDuplicate = false;
+		    for (var i = 0; i < selectedValues.length; i++) {
+		      if (selectedValues[i] === selectedValue) {
+		        isDuplicate = true;
+		        break;
+		      }
+		    }
 		
+		    // 중복된 값이 없으면 선택된 값 추가하기
+		    if (!isDuplicate) {
+		      selectedValues.push(selectedValue);
 		
+		      // 선택된 값들을 출력할 div 태그 찾기
+		      var selectedValuesList = $('#selected_values_list');
 		
+		      // 선택된 값 추가하기
+		      var newItem = $('<div class="selected_item" style="float: left;"></div>');
+		      newItem.text(selectedValue);
 		
+		      // 삭제 버튼 추가하기
+		      var deleteButton = $('<span class="material-symbols-outlined delete">Close</span>');
+		      newItem.append(deleteButton);
+		
+		      // 선택된 값들을 가로로 출력하기
+		      selectedValuesList.append(newItem);
+		
+		      // 기존에 선택되어 있던 라디오 버튼 비활성화
+		      $('input[type="checkbox"][value="' + selectedValue + '"]').not(this).prop('disabled', true);
+		
+		      // 삭제 버튼 클릭 이벤트 처리
+		      deleteButton.click(function() {
+		        $(this).parent().remove();
+		        $('input[type="checkbox"][value="' + selectedValue + '"]').prop('checked', false).prop('disabled', false);
+		
+		        // 선택된 값 배열에서 제거하기
+		        selectedValues.splice(selectedValues.indexOf(selectedValue), 1);
+		      });
+		    } else {
+		      // 중복된 값이면 체크 해제하기
+		      $(this).prop('checked', false);
+		    }
+		  });
+		}); 	
+		// 필터링
+		function submitValues() {
+		  var checkedLanguages = [];
+		  var languageCheckboxes = document.getElementsByName('languages');
+		  for (var i = 0; i < languageCheckboxes.length; i++) {
+		    if (languageCheckboxes[i].checked) {
+		      checkedLanguages.push(languageCheckboxes[i].value);
+		    }
+		  }
+		  
+		  var checkedFrameworks = [];
+		  var frameworkCheckboxes = document.getElementsByName('framework');
+		  for (var i = 0; i < frameworkCheckboxes.length; i++) {
+		    if (frameworkCheckboxes[i].checked) {
+		      checkedFrameworks.push(frameworkCheckboxes[i].value);
+		    }
+		  }
+		  
+		  var checkedOSS = [];
+		  var ossCheckboxes = document.getElementsByName('oss');
+		  for (var i = 0; i < ossCheckboxes.length; i++) {
+		    if (ossCheckboxes[i].checked) {
+		      checkedOSS.push(ossCheckboxes[i].value);
+		    }
+		  }
+		  
+		  var checkedLicenses = [];
+		  var licenseCheckboxes = document.getElementsByName('licenses');
+		  for (var i = 0; i < licenseCheckboxes.length; i++) {
+		    if (licenseCheckboxes[i].checked) {
+		      checkedLicenses.push(licenseCheckboxes[i].value);
+		    }
+		  }
+		  
+		  var checkedSchoolDivision = [];
+		  var schoolDivisionCheckboxes = document.getElementsByName('school_division');
+		  for (var i = 0; i < schoolDivisionCheckboxes.length; i++) {
+		    if (schoolDivisionCheckboxes[i].checked) {
+		      checkedSchoolDivision.push(schoolDivisionCheckboxes[i].nextElementSibling.value);
+		    }
+		  }
+		  
+		  var checkedCareerDate = [];
+		  var careerDateCheckboxes = document.getElementsByName('career_date');
+		  for (var i = 0; i < careerDateCheckboxes.length; i++) {
+		    if (careerDateCheckboxes[i].checked) {
+		      checkedCareerDate.push(careerDateCheckboxes[i].nextElementSibling.value);
+		    }
+		  }
+		
+		  // 선택된 언어, 프레임워크, OSS, 라이선스 출력
+		  console.log("선택된 언어: " + checkedLanguages);
+		  console.log("선택된 프레임워크: " + checkedFrameworks);
+		  console.log("선택된 OSS: " + checkedOSS);
+		  console.log("선택된 라이선스: " + checkedLicenses);
+		  console.log("선택된 학력: " + checkedSchoolDivision);
+		  console.log("선택된 경력: " + checkedCareerDate);
+		  
+		  // 선택된 언어를 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedLanguages");
+		  hiddenInput.value = checkedLanguages.join(',');
+		
+		  // 선택된 프레임워크를 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedFrameworks");
+		  hiddenInput.value = checkedFrameworks.join(',');
+		
+		  // 선택된 OSS를 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedOSS");
+		  hiddenInput.value = checkedOSS.join(',');
+		
+		  // 선택된 라이선스를 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedLicenses");
+		  hiddenInput.value = checkedLicenses.join(',');
+		  
+		  // 선택된 학력을 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedSchoolDivision");
+		  hiddenInput.value = checkedSchoolDivision.join(',');
+		  
+		  // 선택된 학력을 hidden input 태그에 추가
+		  var hiddenInput = document.getElementById("selectedCareerDate");
+		  hiddenInput.value = checkedCareerDate.join(',');
+		
+		  // true를 반환하여 폼이 제출될 수 있도록 함
+		  return true;
+		}
 	</script>
 </body>
 </html>
