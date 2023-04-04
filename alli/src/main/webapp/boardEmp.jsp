@@ -459,7 +459,7 @@
                   <c:forEach items="${filter}" var="item">
                   		<c:if test="${item.resume_num == null}">
 		                     <p style="text-align:center;">선택한 조건에 맞는 이력서가 없습니다.</p>
-		                  </c:if>
+		                 </c:if>
                         <li>
                            <div class="boardJob_listTop">
                               <div>
