@@ -46,6 +46,9 @@ public class resumeReqService implements Command {
 			String user_id = multi.getParameter("user_id");
 			String resume_title = multi.getParameter("resume_title");
 			String picture = multi.getFilesystemName("picture");
+			if(picture == null) {
+				picture = "no_picture";
+			}
 			String user_name = multi.getParameter("user_name");
 			String date_birth = multi.getParameter("date_birth");
 			String gender = multi.getParameter("gender");
@@ -63,6 +66,9 @@ public class resumeReqService implements Command {
 			String award = multi.getParameter("award");
 			String self_introduction = multi.getParameter("self_introduction");
 			String file_name = multi.getFilesystemName("file_name");
+			if(file_name == null) {
+				file_name = "no_file";
+			}
 			String url = multi.getParameter("url");
 			String hope_salary = multi.getParameter("hope_salary");
 			String hope_area = multi.getParameter("hope_area");
