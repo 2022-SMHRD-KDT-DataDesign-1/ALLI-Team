@@ -34,7 +34,7 @@ footer > p{color:#fff;}
 .sub_top_a > div > p >img{width:70px;vertical-align: bottom;}
 
 /*sub_login*/
-.login_wrap{background:#f6f7f9;}
+.login_wrap{background:#f6f7f9;min-height: 821px;}
 .sub_login{width:500px;margin:0 auto;padding:100px 0 200px 0;}
 .sub_login01 > img{width: 70px;margin: 0 auto;display: block;}
 .sub_login01 > p{text-align: center;    font-weight: 800;margin-top: 22px;font-size: 17px;}
@@ -222,7 +222,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 .print_box h3{font-size: 16px;margin-top: 18px;margin-bottom: 8px;font-weight: 600;color: #555;}
 .w_box{width:100%;background:#fff;position:relative;overflow:hidden;padding: 20px;box-sizing: border-box;}
 #pbox1 > p{font-size:30px;font-weight:400;margin-top:30px;margin-bottom:24px;}
-#pbox2 .w_box > div:nth-child(1){width:140px;hegith:179px;float:left;}
+#pbox2 .w_box > div:nth-child(1){width:140px;height:179px;float:left;}
 #pbox2 .w_box{padding:0;}
 #pbox2 .w_box > div:nth-child(1) > img{width:100%;display:block;}
 #pbox2 .w_box > div:nth-child(2){float:left;width:920px;padding: 23.5px;box-sizing: border-box;}
@@ -235,10 +235,10 @@ box-sizing:border-box;display: inline-block;float:left;}
 #pbox2 .w_box > div:nth-child(2) > ul > li > span:nth-child(3){color:#333;}
 #pbox3 .w_box > ul > li{margin-bottom: 10px;}
 #pbox3 .w_box > ul > li:last-child{margin-bottom: 0;}
-#pbox3 .w_box > ul > li > span:nth-of-type(1){font-weight: 600;width: 11%;display: inline-block;}
-#pbox3 .w_box > ul > li > span:nth-of-type(2){width:3%;display:inline-block;}
-#pbox3 .w_box > ul > li > div{display: inline-block;}
-#pbox3 .w_box > ul > li > div > span{background: #555;border-radius: 2px;color: #fff;padding: 2px 5px;font-size: 14px;margin-right: 5px;font-weight:600;}
+#pbox3 .w_box > ul > li > span:nth-of-type(1){font-weight: 600;width: 11%;display: inline-block;vertical-align:top}
+#pbox3 .w_box > ul > li > span:nth-of-type(2){width:3%;display:inline-block;vertical-align:top;}
+#pbox3 .w_box > ul > li > div{display: inline-block;width: 85%;}
+#pbox3 .w_box > ul > li > div > span{background: #555;border-radius: 2px;color: #fff;padding: 2px 5px;font-size: 14px;margin-right: 5px;font-weight:600;margin-bottom: 5px;display: inline-block;}
 #pbox4 .w_box > ul > li{line-height:1.5;}
 #pbox4 .w_box > ul > li > span:nth-child(1){display: inline-block;width: 11%;}
 #pbox4 .w_box > ul > li > span:nth-child(2){display: inline-block;width: 5%;}
@@ -312,8 +312,8 @@ box-sizing:border-box;display: inline-block;float:left;}
 .chooseJob > ul:nth-child(1) > li:not(:first-child) > div{margin-left: 14px;}
 .chooseJob > ul:nth-child(1) >li:nth-child(1) > div:nth-child(1){width: 89%;background: #333;color: #fff;height: 40px;float: left;padding:13px;box-sizing:border-box;border-radius:5px;}
 .chooseJob > ul:nth-child(1) >li:nth-child(1) > div:nth-child(2){float: none;width: 0;height: 0;border-bottom: 28px solid #333;border-left: 20px solid transparent;border-right: 20px solid transparent;transform: rotate(90deg);position: absolute;right: 0;top: 15.5px;}
-.chooseJob > ul:nth-child(2){width: 80%;background:none;padding: 17px;box-sizing: border-box;height: auto;overflow:hidden;}
-.chooseJob > ul:nth-child(2) > li > ul:nth-child(1){display: flex;justify-content: start;}
+.chooseJob > ul:nth-child(2){width: 80%;background:none;padding: 17px;box-sizing: border-box;height: 279.56px;overflow:hidden;}
+.chooseJob > ul:nth-child(2) > li > ul:nth-child(1){display: flex;justify-content: start;overflow:hidden;}
 .chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li{margin-right:10px;}
 .chooseJob > ul:nth-child(2) > li > ul:nth-child(1) > li > input{background: #fff;border: 1px solid #d3d3d3;border-radius: 30px;padding: 8px 15px;}
 .chooseJob > ul:nth-child(2) > li:nth-child(n+2){display:none;}
@@ -350,7 +350,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 .boardJob_listBtm{margin-top:8px;position:relative;height: 118.56px;}
 .boardJob_listBtm > h3{font-weight: 700;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;}
 .boardJob_listBtm > p:nth-of-type(1){margin-top: 5px;color: #a1a1a1;}
-.boardJob_listBtm > p:nth-of-type(2){margin-top: 10px;color: #a1a1a1;}
+.boardJob_listBtm > p:nth-of-type(2){margin-top: 10px;color: #a1a1a1;min-height:31.19px}
 .boardJob_listBtm > p:nth-of-type(3){margin-top: 10px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;}
 .boardJob_listBtm > p:nth-of-type(3) > span{background: #f1f2f1;font-size: 10px;padding: 5px;font-weight: 500;margin-right:3px;}
 .boardJob_date{position: absolute;right: 0;bottom: -30px;color:#a1a1a1;font-size:12px;}
@@ -373,6 +373,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 
 #pick .boardJob02 > ul > li:nth-child(n+6){margin-top:12px;}
 
+#filter .boardJob02 > ul{min-height:0;}
 #filter .boardJob02 > ul > li:nth-child(n+6){margin-top:12px;}
 #filter .choose > ul:nth-child(2){height:232px;}
 #filter .choose input:nth-child(1)::before{display:none;}
@@ -380,4 +381,4 @@ box-sizing:border-box;display: inline-block;float:left;}
 #filter .resume_box > div{border:none;}
 #filter .choose_content > p{width:16%;}
 #filter .choose_content > div{width:69%;}
-#filter .choose_content > a{padding: 10px 20px;background: #6c00ff;color: #fff;font-weight: 600;text-align: center;line-height: 1.2;}
+#filter .choose_content > button{padding: 10px 20px;background: #6c00ff;color: #fff;font-weight: 600;text-align: center;line-height: 1.2;border:none;}

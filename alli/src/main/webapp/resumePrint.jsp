@@ -111,9 +111,14 @@
                   </div>
                   <div class="print_box" id="pbox2">
                      <div class="w_box">
-                        <div>
-                           <img src=<%=print_vo.getPicture()%>>
-                        </div>
+                       	<%if(print_vo.getPicture().equals("no_picture.png")){ %>
+                          		<div style="display:none;">
+                          		</div>
+                          <%}else{ %>
+                          		<div>
+                          			<img src="./file/<%=print_vo.getPicture()%>">
+                          		</div>
+                          <%} %>
                         <div>
                            <p><%=print_vo.getUser_name()%>
                               <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>
@@ -273,7 +278,7 @@
                   <li><a href="boardJob.jsp">목록</a></li>
                   <li><a href="#" id="pdf">PDF 변환</a></li>
                   <li><a href="resumeModify.jsp?resume_num=<%=resume_num%>">수정하기</a></li>
-                  <li><a href="printDeleteService.do?resume_num=<%=resume_num%>" onclick="alert('이력서가 삭제 되었습니다.')"><%=resume_num%>삭제</a></li>
+                  <li><a href="printDeleteService.do?resume_num=<%=resume_num%>" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a></li>
                </ul>
             </form>
          </div>

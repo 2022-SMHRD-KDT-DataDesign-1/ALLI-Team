@@ -47,7 +47,7 @@ public class resumeReqService implements Command {
 			String resume_title = multi.getParameter("resume_title");
 			String picture = multi.getFilesystemName("picture");
 			if(picture == null) {
-				picture = "no_picture";
+				picture = "no_picture.png";
 			}
 			String user_name = multi.getParameter("user_name");
 			String date_birth = multi.getParameter("date_birth");
@@ -95,8 +95,7 @@ public class resumeReqService implements Command {
 				resumeVO select_resumeVO = resumeDAO.selectResumeNum(user_id);
 
 				BigDecimal resume_num = select_resumeVO.getResume_num();
-				System.out.println(resume_num); 
-						
+
 				String[] languages = multi.getParameterValues("languages");
 				String[] frameworks = multi.getParameterValues("frameworks");
 				String[] oss = multi.getParameterValues("oss");
@@ -182,6 +181,7 @@ public class resumeReqService implements Command {
 					for (int i = 0; i < languagesLevels.length; i++) {
 						System.out.println(languageNames[i] + " - " + languagesLevels[i]);
 						if (languagesLevels[i] != null) {
+
 							LanguageVO languageVo = new LanguageVO(resume_num, languageNames[i], languagesLevels[i]);
 							int cnt2 = lagnguageDAO.insertLanguages(languageVo);
 							if (cnt2 > 0) {
