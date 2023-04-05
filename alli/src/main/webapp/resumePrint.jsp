@@ -244,10 +244,9 @@
                   <%if(print_vo.getOther_license() != null){%>
                   <div class="print_box" id="pbox5">
                      <h3>기타자격증</h3>
-                     <div class="w_box">
-                        <p>- <%=print_vo.getOther_license()%></p>
-                     </div>
-                  </div>
+						<div class="w_box">
+						  <p><%= "- " + print_vo.getOther_license().replace("-", " - ").replaceAll("\\s+", " <br>- ") %></p>
+						</div>
                   <%}%>                  
                   <%if(print_vo.getCareer() != null){%>
                   <div class="print_box" id="pbox5">
