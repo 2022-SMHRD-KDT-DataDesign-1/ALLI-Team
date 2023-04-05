@@ -155,9 +155,9 @@
 												<li>
 													<p class='language'>${item.languages}</p>
 													<div>
-														<input type="radio" value="상" name="${item.languages}">
-														<input type="radio" value="중" name="${item.languages}">
-														<input type="radio" value="하" name="${item.languages}">
+														<input type="radio" value="${item.languages}_상" name="${item.languages}">
+														<input type="radio" value="${item.languages}_중" name="${item.languages}">
+														<input type="radio" value="${item.languages}_하" name="${item.languages}">
 														<input type="hidden" value="${item.languages}" name="languages">
 													</div>
 												</li>
@@ -170,9 +170,9 @@
 												<li>
 													<p>${item.frameworks}</p>
 													<div>
-														<input type="radio" value="상" name="${item.frameworks}">
-														<input type="radio" value="중" name="${item.frameworks}">
-														<input type="radio" value="하" name="${item.frameworks}">
+														<input type="radio" value="${item.frameworks}_상" name="${item.frameworks}">
+														<input type="radio" value="${item.frameworks}_중" name="${item.frameworks}">
+														<input type="radio" value="${item.frameworks}_하" name="${item.frameworks}">
 														<input type="hidden" value="${item.frameworks}" name="frameworks">
 													</div>
 												</li>
@@ -185,9 +185,9 @@
 												<li>
 													<p>${item.oss}</p>
 													<div>
-														<input type="radio" value="상" name="${item.oss}">
-														<input type="radio" value="중" name="${item.oss}">
-														<input type="radio" value="하" name="${item.oss}">
+														<input type="radio" value="${item.oss}_상" name="${item.oss}">
+														<input type="radio" value="${item.oss}_중" name="${item.oss}">
+														<input type="radio" value="${item.oss}_하" name="${item.oss}">
 														<input type="hidden" value="${item.oss}" name="oss">
 													</div>
 												</li>
@@ -200,7 +200,7 @@
 												<li>
 													<p>${item.licenses}</p>
 													<div>
-														<input type="radio" value="" name="${item.licenses}">
+														<input type="radio" value="${item.licenses}_" name="${item.licenses}">
 														<input type="hidden" value="${item.licenses}" name="licenses">
 													</div>
 												</li>
@@ -517,7 +517,7 @@
 
 		            // 선택된 값 추가하기
 		            var newItem = $('<div class="selected_item" style="float: left;"></div>');
-		            newItem.text(selectedLanguage + ' ' + selectedValue);
+		            newItem.text(selectedValue);
 
 		            // 삭제 버튼 추가하기
 		            var deleteButton = $('<span class="material-symbols-outlined delete">Close</span>');

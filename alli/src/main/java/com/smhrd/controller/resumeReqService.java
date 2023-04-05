@@ -95,20 +95,31 @@ public class resumeReqService implements Command {
 				resumeVO select_resumeVO = resumeDAO.selectResumeNum(user_id);
 
 				BigDecimal resume_num = select_resumeVO.getResume_num();
-				System.out.println(resume_num);
+				System.out.println(resume_num); 
+						
 				String[] languages = multi.getParameterValues("languages");
 				String[] frameworks = multi.getParameterValues("frameworks");
 				String[] oss = multi.getParameterValues("oss");
 				String[] licenses = multi.getParameterValues("licenses");
+
+				List<String> languagesNameList = new ArrayList<>();
+				List<String> frameworksNameList = new ArrayList<>();
+				List<String> ossNameList = new ArrayList<>();
+				List<String> licensesNameList = new ArrayList<>();
+				
 				List<String> languagesLevelsList = new ArrayList<>();
 				List<String> frameworksLevelsList = new ArrayList<>();
 				List<String> ossLevelsList = new ArrayList<>();
-				List<String> licensesLevelsList = new ArrayList<>();
 				if (languages != null) {
 					for (int i = 0; i < languages.length; i++) {
 						String languagesLevel = multi.getParameter(languages[i]);
 						if (languagesLevel != null) {
-							languagesLevelsList.add(languagesLevel);
+							String[] languageNameArray = languagesLevel.split("_");
+							if(languageNameArray[0].equals(languages[i])) {
+								languagesNameList.add(languageNameArray[0]);
+								languagesLevelsList.add(languageNameArray[1]);
+							}
+
 						}
 					}
 				}
@@ -117,7 +128,12 @@ public class resumeReqService implements Command {
 					for (int i = 0; i < frameworks.length; i++) {
 						String frameworkLevel = multi.getParameter(frameworks[i]);
 						if (frameworkLevel != null) {
-							frameworksLevelsList.add(frameworkLevel);
+							String[] frameworkNameArray = frameworkLevel.split("_");
+							if(frameworkNameArray[0].equals(frameworks[i])) {
+								frameworksNameList.add(frameworkNameArray[0]);
+								frameworksLevelsList.add(frameworkNameArray[1]);
+							}
+
 						}
 					}
 				}
@@ -126,7 +142,12 @@ public class resumeReqService implements Command {
 					for (int i = 0; i < oss.length; i++) {
 						String ossLevel = multi.getParameter(oss[i]);
 						if (ossLevel != null) {
-							ossLevelsList.add(ossLevel);
+							String[] osNameArray = ossLevel.split("_");
+							if(osNameArray[0].equals(oss[i])) {
+								ossNameList.add(osNameArray[0]);
+								ossLevelsList.add(osNameArray[1]);
+							}
+
 						}
 					}
 				}
@@ -135,14 +156,22 @@ public class resumeReqService implements Command {
 					for (int i = 0; i < licenses.length; i++) {
 						String licensesLevel = multi.getParameter(licenses[i]);
 						if (licensesLevel != null) {
-							licensesLevelsList.add(licensesLevel);
+							String[] licenseNameArray = licensesLevel.split("_");
+							if(licenseNameArray[0].equals(licenses[i])) {
+								licensesNameList.add(licenseNameArray[0]);
+							}
+
 						}
 					}
 				}
+				String[] languageNames = languagesNameList.toArray(new String[0]);
+				String[] frameworkNames = frameworksNameList.toArray(new String[0]);
+				String[] osNames = ossNameList.toArray(new String[0]);
+				String[] licenseNames = licensesNameList.toArray(new String[0]);
+				
 				String[] languagesLevels = languagesLevelsList.toArray(new String[0]);
 				String[] frameworksLevels = frameworksLevelsList.toArray(new String[0]);
 				String[] ossLevels = ossLevelsList.toArray(new String[0]);
-				String[] licensesLevels = licensesLevelsList.toArray(new String[0]);
 
 				LanguageDAO lagnguageDAO = new LanguageDAO();
 				FrameworkDAO frameworkDAO = new FrameworkDAO();
@@ -151,9 +180,9 @@ public class resumeReqService implements Command {
 
 				if (languages != null) {
 					for (int i = 0; i < languagesLevels.length; i++) {
-						System.out.println(languages[i] + " - " + languagesLevels[i]);
+						System.out.println(languageNames[i] + " - " + languagesLevels[i]);
 						if (languagesLevels[i] != null) {
-							LanguageVO languageVo = new LanguageVO(resume_num, languages[i], languagesLevels[i]);
+							LanguageVO languageVo = new LanguageVO(resume_num, languageNames[i], languagesLevels[i]);
 							int cnt2 = lagnguageDAO.insertLanguages(languageVo);
 							if (cnt2 > 0) {
 								System.out.println("언어성공");
@@ -165,9 +194,9 @@ public class resumeReqService implements Command {
 				}
 				if (frameworks != null) {
 					for (int i = 0; i < frameworksLevels.length; i++) {
-						System.out.println(frameworks[i] + " - " + frameworksLevels[i]);
+						System.out.println(frameworkNames[i] + " - " + frameworksLevels[i]);
 						if (frameworksLevels[i] != null) {
-							FrameworkVO frameworkVO = new FrameworkVO(resume_num, frameworks[i], frameworksLevels[i]);
+							FrameworkVO frameworkVO = new FrameworkVO(resume_num, frameworkNames[i], frameworksLevels[i]);
 							int cnt2 = frameworkDAO.insertFrameworks(frameworkVO);
 							if (cnt2 > 0) {
 								System.out.println("프레임워크성공");
@@ -179,9 +208,9 @@ public class resumeReqService implements Command {
 				}
 				if (oss != null) {
 					for (int i = 0; i < ossLevels.length; i++) {
-						System.out.println(oss[i] + " - " + ossLevels[i]);
+						System.out.println(osNames[i] + " - " + ossLevels[i]);
 						if (ossLevels[i] != null) {
-							OsVO osVO = new OsVO(resume_num, oss[i], ossLevels[i]);
+							OsVO osVO = new OsVO(resume_num, osNames[i], ossLevels[i]);
 							int cnt2 = osDAO.insertOss(osVO);
 							if (cnt2 > 0) {
 								System.out.println("운영체제성공");
@@ -192,10 +221,10 @@ public class resumeReqService implements Command {
 					}
 				}
 				if (licenses != null) {
-					for (int i = 0; i < licensesLevels.length; i++) {
-						System.out.println(licenses[i] + " - " + licensesLevels[i]);
-						if (licensesLevels[i] != null) {
-							LicenseVO licenseVO = new LicenseVO(resume_num, licenses[i]);
+					for (int i = 0; i < licenseNames.length; i++) {
+						System.out.println(licenseNames[i]);
+						if (licenseNames[i] != null) {
+							LicenseVO licenseVO = new LicenseVO(resume_num, licenseNames[i]);
 							int cnt2 = licenseDAO.insertLicenses(licenseVO);
 							if (cnt2 > 0) {
 								System.out.println("자격증성공");
