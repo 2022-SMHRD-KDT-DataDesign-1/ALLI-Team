@@ -114,11 +114,6 @@
       } else {
          System.out.println("찜목록가져오기 실패");
       }
-      
-      
-      
-      
-
    %>
    <div id="wrap" class="boardEmp_wrap">
       <div class="sub_top sub_top_a">
@@ -419,7 +414,7 @@
                      </div>
                      <div class="choose_content">
                         <p>선택한 항목</p>
-                        <div id="selected_values_list">   
+                        <div class="selected_values_list">   
                                    <p name="checkbox">
                                    </p>
                                 </div>
@@ -428,6 +423,9 @@
                   </section>
                   </form>
                </div>
+            </div>
+            <div class="selected_values_list">
+            	
             </div>
             <div class="boardJob02">
                <ul>
@@ -614,7 +612,7 @@
             selectedValues.push(selectedValue);
       
             // 선택된 값들을 출력할 div 태그 찾기
-            var selectedValuesList = $('#selected_values_list');
+            var selectedValuesList = $('.selected_values_list');
       
             // 선택된 값 추가하기
             var newItem = $('<div class="selected_item" style="float: left;"></div>');
