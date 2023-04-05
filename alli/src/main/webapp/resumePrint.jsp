@@ -251,9 +251,9 @@
                   <%if(print_vo.getCareer() != null){%>
                   <div class="print_box" id="pbox5">
                      <h3>경력</h3>
-                     <div class="w_box">
-                        <p>- <%=print_vo.getCareer()%></p>
-                     </div>
+						<div class="w_box">
+						    <p>- <%=print_vo.getCareer().replace("]", "]<br>")%></p>
+						</div>
                   </div>
                   <%}%>
                   <%if(print_vo.getAward() != null){%>
@@ -267,9 +267,7 @@
                   <div class="print_box" id="pbox6">
                      <h3>자기소개서</h3>
                      <div class="w_box">
-                        <p>
-                           <%=print_vo.getSelf_introduction()%>
-                        </p>
+                         <p><%=print_vo.getSelf_introduction().replace("]", "]<br><br>").replace("[", "<br><br>[")%></p>
                      </div>
                   </div>
                </div>
