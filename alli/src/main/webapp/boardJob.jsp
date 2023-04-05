@@ -357,7 +357,7 @@
             
             <!-- 이력서 시작 -->
             <div class="sub_box">
-                <h2 class="sub_title">구직자를 위한 '특별한'IT전문이력서</h2>
+                <h2 class="sub_title">구직자를 위한 '특별한' IT전문이력서</h2>
                 <p class="sub_title_text">프로그래밍 언어부터 프레임워크, OS .. 개발관련 자격증까지. 나의 기술스택을 한장으로 깔끔하게 정리합니다. 1차 서류통과의 확률을 높여주는 나만의 IT전문이력서!</p>
              <a href="resumeReg.jsp" id="resumeReg_btn">이력서 등록</a>
              <div class="boardJob02">
@@ -385,7 +385,7 @@
                                  account_circle
                               </span>
                               <%}else { %>
-                              <img style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumes.get(i).getResume_num() %>'" src="<%= resumes.get(i).getPicture() %>">
+                              <img style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumes.get(i).getResume_num() %>'" src="./file/<%= resumes.get(i).getPicture() %>">
                               <%} %>
                            </div>
                            <a href="javascript:void(0);" class="optionBtn"><img src="./img/boardJob_icon.png"></a>

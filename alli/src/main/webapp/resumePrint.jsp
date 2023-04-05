@@ -112,7 +112,7 @@
                   <div class="print_box" id="pbox2">
                      <div class="w_box">
                         <div>
-                           <img src=<%=print_vo.getPicture()%>>
+                           <img src="./file/<%=print_vo.getPicture()%>">
                         </div>
                         <div>
                            <p><%=print_vo.getUser_name()%>
@@ -148,8 +148,8 @@
                            <li><span>프로그래밍 언어</span> <span>｜</span>
                               <div>
                                       <%for(LanguageVO l : Llist){ %>
-                                       <%BigDecimal lresume_num = new BigDecimal(243); %>
-                                       <%if( l.getResume_num() == lresume_num) {%>
+                                       <%BigDecimal lresume_num = resume_num; %>
+                                       	<%if(l.getResume_num().toBigInteger().equals(lresume_num.toBigInteger())) { %>
                                           <span>
                                              <%=l.getLanguage_name()%> [<%=l.getLanguage_level() %>]
                                           </span>
@@ -160,8 +160,8 @@
                            <li><span>프레임워크</span> <span>｜</span>
                               <div>
                                       <%for(FrameworkVO F : Flist){ %>
-                                       <%BigDecimal fresume_num = new BigDecimal(243); %>
-                                       <%if( F.getResume_num() == fresume_num) {%>
+                                       <%BigDecimal fresume_num = resume_num; %>
+                                       	<%if(F.getResume_num().toBigInteger().equals(fresume_num.toBigInteger())) { %>
                                           <span>
                                              <%=F.getFramework_name()%> [<%=F.getFramework_level() %>]
                                           </span>
@@ -172,8 +172,8 @@
                            <li><span>OS</span> <span>｜</span>
                               <div>
                                       <%for(OsVO O : Olist){ %>
-                                      <%BigDecimal oresume_num = new BigDecimal(243); %>
-                                       <%if( O.getResume_num() == oresume_num) {%>
+                                      <%BigDecimal oresume_num = resume_num; %>
+                                      	<%if(O.getResume_num().toBigInteger().equals(oresume_num.toBigInteger())) { %>
                                           <span>
                                              <%=O.getOs_name()%> [<%=O.getOs_level() %>]
                                           </span>
@@ -184,8 +184,8 @@
                            <li><span>자격증</span> <span>｜</span>
                               <div>
                                       <%for(LicenseVO LI : LIlist){ %>
-                                      <%BigDecimal Liresume_num = new BigDecimal(243); %>
-                                       <%if( LI.getResume_num() == Liresume_num) {%>
+                                      <%BigDecimal Liresume_num = resume_num; %>
+                                       <%if(LI.getResume_num().toBigInteger().equals(Liresume_num.toBigInteger())) { %>
                                           <span>
                                              <%=LI.getLicense_name()%>
                                           </span>

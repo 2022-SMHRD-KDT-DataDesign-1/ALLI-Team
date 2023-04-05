@@ -42,7 +42,7 @@
             </div>
             <div class="sub_box">
                 <h2 class="sub_title">이력서 등록</h2>
-                <form action="resumeReqService.do" method="post" id="myForm">
+                <form action="resumeReqService.do" method="post" id="myForm" enctype="multipart/form-data">
                 <!-- 임의 스타일 수정 추후 확인바람 -->
                 <p align="right" style="font-size: 12px;margin-bottom: 3px"><span class="star">&#42;</span> 필수 입력 정보입니다.</p>
                     <div class="resume_box rbox1">
@@ -307,6 +307,7 @@
                         <h3>포트폴리오</h3>
                         <div>
                             <input type="file" name="file_name">
+                            <input name="picture" type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                             <div class="input">
                                 <label>URL</label>
                                 <input type="text" placeholder="" name="url">

@@ -283,7 +283,7 @@ public class testService implements Command {
 		
 		session.close();
 		
-		return "boardEmp2.jsp";
+		return "boardEmp.jsp";
 	}
 
 }

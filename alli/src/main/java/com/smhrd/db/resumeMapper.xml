@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="select_userResumes" resultType="resumeVO">
-		select * from t_resume where user_id=#{id} order by resume_num asc
+		select * from t_resume where user_id=#{id} order by resume_num desc
 	</select>
 	
 	<select id="selectResumeNum" parameterType="String" resultType="resumeVO">
