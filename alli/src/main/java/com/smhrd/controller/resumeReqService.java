@@ -95,7 +95,7 @@ public class resumeReqService implements Command {
 				resumeVO select_resumeVO = resumeDAO.selectResumeNum(user_id);
 
 				BigDecimal resume_num = select_resumeVO.getResume_num();
-				System.out.println(resume_num);
+
 				String[] languages = multi.getParameterValues("languages");
 				String[] frameworks = multi.getParameterValues("frameworks");
 				String[] oss = multi.getParameterValues("oss");
@@ -151,9 +151,11 @@ public class resumeReqService implements Command {
 
 				if (languages != null) {
 					for (int i = 0; i < languagesLevels.length; i++) {
+				        String languageName = languages[i]; // 해당 언어 이름
+				        String languageLevel = languagesLevels[i];
 						System.out.println(languages[i] + " - " + languagesLevels[i]);
 						if (languagesLevels[i] != null) {
-							LanguageVO languageVo = new LanguageVO(resume_num, languages[i], languagesLevels[i]);
+							LanguageVO languageVo = new LanguageVO(resume_num, languageName, languageLevel);
 							int cnt2 = lagnguageDAO.insertLanguages(languageVo);
 							if (cnt2 > 0) {
 								System.out.println("언어성공");
