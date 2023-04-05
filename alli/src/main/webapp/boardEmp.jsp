@@ -182,7 +182,10 @@
 
                                  <div>
                                     <p>
-                                       <span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+                                       <span>${item.user_name}</span><span>(${item.gender}, 
+                                       <%for(int i = 0 ; i < ages.size() ; i++){ %>
+                                       <%=ages.get(i+1) %>세)</span>
+                                       <%break;} %>
                                     </p>
                                     <p>
                                        ${item.career_date}
@@ -487,7 +490,10 @@
 		                           </c:if>
 		                              <div>
 		                                 <p>
-		                                    <span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+		                                    <span>${item.user_name}</span><span>(${item.gender}, 
+		                                    <%for(int i = 0 ; i < ages.size() ; i++){ %>
+		                                    <%=ages.get(i+1) %>세)</span>
+		                                    <%break;} %>
 		                                    
 		                                   <%--  <%for(int l=0;l<filter.size();l++){ %>
 		                                    	<%if(l == filter.indexOf()){ %>)
