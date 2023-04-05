@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.smhrd.model.jjimVO"%>
 <%@page import="com.smhrd.model.jjimDAO"%>
 <%@page import="com.smhrd.model.LicenseVO"%>
@@ -55,6 +56,7 @@
    // 이력서 미리보기(나이변경)
    int age = 0;
    Date date = new Date(); // 날짜형 데이터임
+   ArrayList<Integer> ages = new ArrayList<Integer>();
    for(int i = 0; i<rlist.size();i++){
    // 사용자의 생년월일 정보를 세션의 login_vo에서 가져옴
       String birth = rlist.get(i).getDate_birth();
@@ -64,18 +66,24 @@
       String birth_y = birth.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
       String date_y = str.substring(0,2); // 문자형 앞의 두글자만 잘라서 연도 추출
       int birth_y_int = Integer.parseInt(birth_y); // 문자열을 정수형으로 바꾼다.
-      int date_y_int = Integer.parseInt(date_y)+2000; // 문자열을 정수형으로 바꾸고 2000을 더해서 2023의 형태로
+      int date_y_int = Integer.parseInt(date_y); // 문자열을 정수형으로 바꾸고 2000을 더해서 2023의 형태로
       
       // 생년월일의 연도가 현재 연도보다 작으면 2000을 더하고 크면 1900을 더해서
       // 생년월일 연도 추출
-      if(birth_y_int<date_y_int){
+      if(birth_y_int>date_y_int){
          birth_y_int += 1900;
       }else{
          birth_y_int += 2000;
       };
       
+      date_y_int += 2000 ; // 2000을 더해서 2023의 형태로
+
       age = date_y_int - birth_y_int + 1 ; // 현재 연도에서 생년 연도를 빼서 나이 계산
+
+      ages.add(age);
    }
+   
+  
    
    // 개발스택 상중하 가져오기
       LanguageDAO Ldao = new LanguageDAO();
@@ -481,6 +489,12 @@
 		                              <div>
 		                                 <p>
 		                                    <span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+		                                    
+		                                   <%--  <%for(int l=0;l<filter.size();l++){ %>
+		                                    	<%if(l == filter.indexOf()){ %>)
+		                                    		<%= ages.get(l) %>
+		                                    	<%} %>
+		                                    <%} %> --%>
 		                                 </p>
 		                                 <p>
 		                                    ${item.career_date}
