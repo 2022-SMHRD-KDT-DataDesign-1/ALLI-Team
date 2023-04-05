@@ -158,7 +158,9 @@
 														<input type="radio" value="상" name="${item.languages}">
 														<input type="radio" value="중" name="${item.languages}">
 														<input type="radio" value="하" name="${item.languages}">
-														<input type="hidden" value="${item.languages}" name="languages">
+														<input type="hidden" value="${item.languages}_상" name="languages">
+													    <input type="hidden" value="${item.languages}_중" name="languages">
+													    <input type="hidden" value="${item.languages}_하" name="languages">
 													</div>
 												</li>
 											</c:forEach> 
@@ -456,7 +458,7 @@
 			  }
 
 			  // 이력서 공개여부
-			  var confirmed = confirm("이력서를 공개 하시겠습니까?");
+			  var confirmed = confirm("이력서가 등록되었습니다. 공개하시겠습니까?");
 			  if (confirmed) {
 			    // "예"를 선택한 경우
 			    document.getElementById("choice").value = "on";
