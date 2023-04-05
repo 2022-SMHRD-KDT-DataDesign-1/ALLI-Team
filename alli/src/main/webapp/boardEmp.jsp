@@ -19,6 +19,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="./include/metatag.jsp"%>
 </head>
 <body>
@@ -240,8 +241,8 @@
                </ul>
             </div>
             <div class="board_list">
-               <a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
-               <a href="#">5</a> <a href="#" class="end">></a>
+               <a href="#">1</a> <!-- <a href="#">2</a> <a href="#">3</a> <a href="#">4</a>
+               <a href="#">5</a> <a href="#" class="end">></a> -->
             </div>
          </div>
          <div class="sub_box" id="filter">
@@ -344,24 +345,18 @@
                                        <input type="checkbox" value="고등학교" name="school_division">
                                     </div>
                                  </li>
-                              </ul>
-                              <ul>
                                  <li>
                                     <p>대학(2,3년)</p>
                                     <div>
                                        <input type="checkbox" value="대학(2,3)년" name="school_division">
                                     </div>
                                  </li>
-                              </ul>
-                              <ul>
                                  <li>
                                     <p>대학(4년)</p>
                                     <div>
                                        <input type="checkbox" value="대학(4년)" name="school_division">
                                     </div>
                                  </li>
-                              </ul>
-                              <ul>
                                  <li>
                                     <p>대학원</p>
                                     <div>
@@ -380,8 +375,6 @@
                                        
                                     </div>
                                  </li>
-                              </ul>
-                              <ul>
                                  <li>
                                     <p>1년 이상</p>
                                     <div>
@@ -389,8 +382,6 @@
                                        
                                     </div>
                                  </li>
-                              </ul>
-                              <ul>
                                  <li>
                                     <p>2년 이상</p>
                                     <div>
@@ -398,32 +389,24 @@
                                        
                                     </div>
                                  </li>
-                              </ul>
-                              <ul>
                                  <li>
                                     <p>3년 이상</p>
                                     <div>
                                        <input type="checkbox" value="3년 이상" name="career_date">
                                     </div>
                                  </li>
-                              </ul>
-                              <ul>
                                  <li>
                                     <p>5년 이상</p>
                                     <div>
                                        <input type="checkbox" value="5년 이상" name="career_date">
                                     </div>
                                  </li>
-                              </ul>
-                              <ul>
                                  <li>
                                     <p>7년 이상</p>
                                     <div>
                                        <input type="checkbox" value="7년 이상" name="career_date">
                                     </div>
                                  </li>
-                              </ul>
-                              <ul>
                                  <li>
                                     <p>10년 이상</p>
                                     <div>
@@ -431,7 +414,6 @@
                                     </div>
                                  </li>
                               </ul>
-                              
                            </li>
                         </ul>
                      </div>
@@ -457,101 +439,106 @@
                   <p style="text-align:center;">조건을 선택해주세요.</p>
                <%} else{%>
                   <c:forEach items="${filter}" var="item">
-                  		<c:if test="${item.resume_num == null}">
-		                     <p style="text-align:center;">선택한 조건에 맞는 이력서가 없습니다.</p>
-		                 </c:if>
-                        <li>
-                           <div class="boardJob_listTop">
-                              <div>
-                                 <!-- 사진구분 -->
-                                    <c:choose> 
-                                          <c:when test = "${item.picture ne null }">
-                                             <img src="./file/${item.picture}">
-                                          </c:when>
-                                          <c:otherwise>
-                                             <span class="material-symbols-outlined person_icon">
-                                             account_circle
-                                          </span>
-                                          </c:otherwise>
-                                      </c:choose>
-                              </div>
-                              <c:set var="isCheckList" value="true" />
-                           <c:forEach items="${jlist}" var="jjim">
-                                 <c:choose>
-                                 <c:when test="${item.resume_num eq jjim.resume_num}">
-                                    <a href="jjimDelService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
-                                       <img class="like" src="./img/star1.png" data-num="${item.resume_num}">
-                                    </a>
-                                    <c:set var="isCheckList" value="false" />
-                                 </c:when>
-                                 
-                                 </c:choose>
-                           </c:forEach>
-                           
-                           <c:if test="${isCheckList eq true}">
-                              <a href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}"> 
-                                 <img class="like_off" src="./img/star0.png" data-num="${item.resume_num}">
-                              </a>
-                           </c:if>
-   
-                              <div>
-                                 <p>
-                                    <span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
-                                 </p>
-                                 <p>
-                                    ${item.career_date}
-                                 </p>
-                              </div>
-                           </div>
-                           <div class="boardJob_listBtm">
-                              <h3>${item.resume_title}</h3>
-                              <p>
-                                 ${item.school_name}
-                                 <!-- 학교구분 -->
-                                    <c:choose> 
-                                          <c:when test = "${item.school_division == '대학(4년)'}">
-                                             (4년)
-                                          </c:when>
-                                          <c:when test = "${item.school_division == '대학(2,3년)'}">
-                                             (2,3년)
-                                          </c:when>
-                                          <c:when test = "${item.school_division == '대입검정고시'}">
-                                             대입검정고시(검정고시)<br>
-                                             졸업
-                                          </c:when>
-                                          <c:otherwise>
-                                             (${item.school_division})
-                                          </c:otherwise>
-                                      </c:choose>
-                                 <br> ${item.major} ${item.graduation_status}
-                              </p>
-                              <p>
-                                 희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
-                              </p>
-                              <p>
-                                 <c:forEach items="${Llist}" var="tech">
-                                    <c:if test = "${item.resume_num eq tech.resume_num}"> 
-                                          <span>${tech.language_name }</span>
-                                     </c:if>
-                                 </c:forEach>
-                                 <c:forEach items="${Flist}" var="tech">
-                                    <c:if test = "${item.resume_num eq tech.resume_num}"> 
-                                          <span>${tech.framework_name }</span>
-                                     </c:if>
-                                 </c:forEach>
-                                 <c:forEach items="${Olist}" var="tech">
-                                    <c:if test = "${item.resume_num eq tech.resume_num}"> 
-                                          <span>${tech.os_name }</span>
-                                     </c:if>
-                                 </c:forEach>
-                                 <c:forEach items="${LIlist}" var="tech">
-                                    <c:if test = "${item.resume_num eq tech.resume_num}"> 
-                                          <span>${tech.license_name }</span>
-                                     </c:if>
-                                 </c:forEach>
-                              </p>
-                           </div>
-                        </li>
+                  		<c:choose> 
+                            <c:when test = "${fn:length(list) le 0}">
+                               <p style="text-align:center;">선택한 조건의 인재가 없습니다</p>
+                            </c:when>
+                            <c:otherwise>
+                              <li>
+		                           <div class="boardJob_listTop">
+		                              <div>
+		                                 <!-- 사진구분 -->
+		                                    <c:choose> 
+		                                          <c:when test = "${item.picture ne 'no_picture.png' }">
+		                                             <img src="./file/${item.picture}" style="cursor: pointer;" onclick="location.href='resumePrint.jsp?resume_num=${item.resume_num}'">
+		                                          </c:when>
+		                                          <c:otherwise>
+		                                             <span style="cursor: pointer;" onclick="location.href='resumePrint.jsp?resume_num=${item.resume_num}'" class="material-symbols-outlined person_icon">
+			                                             account_circle
+			                                          </span>
+		                                          </c:otherwise>
+		                                      </c:choose>
+		                                    
+		                              </div>
+		                              <c:set var="isCheckList" value="true" />
+		                           <c:forEach items="${jlist}" var="jjim">
+		                                 <c:choose>
+		                                 <c:when test="${item.resume_num eq jjim.resume_num}">
+		                                    <a href="jjimDelService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}">
+		                                       <img class="like" src="./img/star1.png" data-num="${item.resume_num}">
+		                                    </a>
+		                                    <c:set var="isCheckList" value="false" />
+		                                 </c:when>
+		                                 
+		                                 </c:choose>
+		                           </c:forEach>
+		                           
+		                           <c:if test="${isCheckList eq true}">
+		                              <a href="jjimService.do?cmp_id=${cmpLogin_vo.cmp_id}&resume_num=${item.resume_num}"> 
+		                                 <img class="like_off" src="./img/star0.png" data-num="${item.resume_num}">
+		                              </a>
+		                           </c:if>
+		   
+		                              <div>
+		                                 <p>
+		                                    <span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
+		                                 </p>
+		                                 <p>
+		                                    ${item.career_date}
+		                                 </p>
+		                              </div>
+		                           </div>
+		                           <div class="boardJob_listBtm">
+		                              <h3>${item.resume_title}</h3>
+		                              <p>
+		                                 ${item.school_name}
+		                                 <!-- 학교구분 -->
+		                                    <c:choose> 
+		                                          <c:when test = "${item.school_division == '대학(4년)'}">
+		                                             (4년)
+		                                          </c:when>
+		                                          <c:when test = "${item.school_division == '대학(2,3년)'}">
+		                                             (2,3년)
+		                                          </c:when>
+		                                          <c:when test = "${item.school_division == '대입검정고시'}">
+		                                             대입검정고시(검정고시)<br>
+		                                             졸업
+		                                          </c:when>
+		                                          <c:otherwise>
+		                                             (${item.school_division})
+		                                          </c:otherwise>
+		                                      </c:choose>
+		                                 <br> ${item.major} ${item.graduation_status}
+		                              </p>
+		                              <p>
+		                                 희망지역 : ${item.hope_area} ${item.hope_area2} <br> 희망연봉 : ${item.hope_salary}
+		                              </p>
+		                              <p>
+		                                 <c:forEach items="${Llist}" var="tech">
+		                                    <c:if test = "${item.resume_num eq tech.resume_num}"> 
+		                                          <span>${tech.language_name }</span>
+		                                     </c:if>
+		                                 </c:forEach>
+		                                 <c:forEach items="${Flist}" var="tech">
+		                                    <c:if test = "${item.resume_num eq tech.resume_num}"> 
+		                                          <span>${tech.framework_name }</span>
+		                                     </c:if>
+		                                 </c:forEach>
+		                                 <c:forEach items="${Olist}" var="tech">
+		                                    <c:if test = "${item.resume_num eq tech.resume_num}"> 
+		                                          <span>${tech.os_name }</span>
+		                                     </c:if>
+		                                 </c:forEach>
+		                                 <c:forEach items="${LIlist}" var="tech">
+		                                    <c:if test = "${item.resume_num eq tech.resume_num}"> 
+		                                          <span>${tech.license_name }</span>
+		                                     </c:if>
+		                                 </c:forEach>
+		                              </p>
+		                           </div>
+		                        </li>
+                            </c:otherwise>
+                        </c:choose>
                      </c:forEach>
                <%} %>
 

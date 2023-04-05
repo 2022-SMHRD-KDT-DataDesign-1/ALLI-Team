@@ -282,21 +282,21 @@
                                      <%try { %>
                                      <%for(int i = 0 ; i < 3 ; i++){ %>
                                      <li>
-                                        <%if(framecmpRecomList2.size()>0){ %>
-                                        <div><%=i+1 %></div>
-                                        <div><%=framecmpRecomList2.get(i).getCmp_name() %></div>
-                                        <div>
-                                           <p><%=framecmpRecomList2.get(i).getCmp_title() %></p>
-                                           <p><%=framecmpRecomList2.get(i).getCareer() %> ｜ <%=framecmpRecomList2.get(i).getEducation() %> ｜ <%=framecmpRecomList2.get(i).getArea() %> ｜ <%=framecmpRecomList2.get(i).getEmployment() %></p>
-                                           <p>
-                                              <%=framecmpRecomList2.get(i).getStac() %>
-                                           </p>
-                                        </div>
-                                        <div>
-                                           <a href="<%=framecmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
-                                        </div>
+                                        <%if(framecmpRecomList2.size()>0 && framecmpRecomList2.get(i).getCmp_name() != null){ %>
+	                                        <div><%=i+1 %></div>
+	                                        <div><%=framecmpRecomList2.get(i).getCmp_name() %></div>
+	                                        <div>
+	                                           <p><%=framecmpRecomList2.get(i).getCmp_title() %></p>
+	                                           <p><%=framecmpRecomList2.get(i).getCareer() %> ｜ <%=framecmpRecomList2.get(i).getEducation() %> ｜ <%=framecmpRecomList2.get(i).getArea() %> ｜ <%=framecmpRecomList2.get(i).getEmployment() %></p>
+	                                           <p>
+	                                              <%=framecmpRecomList2.get(i).getStac() %>
+	                                           </p>
+	                                        </div>
+	                                        <div>
+	                                           <a href="<%=framecmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
+	                                        </div>  
                                         <%}else{ %>
-                                        <div class="nope">해당 프레임워크를 모집하는 회사가 없습니다</div>
+                                        	<div class="nope">해당 프레임워크를 모집하는 회사가 없습니다</div>
                                         <% break;
                                          } %>
                                      </li>
@@ -340,7 +340,6 @@
                                         <div class="nope">해당 OS를 모집하는 회사가 없습니다</div>
                                         <% break;
                                          } %>
-                                        
                                      </li>
                                      <%} %>
                                      <%}catch(Exception e){ %>
@@ -425,7 +424,15 @@
                               <%} %>
                            </p>
                            <p>
-                              희망지역 : <%=resumes.get(i).getHope_area() %><br>
+                              희망지역 : <%=resumes.get(i).getHope_area() %>
+                              
+                              <%if(resumes.get(i).getHope_area2() == null){ %>
+
+                              <%}else{ %>
+                              		 <%=resumes.get(i).getHope_area2() %>
+                              <%} %>
+                              
+                              <br>
                               <%if(resumes.get(i).getHope_salary() == null){ %>
 
                               <%}else{ %>

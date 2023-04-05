@@ -278,7 +278,7 @@
                   <li><a href="boardJob.jsp">목록</a></li>
                   <li><a href="#" id="pdf">PDF 변환</a></li>
                   <li><a href="resumeModify.jsp?resume_num=<%=resume_num%>">수정하기</a></li>
-                  <li><a href="printDeleteService.do?resume_num=<%=resume_num%>" onclick="alert('이력서가 삭제 되었습니다.')"><%=resume_num%>삭제</a></li>
+                  <li><a href="printDeleteService.do?resume_num=<%=resume_num%>" onclick="alert('이력서가 삭제 되었습니다.')">삭제</a></li>
                </ul>
             </form>
          </div>
