@@ -252,7 +252,7 @@
                   <div class="print_box" id="pbox5">
                      <h3>경력</h3>
                      <div class="w_box">
-                        <p><%= "- " + print_vo.getCareer().replace("-", " - ").replaceAll("\\s+", " <br>- ") %></p>
+                        <p>- <%=print_vo.getCareer()%></p>
                      </div>
                   </div>
                   <%}%>
@@ -260,7 +260,7 @@
                   <div class="print_box" id="pbox5">
                      <h3>수상</h3>
                      <div class="w_box">
-                     	<p><%= "- " + print_vo.getAward().replace("-", " - ").replaceAll("\\s+", " <br>- ") %></p>
+                        <p>- <%=print_vo.getAward()%></p>
                      </div>
                   </div>
                   <%}%>
