@@ -111,9 +111,14 @@
                   </div>
                   <div class="print_box" id="pbox2">
                      <div class="w_box">
-                        <div>
-                           <img src="./file/<%=print_vo.getPicture()%>">
-                        </div>
+                       	<%if(print_vo.getPicture().equals("no_picture.png")){ %>
+                          		<div style="display:none;">
+                          		</div>
+                          <%}else{ %>
+                          		<div>
+                          			<img src="./file/<%=print_vo.getPicture()%>">
+                          		</div>
+                          <%} %>
                         <div>
                            <p><%=print_vo.getUser_name()%>
                               <span><%=print_vo.getGender()%> <%=print_vo.getDate_birth()%>
