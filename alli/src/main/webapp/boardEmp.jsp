@@ -440,8 +440,9 @@
                <%} else{%>
                   <c:forEach items="${filter}" var="item">
                   		<c:choose> 
-                            <c:when test = "${fn:length(list) le 0}">
+                            <c:when test = "${fn:length(filter) == 0}">
                                <p style="text-align:center;">선택한 조건의 인재가 없습니다</p>
+                               <%System.out.println("ee"); %>
                             </c:when>
                             <c:otherwise>
                               <li>
