@@ -222,7 +222,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 .print_box h3{font-size: 16px;margin-top: 18px;margin-bottom: 8px;font-weight: 600;color: #555;}
 .w_box{width:100%;background:#fff;position:relative;overflow:hidden;padding: 20px;box-sizing: border-box;}
 #pbox1 > p{font-size:30px;font-weight:400;margin-top:30px;margin-bottom:24px;}
-#pbox2 .w_box > div:nth-child(1){width:140px;hegith:179px;float:left;}
+#pbox2 .w_box > div:nth-child(1){width:140px;height:179px;float:left;}
 #pbox2 .w_box{padding:0;}
 #pbox2 .w_box > div:nth-child(1) > img{width:100%;display:block;}
 #pbox2 .w_box > div:nth-child(2){float:left;width:920px;padding: 23.5px;box-sizing: border-box;}
@@ -350,7 +350,7 @@ box-sizing:border-box;display: inline-block;float:left;}
 .boardJob_listBtm{margin-top:8px;position:relative;height: 118.56px;}
 .boardJob_listBtm > h3{font-weight: 700;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;}
 .boardJob_listBtm > p:nth-of-type(1){margin-top: 5px;color: #a1a1a1;}
-.boardJob_listBtm > p:nth-of-type(2){margin-top: 10px;color: #a1a1a1;}
+.boardJob_listBtm > p:nth-of-type(2){margin-top: 10px;color: #a1a1a1;min-height:31.19px}
 .boardJob_listBtm > p:nth-of-type(3){margin-top: 10px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;}
 .boardJob_listBtm > p:nth-of-type(3) > span{background: #f1f2f1;font-size: 10px;padding: 5px;font-weight: 500;margin-right:3px;}
 .boardJob_date{position: absolute;right: 0;bottom: -30px;color:#a1a1a1;font-size:12px;}

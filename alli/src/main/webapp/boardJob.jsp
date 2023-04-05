@@ -380,7 +380,7 @@
                      <%} %>
                         <div class="boardJob_listTop">
                            <div>
-                              <%if(resumes.get(i).getPicture()==null){ %>
+                              <%if(resumes.get(i).getPicture().equals("no_picture.png")){ %>
                               <span style="cursor: pointer;"  onclick="location.href='resumePrint.jsp?resume_num=<%=resumes.get(i).getResume_num() %>'"  class="material-symbols-outlined person_icon">
                                  account_circle
                               </span>
@@ -412,19 +412,24 @@
                               <%}else if(resumes.get(i).getSchool_division().equals("대입검정고시")){ %>
                                  대입검정고시(검정고시)
                               <%} %><br>
-                              <%=resumes.get(i).getMajor() %> 
+                              <%if(resumes.get(i).getMajor()==null){ %>
+                              
+                              <%}else{ %>
+                             	<%=resumes.get(i).getMajor() %> 
+                              <%} %>
+                              
                               <%if(resumes.get(i).getGraduation_status()==null){ %>
                               
                               <%}else{ %>
-                              <%=resumes.get(i).getGraduation_status() %>
+                              	<%=resumes.get(i).getGraduation_status() %>
                               <%} %>
                            </p>
                            <p>
-                              희망지역:<%=resumes.get(i).getHope_area() %><br>
+                              희망지역 : <%=resumes.get(i).getHope_area() %><br>
                               <%if(resumes.get(i).getHope_salary() == null){ %>
-                              희망연봉:
+
                               <%}else{ %>
-                              희망연봉:<%=resumes.get(i).getHope_salary() %>
+                              희망연봉 : <%=resumes.get(i).getHope_salary() %>
                               <%} %>
                            </p>
                            <p>
