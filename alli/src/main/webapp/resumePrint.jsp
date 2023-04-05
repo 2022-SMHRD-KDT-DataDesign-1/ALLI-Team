@@ -244,16 +244,15 @@
                   <%if(print_vo.getOther_license() != null){%>
                   <div class="print_box" id="pbox5">
                      <h3>기타자격증</h3>
-                     <div class="w_box">
-                        <p>- <%=print_vo.getOther_license()%></p>
-                     </div>
-                  </div>
+						<div class="w_box">
+						  <p><%= "- " + print_vo.getOther_license().replace("-", " - ").replaceAll("\\s+", " <br>- ") %></p>
+						</div>
                   <%}%>                  
                   <%if(print_vo.getCareer() != null){%>
                   <div class="print_box" id="pbox5">
                      <h3>경력</h3>
                      <div class="w_box">
-                        <p>- <%=print_vo.getCareer()%></p>
+                        <p><%= "- " + print_vo.getCareer().replace("-", " - ").replaceAll("\\s+", " <br>- ") %></p>
                      </div>
                   </div>
                   <%}%>
@@ -261,7 +260,7 @@
                   <div class="print_box" id="pbox5">
                      <h3>수상</h3>
                      <div class="w_box">
-                        <p>- <%=print_vo.getAward()%></p>
+                     	<p><%= "- " + print_vo.getAward().replace("-", " - ").replaceAll("\\s+", " <br>- ") %></p>
                      </div>
                   </div>
                   <%}%>
