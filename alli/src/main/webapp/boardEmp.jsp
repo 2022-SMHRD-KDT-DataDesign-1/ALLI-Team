@@ -422,7 +422,7 @@
                      </div>
                      <div class="choose_content">
                         <p>선택한 항목</p>
-                        <div class="selected_values_list">   
+                        <div id="selected_values_list">   
                                    <p name="checkbox">
                                    </p>
                                 </div>
@@ -432,9 +432,7 @@
                   </form>
                </div>
             </div>
-            <div class="selected_values_list">
-            	
-            </div>
+            <div id="test"></div>
             <div class="boardJob02">
                <ul>
                <%
@@ -442,9 +440,12 @@
                   //System.out.println(filter.get(0).getUser_name());
                %>
                <%if(filter == null){ %>
-                  <p style="text-align:center;">조건을 선택해주세요.</p>
+                  	<p style="text-align:center;">조건을 선택해주세요.</p>
+               <%} else if(filter.size() == 0){%>
+               		<p style="text-align:center;">선택한 조건의 인재가 없습니다.</p>
+               		<%System.out.println("ee"); %>
                <%} else{%>
-                  <c:forEach items="${filter}" var="item">
+               		<c:forEach items="${filter}" var="item">
                   		<c:choose> 
                             <c:when test = "${fn:length(filter) == 0}">
                                <p style="text-align:center;">선택한 조건의 인재가 없습니다</p>
@@ -464,8 +465,7 @@
 			                                             account_circle
 			                                          </span>
 		                                          </c:otherwise>
-		                                      </c:choose>
-		                                    
+		                                      </c:choose>   
 		                              </div>
 		                              <c:set var="isCheckList" value="true" />
 		                           <c:forEach items="${jlist}" var="jjim">
@@ -485,7 +485,6 @@
 		                                 <img class="like_off" src="./img/star0.png" data-num="${item.resume_num}">
 		                              </a>
 		                           </c:if>
-		   
 		                              <div>
 		                                 <p>
 		                                    <span>${item.user_name}</span><span>(${item.gender}, <%=age %>세)</span>
@@ -554,10 +553,8 @@
                         </c:choose>
                      </c:forEach>
                <%} %>
-
                </ul>
             </div>
-           
          </div>
       </div>
    </div>>
@@ -626,7 +623,7 @@
             selectedValues.push(selectedValue);
       
             // 선택된 값들을 출력할 div 태그 찾기
-            var selectedValuesList = $('.selected_values_list');
+            var selectedValuesList = $('#selected_values_list');
       
             // 선택된 값 추가하기
             var newItem = $('<div class="selected_item" style="float: left;"></div>');
@@ -758,7 +755,7 @@
             console.log('jjimAjax')
             console.log(event.target.getAttribute("data-num"));
 
-            let cmp_id = '<%=cmpLogin_vo.getCmp_id() %>';
+            let cmp_id = '<%=cmpLogin_vo.getCmp_id()%>';
             let resume_num = event.target.getAttribute("data-num");
             
               $.ajax({
