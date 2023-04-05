@@ -157,10 +157,10 @@
                                     <!-- 사진구분 -->
                                        <c:choose> 
                                              <c:when test = "${item.picture ne null }">
-                                                <img src="./file/${item.picture}">
+                                                <img src="./file/${item.picture}" style="cursor: pointer;" onclick="location.href='resumePrint.jsp?resume_num=${item.resume_num}'">
                                              </c:when>
                                              <c:otherwise>
-                                                <span class="material-symbols-outlined person_icon">
+                                                <span class="material-symbols-outlined person_icon" style="cursor: pointer;" onclick="location.href='resumePrint.jsp?resume_num=${item.resume_num}'">
                                                 account_circle
                                              </span>
                                              </c:otherwise>

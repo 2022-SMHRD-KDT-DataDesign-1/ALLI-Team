@@ -250,7 +250,7 @@
                                                    </p>
                                                 </div>
                                                 <div>
-                                                   <a href="<%=lancmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
+                                                   <a href="<%=lancmpRecomList2.get(i).getCmp_link() %>" target="_blank">상세보기</a>
                                                 </div>
                                         <%}else{ %>
                                         <div class="nope">해당 프로그래밍 언어를 모집하는 회사가 없습니다</div>
@@ -293,7 +293,7 @@
 		                                           </p>
 		                                        </div>
 		                                        <div>
-		                                           <a href="<%=framecmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
+		                                           <a href="<%=framecmpRecomList2.get(i).getCmp_link() %>" target="_blank">상세보기</a>
 		                                        </div>  
 		                                       
 	                                        <%} %>
@@ -337,7 +337,7 @@
                                            </p>
                                         </div>
                                         <div>
-                                           <a href="<%=oscmpRecomList2.get(i).getCmp_link() %>">상세보기</a>
+                                           <a href="<%=oscmpRecomList2.get(i).getCmp_link() %>" target="_blank">상세보기</a>
                                         </div>
                                         <%}else{ %>
                                         <div class="nope">해당 OS를 모집하는 회사가 없습니다</div>
